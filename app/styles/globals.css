@@ -112,17 +112,28 @@
   font-style: italic;
 }
 
-.container {
-  display: fixed;
-  padding: 2rem 5rem;
+.my-container {
+  padding: 2rem 7rem;
 }
 
 .header-text {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .header-text .navbar {
-  font-size: 1rem;
+  font-size: 0.9rem;
+}
+
+.small-zoom {
+  transition: 0.3s;
+}
+
+.small-zoom:hover:not {
+  transform: scale(1);
+}
+
+.small-zoom:hover {
+  transform: scale(1.05);
 }
 
 .little-zoom {
@@ -135,4 +146,46 @@
 
 .little-zoom:hover {
   transform: scale(1.15);
+}
+
+.medium-zoom {
+  transition: 0.3s;
+}
+
+.medium-zoom:hover:not {
+  transform: scale(1);
+}
+
+.medium-zoom:hover {
+  transform: scale(1.175);
+}
+
+.header {
+  margin-bottom: 5rem;
+}
+
+.profil {
+  border-radius: 10px 10px 10px 100px;
+}
+
+.logo-text-btn {
+  background-color: #104D87;
+  border-radius: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-shadow: 0 3px 10px rgba(59, 158, 255, 0.3);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.logo-text-btn:hover {
+  background-color: white;
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.3);
+  transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+.logo-text-btn:hover p {
+  color: #104D87;
+  transition: color 0.5s;
 }
