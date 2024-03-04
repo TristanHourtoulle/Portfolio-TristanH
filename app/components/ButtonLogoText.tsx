@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 
-export const ButtonLogoText = ({ imagePath, title }: { imagePath: string, title: string }) => {
+export const ButtonLogoText = ({ imagePath, title, redirect }: { imagePath: string, title: string, redirect: string }) => {
 
     const [isHovered, setIsHovered] = useState(false)
 
@@ -20,7 +20,7 @@ export const ButtonLogoText = ({ imagePath, title }: { imagePath: string, title:
     const altImage = imagePath.replace(".svg", "-hover.svg")
 
     return (
-        <Link href="#" className="flex items-center gap-3 logo-text-btn" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <Link href={redirect} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 logo-text-btn" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <Image
                 src={isHovered ? altImage : imagePath}
                 alt={title}
