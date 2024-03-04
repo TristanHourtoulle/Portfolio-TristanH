@@ -1,19 +1,60 @@
-import React from 'react'
-import Link from 'next/link'
+"use client"
+
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Menu, X } from 'lucide-react'
 
 export const Header = () => {
-  return (
-    <div className='h-[10%] absolute w-full flex items-center justify-between pr-10 pl-10 header-text header'>
-        <Link href="/" className=''>
-            <p className='text-paragraph poppins-bold'>TristanH.</p>
-        </Link>
+  const [active, setActive] = useState(false);
 
-        <div className='navbar flex items-center gap-20'>
-            <Link href="/" className='text-paragraph poppins-regular little-zoom'>Skills</Link>
-            <Link href="/" className='text-paragraph poppins-regular little-zoom'>About Me</Link>
-            <Link href="/" className='text-paragraph poppins-regular little-zoom'>Projects</Link>
-            <Link href="/" className='text-paragraph poppins-regular little-zoom'>Contact</Link>
+  const handleClick = () => {
+    setActive(!active);
+  };
+
+  return (
+    <>
+      <nav className='flex items-center flex-wrap my-10'>
+        <Link href='/' className='inline-flex items-center '>
+              <Image
+                src="/images/profil.svg"
+                alt="Tristan Hourtoulle"
+                width={8}
+                height={8}
+                className='fill-current h-8 w-8 mr-2'
+                style={{ borderRadius: '10px' }}
+              />
+            <span className='text-paragraph font-bold tracking-wide'>
+              TristanH
+            </span>
+        </Link>
+        <button
+          className=' inline-flex p-3 hover:bg-backgroundPrimary rounded lg:hidden text-white ml-auto hover:text-white outline-none'
+          onClick={handleClick}
+        >
+          {active ? <X /> : <Menu />}
+        </button>
+        <div
+          className={`${
+            active ? '' : 'hidden'
+          }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
+        >
+          <div className='lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col items-center justify-center lg:h-auto'>
+            <Link href='/' className='lg:inline-flex lg:w-auto px-3 py-2 rounded text-paragraph items-center justify-center '>
+                Skills
+            </Link>
+            <Link href='/' className='lg:inline-flex lg:w-auto px-3 py-2 rounded text-paragraph items-center justify-center '>
+                About Me
+            </Link>
+            <Link href='/' className='lg:inline-flex lg:w-auto px-3 py-2 rounded text-paragraph items-center justify-center '>
+                Projects
+            </Link>
+            <Link href='/' className='lg:inline-flex lg:w-auto px-3 py-2 rounded text-paragraph items-center justify-center '>
+                Contact
+            </Link>
+          </div>
         </div>
-    </div>
-  )
-}
+      </nav>
+    </>
+  );
+};

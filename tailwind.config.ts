@@ -10,6 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         background: "#0D1520",
+        backgroundPrimary: "#3B9EFF",
+        navbar: "#104D87",
         primary: "#3B9EFF",
         secondary: "#104D87",
         paragraph: "#FFFFFF"
