@@ -19,13 +19,13 @@ export default function Home() {
           <ButtonLogoText imagePath="/images/email.svg" title="tristan.hourtoulle@epitech.eu" redirect={sendMail} />
         </div>
       </div>
-      <div className="small-zoom">
+      <div className="small-zoom w-full sm:w-1/2 md:w-1/3">
         <Image
           src="/images/profil.svg"
           alt="Tristan Hourtoulle"
           width={350}
           height={350}
-          className="profil"
+          className="profil responsive-image"
         />
       </div>
     </div>

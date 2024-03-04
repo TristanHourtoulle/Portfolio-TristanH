@@ -166,6 +166,12 @@
 
 .profil {
   border-radius: 10px 10px 10px 100px;
+  transition: 0.3s;
+}
+
+.profil:hover {
+  border-radius: 150px 150px 150px 150px;
+  transition: 0.3s;
 }
 
 .logo-text-btn {
@@ -188,4 +194,10 @@
 .logo-text-btn:hover p {
   color: #104D87;
   transition: color 0.5s;
+}
+
+.responsive-image {
+  width: 100%;
+  max-width: 500px; /* Taille maximale de l'image */
+  height: auto;
 }
