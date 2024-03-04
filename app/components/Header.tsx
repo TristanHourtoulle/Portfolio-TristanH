@@ -3,8 +3,8 @@ import Link from 'next/link'
 
 export const Header = () => {
   return (
-    <div className='flex items-center header-text header'>
-        <Link href="/" className='mr-auto'>
+    <div className='h-[10%] absolute w-full flex items-center justify-between pr-10 pl-10 header-text header'>
+        <Link href="/" className=''>
             <p className='text-paragraph poppins-bold'>TristanH.</p>
         </Link>
 

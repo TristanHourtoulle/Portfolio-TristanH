@@ -14,9 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-background my-container">
-        <Header />
-        {children}
+      <body className="bg-background">
+        <div className="">
+          {children}
+        </div>
       </body>
     </html>
   );
