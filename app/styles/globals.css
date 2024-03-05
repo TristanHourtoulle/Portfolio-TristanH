@@ -159,6 +159,11 @@
   line-height: 1.5;
 }
 
+.p-citation-fluid {
+  font-size: clamp(1.05rem, 1.25vw + 1rem, 1.5em);
+  line-height: 1.5;
+}
+
 .responsive-image {
   max-width: 75%;
   height: auto;
