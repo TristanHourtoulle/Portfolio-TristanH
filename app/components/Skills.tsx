@@ -33,7 +33,7 @@ function logoNotSquareWithText(imagePath: string, title: string, height: number,
 
 const Skills = () => {
   return (
-    <div className='mt-10'>
+    <div className='mt-10' id="skills">
         <h2 className='text-h2-fluid text-center text-paragraph poppins-semibold'>Skills</h2>
 
         <div className='flex flex-col justify-center items-center md:items-start md:flex-row gap-5 md:justify-between md:mx-[10%] sm:mx-auto my-[5%]'>

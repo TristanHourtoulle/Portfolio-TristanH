@@ -32,3 +32,23 @@ export const ButtonLogoText = ({ imagePath, title, redirect }: { imagePath: stri
         </Link>
     )
 }
+
+export const LinkText = ({ title, redirect }: { title: string, redirect: string }) => {
+
+    const [isHovered, setIsHovered] = useState(false)
+
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+    };
+
+
+    return (
+        <Link href={redirect} className="flex items-center gap-3">
+            <p className="text-paragraph">{title}</p>
+        </Link>
+    )
+}

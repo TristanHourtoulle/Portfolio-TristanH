@@ -6,7 +6,7 @@ const Contact = () => {
   const sendMail = `mailto:tristan.hourtoulle@epitech.eu`
 
   return (
-    <div className='mt-10'>
+    <div className='mt-10' id="contact">
         <h2 className='text-h2-fluid text-center text-paragraph poppins-semibold'>Contact</h2>
 
         <p className='mx-auto w-[60%] text-paragraph text-p-fluid poppins-regular text-center mt-[3%]'>Be free to contact me directly by email or by any other platform you wish.</p>
