@@ -3,6 +3,9 @@ import "./styles/globals.css";
 import { Header } from "@components/Header";
 import Skills from "@components/Skills";
 import AboutMe from "@components/AboutMe";
+import Contact from "@components/Contact";
+import Footer from "@components/Footer";
+import Projects from "@components/Projects";
 
 export const metadata: Metadata = {
   title: "Tristan Hourtoulle - Web Developer",
@@ -29,6 +32,9 @@ export default function RootLayout({
         </div>
         <Skills />
         <AboutMe />
+        <Projects />
+        <Contact />
+        <Footer />
       </body>
     </html>
   );
