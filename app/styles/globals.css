@@ -9,6 +9,13 @@
   box-sizing: border-box;
 }
 
+link {
+  /* Vos styles ici */
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
 @media screen and (min-width: 600px) {
   .all-content {
     padding: 0 6rem;
