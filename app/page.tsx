@@ -21,7 +21,7 @@ export default function Home() {
             </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center md:flex-row md:justify-center md:items-center md:w-full">
+        <div className="flex flex-col items-center justify-center md:flex-row md:justify-center md:items-center md:w-full md:my-[5%]">
           <div className="order-2 md:order-1 md:mr-auto flex flex-col items-center md:items-start z-10">
             <p className="text-primary font-medium text-xl">Hi! I'm -</p>
             <h1 className="text-h1-fluid poppins-bold text-primary text-center md:text-left">Tristan Hourtoulle</h1>
@@ -32,7 +32,7 @@ export default function Home() {
               <ButtonLogoText imagePath="/images/email.svg" title="tristan.hourtoulle@epitech.eu" redirect={sendMail} />
             </div>
           </div>
-          <div className="order-1 md:order-2 flex justify-center md:justify-end mb-[10%] md:mb-[5%]">
+          <div className="order-1 md:order-2 flex flex-col items-center justify-center mb-[10%] md:mb-[0%]">
             <Image
               src="/images/profil.svg"
               alt="Tristan Hourtoulle"
