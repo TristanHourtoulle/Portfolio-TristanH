@@ -25,7 +25,7 @@ export default function Home() {
               alt="Tristan Hourtoulle"
               width={500}
               height={500}
-              className="responsive-image profil"
+              className="responsive-image profil flex-grow"
             />
           </div>
         </div>

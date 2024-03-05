@@ -35,7 +35,6 @@ link {
 .main-content {
   flex: 1;
   overflow-x: hidden;
-  margin-top: 5%;
 }
 
 .poppins-thin {
@@ -171,10 +170,7 @@ link {
   line-height: 1.5;
 }
 
-.responsive-image {
-  max-width: 75%;
-  height: auto;
-}
+.responsive-image {}
 
 .profil {
   border-radius: 10px 10px 10px 100px;

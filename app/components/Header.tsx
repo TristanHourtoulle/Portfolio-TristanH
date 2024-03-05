@@ -14,7 +14,7 @@ export const Header = () => {
 
   return (
     <>
-      <nav className='flex items-center flex-wrap my-10'>
+      <nav className='flex items-center flex-wrap my-[5%] md:mt-[2%]'>
         <Link href='/' className='inline-flex items-center '>
               <Image
                 src="/images/profil.svg"
