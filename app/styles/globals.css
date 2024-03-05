@@ -157,12 +157,12 @@ link {
 }
 
 .text-h3-fluid {
-  font-size: clamp(1.15rem, 1.25vw + 1rem, 3rem);
+  font-size: clamp(1.10rem, 1.10vw + 1rem, 3rem);
   line-height: 1.2;
 }
 
 .text-p-fluid {
-  font-size: clamp(1rem, 1.05vw + 1rem, 1.25em);
+  font-size: clamp(0.9rem, 1vw + 1rem, 1.15em);
   line-height: 1.5;
 }
 
