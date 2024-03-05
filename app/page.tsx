@@ -2,12 +2,25 @@
 
 import Image from "next/image";
 import { ButtonLogoText } from "@components/ButtonLogoText";
+import Link from "next/link";
+import { LinkText } from '@components/ButtonLogoText';
 
 export default function Home() {
   const sendMail = `mailto:tristan.hourtoulle@epitech.eu`
 
   return (
       <div className="main-content sm:mx-auto relative overflow-hidden sm:mx-auto">
+
+        <div className="flex justify-between mt-[10%] md:mt-[3%] mb-[10%] md:mb-[3%]">
+            <p className="poppins-bold text-paragraph">TristanH.</p>
+            <div className="hidden md:flex items-center gap-10">
+              <LinkText title="Skills" redirect="#skills" />
+              <LinkText title="About Me" redirect="#about" />
+              <LinkText title="Projects" redirect="#projects" />
+              <LinkText title="Contact" redirect="#contact" />
+            </div>
+        </div>
+
         <div className="flex flex-col items-center justify-center md:flex-row md:justify-center md:items-center md:w-full">
           <div className="order-2 md:order-1 md:mr-auto flex flex-col items-center md:items-start z-10">
             <p className="text-primary font-medium text-xl">Hi! I'm -</p>
@@ -19,7 +32,7 @@ export default function Home() {
               <ButtonLogoText imagePath="/images/email.svg" title="tristan.hourtoulle@epitech.eu" redirect={sendMail} />
             </div>
           </div>
-          <div className="order-1 md:order-2 flex justify-center md:justify-end mb-[20%] md:mb-[5%]">
+          <div className="order-1 md:order-2 flex justify-center md:justify-end mb-[10%] md:mb-[5%]">
             <Image
               src="/images/profil.svg"
               alt="Tristan Hourtoulle"
