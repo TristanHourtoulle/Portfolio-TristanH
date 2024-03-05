@@ -36,9 +36,9 @@ const Skills = () => {
     <div className='mt-10'>
         <h2 className='text-h2-fluid text-center text-paragraph poppins-semibold'>Skills</h2>
 
-        <div className='flex gap-5 justify-between mx-[10%] my-[5%]'>
+        <div className='flex flex-col justify-center items-center md:items-start md:flex-row gap-5 md:justify-between md:mx-[10%] sm:mx-auto my-[5%]'>
             <div>
-                <h3 className='text-h3-fluid text-paragraph poppins-regular'>Design</h3>
+                <h3 className='text-h3-fluid text-paragraph poppins-regular text-center md:text-left'>Design</h3>
                 <ul className='mt-5'>
                     <li>{logoNotSquareWithText("/images/figma.svg", "Figma", 25, 20)}</li>
                     <li>{logoWithText("/images/photoshop.svg", "Photoshop")}</li>
@@ -46,7 +46,7 @@ const Skills = () => {
             </div>
 
             <div>
-                <h3 className='text-h3-fluid text-paragraph poppins-regular'>Front-end</h3>
+                <h3 className='text-h3-fluid text-paragraph poppins-regular text-center md:text-left'>Front-end</h3>
                 <ul className='mt-5'>
                     <li>{logoWithText("/images/nextjs.svg", "Next.js")}</li>
                     <li>{logoWithText("/images/reactjs.svg", "React.js")}</li>
@@ -55,7 +55,7 @@ const Skills = () => {
             </div>
 
             <div>
-                <h3 className='text-h3-fluid text-paragraph poppins-regular'>Back-end</h3>
+                <h3 className='text-h3-fluid text-paragraph poppins-regular text-center md:text-left'>Back-end</h3>
                 <ul className='mt-5'>
                     <li>{logoWithText("/images/nodejs.svg", "Node.js")}</li>
                     <li>{logoWithText("/images/postgresql.svg", "Postgresql")}</li>
@@ -63,7 +63,7 @@ const Skills = () => {
             </div>
 
             <div>
-                <h3 className='text-h3-fluid text-paragraph poppins-regular'>Other</h3>
+                <h3 className='text-h3-fluid text-paragraph poppins-regular text-center md:text-left'>Other</h3>
                 <ul className='mt-5'>
                     <li>{logoWithText("/images/github.svg", "Git & Github")}</li>
                 </ul>
