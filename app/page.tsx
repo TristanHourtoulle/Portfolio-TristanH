@@ -8,10 +8,6 @@ export default function Home() {
   const sendMail = `mailto:tristan.hourtoulle@epitech.eu`
 
   return (
-    <div>
-      <div className="absolute inset-0 flex items-center z-0 ml-20">
-        <div className={`rounded-full bg-blue-600 mix-blend-multiply filter blur-2xl opacity-10 w-[50%] h-[75%] zoom-in-out`}></div>
-      </div>
       <div className="main-content sm:mx-auto relative overflow-hidden">
         <div className="flex flex-col items-center justify-center md:flex-row md:justify-center md:items-center md:w-full">
           <div className="order-2 md:order-1 md:mr-auto flex flex-col items-start relative z-10">
@@ -35,6 +31,5 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
   );
 }

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./styles/globals.css";
 import { Header } from "@components/Header";
+import Skills from "@components/Skills";
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,11 +16,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-background">
+      <body className="bg-background overflow-x-hidden">
         <div className="all-content">
           <Header />
+          <div className="absolute inset-0 flex items-center z-0 ml-20">
+            <div className={`rounded-full bg-blue-600 mix-blend-multiply filter blur-2xl opacity-10 w-[50%] h-[75%] zoom-in-out`}></div>
+          </div>
           {children}
         </div>
+          <Skills />
       </body>
     </html>
   );

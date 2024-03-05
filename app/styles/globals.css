@@ -149,6 +149,16 @@
   line-height: 1.1;
 }
 
+.text-h3-fluid {
+  font-size: clamp(1.15rem, 1.25vw + 1rem, 3rem);
+  line-height: 1.2;
+}
+
+.text-p-fluid {
+  font-size: clamp(1rem, 1.05vw + 1rem, 1.25em);
+  line-height: 1.5;
+}
+
 .responsive-image {
   max-width: 75%;
   height: auto;
@@ -188,17 +198,17 @@
 }
 
 .zoom-in-out {
-  animation: zoom-in-zoom-out 15s ease-in-out infinite;
+  animation: zoom-in-zoom-out 7s ease-in-out infinite;
 }
 
 @keyframes zoom-in-zoom-out {
   0% {
-    transform: scale(0.75, 0.75);
+    transform: scale(1, 1);
   }
   50% {
-    transform: scale(1.5, 1.25);
+    transform: scale(1.25, 1.25);
   }
   100% {
-    transform: scale(0.75, 0.75);
+    transform: scale(1, 1);
   }
 }
