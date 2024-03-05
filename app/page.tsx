@@ -14,8 +14,8 @@ export default function Home() {
             <h1 className="text-h1-fluid poppins-bold text-primary text-center md:text-left">Tristan Hourtoulle</h1>
             <h2 className="text-paragraph text-h2-fluid poppins-bold">Web developer.</h2>
             <div className="flex flex-wrap w-fit gap-5 md:flex-nowrap md:items-start md:gap-7 sm:items-center sm:justify-center mt-5">
-              <ButtonLogoText imagePath="/images/github.svg" title="GitHub" redirect="" />
-              <ButtonLogoText imagePath="/images/linkedin.svg" title="LinkedIn" redirect="" />
+              <ButtonLogoText imagePath="/images/github.svg" title="GitHub" redirect="https://github.com/TristanHourtoulle" />
+              <ButtonLogoText imagePath="/images/linkedin.svg" title="LinkedIn" redirect="https://www.linkedin.com/in/tristan-hourtoulle/" />
               <ButtonLogoText imagePath="/images/email.svg" title="tristan.hourtoulle@epitech.eu" redirect={sendMail} />
             </div>
           </div>
