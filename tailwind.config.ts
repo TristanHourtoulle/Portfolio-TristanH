@@ -8,12 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      gradientColorStops: theme => ({
-        'blue-gradient': '#0081FF',
-      }),
-      linearGradientColors: theme => ({
-        'blue-gradient': ['to top', '#0081FF', '#FFFFFF'],
-      }),
       colors: {
         background: "#0D1520",
         backgroundPrimary: "#3B9EFF",
