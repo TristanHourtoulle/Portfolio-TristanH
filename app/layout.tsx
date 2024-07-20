@@ -1,3 +1,4 @@
+import SuspenseWrapper from "@/components/SuspenseWrapper";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
@@ -28,8 +29,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LargeHeader />
-          {children}
+          <SuspenseWrapper>
+            <LargeHeader />
+            {children}
+          </SuspenseWrapper>
         </ThemeProvider>
       </body>
     </html>
