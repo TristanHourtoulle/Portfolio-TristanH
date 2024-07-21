@@ -66,16 +66,15 @@ const page = (props: pageProps) => {
         {/* Description */}
         <div className="poppins-medium text-black text-2xl w-full">
           <p>
-            <span className="poppins-bold">Edukai</span> est une application
-            innovante qui utilise l&apos;IA pour{" "}
+            <span className="poppins-bold">Edukai</span> is an innovative app
+            that uses AI to{" "}
             <span className="text-primary poppins-semibold">
-              transformer des notes manuscrites ou numériques en fiches de
-              révision et quizz interactis
+              transform handwritten or digital notes into interactive review
+              sheets and quizzes
             </span>
-            , adaptés au niveau scolaire de l&apos;utilisateur.
-            L&apos;application permet d&apos;exporter facilement les supports
-            générés aux formats PDF et DOCX pour une édition et un partage
-            simplifiés.
+            , tailored to the user&apos;s grade level. The application makes it
+            easy to export generated media to PDF and DOCX formats for easy
+            editing and sharing.
           </p>
         </div>
 
