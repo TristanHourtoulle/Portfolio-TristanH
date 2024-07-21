@@ -1,3 +1,4 @@
+import { Footer } from "@/components/Footer/Footer";
 import SuspenseWrapper from "@/components/SuspenseWrapper";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -32,6 +33,7 @@ export default function RootLayout({
           <SuspenseWrapper>
             <LargeHeader />
             {children}
+            <Footer />
           </SuspenseWrapper>
         </ThemeProvider>
       </body>
