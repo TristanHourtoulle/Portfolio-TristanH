@@ -11,8 +11,8 @@ export type pageProps = {};
 
 const page = (props: pageProps) => {
   return (
-    <div className="w-full h-[80vh] flex items-center justify-center">
-      <div className="flex flex-col items-start gap-10 mr-auto">
+    <div className="w-full min-h-screen flex items-center justify-center">
+      <div className="flex flex-col items-start gap-10 mr-auto mb-[10%]">
         <SectionTitle text="About Me" />
         <div className="w-full flex items-start justify-start gap-4 pr-[25%]">
           <Image
@@ -156,7 +156,7 @@ const page = (props: pageProps) => {
         alt="Tristan's profile picture"
         width={500}
         height={500}
-        className="rounded-full animate-light-bounce"
+        className="rounded-full animate-light-bounce mb-[10%]"
       />
     </div>
   );
