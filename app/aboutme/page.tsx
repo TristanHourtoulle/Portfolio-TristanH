@@ -5,7 +5,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "About Tristan Hourtoulle",
+  description: "Informations about Tristan Hourtoulle",
+};
 
 export type pageProps = {};
 

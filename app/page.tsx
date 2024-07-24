@@ -11,7 +11,9 @@ export default function Home() {
         <div className="w-1/2 text-start text-primary flex flex-col items-start gap-4">
           <p className="poppins-regular text-lg">Welcome to my site!</p>
           <div className="flex flex-col items-start">
-            <h1 className="poppins-bold text-6xl">Hi! I&apos;m Tristan</h1>
+            <h1 className="poppins-bold text-6xl">
+              Hi! I&apos;m Tristan <span className="hidden">Hourtoulle</span>
+            </h1>
             <h2 className="poppins-bold text-6xl">
               <span className="text-secondary">Full Stack</span> Developer
             </h2>

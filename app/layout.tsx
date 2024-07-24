@@ -7,8 +7,8 @@ import { LargeHeader } from "../components/Header/LargeHeader";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "TristanH.",
-  description: "TristanH. - Personal Website",
+  title: "Tristan Hourtoulle",
+  description: "Tristan Hourtoulle's portfolio",
 };
 
 export default function RootLayout({
@@ -18,9 +18,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/Photo de profil - TH.png" />
-      </head>
       <body
         className={cn("w-full min-h-screen bg-background px-[10%] py-[1.5%]")}
       >
