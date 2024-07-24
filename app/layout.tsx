@@ -7,8 +7,27 @@ import { LargeHeader } from "../components/Header/LargeHeader";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Tristan Hourtoulle",
-  description: "Tristan Hourtoulle's portfolio",
+  title: {
+    template: "%s | Tristan Hourtoulle",
+    default: "Tristan Hourtoulle",
+  },
+  description: "Welcome to my personal website!",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://tristanhourtoulle.fr",
+    siteName: "Tristan Hourtoulle",
+    title: "Tristan Hourtoulle",
+    description: "Welcome to my personal website!",
+    images: [
+      {
+        url: "https://tristanhourtoulle.fr/pictures/Photo de profil - TH.jpg",
+        width: 1260,
+        height: 800,
+        alt: "Tristan Hourtoulle profile picture",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
