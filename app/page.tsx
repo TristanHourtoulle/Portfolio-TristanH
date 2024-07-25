@@ -44,6 +44,7 @@ export default function Home() {
               size="lg"
               variant="outline"
               className="text-xl  border-[#2a17ff] hover:bg-[#2a17ff]/10 hover:text-[#2a17ff] w-full selected:none"
+              onClick={() => (window.location.href = "/projects")}
             >
               See my projects
             </Button>
@@ -61,7 +62,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-auto flex flex-col gap-2 mb-[10%] w-full">
+      <div
+        className="mt-auto flex flex-col gap-2 mb-[10%] w-full"
+        id="contactSection"
+      >
         <SectionTitle text="Contact me" />
         <h3 className="text-primary text-lg md:text-2xl poppins-medium">
           Feel free to contact me!

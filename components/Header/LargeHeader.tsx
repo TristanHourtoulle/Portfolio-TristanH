@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export interface NavBarLink {
@@ -34,7 +34,7 @@ function setNavBarLinks(title: string) {
     },
     "/contact": {
       title: "Contact",
-      href: "/contact",
+      href: "#contactSection",
       selected: title === "Contact",
     },
   };
@@ -45,6 +45,7 @@ function setNavBarLinks(title: string) {
 export const LargeHeader = (props: LargeHeaderProps) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [navBarLinks, setNavBarLinksState] = useState<NavBarLink>(
     setNavBarLinks("Home")
   );
@@ -74,6 +75,19 @@ export const LargeHeader = (props: LargeHeaderProps) => {
 
   const handleBurgerClick = () => {
     setOpened(!opened);
+  };
+
+  const handleContactClick = (e: any) => {
+    e.preventDefault();
+    if (pathname !== "/") {
+      router.push("/#contactSection");
+    } else {
+      const contactSection = document.getElementById("contactSection");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    setOpened(false);
   };
 
   return (
@@ -117,16 +131,17 @@ export const LargeHeader = (props: LargeHeaderProps) => {
             >
               About Me
             </Link>
-            <Link
+            <a
               className={
                 navBarLinks["/contact"].selected
                   ? "opacity-100 poppins-bold"
                   : "opacity-50 transition-all hover:opacity-80 poppins-medium"
               }
-              href="/contact"
+              href="#contactSection"
+              onClick={handleContactClick}
             >
               Contact
-            </Link>
+            </a>
           </div>
           <div
             className="md:hidden text-primary cursor-pointer flex items-center justify-center w-10 h-10 text-[#2a17ff] transition-all"
@@ -182,17 +197,17 @@ export const LargeHeader = (props: LargeHeaderProps) => {
               >
                 About Me
               </Link>
-              <Link
+              <a
                 className={
                   navBarLinks["/contact"].selected
                     ? "opacity-100 poppins-bold my-2"
                     : "opacity-50 transition-all hover:opacity-80 poppins-medium my-2"
                 }
-                href="/contact"
-                onClick={() => setOpened(false)}
+                href="#contactSection"
+                onClick={handleContactClick}
               >
                 Contact
-              </Link>
+              </a>
             </div>
           </div>
         )}
