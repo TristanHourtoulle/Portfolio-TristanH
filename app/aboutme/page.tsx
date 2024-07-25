@@ -17,17 +17,17 @@ export type pageProps = {};
 
 const page = (props: pageProps) => {
   return (
-    <div className="w-full min-h-screen flex items-center justify-center">
+    <div className="w-full min-h-screen flex flex-col lg:flex-row items-center justify-center mt-[30%] md:mt-[10%]">
       <div className="flex flex-col items-start gap-10 mr-auto mb-[10%]">
         <SectionTitle text="About Me" />
-        <div className="w-full flex items-start justify-start gap-4 pr-[25%]">
+        <div className="w-full flex flex-col lg:flex-row items-start justify-start gap-4 lg:pr-[25%]">
           <Image
             src="/Citation.svg"
             alt="About me citation"
             width={40}
             height={40}
           />
-          <p className="my-[5%] text-justify poppins-medium text-2xl text-primary opacity-75">
+          <p className="my-[5%] text-justify poppins-medium text-lg md:text-2xl text-primary opacity-75">
             I&apos;m Tristan and I am 22 years old. My goal is to bring your
             ideas to reality while using the latest technology so that your
             project is as modern as possible.
@@ -37,11 +37,11 @@ const page = (props: pageProps) => {
             alt="About me citation"
             width={40}
             height={40}
-            className="rotate-180 mt-auto"
+            className="rotate-180 mt-auto ml-auto lg:ml-0"
           />
         </div>
         <SectionTitle text="Skills" />
-        <div className="flex items-center justify-start gap-10">
+        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-10">
           {/* Figma */}
           <TooltipProvider>
             <Tooltip>
@@ -162,7 +162,7 @@ const page = (props: pageProps) => {
         alt="Tristan's profile picture"
         width={500}
         height={500}
-        className="rounded-full animate-light-bounce mb-[10%]"
+        className="rounded-full animate-light-bounce mb-[10%] order-first lg:order-last"
       />
     </div>
   );
