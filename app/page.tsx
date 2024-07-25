@@ -113,7 +113,7 @@ export default function Home() {
             variant={"outline"}
             size={"lg"}
             className="text-xl w-full md:w-auto border-[#2a17ff] hover:bg-[#2a17ff]/10 hover:text-[#2a17ff] selected:none poppins-medium text-lg text-primary"
-            onClick={() => window.open("mailto:tristan.hourtoulle@epitech.eu")}
+            onClick={() => window.open("mailto:contact@tristanhourtoulle.fr")}
           >
             <Image
               src="/gmail 1.svg"
