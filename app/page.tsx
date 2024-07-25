@@ -99,7 +99,7 @@ export default function Home() {
             }
           >
             <Image
-              src="/Linkedin 1.svg"
+              src="/linkedin 1.svg"
               alt="LinkedIn logo"
               width={25}
               height={25}
