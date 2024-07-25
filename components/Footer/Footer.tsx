@@ -4,11 +4,11 @@ export const Footer = (props: FooterProps) => {
   return (
     <div className="w-full">
       <div className="w-full flex items-center justify-center mt-[5%]">
-        <div className="flex items-center justify-center gap-10">
-          <p className="poppins-medium text-lg text-primary">
-            © 2024 Tristan Hourtoulle
+        <div className="flex flex-col items-center justify-center">
+          <p className="poppins-medium text-sm md:text-lg text-primary text-center md:text-start">
+            © 2024 <span className="poppins-bold">Tristan Hourtoulle</span>
           </p>
-          <p className="poppins-medium text-lg text-primary">
+          <p className="poppins-medium text-sm md:text-lg text-primary text-center md:text-start order-first">
             Designed and built with ❤️ by Tristan Hourtoulle
           </p>
         </div>
