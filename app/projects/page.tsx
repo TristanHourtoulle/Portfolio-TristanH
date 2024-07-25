@@ -1,3 +1,15 @@
+// Section import Pictures
+import Edukai_iMockup1 from "@/public/Edukai/iMockup - iPhone 15 Pro Max-1.png";
+import Edukai_iMockup2 from "@/public/Edukai/iMockup - iPhone 15 Pro Max-2.png";
+import Edukai_iMockup3 from "@/public/Edukai/iMockup - iPhone 15 Pro Max.png";
+import Edukai_LandingPage from "@/public/Edukai/Landing Page 1.png";
+import FigmaLogo from "@/public/Figma.png";
+import FlutterLogo from "@/public/Flutter.png";
+import NextJSLogo from "@/public/NextJS.png";
+import NodeJSLogo from "@/public/NodeJS.png";
+import PostgreSQLLogo from "@/public/PostgreSQL.png";
+import TailwindLogo from "@/public/Tailwind.png";
+
 import { SectionTitle } from "@/components/SectionTitle";
 import {
   Tooltip,
@@ -29,12 +41,13 @@ const page = (props: pageProps) => {
         <div className="flex flex-col items-center justify-center w-full gap-3">
           {/* Dekstop View */}
           <Image
-            src="/Edukai/Landing Page 1.svg"
+            src={Edukai_LandingPage}
             alt="Edukai"
             className="rounded-lg border-2 border-[#2a17ff]"
             width={1200}
             height={1200}
             objectFit="contain w-full"
+            placeholder="blur"
           />
           <Image
             src="/Edukai/Back Office - Home.svg"
@@ -47,30 +60,33 @@ const page = (props: pageProps) => {
 
           <div className="w-full flex flex-wrap items-center justify-center gap-3 lg:gap-10">
             <Image
-              src="/Edukai/iMockup - iPhone 15 Pro Max-1.svg"
+              src={Edukai_iMockup1}
               alt="Edukai"
               className=""
               width={220}
               height={220}
               objectFit="contain"
+              placeholder="blur"
             />
 
             <Image
-              src="/Edukai/iMockup - iPhone 15 Pro Max-2.svg"
+              src={Edukai_iMockup2}
               alt="Edukai"
               className=""
               width={220}
               height={220}
               objectFit="contain"
+              placeholder="blur"
             />
 
             <Image
-              src="/Edukai/iMockup - iPhone 15 Pro Max.svg"
+              src={Edukai_iMockup3}
               alt="Edukai"
               className=""
               width={220}
               height={220}
               objectFit="contain"
+              placeholder="blur"
             />
           </div>
         </div>
@@ -98,10 +114,11 @@ const page = (props: pageProps) => {
             <Tooltip>
               <TooltipTrigger>
                 <Image
-                  src="/Figma.svg"
+                  src={FigmaLogo}
                   alt="Figma logo"
                   width={40}
                   height={40}
+                  placeholder="blur"
                 />
               </TooltipTrigger>
               <TooltipContent>
@@ -115,10 +132,11 @@ const page = (props: pageProps) => {
             <Tooltip>
               <TooltipTrigger>
                 <Image
-                  src="/NextJS.svg"
+                  src={NextJSLogo}
                   alt="Next.js logo"
                   width={60}
                   height={60}
+                  placeholder="blur"
                 />
               </TooltipTrigger>
               <TooltipContent>
@@ -132,10 +150,11 @@ const page = (props: pageProps) => {
             <Tooltip>
               <TooltipTrigger>
                 <Image
-                  src="/Tailwind.svg"
+                  src={TailwindLogo}
                   alt="Tailwind CSS logo"
                   width={60}
                   height={60}
+                  placeholder="blur"
                 />
               </TooltipTrigger>
               <TooltipContent>
@@ -151,10 +170,11 @@ const page = (props: pageProps) => {
             <Tooltip>
               <TooltipTrigger>
                 <Image
-                  src="/Flutter.svg"
+                  src={FlutterLogo}
                   alt="Flutter logo"
                   width={60}
                   height={60}
+                  placeholder="blur"
                 />
               </TooltipTrigger>
               <TooltipContent>
@@ -168,10 +188,11 @@ const page = (props: pageProps) => {
             <Tooltip>
               <TooltipTrigger>
                 <Image
-                  src="/NodeJS.svg"
+                  src={NodeJSLogo}
                   alt="Node.js logo"
                   width={90}
                   height={90}
+                  placeholder="blur"
                 />
               </TooltipTrigger>
               <TooltipContent>
@@ -185,10 +206,11 @@ const page = (props: pageProps) => {
             <Tooltip>
               <TooltipTrigger>
                 <Image
-                  src="/PostgreSQL.svg"
+                  src={PostgreSQLLogo}
                   alt="PostgreSQL logo"
                   width={60}
                   height={60}
+                  placeholder="blur"
                 />
               </TooltipTrigger>
               <TooltipContent>
