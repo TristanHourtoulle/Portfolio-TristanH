@@ -11,7 +11,7 @@ export type pageProps = {};
 
 const page = (props: pageProps) => {
   return (
-    <div className="w-full h-full flex items-center justify-center mt-[30%] md:mt-[10%]">
+    <div className="w-full h-full flex items-center justify-center mt-[30%] md:mt-[10%] lg:mt-[5%]">
       <div className="flex flex-col items-start gap-10 mr-auto w-full">
         {/* Header */}
         <div className="flex items-center justify-start w-full">
@@ -26,18 +26,26 @@ const page = (props: pageProps) => {
         </div>
 
         {/* Photos */}
-        <div className="flex flex-wrap items-center justify-between w-full gap-3">
+        <div className="flex flex-col items-center justify-center w-full gap-3">
           {/* Dekstop View */}
           <Image
             src="/Edukai/Landing Page 1.svg"
             alt="Edukai"
-            className="rounded-lg border-4 border-[#2a17ff]"
+            className="rounded-lg border-2 border-[#2a17ff]"
             width={1200}
             height={1200}
             objectFit="contain w-full"
           />
+          <Image
+            src="/Edukai/Back Office - Home.svg"
+            alt="Edukai"
+            className="rounded-lg border-2 border-[#2a17ff]"
+            width={1440}
+            height={1162}
+            objectFit="contain w-full"
+          />
 
-          <div className="w-full flex flex-wrap items-center justify-center lg:justify-between gap-3">
+          <div className="w-full flex flex-wrap items-center justify-center gap-3 lg:gap-10">
             <Image
               src="/Edukai/iMockup - iPhone 15 Pro Max-1.svg"
               alt="Edukai"

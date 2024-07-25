@@ -17,7 +17,7 @@ export type pageProps = {};
 
 const page = (props: pageProps) => {
   return (
-    <div className="w-full min-h-screen flex flex-col lg:flex-row items-center justify-center mt-[30%] md:mt-[10%]">
+    <div className="w-full min-h-screen flex flex-col lg:flex-row items-center justify-center mt-[30%] md:mt-[10%] lg:mt-[5%]">
       <div className="flex flex-col items-start gap-10 mr-auto mb-[10%]">
         <SectionTitle text="About Me" />
         <div className="w-full flex flex-col lg:flex-row items-start justify-start gap-4 lg:pr-[25%]">
