@@ -1,11 +1,12 @@
 import { Footer } from "@/components/Footer/Footer";
 import SuspenseWrapper from "@/components/SuspenseWrapper";
 import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { LargeHeader } from "../components/Header/LargeHeader";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: {
@@ -51,6 +52,7 @@ export default function RootLayout({
             <LargeHeader />
             {children}
             <Analytics />
+            <SpeedInsights />
             <Footer />
           </SuspenseWrapper>
         </ThemeProvider>
