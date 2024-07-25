@@ -1,3 +1,13 @@
+// Picture Section Import
+import Citation from "@/public/Citation.png";
+import FigmaLogo from "@/public/Figma.png";
+import GithubLogo from "@/public/Github.png";
+import NextJSLogo from "@/public/NextJS.png";
+import NodeJSLogo from "@/public/NodeJS.png";
+import ProfilPicture from "@/public/pictures/Photo de profil - TH.jpg";
+import ReactLogo from "@/public/ReactJS.png";
+import TailwindLogo from "@/public/Tailwind.png";
+
 import { SectionTitle } from "@/components/SectionTitle";
 import {
   Tooltip,
@@ -22,10 +32,11 @@ const page = (props: pageProps) => {
         <SectionTitle text="About Me" />
         <div className="w-full flex flex-col lg:flex-row items-start justify-start gap-4 lg:pr-[25%]">
           <Image
-            src="/Citation.svg"
+            src={Citation}
             alt="About me citation"
             width={40}
             height={40}
+            placeholder="blur"
           />
           <p className="my-[5%] text-justify poppins-medium text-lg md:text-2xl text-primary opacity-75">
             I&apos;m Tristan and I am 22 years old. My goal is to bring your
@@ -33,11 +44,12 @@ const page = (props: pageProps) => {
             project is as modern as possible.
           </p>
           <Image
-            src="/Citation.svg"
+            src={Citation}
             alt="About me citation"
             width={40}
             height={40}
             className="rotate-180 mt-auto ml-auto lg:ml-0"
+            placeholder="blur"
           />
         </div>
         <SectionTitle text="Skills" />
@@ -47,10 +59,11 @@ const page = (props: pageProps) => {
             <Tooltip>
               <TooltipTrigger>
                 <Image
-                  src="/Figma.svg"
+                  src={FigmaLogo}
                   alt="Figma logo"
                   width={40}
                   height={40}
+                  placeholder="blur"
                 />
               </TooltipTrigger>
               <TooltipContent>
@@ -66,10 +79,11 @@ const page = (props: pageProps) => {
             <Tooltip>
               <TooltipTrigger>
                 <Image
-                  src="/Github.svg"
+                  src={GithubLogo}
                   alt="Github logo"
                   width={60}
                   height={60}
+                  placeholder="blur"
                 />
               </TooltipTrigger>
               <TooltipContent>
@@ -85,10 +99,11 @@ const page = (props: pageProps) => {
             <Tooltip>
               <TooltipTrigger>
                 <Image
-                  src="/NextJS.svg"
+                  src={NextJSLogo}
                   alt="Next.js logo"
                   width={60}
                   height={60}
+                  placeholder="blur"
                 />
               </TooltipTrigger>
               <TooltipContent>
@@ -104,10 +119,11 @@ const page = (props: pageProps) => {
             <Tooltip>
               <TooltipTrigger>
                 <Image
-                  src="/Tailwind.svg"
+                  src={TailwindLogo}
                   alt="Tailwind CSS logo"
                   width={60}
                   height={60}
+                  placeholder="blur"
                 />
               </TooltipTrigger>
               <TooltipContent>
@@ -123,10 +139,11 @@ const page = (props: pageProps) => {
             <Tooltip>
               <TooltipTrigger>
                 <Image
-                  src="/ReactJS.svg"
+                  src={ReactLogo}
                   alt="React logo"
                   width={60}
                   height={60}
+                  placeholder="blur"
                 />
               </TooltipTrigger>
               <TooltipContent>
@@ -142,10 +159,11 @@ const page = (props: pageProps) => {
             <Tooltip>
               <TooltipTrigger>
                 <Image
-                  src="/NodeJS.svg"
+                  src={NodeJSLogo}
                   alt="Node.js logo"
                   width={90}
                   height={90}
+                  placeholder="blur"
                 />
               </TooltipTrigger>
               <TooltipContent>
@@ -158,11 +176,12 @@ const page = (props: pageProps) => {
         </div>
       </div>
       <Image
-        src="/Photo de profil - TH.png"
+        src={ProfilPicture}
         alt="Tristan's profile picture"
         width={500}
         height={500}
         className="rounded-full animate-light-bounce mb-[10%] order-first lg:order-last"
+        placeholder="blur"
       />
     </div>
   );
