@@ -1,5 +1,12 @@
 "use client";
 
+// Picture Import Section
+import GmailLogo from "@/public/gmail 1.png";
+import LinkedInLogo from "@/public/linkedin 1.png";
+import MaltLogoWhite from "@/public/Malt_logo_white 1.png";
+import MaltLogo from "@/public/Malt_logo_white.png";
+import ProfilPicture from "@/public/pictures/Photo de profil - TH.jpg";
+
 import { SectionTitle } from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -32,11 +39,12 @@ export default function Home() {
               }}
             >
               <Image
-                src="/Malt_logo_white.svg"
-                alt="Malt logo"
+                src={MaltLogo}
                 width={25}
                 height={25}
-                className="mr-4"
+                alt={"Malt logo"}
+                className={"mr-4"}
+                placeholder="blur"
               />
               Hire me!
             </Button>
@@ -53,10 +61,11 @@ export default function Home() {
 
         <div className="order-first lg:order-last">
           <Image
-            src={"/pictures/Photo de profil - TH.jpg"}
+            src={ProfilPicture}
             alt="Tristan Hourtoulle profile picture"
             width={500}
             height={500}
+            placeholder="blur"
             className="rounded-bl-[15%] rounded-[2.5%] hover:rounded-bl-[2.5%] hover:rounded-[15%] transition-all mt-[15%] md:mt-[15%] lg:mt-0"
           />
         </div>
@@ -84,11 +93,12 @@ export default function Home() {
             }}
           >
             <Image
-              src="/Malt_logo_white 1.svg"
+              src={MaltLogoWhite}
               alt="Malt logo"
               width={25}
               height={25}
               className="mr-4"
+              placeholder="blur"
             />
             Malt.
           </Button>
@@ -103,11 +113,12 @@ export default function Home() {
             }
           >
             <Image
-              src="/linkedin 1.svg"
+              src={LinkedInLogo}
               alt="LinkedIn logo"
               width={25}
               height={25}
               className="mr-4"
+              placeholder="blur"
             />
             Linkedin
           </Button>
@@ -120,11 +131,12 @@ export default function Home() {
             onClick={() => window.open("mailto:contact@tristanhourtoulle.fr")}
           >
             <Image
-              src="/gmail 1.svg"
+              src={GmailLogo}
               alt="Gmail logo"
               width={25}
               height={25}
               className="mr-4"
+              placeholder="blur"
             />
             Mail
           </Button>
