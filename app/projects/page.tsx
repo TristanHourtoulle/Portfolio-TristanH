@@ -11,29 +11,33 @@ export type pageProps = {};
 
 const page = (props: pageProps) => {
   return (
-    <div className="w-full h-[80vh] flex items-center justify-center mt-[5%]">
+    <div className="w-full h-full flex items-center justify-center mt-[30%] md:mt-[10%]">
       <div className="flex flex-col items-start gap-10 mr-auto w-full">
         {/* Header */}
         <div className="flex items-center justify-start w-full">
-          <h1 className={"text-5xl poppins-bold text-primary"}>
+          <h1
+            className={
+              "text-3xl md:text-4xl lg:text-5xl poppins-bold text-primary"
+            }
+          >
             Projects -{" "}
             <span className="text-secondary righteous-regular">Edukai</span>
           </h1>
         </div>
 
         {/* Photos */}
-        <div className="flex items-center justify-between w-full">
+        <div className="flex flex-wrap items-center justify-between w-full gap-3">
           {/* Dekstop View */}
           <Image
             src="/Edukai/Landing Page 1.svg"
             alt="Edukai"
             className="rounded-lg border-4 border-[#2a17ff]"
-            width={800}
-            height={800}
-            objectFit="contain"
+            width={1200}
+            height={1200}
+            objectFit="contain w-full"
           />
 
-          <div className="flex items-center justify-end gap-3">
+          <div className="w-full flex flex-wrap items-center justify-center lg:justify-between gap-3">
             <Image
               src="/Edukai/iMockup - iPhone 15 Pro Max-1.svg"
               alt="Edukai"
@@ -64,7 +68,7 @@ const page = (props: pageProps) => {
         </div>
 
         {/* Description */}
-        <div className="poppins-medium text-black text-2xl w-full">
+        <div className="poppins-medium text-black text-lg md:text-2xl w-full text-justify lg:text-left">
           <p>
             <span className="poppins-bold">Edukai</span> is an innovative app
             that uses AI to{" "}
@@ -79,8 +83,8 @@ const page = (props: pageProps) => {
         </div>
 
         {/* Technologies */}
-        <SectionTitle text="With Technologies" />
-        <div className="flex items-center justify-start gap-10">
+        <SectionTitle text="Technologies" />
+        <div className="flex flex-wrap items-center justify-center gap-5 lg:gap-10">
           {/* Figma */}
           <TooltipProvider>
             <Tooltip>
