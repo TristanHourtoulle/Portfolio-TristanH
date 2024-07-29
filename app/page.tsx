@@ -39,9 +39,10 @@ export default function Home() {
               Welcome to my site!
             </p>
             <div className="flex flex-col items-center justify-center lg:items-start text-center lg:text-start w-full">
-              <h1 className="poppins-bold text-center lg:text-start text-4xl md:text-5xl lg:text-6xl">
-                Hi! I&apos;m Tristan <span className="hidden">Hourtoulle</span>
-              </h1>
+              <div className="poppins-bold text-center lg:text-start text-4xl md:text-5xl lg:text-6xl">
+                <p>Hi! I&apos;m Tristan </p>
+                <h1 className="hidden">Hourtoulle</h1>
+              </div>
               <h2 className="poppins-bold text-2xl md:text-5xl lg:text-6xl">
                 <span className="text-secondary">Full Stack</span> Developer
               </h2>
@@ -63,7 +64,6 @@ export default function Home() {
                   height={25}
                   alt={"Malt logo"}
                   className={"mr-4"}
-                  placeholder="blur"
                 />
                 Hire me!
               </Button>
@@ -117,7 +117,6 @@ export default function Home() {
                 width={25}
                 height={25}
                 className="mr-4"
-                placeholder="blur"
               />
               Malt.
             </Button>
@@ -137,7 +136,6 @@ export default function Home() {
                 width={25}
                 height={25}
                 className="mr-4"
-                placeholder="blur"
               />
               Linkedin
             </Button>
@@ -155,7 +153,6 @@ export default function Home() {
                 width={25}
                 height={25}
                 className="mr-4"
-                placeholder="blur"
               />
               Mail
             </Button>
