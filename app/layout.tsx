@@ -39,28 +39,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Google Tag Manager */}
-        <script>{`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T8SX5364');`}</script>
-        {/* End Google Tag Manager */}
-      </head>
+      <head></head>
       <body
-        className={cn("w-full min-h-screen bg-background px-[10%] py-[1.5%]")}
+        className={cn(
+          "w-full max-w-screen min-h-screen bg-background px-[10%] py-[1.5%]"
+        )}
       >
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-T8SX5364"
-            height="0"
-            width="0"
-            className="display:none;visibility:hidden"
-          ></iframe>
-        </noscript>
-        {/* End Google Tag Manager (noscript) */}
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
