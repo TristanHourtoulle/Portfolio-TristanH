@@ -91,7 +91,7 @@ export const LargeHeader = (props: LargeHeaderProps) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-white bg-opacity-75 backdrop-blur-md z-10">
+    <div className="fixed top-0 left-0 w-full background-color bg-opacity-75 backdrop-blur-md z-10">
       <div className="w-full flex flex-col h-full px-[10%] pt-[3%] md:pt-[1.5%]">
         <div className="flex items-center justify-between flex-grow w-full">
           <Link

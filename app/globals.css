@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: #ebe9e1;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -66,6 +66,10 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.background-color {
+  background-color: #ebe9e1;
 }
 
 .poppins-thin {
