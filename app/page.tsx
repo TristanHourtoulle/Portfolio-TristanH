@@ -6,7 +6,9 @@ import LinkedInLogo from "@/public/linkedin 1.png";
 import MaltLogoWhite from "@/public/Malt_logo_white 1.png";
 import MaltLogo from "@/public/Malt_logo_white.png";
 import ProfilPicture from "@/public/pictures/Photo de profil - TH.jpg";
+import WavingHand from "@/public/WavingHand.png";
 
+import { DownArrow } from "@/components/cta/Arrow";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
 import Head from "next/head";
@@ -32,30 +34,43 @@ export default function Home() {
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.tristanhourtoulle.fr" />
       </Head>
-      <div className="w-full h-full">
+      <div className="w-full h-full px-[15%] py-[1.5%]">
         <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between pb-[10%] w-full min-h-screen gap-1 md:gap-4 lg:gap-2">
           <div className="w-full lg:w-1/2 text-center lg:text-start text-primary flex flex-col items-center lg:items-start gap-1 lg:gap-4">
-            <p className="outfit-regular md:text-lg w-full mt-[5%] lg:mt-0">
-              Welcome to my site!
-            </p>
             <div className="flex flex-col items-center justify-center lg:items-start text-center lg:text-start w-full">
-              <div className="outfit-bold text-center lg:text-start text-4xl md:text-5xl lg:text-6xl">
-                <p>Hi! I&apos;m Tristan </p>
+              <div className="flex items-center gap-3">
+                <p className="outfit-medium md:text-2xl w-full mt-[5%] lg:mt-0">
+                  Welcome!
+                </p>
+                <Image
+                  src={WavingHand}
+                  alt="Welcome to Tristan Hourtoulle website"
+                  width={40}
+                  height={40}
+                  className="lg:pb-2 wave-hand"
+                />
+              </div>
+              <div className="outfit-bold text-center lg:text-start text-4xl md:text-6xl lg:text-9xl">
+                <h1>I&apos;m Tristan </h1>
                 <h1 className="hidden">Hourtoulle</h1>
               </div>
-              <h2 className="outfit-bold text-2xl md:text-5xl lg:text-6xl">
-                <span className="text-secondary">Full Stack</span> Developer
+              <h2 className="outfit-bold text-xl md:text-5xl lg:text-6xl text-secondary">
+                Full Stack Developer
               </h2>
+              <p className="text-lg text-justify md:text-2xl text-secondary outfit-medium">
+                I create modern and aesthetic websites with a focus on user
+                experience, as a Freelancer.
+              </p>
             </div>
             <div className="w-full flex flex-col md:flex-row items-center gap-2 md:gap-5 justify-start mt-[5%] outfit-medium text-xl selected:none">
               <Button
                 size={"lg"}
-                className="text-xl bg-[#2a17ff] hover:bg-[#2a17ff]/85 w-full"
+                className="text-xl bg-[#e43d12] hover:bg-[#e43d12]/75 w-full"
                 onClick={() =>
                   window.open("https://www.malt.fr/profile/tristanhourtoulle")
                 }
                 style={{
-                  filter: "drop-shadow(4px 4px 4px rgba(42, 23, 255, 0.5))",
+                  filter: "drop-shadow(4px 4px 4px rgba(228, 61, 18, 0.5))",
                 }}
               >
                 <Image
@@ -70,10 +85,10 @@ export default function Home() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-xl  border-[#2a17ff] hover:bg-[#2a17ff]/10 hover:text-[#2a17ff] w-full selected:none"
-                onClick={() => (window.location.href = "/projects")}
+                className="text-xl border-2 border-[#e43d12] hover:bg-[#e43d12]/10 hover:text-[#e43d12] w-full selected:none"
+                onClick={() => {}}
               >
-                See my projects
+                Contact
               </Button>
             </div>
           </div>
@@ -82,11 +97,14 @@ export default function Home() {
             <Image
               src={ProfilPicture}
               alt="Tristan Hourtoulle profile picture"
-              width={500}
-              height={500}
+              width={400}
+              height={400}
               placeholder="blur"
-              className="rounded-bl-[15%] rounded-[2.5%] hover:rounded-bl-[2.5%] hover:rounded-[15%] transition-all mt-[15%] md:mt-[15%] lg:mt-0"
+              className="rounded-[5%] transition-all mt-[15%] md:mt-[15%] lg:mt-0"
             />
+          </div>
+          <div className="bottom-5 absolute left-[40%] lg:left-[50%] animate-light-bounce-little w-10 h-10">
+            <DownArrow location="#projectsSection" />
           </div>
         </div>
 
