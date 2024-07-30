@@ -95,7 +95,7 @@ export const LargeHeader = (props: LargeHeaderProps) => {
       <div className="w-full flex flex-col h-full px-[10%] pt-[3%] md:pt-[1.5%]">
         <div className="flex items-center justify-between flex-grow w-full">
           <Link
-            className="poppins-bold text-lg text-primary transition-all"
+            className="outfit-bold text-lg text-primary transition-all"
             href="/"
           >
             TristanH.
@@ -103,19 +103,9 @@ export const LargeHeader = (props: LargeHeaderProps) => {
           <div className="hidden md:flex items-center justify-end gap-10 text-primary text-lg transition-all">
             <Link
               className={
-                navBarLinks["/"].selected
-                  ? "opacity-100 poppins-bold"
-                  : "opacity-50 transition-all hover:opacity-80 poppins-medium"
-              }
-              href="/"
-            >
-              Home
-            </Link>
-            <Link
-              className={
                 navBarLinks["/projects"].selected
-                  ? "opacity-100 poppins-bold"
-                  : "opacity-50 transition-all hover:opacity-80 poppins-medium"
+                  ? "opacity-100 outfit-bold"
+                  : "opacity-75 transition-all hover:opacity-80 outfit-medium"
               }
               href="/projects"
             >
@@ -124,8 +114,8 @@ export const LargeHeader = (props: LargeHeaderProps) => {
             <Link
               className={
                 navBarLinks["/aboutme"].selected
-                  ? "opacity-100 poppins-bold"
-                  : "opacity-50 transition-all hover:opacity-80 poppins-medium"
+                  ? "opacity-100 outfit-bold"
+                  : "opacity-75 transition-all hover:opacity-80 outfit-medium"
               }
               href="/aboutme"
             >
@@ -134,8 +124,8 @@ export const LargeHeader = (props: LargeHeaderProps) => {
             <a
               className={
                 navBarLinks["/contact"].selected
-                  ? "opacity-100 poppins-bold"
-                  : "opacity-50 transition-all hover:opacity-80 poppins-medium"
+                  ? "opacity-100 outfit-bold"
+                  : "opacity-75 transition-all hover:opacity-80 outfit-medium"
               }
               href="#contactSection"
               onClick={handleContactClick}
@@ -144,7 +134,7 @@ export const LargeHeader = (props: LargeHeaderProps) => {
             </a>
           </div>
           <div
-            className="md:hidden text-primary cursor-pointer flex items-center justify-center w-10 h-10 text-[#2a17ff] transition-all"
+            className="md:hidden text-primary cursor-pointer flex items-center justify-center w-10 h-10 text-[#e43d12] transition-all"
             onClick={handleBurgerClick}
           >
             <div
@@ -156,7 +146,7 @@ export const LargeHeader = (props: LargeHeaderProps) => {
               )}
             >
               <div className="tham-box transition-all rounded-lg">
-                <div className="tham-inner bg-[#2a17ff] transition-all rounded-lg" />
+                <div className="tham-inner bg-[#e43d12] transition-all rounded-lg" />
               </div>
             </div>
           </div>
@@ -167,8 +157,8 @@ export const LargeHeader = (props: LargeHeaderProps) => {
               <Link
                 className={
                   navBarLinks["/"].selected
-                    ? "opacity-100 poppins-bold my-2"
-                    : "opacity-50 transition-all hover:opacity-80 poppins-medium my-2"
+                    ? "opacity-100 outfit-bold my-2"
+                    : "opacity-75 transition-all hover:opacity-80 outfit-medium my-2"
                 }
                 href="/"
                 onClick={() => setOpened(false)}
@@ -178,8 +168,8 @@ export const LargeHeader = (props: LargeHeaderProps) => {
               <Link
                 className={
                   navBarLinks["/projects"].selected
-                    ? "opacity-100 poppins-bold my-2"
-                    : "opacity-50 transition-all hover:opacity-80 poppins-medium my-2"
+                    ? "opacity-100 outfit-bold my-2"
+                    : "opacity-75 transition-all hover:opacity-80 outfit-medium my-2"
                 }
                 href="/projects"
                 onClick={() => setOpened(false)}
@@ -189,8 +179,8 @@ export const LargeHeader = (props: LargeHeaderProps) => {
               <Link
                 className={
                   navBarLinks["/aboutme"].selected
-                    ? "opacity-100 poppins-bold my-2"
-                    : "opacity-50 transition-all hover:opacity-80 poppins-medium my-2"
+                    ? "opacity-100 outfit-bold my-2"
+                    : "opacity-75 transition-all hover:opacity-80 outfit-medium my-2"
                 }
                 href="/aboutme"
                 onClick={() => setOpened(false)}
@@ -200,8 +190,8 @@ export const LargeHeader = (props: LargeHeaderProps) => {
               <a
                 className={
                   navBarLinks["/contact"].selected
-                    ? "opacity-100 poppins-bold my-2"
-                    : "opacity-50 transition-all hover:opacity-80 poppins-medium my-2"
+                    ? "opacity-100 outfit-bold my-2"
+                    : "opacity-75 transition-all hover:opacity-80 outfit-medium my-2"
                 }
                 href="#contactSection"
                 onClick={handleContactClick}
@@ -211,7 +201,7 @@ export const LargeHeader = (props: LargeHeaderProps) => {
             </div>
           </div>
         )}
-        <hr className="bg-[#2a17ff] border-0 h-[1.5px] opacity-10 mt-2 md:mt-4 rounded-full w-full" />
+        <hr className="bg-[#e43d12] border-0 h-[1.5px] opacity-10 mt-2 md:mt-4 rounded-full w-full" />
       </div>
     </div>
   );

@@ -50,7 +50,7 @@ const page = (props: pageProps) => {
               height={40}
               placeholder="blur"
             />
-            <p className="my-[5%] text-justify poppins-medium text-lg md:text-2xl text-primary opacity-75">
+            <p className="my-[5%] text-justify outfit-medium text-lg md:text-2xl text-primary opacity-75">
               I&apos;m Tristan and I am 22 years old. My goal is to bring your
               ideas to reality while using the latest technology so that your
               project is as modern as possible.
@@ -79,7 +79,7 @@ const page = (props: pageProps) => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-primary poppins-regular text-lg">
+                  <p className="text-primary outfit-regular text-lg">
                     I can create beautiful designs with Figma.
                   </p>
                 </TooltipContent>
@@ -99,7 +99,7 @@ const page = (props: pageProps) => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-primary poppins-regular text-lg">
+                  <p className="text-primary outfit-regular text-lg">
                     I can create and maintain repositories on Github.
                   </p>
                 </TooltipContent>
@@ -119,7 +119,7 @@ const page = (props: pageProps) => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-primary poppins-regular text-lg">
+                  <p className="text-primary outfit-regular text-lg">
                     I can create modern websites with Next.js.
                   </p>
                 </TooltipContent>
@@ -139,7 +139,7 @@ const page = (props: pageProps) => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-primary poppins-regular text-lg">
+                  <p className="text-primary outfit-regular text-lg">
                     I can style websites with Tailwind CSS.
                   </p>
                 </TooltipContent>
@@ -159,7 +159,7 @@ const page = (props: pageProps) => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-primary poppins-regular text-lg">
+                  <p className="text-primary outfit-regular text-lg">
                     I can create websites with React.
                   </p>
                 </TooltipContent>
@@ -179,7 +179,7 @@ const page = (props: pageProps) => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-primary poppins-regular text-lg">
+                  <p className="text-primary outfit-regular text-lg">
                     I can create backends with Node.js.
                   </p>
                 </TooltipContent>

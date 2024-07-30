@@ -17,8 +17,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import Image from "next/image";
 import Head from "next/head";
+import Image from "next/image";
 
 export type pageProps = {};
 
@@ -47,7 +47,7 @@ const page = (props: pageProps) => {
           <div className="flex items-center justify-start w-full">
             <h1
               className={
-                "text-3xl md:text-4xl lg:text-5xl poppins-bold text-primary"
+                "text-3xl md:text-4xl lg:text-5xl outfit-bold text-primary"
               }
             >
               Projects -{" "}
@@ -110,11 +110,11 @@ const page = (props: pageProps) => {
           </div>
 
           {/* Description */}
-          <div className="poppins-medium text-black text-lg md:text-2xl w-full text-justify lg:text-left">
+          <div className="outfit-medium text-black text-lg md:text-2xl w-full text-justify lg:text-left">
             <p>
-              <span className="poppins-bold">Edukai</span> is an innovative app
+              <span className="outfit-bold">Edukai</span> is an innovative app
               that uses AI to{" "}
-              <span className="text-primary poppins-semibold">
+              <span className="text-primary outfit-semibold">
                 transform handwritten or digital notes into interactive review
                 sheets and quizzes
               </span>
@@ -140,7 +140,7 @@ const page = (props: pageProps) => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-primary poppins-regular text-lg">Figma</p>
+                  <p className="text-primary outfit-regular text-lg">Figma</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -158,7 +158,7 @@ const page = (props: pageProps) => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-primary poppins-regular text-lg">NextJS</p>
+                  <p className="text-primary outfit-regular text-lg">NextJS</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -176,7 +176,7 @@ const page = (props: pageProps) => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-primary poppins-regular text-lg">
+                  <p className="text-primary outfit-regular text-lg">
                     TailwindCSS
                   </p>
                 </TooltipContent>
@@ -196,9 +196,7 @@ const page = (props: pageProps) => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-primary poppins-regular text-lg">
-                    Flutter
-                  </p>
+                  <p className="text-primary outfit-regular text-lg">Flutter</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -216,7 +214,7 @@ const page = (props: pageProps) => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-primary poppins-regular text-lg">NodeJS</p>
+                  <p className="text-primary outfit-regular text-lg">NodeJS</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -234,7 +232,7 @@ const page = (props: pageProps) => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="text-primary poppins-regular text-lg">
+                  <p className="text-primary outfit-regular text-lg">
                     PostgreSQL
                   </p>
                 </TooltipContent>

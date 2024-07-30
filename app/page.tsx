@@ -35,19 +35,19 @@ export default function Home() {
       <div className="w-full h-full">
         <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between pb-[10%] w-full min-h-screen gap-1 md:gap-4 lg:gap-2">
           <div className="w-full lg:w-1/2 text-center lg:text-start text-primary flex flex-col items-center lg:items-start gap-1 lg:gap-4">
-            <p className="poppins-regular md:text-lg w-full mt-[5%] lg:mt-0">
+            <p className="outfit-regular md:text-lg w-full mt-[5%] lg:mt-0">
               Welcome to my site!
             </p>
             <div className="flex flex-col items-center justify-center lg:items-start text-center lg:text-start w-full">
-              <div className="poppins-bold text-center lg:text-start text-4xl md:text-5xl lg:text-6xl">
+              <div className="outfit-bold text-center lg:text-start text-4xl md:text-5xl lg:text-6xl">
                 <p>Hi! I&apos;m Tristan </p>
                 <h1 className="hidden">Hourtoulle</h1>
               </div>
-              <h2 className="poppins-bold text-2xl md:text-5xl lg:text-6xl">
+              <h2 className="outfit-bold text-2xl md:text-5xl lg:text-6xl">
                 <span className="text-secondary">Full Stack</span> Developer
               </h2>
             </div>
-            <div className="w-full flex flex-col md:flex-row items-center gap-2 md:gap-5 justify-start mt-[5%] poppins-medium text-xl selected:none">
+            <div className="w-full flex flex-col md:flex-row items-center gap-2 md:gap-5 justify-start mt-[5%] outfit-medium text-xl selected:none">
               <Button
                 size={"lg"}
                 className="text-xl bg-[#2a17ff] hover:bg-[#2a17ff]/85 w-full"
@@ -95,7 +95,7 @@ export default function Home() {
           id="contactSection"
         >
           <SectionTitle text="Contact me" />
-          <h3 className="text-primary text-lg md:text-2xl poppins-medium">
+          <h3 className="text-primary text-lg md:text-2xl outfit-medium">
             Feel free to contact me!
           </h3>
           <div className="flex flex-wrap items-center justify-start gap-2 md:gap-5 mt-[2%] w-full">
@@ -103,7 +103,7 @@ export default function Home() {
             <Button
               variant={"outline"}
               size={"lg"}
-              className="text-xl w-full md:w-auto border-[#2a17ff] hover:bg-[#2a17ff]/10 hover:text-[#2a17ff] selected:none poppins-medium text-lg text-primary"
+              className="text-xl w-full md:w-auto border-[#2a17ff] hover:bg-[#2a17ff]/10 hover:text-[#2a17ff] selected:none outfit-medium text-lg text-primary"
               onClick={() =>
                 window.open("https://www.malt.fr/profile/tristanhourtoulle")
               }
@@ -125,7 +125,7 @@ export default function Home() {
             <Button
               variant={"outline"}
               size={"lg"}
-              className="text-xl w-full md:w-auto border-[#2a17ff] hover:bg-[#2a17ff]/10 hover:text-[#2a17ff] selected:none poppins-medium text-lg text-primary"
+              className="text-xl w-full md:w-auto border-[#2a17ff] hover:bg-[#2a17ff]/10 hover:text-[#2a17ff] selected:none outfit-medium text-lg text-primary"
               onClick={() =>
                 window.open("https://www.linkedin.com/in/tristan-hourtoulle")
               }
@@ -144,7 +144,7 @@ export default function Home() {
             <Button
               variant={"outline"}
               size={"lg"}
-              className="text-xl w-full md:w-auto border-[#2a17ff] hover:bg-[#2a17ff]/10 hover:text-[#2a17ff] selected:none poppins-medium text-lg text-primary"
+              className="text-xl w-full md:w-auto border-[#2a17ff] hover:bg-[#2a17ff]/10 hover:text-[#2a17ff] selected:none outfit-medium text-lg text-primary"
               onClick={() => window.open("mailto:contact@tristanhourtoulle.fr")}
             >
               <Image
