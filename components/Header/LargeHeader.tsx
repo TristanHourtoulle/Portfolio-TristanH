@@ -91,8 +91,8 @@ export const LargeHeader = (props: LargeHeaderProps) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full background-color bg-opacity-75 backdrop-blur-md z-10">
-      <div className="w-full flex flex-col h-full px-[10%] pt-[3%] md:pt-[1.5%]">
+    <div className="fixed top-0 left-0 w-full bg-[#ebe9e1] bg-opacity-75 backdrop-blur-md z-10">
+      <div className="w-full flex flex-col h-full px-[15%] pt-[3%] md:pt-[1.5%]">
         <div className="flex items-center justify-between flex-grow w-full">
           <Link
             className="outfit-bold text-lg text-primary transition-all"
@@ -152,19 +152,8 @@ export const LargeHeader = (props: LargeHeaderProps) => {
           </div>
         </div>
         {opened && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg">
-            <div className="flex flex-col items-start p-4">
-              <Link
-                className={
-                  navBarLinks["/"].selected
-                    ? "opacity-100 outfit-bold my-2"
-                    : "opacity-75 transition-all hover:opacity-80 outfit-medium my-2"
-                }
-                href="/"
-                onClick={() => setOpened(false)}
-              >
-                Home
-              </Link>
+          <div className="md:hidden absolute top-full left-0 w-full background-color shadow-lg">
+            <div className="flex flex-col items-start py-4 px-[15%]">
               <Link
                 className={
                   navBarLinks["/projects"].selected
