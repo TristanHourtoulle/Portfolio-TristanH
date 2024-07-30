@@ -72,6 +72,10 @@
   background-color: #ebe9e1;
 }
 
+.background-primary {
+  background-color: #e43d12;
+}
+
 .poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
@@ -332,6 +336,66 @@
   }
 }
 
+@keyframes light-bounce-little {
+  0%,
+  100% {
+    transform: translateY(-10%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  25% {
+    transform: translateY(-5%);
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+  75% {
+    transform: translateY(-5%);
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  }
+}
+
 .animate-light-bounce {
   animation: light-bounce 2s infinite;
+}
+
+.animate-light-bounce-slow {
+  animation: light-bounce 4s infinite;
+}
+
+.animate-light-bounce-little {
+  animation: light-bounce-little 3s infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.wave-hand {
+  animation: wave 3s infinite;
+  transform-origin: 70% 70%;
 }
