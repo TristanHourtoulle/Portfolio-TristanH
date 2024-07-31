@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn, scrollToSection } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -29,7 +29,7 @@ function setNavBarLinks(title: string) {
     },
     "/aboutme": {
       title: "About",
-      href: "/aboutme",
+      href: "#aboutMeSection",
       selected: title === "About",
     },
     "/contact": {
@@ -107,7 +107,10 @@ export const LargeHeader = (props: LargeHeaderProps) => {
                   ? "opacity-100 outfit-bold"
                   : "opacity-75 transition-all hover:opacity-80 outfit-medium"
               }
-              href="/projects"
+              href=""
+              onClick={() => {
+                scrollToSection("contactSection");
+              }}
             >
               Projects
             </Link>
@@ -117,7 +120,10 @@ export const LargeHeader = (props: LargeHeaderProps) => {
                   ? "opacity-100 outfit-bold"
                   : "opacity-75 transition-all hover:opacity-80 outfit-medium"
               }
-              href="/aboutme"
+              href=""
+              onClick={() => {
+                scrollToSection("aboutMeSection");
+              }}
             >
               About Me
             </Link>
@@ -171,8 +177,11 @@ export const LargeHeader = (props: LargeHeaderProps) => {
                     ? "opacity-100 outfit-bold my-2"
                     : "opacity-75 transition-all hover:opacity-80 outfit-medium my-2"
                 }
-                href="/aboutme"
-                onClick={() => setOpened(false)}
+                href=""
+                onClick={() => {
+                  setOpened(false);
+                  scrollToSection("contactSection");
+                }}
               >
                 About Me
               </Link>
