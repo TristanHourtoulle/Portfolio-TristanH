@@ -199,9 +199,9 @@ export default function Home() {
               Let me a message!
             </h3>
             <ContactForm />
-            <div className="px-[25%]">
+            {/* <div className="px-[25%]">
               <Separator text="or" className="my-4" />
-            </div>
+            </div> */}
             <div className="flex flex-wrap items-center justify-center gap-2 md:gap-5 mt-[1%] w-full px-[10%] md:px-[25%]">
               {/* Malt */}
               <Button
