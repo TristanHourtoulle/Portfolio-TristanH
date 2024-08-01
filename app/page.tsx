@@ -1,11 +1,17 @@
 "use client";
 
 // Picture Import Section
+import FigmaLogo from "@/public/Figma.png";
+import GithubLogo from "@/public/Github.png";
 import GmailLogo from "@/public/gmail 1.png";
 import LinkedInLogo from "@/public/linkedin 1.png";
 import MaltLogoWhite from "@/public/Malt_logo_white 1.png";
 import MaltLogo from "@/public/Malt_logo_white.png";
+import NextjsLogo from "@/public/NextJS.png";
+import NodejsLogo from "@/public/NodeJS.png";
 import ProfilPicture from "@/public/pictures/Photo de profil - TH.jpg";
+import ReactjsLogo from "@/public/ReactJS.png";
+import TailwindLogo from "@/public/Tailwind.png";
 import WavingHand from "@/public/WavingHand.png";
 
 import { DownArrow, UpArrow } from "@/components/cta/Arrow";
@@ -114,13 +120,45 @@ export default function Home() {
 
         {/* AboutMeSection */}
         <div
-          className="flex flex-col gap-2 mb-[10%] w-full pt-[5%]"
+          className="flex flex-col  gap-2 w-full pt-[5%]"
           id="aboutMeSection"
         >
           <div className="flex min-w-screen overflow-x-hidden">
             <div className="py-[2%] border-y-4 border-[#e43d12] w-full">
               <ScrollingText text="About Me" speed={10} direction="left" />
             </div>
+          </div>
+
+          <p className="outfit-regular text-secondary text-justify text-2xl px-[25%] pt-[3%]">
+            Hi, I'm Tristan, a 22-year-old full stack developer from France. I
+            specialize in{" "}
+            <span className="outfit-bold">
+              Next.js, Node.js, Prisma, NextAuth, PostgreSQL, and Figma
+            </span>
+            . Passionate about creating efficient web applications, I deliver
+            high-quality solutions tailored to clients' needs.
+          </p>
+
+          <h3 className="text-4xl text-primary outfit-bold px-[25%] pt-[3%]">
+            Skills
+          </h3>
+          <div className="flex items-center justify-start gap-4 px-[25%]">
+            <Image src={FigmaLogo} alt="Figma logo" width={30} height={30} />
+            <Image src={NextjsLogo} alt="Next.js logo" width={50} height={50} />
+            <Image
+              src={TailwindLogo}
+              alt="Tailwind CSS logo"
+              width={50}
+              height={50}
+            />
+            <Image src={GithubLogo} alt="Github logo" width={50} height={50} />
+            <Image
+              src={ReactjsLogo}
+              alt="React.js logo"
+              width={50}
+              height={50}
+            />
+            <Image src={NodejsLogo} alt="Node.js logo" width={80} height={80} />
           </div>
         </div>
 
