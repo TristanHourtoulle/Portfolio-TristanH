@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, scrollToSection } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -90,13 +90,53 @@ export const LargeHeader = (props: LargeHeaderProps) => {
     setOpened(false);
   };
 
+  const handleProjectsClick = (e: any) => {
+    e.preventDefault();
+    if (pathname !== "/") {
+      router.push("/#projectsSection");
+    } else {
+      const projectsSection = document.getElementById("projectsSection");
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    setOpened(false);
+  };
+
+  const handleAboutMeClick = (e: any) => {
+    e.preventDefault();
+    if (pathname !== "/") {
+      router.push("/#aboutMeSection");
+    } else {
+      const aboutMeSection = document.getElementById("aboutMeSection");
+      if (aboutMeSection) {
+        aboutMeSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    setOpened(false);
+  };
+
+  const handleTitleClick = (e: any) => {
+    e.preventDefault();
+    if (pathname !== "/") {
+      router.push("/#homepageSection");
+    } else {
+      const aboutMeSection = document.getElementById("homepageSection");
+      if (aboutMeSection) {
+        aboutMeSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    setOpened(false);
+  };
+
   return (
     <div className="fixed top-0 left-0 w-full bg-[#ebe9e1] bg-opacity-75 backdrop-blur-md z-10">
       <div className="w-full flex flex-col h-full px-[15%] pt-[3%] md:pt-[1.5%]">
         <div className="flex items-center justify-between flex-grow w-full">
           <Link
             className="outfit-bold text-lg text-primary transition-all"
-            href="/"
+            href=""
+            onClick={handleTitleClick}
           >
             TristanH.
           </Link>
@@ -107,10 +147,8 @@ export const LargeHeader = (props: LargeHeaderProps) => {
                   ? "opacity-100 outfit-bold"
                   : "opacity-75 transition-all hover:opacity-80 outfit-medium"
               }
-              href=""
-              onClick={() => {
-                scrollToSection("contactSection");
-              }}
+              href="#projectsSection"
+              onClick={handleProjectsClick}
             >
               Projects
             </Link>
@@ -120,10 +158,8 @@ export const LargeHeader = (props: LargeHeaderProps) => {
                   ? "opacity-100 outfit-bold"
                   : "opacity-75 transition-all hover:opacity-80 outfit-medium"
               }
-              href=""
-              onClick={() => {
-                scrollToSection("aboutMeSection");
-              }}
+              href="#aboutMeSection"
+              onClick={handleAboutMeClick}
             >
               About Me
             </Link>
@@ -166,8 +202,10 @@ export const LargeHeader = (props: LargeHeaderProps) => {
                     ? "opacity-100 outfit-bold my-2"
                     : "opacity-75 transition-all hover:opacity-80 outfit-medium my-2"
                 }
-                href="/projects"
-                onClick={() => setOpened(false)}
+                href="#projectsSection"
+                onClick={() => {
+                  handleProjectsClick;
+                }}
               >
                 Projects
               </Link>
@@ -177,10 +215,9 @@ export const LargeHeader = (props: LargeHeaderProps) => {
                     ? "opacity-100 outfit-bold my-2"
                     : "opacity-75 transition-all hover:opacity-80 outfit-medium my-2"
                 }
-                href=""
+                href="#aboutMeSection"
                 onClick={() => {
-                  setOpened(false);
-                  scrollToSection("contactSection");
+                  handleAboutMeClick;
                 }}
               >
                 About Me
@@ -192,7 +229,9 @@ export const LargeHeader = (props: LargeHeaderProps) => {
                     : "opacity-75 transition-all hover:opacity-80 outfit-medium my-2"
                 }
                 href="#contactSection"
-                onClick={handleContactClick}
+                onClick={() => {
+                  handleContactClick;
+                }}
               >
                 Contact
               </a>
