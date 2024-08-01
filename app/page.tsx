@@ -46,7 +46,10 @@ export default function Home() {
         <link rel="canonical" href="https://www.tristanhourtoulle.fr" />
       </Head>
       <div className="w-full h-full py-[1.5%] scroll-smooth">
-        <div className="px-[15%] flex flex-col lg:flex-row items-center justify-center lg:justify-between pb-[10%] w-full min-h-screen gap-1 md:gap-4 lg:gap-2">
+        <div
+          id="homepageSection"
+          className="px-[15%] flex flex-col lg:flex-row items-center justify-center lg:justify-between pb-[10%] w-full min-h-screen gap-1 md:gap-4 lg:gap-2"
+        >
           <div className="w-full lg:w-1/2 text-center lg:text-start text-primary flex flex-col items-center lg:items-start gap-1 lg:gap-4">
             <div className="flex flex-col items-center justify-center lg:items-start text-center lg:text-start w-full">
               <div className="flex items-center gap-1 md:gap-3">
@@ -204,7 +207,7 @@ export default function Home() {
               <Button
                 variant={"outline"}
                 size={"icon"}
-                className="text-xl md:w-auto border-[#e43d12] hover:bg-[#e43d12]/10 hover:text-[#e43d12] selected:none outfit-medium text-lg text-primary"
+                className="text-xl border-[#e43d12] hover:bg-[#e43d12]/10 hover:text-[#e43d12] selected:none outfit-medium text-lg text-primary"
                 onClick={() =>
                   window.open("https://www.malt.fr/profile/tristanhourtoulle")
                 }
@@ -222,7 +225,7 @@ export default function Home() {
               <Button
                 variant={"outline"}
                 size={"icon"}
-                className="text-xl md:w-auto border-[#e43d12] hover:bg-[#e43d12]/10 hover:text-[#e43d12] selected:none outfit-medium text-lg text-primary"
+                className="text-xl border-[#e43d12] hover:bg-[#e43d12]/10 hover:text-[#e43d12] selected:none outfit-medium text-lg text-primary"
                 onClick={() =>
                   window.open("https://www.linkedin.com/in/tristan-hourtoulle")
                 }
@@ -240,7 +243,7 @@ export default function Home() {
               <Button
                 variant={"outline"}
                 size={"icon"}
-                className="text-xl md:w-auto border-[#e43d12] hover:bg-[#e43d12]/10 hover:text-[#e43d12] selected:none outfit-medium text-lg text-primary"
+                className="text-xl border-[#e43d12] hover:bg-[#e43d12]/10 hover:text-[#e43d12] selected:none outfit-medium text-lg text-primary"
                 onClick={() =>
                   window.open("mailto:contact@tristanhourtoulle.fr")
                 }
@@ -258,7 +261,7 @@ export default function Home() {
               <Button
                 variant={"outline"}
                 size={"icon"}
-                className="text-xl md:w-auto border-[#e43d12] hover:bg-[#e43d12]/10 hover:text-[#e43d12] selected:none outfit-medium text-lg text-primary"
+                className="text-xl border-[#e43d12] hover:bg-[#e43d12]/10 hover:text-[#e43d12] selected:none outfit-medium text-lg text-primary"
                 onClick={() =>
                   window.open("https://github.com/TristanHourtoulle")
                 }
