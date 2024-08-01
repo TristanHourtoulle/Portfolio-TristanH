@@ -10,7 +10,7 @@ export type DownArrowProps = {
 export const DownArrow = ({ location }: DownArrowProps) => {
   return (
     <div
-      className="scroll-smooth cursor-pointer hover:rotate-45 w-full flex items-center justify-center p-6 rounded-full bg-[rgba(228, 61, 18, 0.1)] border-2 border-[#E43D12] animate-bounce w-4 h-4"
+      className="ml-[20%] md:ml-0 scroll-smooth cursor-pointer hover:rotate-45 w-full flex items-center justify-center p-5 md:p-6 rounded-full bg-[rgba(228, 61, 18, 0.1)] border-2 border-[#E43D12] animate-bounce w-2 h-2 md:w-4 md:h-4"
       onClick={() => {
         scrollToBottom();
       }}
