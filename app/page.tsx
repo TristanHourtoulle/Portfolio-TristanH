@@ -20,7 +20,6 @@ import { DownArrow } from "@/components/cta/Arrow";
 import { Edukai } from "@/components/projects/Edukai";
 import { ScrollingText } from "@/components/ScrollingText";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { scrollToSection } from "@/lib/utils";
 import Head from "next/head";
 import Image from "next/image";
@@ -245,7 +244,7 @@ export default function Home() {
                 size={"icon"}
                 className="text-xl border-[#e43d12] hover:bg-[#e43d12]/10 hover:text-[#e43d12] selected:none outfit-medium text-lg text-primary"
                 onClick={() =>
-                  window.open("mailto:contact@tristanhourtoulle.fr")
+                  window.open("mailto:tristan.hourtoulle@epitech.eu")
                 }
               >
                 <Image
