@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://www.tristanhourtoulle.fr
-
-# Sitemaps
-Sitemap: https://www.tristanhourtoulle.fr/sitemap.xml
