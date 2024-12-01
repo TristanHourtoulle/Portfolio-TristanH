@@ -63,40 +63,28 @@ export default function Home() {
       </motion.section>
 
       {/* Section 'Qui suis-je ?' */}
-      <motion.section
+      <section
         id="about"
         className="h-full lg:min-h-screen bg-[#EEEBE5] px-[10%] flex items-center justify-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.5 }}
-        variants={sectionVariants}
       >
         <AboutMeSection />
-      </motion.section>
+      </section>
 
       {/* Section Projets */}
-      <motion.section
+      <section
         id="projects"
         className="h-full lg:min-h-screen bg-white flex items-center justify-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.5 }}
-        variants={sectionVariants}
       >
         <ProjectsSection />
-      </motion.section>
+      </section>
 
       {/* Section Témoignages */}
-      <motion.section
+      <section
         id="testimonials"
         className="h-full lg:min-h-screen bg-[#EEEBE5] flex items-center justify-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.5 }}
-        variants={sectionVariants}
       >
         <TestimonialsSection />
-      </motion.section>
+      </section>
 
       {/* Section Contact */}
       {/* <motion.section

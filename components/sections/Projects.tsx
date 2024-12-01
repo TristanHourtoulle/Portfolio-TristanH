@@ -9,6 +9,7 @@ const projects = [
     description:
       "Moduloop Impact est une solution intuitive qui mesure l’impact environnemental des matériaux de construction et du mobilier utilisés dans vos projets, vous aidant à faire des choix plus durables et responsables.",
     link: "https://moduloop-impact.fr",
+    preview: "/photos/LP - Moduloop.svg",
   },
   {
     name: "Edukai",
@@ -16,6 +17,7 @@ const projects = [
     description:
       "Edukai est une solution innovante conçue pour les étudiants, offrant une nouvelle manière d'apprendre efficacement. Grâce à une technologie avancée, Edukai génère automatiquement des quiz interactifs à partir de leurs cours, transformant l'apprentissage en une expérience ludique et engageante.",
     link: "https://edukai.fr",
+    preview: "/photos/LP - Edukai.svg",
   },
   {
     name: "Kaiboard",
@@ -23,6 +25,7 @@ const projects = [
     description:
       "[En cours de création] - Kaiboard est une plateforme collaborative qui simplifie la gestion de projets en groupe, avec des outils pour organiser des réunions, suivre les tâches via GitHub, et centraliser les ressources clés.",
     link: "https://kaiboard.vercel.app",
+    preview: "/photos/LP - Kaiboard.svg",
   },
 ];
 
@@ -35,11 +38,9 @@ export const ProjectsSection = () => {
       </h1>
       {/* Grid Content */}
       <div className="flex flex-col lg:flex-row items-center justify-center gap-6">
-        <div className="flex flex-col items-center gap-6">
-          <ProjectCard project={projects[0]} />
-          <ProjectCard project={projects[2]} />
-        </div>
+        <ProjectCard project={projects[0]} />
         <ProjectCard project={projects[1]} />
+        <ProjectCard project={projects[2]} />
       </div>
     </div>
   );

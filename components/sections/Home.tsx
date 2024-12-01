@@ -5,17 +5,16 @@ import { Briefcase, Send, Star } from "lucide-react";
 
 export const HomeSection = () => {
   const handleScroll = (e: any, targetId: any) => {
-    e.preventDefault(); // Empêche le comportement par défaut du lien
+    e.preventDefault();
     const target = document.getElementById(targetId);
     const navbar = document.querySelector("nav");
     const navbarHeight = navbar ? navbar.offsetHeight : 0;
 
     if (target) {
-      // Ajuste le défilement en fonction de la hauteur de la navbar
       const targetPosition = target.offsetTop - navbarHeight + 100;
       window.scrollTo({
         top: targetPosition,
-        behavior: "smooth", // Défilement fluide
+        behavior: "smooth",
       });
     }
   };
@@ -90,13 +89,13 @@ export const HomeSection = () => {
 
         {/* Avis */}
         <div className="flex flex-row items-center gap-5 lg:gap-3">
-          <motion.h3 className="text-3xl lg:text-4xl text-[#E8A614] font-semibold">
+          <motion.h3 className="text-3xl lg:text-4xl text-[#E8A614] font-semibold mb-3">
             5,0
           </motion.h3>
           {/* Stars and base */}
           <div className="flex flex-col items-start gap-0">
             {/* Stars */}
-            <div className="flex items-center gap-1 lg:gap-3 text-[#4A5CC2]">
+            <div className="flex items-center gap-1 text-[#4A5CC2]">
               {[1, 2, 3, 4, 5].map((star) => (
                 <motion.div
                   key={star}
@@ -107,11 +106,7 @@ export const HomeSection = () => {
                     duration: 0.5,
                   }}
                 >
-                  <Star
-                    className="w-6 h-6 lg:w-10 lg:h-10"
-                    fill="#4A5CC2"
-                    stroke="#4A5CC2"
-                  />
+                  <Star className="w-6 h-6" fill="#4A5CC2" stroke="#4A5CC2" />
                 </motion.div>
               ))}
             </div>
