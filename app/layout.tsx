@@ -10,8 +10,14 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Tristan Hourtoulle",
+  title: {
+    default: "Tristan Hourtoulle",
+    template: `%s - Tristan Hourtoulle`,
+  },
   description: "Frontend Developer | Backend Enthusiast | SEO Optimizer",
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
