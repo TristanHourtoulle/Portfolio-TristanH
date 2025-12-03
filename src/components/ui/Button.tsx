@@ -61,6 +61,22 @@ export function Button({
   );
 
   if (href && !disabled) {
+    // External links (http/https/mailto) open in new tab
+    const isExternal = href.startsWith('http') || href.startsWith('mailto:');
+
+    if (isExternal) {
+      return (
+        <a
+          href={href}
+          target={href.startsWith('mailto:') ? undefined : '_blank'}
+          rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+          className={baseStyles}
+        >
+          {content}
+        </a>
+      );
+    }
+
     return (
       <Link href={href} className={baseStyles}>
         {content}
