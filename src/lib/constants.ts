@@ -16,7 +16,6 @@ export const NAVIGATION: NavItem[] = [
   { id: 'competences', label: 'Compétences', href: '#skills' },
   { id: 'projets', label: 'Projets', href: '#projects' },
   { id: 'testimoniaux', label: 'Testimoniaux', href: '#testimonials' },
-  { id: 'contact', label: 'Contact', href: '#contact' },
 ];
 
 /**
@@ -77,17 +76,16 @@ export const SITE_CONFIG: SiteConfig = {
   subtitle:
     "Développeur web passionné par la création d'expériences digitales uniques et performantes.",
   ctaText: 'Discutons de votre projet',
-  ctaHref: '#contact',
+  ctaHref: 'https://calendly.com/tristan68420/30min',
 };
 
 /**
- * Social links (for future use)
+ * Social links
  */
-export const SOCIAL_LINKS = {
-  github: 'https://github.com/',
-  linkedin: 'https://linkedin.com/',
-  twitter: 'https://twitter.com/',
-} as const;
+export const SOCIAL_LINKS = [
+  { id: 'github', label: 'GitHub', href: 'https://github.com/TristanHourtoulle', icon: 'github' },
+  { id: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/tristan-hourtoulle/', icon: 'linkedin' },
+] as const;
 
 /**
  * Projects for the Projects section
