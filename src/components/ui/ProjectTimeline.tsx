@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { clsx } from 'clsx';
 import { ExternalLink, Lock, Clock, Check } from 'lucide-react';
@@ -49,12 +49,36 @@ function calculateDuration(startDate: ProjectDate, endDate?: ProjectDate): strin
 export function ProjectTimeline({ projects }: ProjectTimelineProps) {
   const [activeProjectId, setActiveProjectId] = useState(projects[0]?.id);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const timelineRef = useRef<HTMLDivElement>(null);
 
   const activeProject = projects.find((p) => p.id === activeProjectId);
   const activeIndex = useMemo(
     () => projects.findIndex((p) => p.id === activeProjectId),
     [projects, activeProjectId]
   );
+
+  // Intersection Observer for scroll animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    );
+
+    if (timelineRef.current) {
+      observer.observe(timelineRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   if (!activeProject) return null;
 
@@ -125,9 +149,20 @@ export function ProjectTimeline({ projects }: ProjectTimelineProps) {
   const indicatorTop = activeIndex * buttonHeight;
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 md:gap-10">
+    <div
+      ref={timelineRef}
+      className="flex flex-col md:flex-row gap-6 md:gap-10"
+    >
       {/* Tab List - Left side with relative border */}
-      <div className="relative flex md:flex-col gap-2 md:gap-0 overflow-x-auto md:overflow-visible pb-2 md:pb-0">
+      <div
+        className={clsx(
+          'relative flex md:flex-col gap-2 md:gap-0 overflow-x-auto md:overflow-visible pb-2 md:pb-0',
+          'transition-all duration-500 ease-out',
+          isVisible
+            ? 'opacity-100 translate-x-0'
+            : 'opacity-0 -translate-x-8'
+        )}
+      >
         {/* Gray vertical line (background) */}
         <div className="hidden md:block absolute left-0 top-0 bottom-0 w-0.5 bg-text-light/20" />
 
@@ -173,7 +208,13 @@ export function ProjectTimeline({ projects }: ProjectTimelineProps) {
         id={`panel-${activeProject.id}`}
         role="tabpanel"
         aria-labelledby={activeProject.id}
-        className="flex-1"
+        className={clsx(
+          'flex-1',
+          'transition-all duration-500 ease-out delay-150',
+          isVisible
+            ? 'opacity-100 translate-x-0'
+            : 'opacity-0 translate-x-8'
+        )}
       >
         <div
           className={clsx(

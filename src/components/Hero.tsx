@@ -1,17 +1,33 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { HERO_BADGES, SITE_CONFIG } from '@/lib/constants';
+import { clsx } from 'clsx';
 
 export function Hero() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Trigger animations after component mounts
+    const timer = setTimeout(() => setIsLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section id='hero' className='pt-24 pb-8 md:pt-32 md:pb-12'>
       <div className='container-portfolio'>
         {/* Profile Row: Photo + Name + Badges on same line */}
-        <div className='flex flex-wrap items-center gap-4 mb-8'>
+        <div
+          className={clsx(
+            'flex flex-wrap items-center gap-4 mb-8',
+            'transition-all duration-500 ease-out',
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          )}
+        >
           {/* Profile Image */}
           <div className='relative w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full overflow-hidden ring-2 ring-primary-blue/20'>
             <Image
@@ -47,7 +63,13 @@ export function Hero() {
         </div>
 
         {/* Main Title */}
-        <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold text-text-dark mb-4 leading-tight'>
+        <h2
+          className={clsx(
+            'text-2xl md:text-3xl lg:text-4xl font-bold text-text-dark mb-4 leading-tight',
+            'transition-all duration-500 ease-out delay-150',
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          )}
+        >
           Je ne crée pas de site{' '}
           <span className='font-accent text-primary-blue text-3xl md:text-4xl lg:text-5xl'>
             mais des expériences
@@ -55,20 +77,33 @@ export function Hero() {
         </h2>
 
         {/* Subtitle */}
-        <p className='text-base md:text-lg text-text-light mb-8 max-w-2xl'>
+        <p
+          className={clsx(
+            'text-base md:text-lg text-text-light mb-8 max-w-2xl',
+            'transition-all duration-500 ease-out delay-300',
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          )}
+        >
           Je crée des sites expériences web modernes, adaptés à vos besoins et
           alignés avec vos valeurs.
         </p>
 
         {/* CTA Button */}
-        <Button
-          variant='primary'
-          size='md'
-          href={SITE_CONFIG.ctaHref}
-          icon={<Phone className='w-4 h-4' />}
+        <div
+          className={clsx(
+            'transition-all duration-500 ease-out delay-450',
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          )}
         >
-          {SITE_CONFIG.ctaText}
-        </Button>
+          <Button
+            variant='primary'
+            size='md'
+            href={SITE_CONFIG.ctaHref}
+            icon={<Phone className='w-4 h-4' />}
+          >
+            {SITE_CONFIG.ctaText}
+          </Button>
+        </div>
       </div>
     </section>
   );
