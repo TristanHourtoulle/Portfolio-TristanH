@@ -44,4 +44,6 @@ next-env.d.ts
 .claude
 CLAUDE.md
 
+# Design assets
 public/design-from-figma
+design-to-code
