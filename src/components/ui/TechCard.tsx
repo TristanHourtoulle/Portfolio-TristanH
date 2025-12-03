@@ -1,12 +1,7 @@
+'use client';
+
 import { clsx } from 'clsx';
-import {
-  Box,
-  Paintbrush,
-  Code2,
-  Server,
-  Figma,
-  type LucideIcon,
-} from 'lucide-react';
+import Image from 'next/image';
 
 interface TechCardProps {
   title: string;
@@ -14,15 +9,8 @@ interface TechCardProps {
   icon?: string;
   technologies?: string[];
   className?: string;
+  size?: 'default' | 'large';
 }
-
-const iconMap: Record<string, LucideIcon> = {
-  nextjs: Box,
-  tailwind: Paintbrush,
-  typescript: Code2,
-  backend: Server,
-  figma: Figma,
-};
 
 export function TechCard({
   title,
@@ -30,49 +18,89 @@ export function TechCard({
   icon,
   technologies,
   className,
+  size = 'default',
 }: TechCardProps) {
-  const IconComponent = icon ? iconMap[icon] : null;
-
   return (
     <div
       className={clsx(
-        'bg-card-bg rounded-lg p-6',
-        'shadow-md hover:shadow-lg',
+        'bg-card-bg rounded-2xl p-6',
+        'shadow-sm hover:shadow-md',
         'hover:-translate-y-1',
         'transition-all duration-300',
-        'border border-gray-100 dark:border-gray-800',
+        'border-2 border-gray-300/10 dark:border-gray-500/10',
         className
       )}
     >
-      {/* Icon or Technologies list */}
-      <div className="mb-4">
-        {IconComponent ? (
-          <div className="w-12 h-12 rounded-lg bg-primary-blue/10 flex items-center justify-center">
-            <IconComponent className="w-6 h-6 text-primary-blue" />
+      {/* Large centered icon or multiple tech icons */}
+      <div className={clsx('flex justify-center mb-4', size === 'large' ? 'gap-6' : '')}>
+        {icon ? (
+          <div className="w-16 h-16 relative">
+            <Image
+              src={`/icons/${icon}.svg`}
+              alt={`${title} icon`}
+              fill
+              className="object-contain"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+              }}
+            />
           </div>
         ) : technologies && technologies.length > 0 ? (
-          <div className="flex flex-wrap gap-2">
+          <div className="flex items-center justify-center gap-4">
             {technologies.map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 text-text-dark dark:bg-gray-800 dark:text-gray-200"
-              >
-                {tech}
-              </span>
+              <div key={tech} className="w-12 h-12 md:w-16 md:h-16 relative">
+                <Image
+                  src={`/icons/${tech.toLowerCase().replace('.', '')}.svg`}
+                  alt={`${tech} icon`}
+                  fill
+                  className="object-contain"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+              </div>
             ))}
           </div>
-        ) : (
-          <div className="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-            <Box className="w-6 h-6 text-text-light" />
-          </div>
-        )}
+        ) : null}
       </div>
 
-      {/* Title */}
-      <h3 className="text-xl font-semibold text-text-dark mb-2">{title}</h3>
+      {/* Title with small icon */}
+      <div className="flex items-center gap-2 mb-2">
+        {icon && (
+          <div className="w-5 h-5 relative shrink-0">
+            <Image
+              src={`/icons/${icon}.svg`}
+              alt=""
+              fill
+              className="object-contain"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+              }}
+            />
+          </div>
+        )}
+        {!icon && technologies && (
+          <div className="w-5 h-5 relative shrink-0">
+            <Image
+              src="/icons/server.svg"
+              alt=""
+              fill
+              className="object-contain"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+              }}
+            />
+          </div>
+        )}
+        <h3 className="text-base font-semibold text-text-dark">{title}</h3>
+      </div>
 
       {/* Description */}
-      <p className="text-base text-text-light leading-relaxed">{description}</p>
+      <p className="text-sm text-text-light leading-relaxed">{description}</p>
     </div>
   );
 }
