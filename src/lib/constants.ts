@@ -21,36 +21,37 @@ export const HERO_BADGES: Badge[] = [
 
 /**
  * Tech skills for the Skills section
+ * Descriptions match the Figma design exactly
  */
 export const TECH_SKILLS: TechSkill[] = [
   {
     id: 'nextjs',
     title: 'Next.JS',
-    description: 'Framework React pour applications web modernes et performantes.',
+    description: "J'utilise Next.JS pour créer des applications performantes et maintenable dans le temps.",
     icon: 'nextjs',
   },
   {
     id: 'tailwind',
     title: 'Tailwind CSS',
-    description: 'Framework CSS utilitaire pour un design rapide et cohérent.',
+    description: "Le meilleur outil pour gérer le CSS facilement tout en l'optimisant.",
     icon: 'tailwind',
   },
   {
     id: 'typescript',
-    title: 'TypeScript',
-    description: 'JavaScript typé pour des applications robustes et maintenables.',
+    title: 'Typescript',
+    description: 'Permet de respecter une norme strict dans notre code avec un typage obligatoire.',
     icon: 'typescript',
   },
   {
     id: 'backend',
-    title: 'Backend/BDD/Déploiement',
-    description: 'Stack complète avec Node.js, Supabase et Vercel.',
-    technologies: ['Node.js', 'Supabase', 'Vercel'],
+    title: 'Backend, Base de donnée, Déploiement',
+    description: 'Optimisation du backend, stockage de données sécurisé et déploiement automatisé.',
+    technologies: ['Node.js', 'Postgres', 'Supabase', 'Vercel'],
   },
   {
     id: 'figma',
     title: 'Figma',
-    description: "Design d'interfaces utilisateur modernes et intuitives.",
+    description: "Quoi de mieux qu'un développeur qui sait designer ?",
     icon: 'figma',
   },
 ];
