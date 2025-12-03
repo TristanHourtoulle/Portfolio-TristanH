@@ -58,3 +58,53 @@ export interface SiteConfig {
   ctaText: string;
   ctaHref: string;
 }
+
+/**
+ * Project types for Projects section
+ */
+export type ProjectType = 'freelance' | 'personal';
+
+export type ProjectStatus = 'live' | 'private' | 'coming-soon';
+
+export type ProjectTagCategory = 'tech' | 'type' | 'other';
+
+export interface ProjectTag {
+  label: string;
+  category: ProjectTagCategory;
+}
+
+export interface ProjectDate {
+  month: number; // 1-12
+  year: number;
+}
+
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  logo: string;
+  type: ProjectType;
+  tags: ProjectTag[];
+  status: ProjectStatus;
+  url?: string;
+  startDate: ProjectDate;
+  endDate?: ProjectDate; // undefined = ongoing (aujourd'hui)
+}
+
+/**
+ * Testimonial types for Testimonials section
+ */
+export type TestimonialVariant = 'default' | 'featured';
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  rating: number;
+  review: string;
+  variant?: TestimonialVariant;
+}
+
+export interface TestimonialsConfig {
+  averageRating: number;
+  totalClients: number;
+}
