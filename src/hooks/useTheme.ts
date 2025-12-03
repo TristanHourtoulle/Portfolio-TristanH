@@ -1,0 +1,31 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
+type Theme = 'light' | 'dark';
+
+export function useTheme() {
+  const [theme, setTheme] = useState<Theme>('light');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const stored = localStorage.getItem('theme') as Theme | null;
+    // Default to light theme if no preference stored
+    const initialTheme = stored || 'light';
+    setTheme(initialTheme);
+    document.documentElement.classList.remove('dark');
+    if (initialTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+  };
+
+  return { theme, toggleTheme, mounted };
+}
