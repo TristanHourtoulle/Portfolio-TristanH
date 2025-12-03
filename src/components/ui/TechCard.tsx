@@ -23,7 +23,7 @@ export function TechCard({
   return (
     <div
       className={clsx(
-        'bg-card-bg rounded-2xl p-6',
+        'bg-card-bg rounded-2xl p-6 h-full',
         'shadow-sm hover:shadow-md',
         'hover:-translate-y-1',
         'transition-all duration-300',
