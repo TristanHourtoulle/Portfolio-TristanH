@@ -28,12 +28,20 @@ export const SITE_CONFIG: SiteConfig = {
 /**
  * Shared navigation, used by both the header and the footer.
  */
+/**
+ * Hrefs use an absolute `/#id` form rather than a bare `#id`. On the
+ * homepage this still resolves to the current document (same path,
+ * different fragment), so the browser performs an in-page smooth scroll
+ * with no navigation. From any other page it resolves to a real
+ * navigation back to the homepage, landing on the right section. A bare
+ * `#id` would silently do nothing on any page other than the homepage.
+ */
 export const NAVIGATION: NavItem[] = [
-  { id: 'services', label: 'Services', href: '#services' },
-  { id: 'realisations', label: 'Réalisations', href: '#realisations' },
-  { id: 'processus', label: 'Processus', href: '#processus' },
-  { id: 'a-propos', label: 'À propos', href: '#a-propos' },
-  { id: 'faq', label: 'FAQ', href: '#faq' },
+  { id: 'services', label: 'Services', href: '/#services' },
+  { id: 'realisations', label: 'Réalisations', href: '/#realisations' },
+  { id: 'processus', label: 'Processus', href: '/#processus' },
+  { id: 'a-propos', label: 'À propos', href: '/#a-propos' },
+  { id: 'faq', label: 'FAQ', href: '/#faq' },
 ];
 
 /**
@@ -103,7 +111,7 @@ export const HERO_CONTENT: HeroContent = {
   primaryCtaLabel: 'Réserver un appel de 30 min, gratuit',
   primaryCtaHref: SITE_CONFIG.calendlyUrl,
   secondaryCtaLabel: 'Voir mes réalisations',
-  secondaryCtaHref: '#realisations',
+  secondaryCtaHref: '/#realisations',
   locationNote: 'Basé en France · missions à distance',
 };
 
@@ -434,5 +442,5 @@ export const FOOTER_LEGAL_LINKS: FooterLink[] = [
   { id: 'github', label: 'GitHub', href: 'https://github.com/TristanHourtoulle', icon: 'github' },
   { id: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/tristan-hourtoulle/', icon: 'linkedin' },
   { id: 'email', label: 'Email', href: `mailto:${SITE_CONFIG.email}`, icon: 'mail' },
-  { id: 'mentions', label: 'Mentions légales', href: '#contenu' },
+  { id: 'mentions', label: 'Mentions légales', href: '/mentions-legales' },
 ];

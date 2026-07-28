@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
+import Link from 'next/link';
 import { FOOTER_LEGAL_LINKS, NAVIGATION, SITE_CONFIG } from '@/lib/constants';
 import type { FooterLink } from '@/lib/types';
 
@@ -14,9 +15,9 @@ export function SiteFooter() {
       <div className="wrap">
         <div>
           <p>
-            <a className="brand" href="#contenu">
+            <Link className="brand" href="/">
               {SITE_CONFIG.brandName}
-            </a>
+            </Link>
           </p>
           <p>Développeur web full-stack et designer freelance.</p>
         </div>

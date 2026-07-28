@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { NAVIGATION, SITE_CONFIG } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 
@@ -10,10 +11,10 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="wrap">
-        <a className="brand" href="#contenu">
+        <Link className="brand" href="/">
           {SITE_CONFIG.brandName}
           <span className="mono">{SITE_CONFIG.brandTagline}</span>
-        </a>
+        </Link>
         <nav className="site-nav" aria-label="Navigation principale">
           <ul>
             {NAVIGATION.map((item) => (
