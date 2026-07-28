@@ -149,3 +149,49 @@ export interface FooterLink {
   href: string;
   icon?: 'github' | 'linkedin' | 'mail';
 }
+
+/**
+ * Identity block for the site editor, required by LCEN article 6-III for
+ * any professional site publisher.
+ */
+export interface LegalEditor {
+  name: string;
+  legalStatus: string;
+  /** Postal address, one entry per display line. */
+  addressLines: string[];
+  siret: string;
+  vatMention: string;
+  email: string;
+  publicationDirector: string;
+}
+
+/**
+ * Identity block for the hosting provider, also required by LCEN article
+ * 6-III.
+ */
+export interface LegalHost {
+  name: string;
+  /** Postal address, one entry per display line. */
+  addressLines: string[];
+}
+
+/**
+ * A single prose topic on the mentions légales page (intellectual
+ * property, personal data, external links, applicable law...).
+ */
+export interface LegalSection {
+  id: string;
+  title: string;
+  paragraphs: string[];
+}
+
+/**
+ * Full content of the mentions légales page.
+ */
+export interface LegalPageContent {
+  lastUpdatedIso: string;
+  lastUpdatedLabel: string;
+  editor: LegalEditor;
+  host: LegalHost;
+  sections: LegalSection[];
+}
