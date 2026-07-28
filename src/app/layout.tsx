@@ -1,34 +1,19 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
-import { Header } from "@/components/Header";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const poppins = Poppins({
-  variable: "--font-accent",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+import type { Metadata } from 'next';
+import { SkipLink } from '@/components/skip-link';
+import { SiteHeader } from '@/components/site-header';
+import { apfelGrotezk, commitMono } from '@/lib/fonts';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Tristan H. - Développeur Web & Designer",
+  title: 'Tristan Hourtoulle · Design et développement web freelance',
   description:
-    "Développeur web passionné par la création d'expériences digitales uniques et performantes. Spécialisé en Next.js, React, TypeScript et Tailwind CSS.",
+    "Développeur web full-stack et designer freelance. Sites vitrines, applications sur mesure et produits complets pour PME, startups et agences, de la maquette Figma à la mise en ligne.",
   openGraph: {
-    title: "Tristan H. - Développeur Web & Designer",
+    title: 'Tristan Hourtoulle · Design et développement web freelance',
     description:
-      "Développeur web passionné par la création d'expériences digitales uniques et performantes.",
-    type: "website",
-    locale: "fr_FR",
+      "Développeur web full-stack et designer freelance. Un seul interlocuteur du premier appel à la mise en ligne.",
+    type: 'website',
+    locale: 'fr_FR',
   },
 };
 
@@ -38,11 +23,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
-      >
-        <Header />
+    <html lang="fr" className={`${apfelGrotezk.variable} ${commitMono.variable}`}>
+      <body className="antialiased">
+        <SkipLink />
+        <SiteHeader />
         {children}
       </body>
     </html>
