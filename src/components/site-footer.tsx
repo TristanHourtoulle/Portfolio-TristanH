@@ -9,7 +9,22 @@ const ICONS: Record<NonNullable<FooterLink['icon']>, typeof Github> = {
   mail: Mail,
 };
 
+/**
+ * Read at render time, on the server only: `SiteFooter` has no `'use
+ * client'` directive, so this runs during the server render, not in the
+ * browser. Computing it in a Client Component (useEffect or first
+ * render) would let the server-rendered HTML and the browser's own
+ * clock disagree at the New Year's midnight boundary, producing a
+ * hydration mismatch. Same reasoning as getAvailabilityLabel in
+ * src/lib/availability.ts.
+ */
+function getCurrentYear(): number {
+  return new Date().getFullYear();
+}
+
 export function SiteFooter() {
+  const currentYear = getCurrentYear();
+
   return (
     <footer className="site-footer">
       <div className="wrap">
@@ -20,6 +35,9 @@ export function SiteFooter() {
             </Link>
           </p>
           <p>Développeur web full-stack et designer freelance.</p>
+          <p className="copyright">
+            © {currentYear} {SITE_CONFIG.brandName}. Tous droits réservés.
+          </p>
         </div>
         <nav aria-label="Navigation secondaire">
           <ul>
@@ -41,8 +59,9 @@ export function SiteFooter() {
                     href={link.href}
                     target={isExternal ? '_blank' : undefined}
                     rel={isExternal ? 'noopener noreferrer' : undefined}
+                    className={Icon ? 'icon-link' : undefined}
                   >
-                    {Icon ? <Icon aria-hidden="true" className="inline-block w-4 h-4 mr-1" /> : null}
+                    {Icon ? <Icon aria-hidden="true" className="w-4 h-4 shrink-0" /> : null}
                     {link.label}
                   </a>
                 </li>
