@@ -15,6 +15,16 @@ import type { CaseStudyPageContent } from './types';
  * change, and the two now sit in different files so neither edit has to
  * step over the other.
  *
+ * `relatedSlugs` is a link graph, not a free-form list, and it is kept
+ * balanced by hand: every study points at two others and is pointed at by
+ * exactly two. The earlier set had all four studies pointing at Quintyss
+ * or Moduloop Impact and none at Moduloop Kits, which left that page with
+ * a single inbound link on the entire site, the one from /realisations.
+ * The pairings still have to read sensibly to a human, so the two
+ * Moduloop projects reference each other, and Hosteed and Quintyss, the
+ * two products with a public site sitting on top of a back office,
+ * reference each other too.
+ *
  * The narratives are built strictly from what each client stated about
  * their own mission. Where no figure was given, none is written: no
  * traffic, no revenue, no percentage of gain, no user count. The only
@@ -64,7 +74,7 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
       },
     ],
     liveClientSites: [],
-    relatedSlugs: ['moduloop-impact', 'quintyss'],
+    relatedSlugs: ['quintyss', 'moduloop-impact'],
   },
   {
     slug: 'moduloop-impact',
@@ -164,7 +174,7 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
       },
     ],
     liveClientSites: [],
-    relatedSlugs: ['hosteed', 'quintyss'],
+    relatedSlugs: ['moduloop-kits', 'hosteed'],
   },
   {
     slug: 'moduloop-kits',
@@ -245,28 +255,28 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
     gallery: [
       {
         src: '/images/case-studies/quintyss/editeur-slider-champs.webp',
-        alt: "Le client modifie lui-même le contenu de son carrousel d'accueil, titre, texte et bouton compris : le site se met à jour aussitôt, sans intervention technique.",
+        alt: "Éditeur Quintyss ouvert sur le site du Karaté Club Fribourg : la fenêtre d'édition du carrousel, onglet Contenu, avec ses champs titre, sous-titre en texte riche et texte du bouton.",
         width: 2400,
         height: 1500,
         variant: 'desktop',
       },
       {
         src: '/images/case-studies/quintyss/editeur-slider-diapositives.webp',
-        alt: "Ajouter ou réorganiser les diapositives du carrousel se fait en quelques clics, directement au-dessus du site réel.",
+        alt: "Onglet Cartes de la même fenêtre d'édition : les quatre diapositives du carrousel en vignettes, chacune avec ses flèches de réordonnancement et sa corbeille, et un bouton d'ajout.",
         width: 2400,
         height: 1500,
         variant: 'desktop',
       },
       {
         src: '/images/case-studies/quintyss/editeur-texte-riche.webp',
-        alt: "Le texte d'une page se modifie pendant que son rendu s'affiche juste à côté : l'effet est immédiat, sans remise en ligne.",
+        alt: "Éditeur de texte riche de Quintyss V3 ouvert par-dessus la page : une barre d'outils de mise en forme et, en dessous, la liste de liens en cours d'édition.",
         width: 2400,
         height: 1500,
         variant: 'desktop',
       },
       {
         src: '/images/case-studies/quintyss/editeur-mediatheque.webp',
-        alt: "Toutes les images et tous les documents des sites clients sont centralisés dans une médiathèque de près de 800 fichiers, avec recherche et filtres.",
+        alt: "Onglet bibliothèque de l'éditeur de médias : un compteur de 788 fichiers dont 784 sur S3, un champ de recherche, un tri et des filtres par type au-dessus de la grille des fichiers.",
         width: 2400,
         height: 1500,
         variant: 'desktop',
@@ -280,7 +290,7 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
       },
       {
         src: '/images/case-studies/quintyss/kcfribourg-actualites.webp',
-        alt: "Agenda du Karaté Club Fribourg : chaque compétition et chaque stage est une fiche créée dans le CMS, avec sa date, son lieu et sa photo, publiée en grille sur le site.",
+        alt: "Page actualités de kcfribourg.ch : une grille de cartes d'événements, chacune avec sa photo, sa pastille de date et son lieu.",
         width: 2400,
         height: 1500,
         variant: 'desktop',
@@ -294,28 +304,28 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
       },
       {
         src: '/images/case-studies/quintyss/judomarly-accueil.webp',
-        alt: "Page d'accueil du Judo Club Marly, deuxième club en production sur Quintyss V3 : un carrousel plein écran dont le club choisit lui-même la photo, le texte et le bouton.",
+        alt: "Accueil du Judo Club Marly, deuxième club en production sur Quintyss V3 : une diapositive plein écran du carrousel, titre, texte et bouton posés sur une photo du dojo.",
         width: 2400,
         height: 1500,
         variant: 'desktop',
       },
       {
         src: '/images/case-studies/quintyss/judomarly-horaires.webp',
-        alt: 'Plan horaires du Judo Club Marly : les cours de la semaine au dojo, tenus à jour depuis le CMS.',
+        alt: 'Page horaires du Judo Club Marly : les créneaux de lundi à jeudi, chacun avec son heure et sa discipline, judo, karaté, aïkido, kenjutsu et iaïdo.',
         width: 2400,
         height: 1500,
         variant: 'desktop',
       },
       {
         src: '/images/case-studies/quintyss/culturekids-accueil.webp',
-        alt: "Page d'accueil du site Culture Kids V3, un accueil extrascolaire pour les 4 à 12 ans à Fribourg : mise en page illustrée aux couleurs de la structure, déployée et en attente de validation client.",
+        alt: "Accueil du site Culture Kids V3, un accueil extrascolaire pour les 4 à 12 ans à Fribourg : la liste des ateliers Kids et une grande photo ronde d'enfants, en page illustrée.",
         width: 2400,
         height: 1500,
         variant: 'desktop',
       },
       {
         src: '/images/case-studies/quintyss/culturekids-kids-activites.webp',
-        alt: 'Les ateliers Kids présentés en cartes colorées : anglais, arts, cinéma, nature. Le personnel crée et date chaque atelier depuis le CMS.',
+        alt: 'Page Kids Activités du site Culture Kids V3 : quatre cartes colorées, anglais, arts, cinéma et nature, chacune avec son illustration, ses dates et son adresse.',
         width: 2400,
         height: 1500,
         variant: 'desktop',
@@ -343,7 +353,7 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
       },
     ],
     liveClientSites: [{ label: 'kcfribourg.ch ↗', href: 'https://kcfribourg.ch' }],
-    relatedSlugs: ['hosteed', 'moduloop-impact'],
+    relatedSlugs: ['moduloop-kits', 'hosteed'],
   },
 ];
 
