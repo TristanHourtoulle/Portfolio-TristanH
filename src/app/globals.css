@@ -11,6 +11,15 @@
    src/lib/constants.ts (CLIENT_COLORS) for the measured ratios; the hex
    values below are kept in sync with that file by hand, since CSS
    attribute selectors cannot read TypeScript constants.
+
+   Every text-bearing token here is measured against the DARKEST surface
+   it can land on, not against the lightest. The paper scale runs
+   paper-0 -> paper-3, and accent-colored text appears on three of those
+   grounds (paper-0 body, paper-1 for #temoignages / footer / sidebars,
+   and the #realisations tint built on paper-2), so tuning against
+   paper-0 alone silently shipped sub-4.5:1 text on the darker two. The
+   binding surface for --accent and --muted is therefore the
+   #realisations ground, `color-mix(--accent-brand 4%, --paper-2)`.
    ========================================================================== */
 
 :root {
@@ -23,14 +32,27 @@
   --bg: var(--paper-0);
   --bg-soft: var(--paper-1);
   --ink: #24221B;
-  --muted: #6B6455;
+  /* 5.79:1 on paper-0, 5.30:1 on paper-1, 4.56:1 on the darkest
+     #realisations ground. Secondary text lands on all three. */
+  --muted: #655E50;
+  /* Hairline dividers and decorative framing only. Deliberately below
+     3:1: no control is identified by a --rule border alone (every one of
+     them also carries a high-contrast label or glyph), and WCAG 1.4.11
+     does not cover decorative separators. */
   --rule: #D8D2C2;
   --ok: #2E7D46;
+  /* Idle state of non-text controls that must stay perceivable but
+     recessive (carousel pagination dots). 3.39:1 on paper-0, clearing
+     the 1.4.11 threshold for UI components. Distinct from --paper-3,
+     which stays a decorative surface. */
+  --control-idle: #8A8374;
 
-  /* Default accent: also Edukai's brand color. Already 4.66:1 on #F6F3EA,
-     so the decorative and text-safe values are identical here. */
+  /* Edukai's exact brand blue lives in --accent-brand and is used
+     decoratively. --accent is the text-safe darkening of it: #2563EB
+     only reached 3.67:1 on the #realisations ground and 4.27:1 on
+     paper-1, so it could not carry small text there. */
   --accent-brand: #2563EB;
-  --accent: #2563EB;
+  --accent: #2057CE; /* 5.71:1 paper-0, 5.23:1 paper-1, 4.50:1 #realisations */
   --on-accent: var(--paper-0);
 
   --font-sans: var(--font-display), 'Avenir Next', Avenir, Futura, Candara, 'Trebuchet MS', sans-serif;
@@ -41,15 +63,15 @@
    toggled by AccentProvider (src/components/providers/accent-provider.tsx). */
 :root[data-accent="moduloop"] {
   --accent-brand: #00AAAB;
-  --accent: #007C7D; /* 4.53:1 on #F6F3EA */
+  --accent: #006C6D; /* 5.62:1 paper-0, 5.15:1 paper-1, 4.51:1 #realisations */
 }
 :root[data-accent="hosteed"] {
   --accent-brand: #015993;
-  --accent: #015993; /* 6.64:1 on #F6F3EA, no darkening needed */
+  --accent: #015993; /* 6.64:1 paper-0, 6.08:1 paper-1, 5.21:1 #realisations */
 }
 :root[data-accent="quintyss"] {
   --accent-brand: #6F93F4;
-  --accent: #01164E; /* 15.44:1 on #F6F3EA */
+  --accent: #01164E; /* 15.44:1 paper-0, 14.14:1 paper-1, 12.43:1 #realisations */
 }
 
 /* ==========================================================================
@@ -177,7 +199,11 @@ a:hover { text-decoration-thickness: 2px; }
 .btn-primary:hover { opacity: 0.88; }
 .btn-ghost { background: transparent; color: var(--accent); }
 .btn-ghost:hover { background: var(--bg-soft); }
-.btn-invert { background: var(--paper-0); color: var(--accent-brand); border-color: var(--paper-0); }
+/* Sits on the final CTA band, so its label must be read against paper,
+   not against the band. --accent-brand here put Moduloop's teal at
+   2.58:1 and Quintyss' periwinkle at 2.65:1 on --paper-0; --accent is
+   the text-safe pair of the same hue. */
+.btn-invert { background: var(--paper-0); color: var(--accent); border-color: var(--paper-0); }
 .btn-invert:hover { opacity: 0.9; }
 
 /* ==========================================================================
@@ -668,8 +694,16 @@ section + section, .trust { border-top: 1px solid var(--rule); }
    Final CTA
    ========================================================================== */
 
+/* The band paints on --accent, not --accent-brand. It is the only place
+   in the site where the client color becomes a full-bleed text
+   background, and the raw brand values could not carry --paper-0 text:
+   Moduloop reached 2.58:1 and Quintyss 2.65:1. --accent is the same hue
+   deepened until it clears AA (4.51:1 to 15.44:1 depending on client),
+   so the band keeps each client's identity while the headline, the lead
+   and the two controls all become legible. Quintyss shifts most
+   visibly, from periwinkle to deep marine. */
 .cta-final {
-  background: var(--accent-brand);
+  background: var(--accent);
   color: var(--paper-0);
   transition: background-color .45s ease;
 }
@@ -680,10 +714,13 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   font-size: clamp(1.9rem, 4.5vw, 3.1rem);
   max-width: 18ch;
 }
+/* 0.85 alpha left this at 3.80:1 even on the default band. At 0.92 it
+   clears AA on every client band (5.02:1 to 13.13:1) while still
+   reading a step quieter than the headline. */
 .cta-final .lead {
   margin-top: 1rem;
   font-size: 1.1rem;
-  color: rgba(246, 243, 234, 0.85);
+  color: rgba(246, 243, 234, 0.92);
 }
 .cta-final-actions {
   margin-top: 2.25rem;
@@ -692,9 +729,13 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   flex-wrap: wrap;
   align-items: center;
 }
+/* The border is the only thing that shapes this control: the background
+   is transparent and there is no fill to read it by. At 0.55 alpha it
+   was 1.66:1 on the Moduloop band, below the 3:1 that 1.4.11 asks of a
+   UI component boundary. 0.72 clears it on every band (3.70:1+). */
 .copy-email {
   background: transparent;
-  border: 1px solid rgba(246, 243, 234, 0.55);
+  border: 1px solid rgba(246, 243, 234, 0.72);
   color: var(--paper-0);
   font-family: var(--font-mono);
   font-size: 0.875rem;
@@ -815,7 +856,7 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 
 .case-page[data-accent="moduloop"] {
   --accent-brand: #00AAAB;
-  --accent: #007C7D;
+  --accent: #006C6D;
 }
 .case-page[data-accent="hosteed"] {
   --accent-brand: #015993;
@@ -999,11 +1040,16 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   background: none;
   cursor: pointer;
 }
+/* Pagination dots are real controls, so the idle ones need 3:1 against
+   the paper they sit on: --paper-3 gave 1.42:1 and made the whole
+   control near-invisible until hovered. --control-idle is 3.39:1.
+   Current-slide state is never signalled by color alone: the active dot
+   is also scaled up, and the button carries aria-current. */
 .slider-dot span {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: var(--paper-3);
+  background: var(--control-idle);
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .slider-dot:hover span { background: var(--muted); }

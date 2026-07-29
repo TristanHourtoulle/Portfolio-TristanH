@@ -51,19 +51,24 @@ export const NAVIGATION: NavItem[] = [
  * Each client carries two values: `brand` is the exact color pulled from
  * the client's own project, used for decorative, non-text purposes only
  * (identity swatch, header rule, background tints). `ink` is a darkened
- * variant of the same hue, checked against the paper background
- * (#F6F3EA) with the WCAG relative-luminance formula until it clears the
- * 4.5:1 AA threshold for text. See scratchpad/contrast.js for the script
- * used to compute these; ratios are pinned below so a future edit to a
- * brand color is forced to re-verify its ink pair.
+ * variant of the same hue, checked with the WCAG relative-luminance
+ * formula until it clears the 4.5:1 AA threshold for text.
+ *
+ * `ink` is measured against the DARKEST ground it can land on, which is
+ * the `#realisations` section, `color-mix(brand 4%, #E7DECA)`, not
+ * against the lightest paper (#F6F3EA). Tuning against #F6F3EA alone is
+ * what previously shipped accent text at 3.63:1 inside `#realisations`
+ * and 4.15:1 on the #EFE9DA panels. `inkContrastRatio` pins that worst
+ * case, so a future edit to a brand color is forced to re-verify its
+ * ink pair rather than trusting the friendlier paper-0 number.
  *
  * These same hex values are duplicated as CSS custom properties in
  * globals.css (the `[data-accent="..."]` selectors), because CSS
  * attribute selectors cannot read TypeScript constants. Keep both in
  * sync if a client's color ever changes.
  *
- * Edukai is deliberately excluded: its brand color (#2563EB) is
- * identical to the site's default accent, so recoloring the page for it
+ * Edukai is deliberately excluded: its brand color (#2563EB) is already
+ * the site's default `--accent-brand`, so recoloring the page for it
  * would produce no visible change, and it is only a secondary mention
  * rather than a full case study.
  */
@@ -72,24 +77,24 @@ export const CLIENT_COLORS: ClientColor[] = [
     id: 'moduloop',
     name: 'Moduloop',
     brand: '#00AAAB',
-    ink: '#007C7D', // measured ratio: 4.53:1 on #F6F3EA
-    inkContrastRatio: 4.53,
+    ink: '#006C6D', // 4.51:1 on its #realisations ground, 5.62:1 on #F6F3EA
+    inkContrastRatio: 4.51,
     logo: { src: '/images/clients/moduloop.png', width: 300, height: 79 },
   },
   {
     id: 'hosteed',
     name: 'Hosteed',
     brand: '#015993',
-    ink: '#015993', // already 6.64:1 on #F6F3EA, no darkening required
-    inkContrastRatio: 6.64,
+    ink: '#015993', // 5.21:1 on its #realisations ground, no darkening required
+    inkContrastRatio: 5.21,
     logo: { src: '/images/clients/hosteed.png', width: 500, height: 271 },
   },
   {
     id: 'quintyss',
     name: 'Quintyss',
     brand: '#6F93F4', // icon blue, decorative use only
-    ink: '#01164E', // marine, already 15.44:1 on #F6F3EA
-    inkContrastRatio: 15.44,
+    ink: '#01164E', // marine, 12.43:1 on its #realisations ground
+    inkContrastRatio: 12.43,
     logo: { src: '/images/clients/quintyss.svg', width: 65, height: 65 },
   },
 ];
