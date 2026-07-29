@@ -24,6 +24,16 @@ export async function generateStaticParams() {
   return CASE_STUDY_PAGES.map((page) => ({ slug: page.slug }));
 }
 
+/**
+ * Closes the route to anything `generateStaticParams` did not list. The
+ * default (`true`) renders unknown slugs on demand, so every crawler and
+ * scanner probing /realisations/wp-admin would cost a server render before
+ * reaching the `notFound()` below. With this set, Next answers those
+ * straight from the static 404 instead, and the guard in the component
+ * only ever fires in development.
+ */
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
   const { slug } = await params;
   const page = CASE_STUDY_PAGE_BY_SLUG[slug];
@@ -90,11 +100,25 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   return (
     <div className="case-page" data-accent={page.clientId}>
       <main id="contenu" tabIndex={-1}>
+        {/*
+          A real trail, now that /realisations exists as a route: the middle
+          segment is the parent page itself, not the homepage fragment the
+          detail pages used to point back at. The current page closes the
+          list as plain text rather than as a link to itself.
+        */}
         <nav className="case-breadcrumb" aria-label="Fil d'Ariane">
           <div className="wrap">
-            <Link className="back-link" href="/#realisations">
-              ← Retour aux réalisations
-            </Link>
+            <ol className="breadcrumb-trail">
+              <li>
+                <Link href="/">Accueil</Link>
+              </li>
+              <li>
+                <Link href="/realisations">Réalisations</Link>
+              </li>
+              <li>
+                <span aria-current="page">{page.title}</span>
+              </li>
+            </ol>
           </div>
         </nav>
         <CaseStudyHero page={page} />

@@ -852,29 +852,53 @@ section + section, .trust { border-top: 1px solid var(--rule); }
    links, the eyebrow, .cta-final's background...) recolors with zero
    client JS. Values are kept in sync with CLIENT_COLORS in constants.ts
    and the :root[data-accent] block above by hand.
+
+   `.case-index-card` joins each selector below because the /realisations
+   index applies the same mechanism at a smaller scope: it shows all four
+   clients at once, so the accent is set per card instead of per page.
+   Declaring it here keeps the three hex pairs in a single place.
    ========================================================================== */
 
-.case-page[data-accent="moduloop"] {
+.case-page[data-accent="moduloop"],
+.case-index-card[data-accent="moduloop"] {
   --accent-brand: #00AAAB;
   --accent: #006C6D;
 }
-.case-page[data-accent="hosteed"] {
+.case-page[data-accent="hosteed"],
+.case-index-card[data-accent="hosteed"] {
   --accent-brand: #015993;
   --accent: #015993;
 }
-.case-page[data-accent="quintyss"] {
+.case-page[data-accent="quintyss"],
+.case-index-card[data-accent="quintyss"] {
   --accent-brand: #6F93F4;
   --accent: #01164E;
 }
 
+/* Breadcrumb. Shared by /realisations and /realisations/[slug], which open
+   on the same trail, so the rules live here once rather than once per
+   page. Kept in the mono voice used by every other piece of metadata on
+   these pages (period, stack, status badge). */
 .case-breadcrumb { padding-block: 1.25rem; }
-.back-link {
+.breadcrumb-trail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  list-style: none;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   color: var(--muted);
-  text-decoration: none;
 }
-.back-link:hover { color: var(--accent); }
+.breadcrumb-trail a { color: var(--muted); text-decoration: none; }
+.breadcrumb-trail a:hover { color: var(--accent); }
+/* Separator drawn as generated content: it is punctuation between items,
+   not content, so it stays out of the markup and out of the list items'
+   own text. */
+.breadcrumb-trail li + li::before { content: "›"; margin-right: 0.45rem; }
+/* The current page is the only item that is not a link. Ink rather than
+   muted, so the trail reads as ending somewhere. */
+.breadcrumb-trail [aria-current="page"] { color: var(--ink); }
 
 /* Hero */
 
@@ -1240,3 +1264,70 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 .related-card h3 { margin-top: 1rem; font-size: 1.15rem; }
 .related-card .mono { color: var(--muted); margin-top: 0.35rem; }
 .related-link { display: inline-block; margin-top: 1rem; font-weight: 600; color: var(--accent); }
+
+/* ==========================================================================
+   Réalisations index (/realisations)
+   ==========================================================================
+   The four case studies laid out as one grid, on the --paper-1 ground the
+   site already uses to seat cards (see .trust, #temoignages, the footer),
+   so the --paper-0 cards read as objects on a surface rather than as
+   outlines drawn on the page. The per-card `data-accent` is declared with
+   the detail-page selectors above.
+   ========================================================================== */
+
+.case-index { background: var(--paper-1); }
+
+.case-index-head { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+.case-index-head h1 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); max-width: 24ch; }
+.case-index-head .lead { margin-top: 1rem; color: var(--muted); max-width: 62ch; }
+
+/* `min(100%, 22rem)` rather than a bare 22rem: below a 22rem viewport the
+   bare form would make the track wider than the container and push the
+   page into a horizontal scroll. */
+.case-index-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+}
+/* The whole card is the anchor, so it also has to be the full height of
+   its grid cell: two cards on the same row must end on the same line even
+   when one lead runs longer than the other. */
+.case-index-card {
+  display: block;
+  height: 100%;
+  background: var(--paper-0);
+  border: 1px solid var(--rule);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  color: var(--ink);
+  text-decoration: none;
+}
+.case-index-card:hover { border-color: var(--accent); }
+.case-index-meta { display: block; margin-top: 1.25rem; color: var(--muted); }
+.case-index-card h2 { margin-top: 0.5rem; font-size: clamp(1.3rem, 2.4vw, 1.6rem); }
+/* The 65ch cap on `p` is meant for prose in a full-width column; inside a
+   card the card is already the measure. */
+.case-index-lead { margin-top: 0.85rem; color: var(--muted); max-width: none; }
+.case-index-card .stack { display: block; margin-top: 1.1rem; }
+.case-index-card .related-link { margin-top: 1.4rem; }
+
+/* ==========================================================================
+   Error pages (404 and the route error boundary)
+   ==========================================================================
+   Both are a single centred column with two ways out. They deliberately
+   look like an ordinary page of the site rather than a system screen:
+   the header, its booking button and the footer stay in place, so a
+   visitor who lands here by a stale link is still one click from the
+   thing the site exists for.
+   ========================================================================== */
+
+.error-page { padding-block: clamp(4rem, 10vw, 7rem); }
+.error-page h1 { font-size: clamp(2rem, 4.5vw, 3rem); max-width: 18ch; }
+.error-page .lead { margin-top: 1.25rem; font-size: 1.125rem; color: var(--muted); max-width: 52ch; }
+.error-actions {
+  margin-top: 2.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.error-digest { margin-top: 2rem; color: var(--muted); }

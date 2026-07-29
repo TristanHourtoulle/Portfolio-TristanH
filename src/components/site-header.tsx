@@ -19,7 +19,7 @@ export function SiteHeader() {
           <ul>
             {NAVIGATION.map((item) => (
               <li key={item.id}>
-                <a href={item.href}>{item.label}</a>
+                <Link href={item.href}>{item.label}</Link>
               </li>
             ))}
           </ul>

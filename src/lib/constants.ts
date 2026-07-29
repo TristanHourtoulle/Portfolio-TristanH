@@ -36,10 +36,20 @@ export const SITE_CONFIG: SiteConfig = {
  * with no navigation. From any other page it resolves to a real
  * navigation back to the homepage, landing on the right section. A bare
  * `#id` would silently do nothing on any page other than the homepage.
+ * next/link handles this form natively, so the header and footer render
+ * these through `Link` like any other route.
+ *
+ * `realisations` is the one entry that is not a fragment: it points at
+ * the real /realisations page rather than at the homepage section of the
+ * same name. The header and the footer are the only surfaces present on
+ * every page, so they are also the only way that page gets site-wide
+ * internal links instead of being reachable from the homepage alone. The
+ * homepage section keeps its own entry point through the hero's
+ * "Voir mes réalisations" call to action, which still scrolls in place.
  */
 export const NAVIGATION: NavItem[] = [
   { id: 'services', label: 'Services', href: '/#services' },
-  { id: 'realisations', label: 'Réalisations', href: '/#realisations' },
+  { id: 'realisations', label: 'Réalisations', href: '/realisations' },
   { id: 'processus', label: 'Processus', href: '/#processus' },
   { id: 'a-propos', label: 'À propos', href: '/#a-propos' },
   { id: 'faq', label: 'FAQ', href: '/#faq' },

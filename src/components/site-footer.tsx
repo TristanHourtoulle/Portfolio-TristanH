@@ -43,27 +43,50 @@ export function SiteFooter() {
           <ul>
             {NAVIGATION.map((item) => (
               <li key={item.id}>
-                <a href={item.href}>{item.label}</a>
+                <Link href={item.href}>{item.label}</Link>
               </li>
             ))}
           </ul>
         </nav>
         <nav aria-label="Liens externes et légaux">
           <ul>
+            {/*
+              Three kinds of destination share this list, and only one of
+              them is a route. `/mentions-legales` goes through next/link so
+              it is prefetched and navigated client-side like the rest of the
+              site; the GitHub and LinkedIn profiles open in a new tab with
+              the usual `rel`; the `mailto:` hands off to the mail client and
+              must stay a plain anchor, since next/link only knows how to
+              route URLs this app can render.
+            */}
             {FOOTER_LEGAL_LINKS.map((link) => {
               const Icon = link.icon ? ICONS[link.icon] : null;
-              const isExternal = link.href.startsWith('http');
+              const isInternal = link.href.startsWith('/');
+              const isNewTab = link.href.startsWith('http');
+              const className = Icon ? 'icon-link' : undefined;
+              const content = (
+                <>
+                  {Icon ? <Icon aria-hidden="true" className="w-4 h-4 shrink-0" /> : null}
+                  {link.label}
+                </>
+              );
+
               return (
                 <li key={link.id}>
-                  <a
-                    href={link.href}
-                    target={isExternal ? '_blank' : undefined}
-                    rel={isExternal ? 'noopener noreferrer' : undefined}
-                    className={Icon ? 'icon-link' : undefined}
-                  >
-                    {Icon ? <Icon aria-hidden="true" className="w-4 h-4 shrink-0" /> : null}
-                    {link.label}
-                  </a>
+                  {isInternal ? (
+                    <Link href={link.href} className={className}>
+                      {content}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      target={isNewTab ? '_blank' : undefined}
+                      rel={isNewTab ? 'noopener noreferrer' : undefined}
+                      className={className}
+                    >
+                      {content}
+                    </a>
+                  )}
                 </li>
               );
             })}

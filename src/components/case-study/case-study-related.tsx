@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { CLIENT_COLOR_BY_ID } from '@/lib/constants';
 import { CASE_STUDY_PAGE_BY_SLUG } from '@/lib/case-studies-content';
 
@@ -31,7 +32,7 @@ export function CaseStudyRelated({ relatedSlugs }: CaseStudyRelatedProps) {
           {relatedPages.map((page) => {
             const client = CLIENT_COLOR_BY_ID[page.clientId];
             return (
-              <a key={page.slug} className="related-card" href={`/realisations/${page.slug}`}>
+              <Link key={page.slug} className="related-card" href={`/realisations/${page.slug}`}>
                 <span className="hero-logo">
                   <Image
                     src={client.logo.src}
@@ -43,8 +44,16 @@ export function CaseStudyRelated({ relatedSlugs }: CaseStudyRelatedProps) {
                 </span>
                 <h3>{page.title}</h3>
                 <p className="mono">{page.period}</p>
-                <span className="related-link">Lire l&apos;étude de cas →</span>
-              </a>
+                {/*
+                  The whole card is the link, so the h3 inside it is already
+                  part of the accessible name and of the anchor text: unlike
+                  the homepage card, this closing line needs no title of its
+                  own. The arrow stays decoration.
+                */}
+                <span className="related-link">
+                  Lire l&apos;étude de cas <span aria-hidden="true">→</span>
+                </span>
+              </Link>
             );
           })}
         </div>
