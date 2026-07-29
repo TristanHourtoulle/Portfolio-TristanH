@@ -1143,22 +1143,33 @@ section + section, .trust { border-top: 1px solid var(--rule); }
    so every band reserves at least what it needs. Over-reserving never
    shifts anything; under-reserving does. One line stays in `em` so the
    reserve tracks the caption's own line box if the user scales text. */
+/* The caption box reserves its height by holding every caption of the
+   carousel at once, stacked in a single grid cell, with all but the current
+   one hidden. `visibility: hidden` keeps a box in the layout (unlike
+   `display: none`) and removes the text from the accessibility tree, so the
+   cell measures the tallest caption while only one is seen or announced.
+
+   This replaces a set of hand-tuned `min-height` values, one per breakpoint,
+   calibrated on the longest caption that existed the day they were written.
+   That reserve was an invariant nothing enforced: a longer caption added
+   later would have quietly brought the layout shift back. Here the reserve is
+   computed by the browser from the captions actually present, at whatever
+   width the visitor is on, so it cannot fall out of date. */
 .slider-caption {
+  display: grid;
   margin-top: 0.9rem;
   color: var(--muted);
   font-size: 0.9375rem;
   max-width: 70ch;
-  min-height: 8.25em; /* 5 lines */
 }
-@media (min-width: 375px) {
-  .slider-caption { min-height: 6.6em; } /* 4 lines */
+.slider-caption > p {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  /* Beats the global `p { max-width: 65ch }`, which would otherwise wrap the
+     captions narrower than the 70ch box that measures them. */
+  max-width: none;
 }
-@media (min-width: 500px) {
-  .slider-caption { min-height: 4.95em; } /* 3 lines */
-}
-@media (min-width: 700px) {
-  .slider-caption { min-height: 3.3em; } /* 2 lines */
-}
+.slider-caption > p[data-current='true'] { visibility: visible; }
 
 /* Pagination on the left, play/pause on the right, on one baseline. The
    row keeps a min-height so that hiding the toggle under

@@ -212,7 +212,25 @@ export function CaseStudySlider({ images, label }: CaseStudySliderProps) {
         </div>
       </div>
 
-      <p className="slider-caption">{current.alt}</p>
+      {/*
+        Every caption is rendered, not just the current one. The others are
+        hidden by `visibility: hidden` in globals.css, which keeps their boxes
+        in the layout and out of the accessibility tree, and all of them share
+        one grid cell. The box therefore reserves exactly the height of this
+        case study's longest caption at the current width, so changing slide
+        cannot shift what sits below it.
+
+        The alternative was the previous one: a `min-height` per breakpoint,
+        measured by hand against the longest caption of the day. It worked
+        until someone wrote a longer caption, and nothing would have said so.
+      */}
+      <div className="slider-caption">
+        {images.map((image, captionIndex) => (
+          <p key={image.src} data-current={captionIndex === index}>
+            {image.alt}
+          </p>
+        ))}
+      </div>
 
       {count > 1 && (
         <div className="slider-controls">
