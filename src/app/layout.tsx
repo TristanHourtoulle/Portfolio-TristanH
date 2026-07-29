@@ -1,9 +1,34 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SkipLink } from '@/components/skip-link';
 import { SiteHeader } from '@/components/site-header';
+import { CalendlyConversionTracker } from '@/components/analytics/calendly-conversion-tracker';
 import { apfelGrotezk, commitMono } from '@/lib/fonts';
 import { SITE_CONFIG } from '@/lib/constants';
 import './globals.css';
+
+/**
+ * Google Search Console ownership token, read from the environment so no
+ * placeholder is ever committed. An invented value would ship a meta tag
+ * claiming an ownership Google cannot confirm, which is worse than having
+ * no tag at all.
+ *
+ * To fill it in:
+ *   1. Search Console > Add property > URL prefix >
+ *      https://www.tristanhourtoulle.fr
+ *   2. Choose the "HTML tag" verification method and copy only the value
+ *      of the `content` attribute, not the whole `<meta>` element.
+ *   3. Vercel > Project > Settings > Environment Variables > add
+ *      GOOGLE_SITE_VERIFICATION with that value, scoped to Production.
+ *   4. Redeploy, then press Verify in Search Console.
+ *
+ * Read at build time rather than through `NEXT_PUBLIC_`: this file is
+ * server-only, so the value never needs to reach the client bundle. The
+ * emptiness test covers the variable being declared but blank, which is
+ * what an accidentally cleared Vercel field produces.
+ */
+const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
 
 /**
  * `metadataBase` is what turns every relative metadata path below and in
@@ -61,6 +86,16 @@ export const metadata: Metadata = {
     description:
       "Développeur web full-stack et designer freelance. Un seul interlocuteur du premier appel à la mise en ligne.",
   },
+  /**
+   * Spread rather than assigned so that an unset token emits no
+   * `verification` key at all. Passing `{ google: undefined }` would be
+   * harmless today, but the conditional spread is what guarantees no empty
+   * `<meta name="google-site-verification" content="">` can ever reach the
+   * HTML if Next changes how it serialises undefined values.
+   */
+  ...(googleSiteVerification
+    ? { verification: { google: googleSiteVerification } }
+    : {}),
 };
 
 export default function RootLayout({
@@ -74,6 +109,34 @@ export default function RootLayout({
         <SkipLink />
         <SiteHeader />
         {children}
+        {/*
+          Measurement, kept at the end of the body so it can never delay
+          anything the visitor is waiting for. All three render null and
+          inject their work from an effect.
+
+          Vercel Web Analytics and Speed Insights are used rather than a
+          self-hosted counter for one decisive reason: they are the only
+          option that adds no third-party origin and no cookie. Both load
+          their collector from /_vercel/insights and /_vercel/speed-insights
+          on this very domain, first party, and both identify a visit with a
+          server-side hash of the request that is discarded after 24 hours
+          instead of storing anything on the device. Nothing is written to
+          document.cookie, localStorage or sessionStorage, so the site keeps
+          its clean posture: no consent banner, and mentions legales that
+          stay true.
+
+          The self-hosted alternative (Plausible or Umami on the VPS) is
+          equally cookieless and would keep the data in the EU, which is a
+          genuine advantage since Vercel Inc. is a US processor. It was not
+          taken here because it means a second origin to load a script from,
+          a server to keep patched, and a database to back up, for a site
+          whose entire measurement need is "how many people clicked the
+          booking link". If EU-only processing ever becomes a requirement,
+          this block is the only thing that changes.
+        */}
+        <Analytics />
+        <SpeedInsights />
+        <CalendlyConversionTracker />
       </body>
     </html>
   );
