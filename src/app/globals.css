@@ -147,6 +147,23 @@ p { max-width: 65ch; }
 a { color: var(--accent); text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
 
+/* Links sitting inside a paragraph of body text are underlined.
+   Tailwind's preflight resets `a { text-decoration: inherit }`, and since
+   nothing above an anchor declares one, every link on this site resolves
+   to `none`. That is fine for the header, the footer, the breadcrumb and
+   the cards, which are all visibly link-shaped without it, but not for a
+   link in running prose: there the only remaining cue is the accent
+   colour, and `--accent` #2057CE against `--muted` #655E50 measures
+   1.01:1. The two are the same lightness, so a reader with a colour
+   vision deficiency, or anyone on a greyscale display, cannot see the
+   link at all. That is WCAG 2.1 AA 1.4.1 Use of Color, which allows
+   colour as the sole cue only above 3:1.
+
+   `text-underline-offset: 3px` above already keeps the rule clear of the
+   descenders, which matters here because French prose is full of them. */
+.offers-note a,
+.landing-prose a { text-decoration: underline; }
+
 .mono {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
