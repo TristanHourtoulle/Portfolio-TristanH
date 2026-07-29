@@ -1081,11 +1081,21 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   .slider-caption { min-height: 3.3em; } /* 2 lines */
 }
 
+/* Pagination on the left, play/pause on the right, on one baseline. The
+   row keeps a min-height so that hiding the toggle under
+   prefers-reduced-motion cannot shorten it and pull the narrative up. */
+.slider-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.9rem;
+  min-height: 2.1rem;
+}
+
 .slider-dots {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 0.9rem;
 }
 .slider-dot {
   width: 1.5rem;
@@ -1115,6 +1125,34 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   transform: scale(1.5);
 }
 
+/* The one control on this page that has to be findable without touching
+   anything, since it is what WCAG 2.2.2 hangs on. It is therefore a
+   labelled pill and not a bare glyph: at 12px the difference between two
+   bars and a triangle is not a reliable signal, and "PAUSE" is. The
+   framing borrows the page's own vocabulary (mono caps, hairline rule,
+   accent on hover) so it reads as part of the caption line rather than as
+   a media player dropped into it. --muted on paper-0 is 5.79:1, well past
+   the 4.5:1 the small type needs. */
+.slider-toggle {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: none;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--rule);
+  background: none;
+  color: var(--muted);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.slider-toggle svg { width: 0.7rem; height: 0.7rem; flex: none; }
+.slider-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
 /* Announced by screen readers only: the visible caption already carries
    the same text for sighted users. */
 .slider-status {
@@ -1130,11 +1168,17 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 }
 
 .mobile-views { margin-top: clamp(2rem, 4vw, 3rem); }
+/* This label is a <p>, not a heading (it names a row of thumbnails, it is
+   not a topic of the page). `line-height` is restated here because it was
+   previously inherited from the `h1, h2, h3` rule: without it the label
+   would pick up the body's 1.65 and grow its own box by ~13px, pushing
+   every thumbnail down. */
 .mobile-views-title {
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-weight: 400;
+  line-height: 1.12;
 }
 .mobile-views-list {
   list-style: none;
@@ -1167,6 +1211,11 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 
 @media (prefers-reduced-motion: reduce) {
   .slider-track { transition: none; }
+  /* Autoplay is off entirely under this query (see case-study-slider.tsx),
+     so a play/pause control here would govern nothing. Hidden in CSS
+     rather than unmounted in React so it is already absent on first
+     paint and never shifts the row. */
+  .slider-toggle { display: none; }
 }
 
 /* Content (sidebar + narrative) */
