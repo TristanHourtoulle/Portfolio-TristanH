@@ -1479,3 +1479,186 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   gap: 1rem;
 }
 .error-digest { margin-top: 2rem; color: var(--muted); }
+
+/* ==========================================================================
+   Landing pages (/refonte-site-web, /tarifs, /site-vitrine)
+   ==========================================================================
+   Three entry pages that answer one search intent each, built on a single
+   rhythm: head, context, scope, process, price, proof, related. They share
+   this block rather than owning three near-identical ones, because the
+   whole point of the set is that a visitor arriving on any of the three
+   recognises the same page.
+
+   Almost everything they need already exists: `.wrap`, `.eyebrow`,
+   `.section-head`, `.process-list`, `.related-cards`, `.btn`, and the
+   generic `section { padding-block }` / `section + section { border-top }`
+   pair that gives every page on the site its vertical rhythm for free.
+   What follows is only what had no equivalent: a page head that is an
+   <h1> rather than the <h2> `.section-head` assumes, a prose column (the
+   reset zeroes every margin, so paragraphs need their own spacing), the
+   price table, and the two-up comparison cards.
+   ========================================================================== */
+
+/* Same paper-1 ground as `.case-index`, so the opening screen of a landing
+   page and the opening screen of /realisations read as the same object. */
+.landing-head { background: var(--paper-1); }
+.landing-head h1 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); max-width: 24ch; }
+.landing-head .lead { margin-top: 1rem; font-size: 1.125rem; color: var(--muted); max-width: 62ch; }
+
+/* Price and delay pulled out of the body copy and set in the mono voice the
+   site uses for every other piece of hard metadata (period, stack, status).
+   A buyer who came from a "combien coûte" query gets the number without
+   reading a paragraph first. */
+.landing-terms {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1.5rem;
+  color: var(--muted);
+}
+.landing-terms strong { color: var(--ink); font-weight: 600; }
+
+.landing-actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Prose column. `p` already carries the 65ch measure from the base rules;
+   only the vertical spacing and the muted body colour are set here. */
+.landing-prose p { margin-top: 0.9rem; color: var(--muted); }
+.landing-prose > p:first-child { margin-top: 0; }
+.landing-prose h3 { margin-top: 2rem; font-size: 1.15rem; color: var(--ink); }
+.landing-prose h3 + p { margin-top: 0.6rem; }
+
+/* Mirrors `.offer ul li`: same middot bullet in the accent colour, so a
+   scope list on a landing page and a scope list on the homepage are the
+   same list. Kept as its own selector rather than reusing `.offer ul`,
+   which only exists inside the three-column offer grid. */
+.landing-checks {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  max-width: 60ch;
+}
+.landing-checks li { position: relative; padding-left: 1.1rem; }
+.landing-checks li::before {
+  content: "\00b7";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+/* The list and the prose that qualifies it are siblings, and `.landing-prose`
+   zeroes the top margin of its own first paragraph so a section can open on
+   one. That leaves no gap at all when a list comes first, which reads as if
+   the paragraph were a fifth bullet. */
+.landing-checks + .landing-prose { margin-top: 2rem; }
+
+/* A real table rather than a re-run of the homepage offer cards: /tarifs
+   answers a benchmark question ("en moyenne", "professionnel", "par mois"),
+   and a benchmark is read by scanning a column, not by reading three
+   sales blocks in sequence. It also keeps the page from duplicating the
+   homepage services section wholesale. */
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+.price-table th,
+.price-table td {
+  padding: 1rem 1.25rem 1rem 0;
+  border-top: 1px solid var(--rule);
+  vertical-align: top;
+}
+.price-table thead th {
+  border-top: 0;
+  padding-top: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.price-table tbody tr:last-child th,
+.price-table tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+.price-table th[scope="row"] { font-weight: 600; padding-right: 1.5rem; }
+.price-table th[scope="row"] span {
+  display: block;
+  margin-top: 0.35rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+/* The price cell wears the homepage's own `.price` class, small note and
+   all, so the number is set identically wherever a visitor meets it. Only
+   the size is pulled back: 1.3rem is right for a card, too loud for the
+   third column of a table read as a list. */
+.price-table td.price { font-size: 1.15rem; }
+.price-table td.price small { margin-bottom: 0.15rem; }
+
+/* Under 560px the three columns stop fitting side by side, so each row
+   becomes its own block: the offer name on one line, then the price and
+   the delay as a labelled pair. The <th scope="row"> keeps the row header
+   association intact for screen readers whatever the visual layout. */
+@media (max-width: 560px) {
+  .price-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .price-table tr { display: block; border-top: 1px solid var(--rule); padding-block: 1rem; }
+  .price-table tbody tr:last-child { border-bottom: 1px solid var(--rule); }
+  .price-table th,
+  .price-table td { display: block; border: 0; padding: 0; }
+  .price-table td { margin-top: 0.6rem; }
+  .price-table td::before {
+    content: attr(data-label) " ";
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* Two-up comparison, used for the "ou" questions on /site-vitrine
+   (site vitrine ou landing page, site vitrine ou e-commerce). Auto-fit so
+   the pair sits side by side on desktop and stacks below ~40rem without a
+   breakpoint of its own. */
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-top: 1.5rem;
+}
+.compare-card {
+  border: 1px solid var(--rule);
+  background: var(--paper-1);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+.compare-card h3 { font-size: 1.15rem; }
+.compare-card p { margin-top: 0.75rem; color: var(--muted); max-width: none; }
+
+/* Closing cross-links. Reuses `.related-cards` wholesale, with two
+   corrections.
+
+   The track switches from `auto-fill` to `auto-fit`. On the case-study
+   pages that grid sits inside the narrow narrative column, where
+   `auto-fill` at 240px produces exactly the two or three columns there
+   are cards for. Here it spans the full `.wrap`, so `auto-fill` laid out
+   four 240px tracks and left two of them empty: two cards ended up
+   huddled against the left edge of a very wide band. `auto-fit` collapses
+   the empty tracks and lets the cards share the width.
+
+   The inner spacing is corrected because those cards were shaped around a
+   client logo sitting above the title, and these carry a mono label. */
+.landing-links {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+.landing-links .related-card .mono { display: block; margin-top: 0; color: var(--muted); }
+.landing-links .related-card h3 { margin-top: 0.5rem; }
+.landing-links .related-card p { margin-top: 0.75rem; color: var(--muted); max-width: none; }
