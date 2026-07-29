@@ -1,6 +1,23 @@
 import type { Metadata } from 'next';
 import { SiteFooter } from '@/components/site-footer';
+import { SITE_CONFIG } from '@/lib/constants';
 import { LEGAL_CONTENT } from '@/lib/legal-content';
+
+/**
+ * Bare subject: the root layout's `title.template` appends the brand suffix
+ * to `<title>`, so repeating it here would duplicate it.
+ */
+const PAGE_TITLE = 'Mentions légales';
+
+/**
+ * Social titles are spelled out in full instead. Next applies `title.template`
+ * to `<title>` only, never to `openGraph.title` or `twitter.title`, and a
+ * shared card is stripped of any site chrome that would otherwise carry the
+ * brand, so the suffix has to travel with the string itself.
+ */
+const SOCIAL_TITLE = `${PAGE_TITLE} · ${SITE_CONFIG.brandName}`;
+const PAGE_DESCRIPTION =
+  "Mentions légales du portfolio de Tristan Hourtoulle : éditeur, hébergeur, propriété intellectuelle, données personnelles et droit applicable.";
 
 /**
  * Not indexed on purpose: this is administrative boilerplate with no
@@ -10,10 +27,28 @@ import { LEGAL_CONTENT } from '@/lib/legal-content';
  * destinations such as Calendly's privacy policy are not orphaned.
  */
 export const metadata: Metadata = {
-  title: 'Mentions légales · Tristan Hourtoulle',
-  description:
-    "Mentions légales du portfolio de Tristan Hourtoulle : éditeur, hébergeur, propriété intellectuelle, données personnelles et droit applicable.",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   robots: { index: false, follow: true },
+  alternates: { canonical: '/mentions-legales' },
+  /**
+   * Redeclared in full because Next replaces the parent `openGraph`
+   * instead of merging it: inheriting the layout's block would leave this
+   * page advertising the homepage as its `og:url`.
+   */
+  openGraph: {
+    title: SOCIAL_TITLE,
+    description: PAGE_DESCRIPTION,
+    type: 'website',
+    locale: 'fr_FR',
+    siteName: SITE_CONFIG.brandName,
+    url: '/mentions-legales',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SOCIAL_TITLE,
+    description: PAGE_DESCRIPTION,
+  },
 };
 
 export default function MentionsLegalesPage() {
@@ -21,7 +56,7 @@ export default function MentionsLegalesPage() {
 
   return (
     <>
-      <main id="contenu">
+      <main id="contenu" tabIndex={-1}>
         <section className="legal" aria-labelledby="mentions-title">
           <div className="wrap">
             <div className="legal-head">

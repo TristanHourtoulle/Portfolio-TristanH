@@ -8,6 +8,7 @@ import { CaseStudyRelated } from '@/components/case-study/case-study-related';
 import { CtaSection } from '@/components/sections/cta-section';
 import { SiteFooter } from '@/components/site-footer';
 import { CASE_STUDY_PAGES, CASE_STUDY_PAGE_BY_SLUG } from '@/lib/case-studies-content';
+import { SITE_CONFIG } from '@/lib/constants';
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>;
@@ -31,16 +32,41 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
     return {};
   }
 
-  const title = `${page.title} · Étude de cas · Tristan Hourtoulle`;
+  /**
+   * The trailing brand suffix is supplied by the root layout's
+   * `title.template`, so it must not be spelled out here.
+   */
+  const title = `${page.title} · Étude de cas`;
 
+  /**
+   * Social titles carry the suffix explicitly: Next applies `title.template`
+   * to `<title>` only, and a shared card has no site chrome to supply the
+   * brand on its own.
+   */
+  const socialTitle = `${title} · ${SITE_CONFIG.brandName}`;
+  const path = `/realisations/${page.slug}`;
+
+  /**
+   * `openGraph` is redeclared in full rather than inherited: Next replaces
+   * the parent object wholesale instead of merging its fields, so omitting
+   * `siteName` here would silently drop the one set in the root layout.
+   */
   return {
     title,
     description: page.lead,
+    alternates: { canonical: path },
     openGraph: {
-      title,
+      title: socialTitle,
       description: page.lead,
       type: 'article',
       locale: 'fr_FR',
+      siteName: SITE_CONFIG.brandName,
+      url: path,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: socialTitle,
+      description: page.lead,
     },
   };
 }
@@ -63,7 +89,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
   return (
     <div className="case-page" data-accent={page.clientId}>
-      <main id="contenu">
+      <main id="contenu" tabIndex={-1}>
         <nav className="case-breadcrumb" aria-label="Fil d'Ariane">
           <div className="wrap">
             <Link className="back-link" href="/#realisations">

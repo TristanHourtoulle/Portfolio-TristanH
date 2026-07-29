@@ -21,6 +21,7 @@ import type {
 export const SITE_CONFIG: SiteConfig = {
   brandName: 'Tristan Hourtoulle',
   brandTagline: 'design et dev',
+  siteUrl: 'https://www.tristanhourtoulle.fr',
   calendlyUrl: 'https://calendly.com/tristan68420/30min',
   email: 'tristan.hourtoulle@icloud.com',
 };

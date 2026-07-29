@@ -233,6 +233,12 @@ export interface HeroContent {
 export interface SiteConfig {
   brandName: string;
   brandTagline: string;
+  /**
+   * Canonical production origin, without a trailing slash. Single source of
+   * truth for every absolute URL the site emits (metadataBase, canonicals,
+   * Open Graph), so no page has to hardcode the domain again.
+   */
+  siteUrl: string;
   calendlyUrl: string;
   email: string;
 }

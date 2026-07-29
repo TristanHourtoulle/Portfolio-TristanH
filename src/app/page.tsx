@@ -8,7 +8,18 @@ import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { AboutSection } from '@/components/sections/about-section';
 import { FaqSection } from '@/components/sections/faq-section';
 import { CtaSection } from '@/components/sections/cta-section';
+import type { Metadata } from 'next';
 import { SiteFooter } from '@/components/site-footer';
+
+/**
+ * Only the canonical is declared here: title, description and Open Graph
+ * are already the site-wide defaults set in the root layout, and
+ * redeclaring them would just create a second place to keep in sync. The
+ * path is relative, resolved against `metadataBase`.
+ */
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
 
 /**
  * The availability badge in HeroSection reads "today" on the server. A
@@ -23,7 +34,7 @@ export const revalidate = 86400;
 export default function Home() {
   return (
     <AccentProvider>
-      <main id="contenu">
+      <main id="contenu" tabIndex={-1}>
         <HeroSection />
         <TrustSection />
         <ServicesSection />
