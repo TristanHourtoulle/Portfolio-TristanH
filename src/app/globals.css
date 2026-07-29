@@ -1016,12 +1016,45 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   .slider-arrow { background: var(--paper-0); }
 }
 
+/* The carousel advances on its own every 5s, so every caption swap is a
+   layout change the user did not ask for and counts in full towards CLS,
+   again and again for as long as the page stays open. The reserve has to
+   fit the longest caption in the project, not the current one.
+
+   `min-height: 1.65em` only ever held one line: the computed
+   line-height here is 24.75px (font-size 15px, the unitless 1.65
+   inherited from body) and 1.65em is exactly 24.75px. Captions are full
+   sentences, so on a phone the box was going from one line to four and
+   dragging the pagination dots and everything under them with it.
+
+   The values below are measured, not estimated: every alt string in
+   src/lib/case-studies-content.ts was injected into the real caption
+   element on all four case-study pages and the resulting box height read
+   back. The worst case is the Judo Club Marly caption, and it breaks
+   line count at these viewport widths:
+
+     >= 285px  5 lines      >= 460px  3 lines
+     >= 355px  4 lines      >= 655px  2 lines (the 70ch cap takes over)
+
+   Each breakpoint is set above its measured boundary rather than on it,
+   so every band reserves at least what it needs. Over-reserving never
+   shifts anything; under-reserving does. One line stays in `em` so the
+   reserve tracks the caption's own line box if the user scales text. */
 .slider-caption {
   margin-top: 0.9rem;
   color: var(--muted);
   font-size: 0.9375rem;
   max-width: 70ch;
-  min-height: 1.65em;
+  min-height: 8.25em; /* 5 lines */
+}
+@media (min-width: 375px) {
+  .slider-caption { min-height: 6.6em; } /* 4 lines */
+}
+@media (min-width: 500px) {
+  .slider-caption { min-height: 4.95em; } /* 3 lines */
+}
+@media (min-width: 700px) {
+  .slider-caption { min-height: 3.3em; } /* 2 lines */
 }
 
 .slider-dots {
