@@ -799,3 +799,365 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 @media (max-width: 600px) {
   .legal-facts > div { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================================
+   Case-study detail pages (/realisations/[slug])
+   ==========================================================================
+   `.case-page` carries the client's `data-accent` set once, server-side,
+   in page.tsx. Unlike the homepage's :root[data-accent] rules (toggled at
+   runtime by AccentProvider on <html>), these override --accent /
+   --accent-brand locally: custom properties inherit from any ancestor,
+   not just :root, so every --accent consumer below this wrapper (buttons,
+   links, the eyebrow, .cta-final's background...) recolors with zero
+   client JS. Values are kept in sync with CLIENT_COLORS in constants.ts
+   and the :root[data-accent] block above by hand.
+   ========================================================================== */
+
+.case-page[data-accent="moduloop"] {
+  --accent-brand: #00AAAB;
+  --accent: #007C7D;
+}
+.case-page[data-accent="hosteed"] {
+  --accent-brand: #015993;
+  --accent: #015993;
+}
+.case-page[data-accent="quintyss"] {
+  --accent-brand: #6F93F4;
+  --accent: #01164E;
+}
+
+.case-breadcrumb { padding-block: 1.25rem; }
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+.back-link:hover { color: var(--accent); }
+
+/* Hero */
+
+.case-hero { padding-block: clamp(2.5rem, 6vw, 4rem) clamp(3rem, 7vw, 5rem); }
+.hero-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.hero-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 8rem;
+  height: 2.75rem;
+  padding: 0.4rem 0.7rem;
+  background: var(--paper-1);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+.hero-logo img { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; }
+.hero-status {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  padding: 0.35rem 0.7rem;
+  white-space: nowrap;
+}
+.case-hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); max-width: 20ch; }
+.hero-lead {
+  margin-top: 1.25rem;
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 60ch;
+}
+.m-stack {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.m-stack li {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  padding: 0.3rem 0.65rem;
+}
+
+/* Screens: desktop carousel + phone views.
+
+   The carousel frame is locked to 16/9 while the source captures are
+   native 16/10 browser viewports at 2400x1500. The images are therefore
+   laid in with `object-fit: cover` and `object-position: top center`: the
+   frame keeps the ratio the client asked for, and what gets trimmed is
+   the bottom 10% of the viewport, which on every one of these captures is
+   empty page background rather than interface. Cropping at export time
+   would have thrown those pixels away for good; cropping in CSS keeps the
+   full 16/10 file on disk. */
+
+.case-screens { padding-top: 0; }
+
+.screens-slider { position: relative; }
+
+.slider-frame {
+  border: 1px solid var(--rule);
+  background: var(--paper-1);
+  overflow: hidden;
+}
+.slider-chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--rule);
+}
+.slider-chrome span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--paper-3);
+}
+
+.slider-viewport {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--paper-2);
+}
+.slider-track {
+  list-style: none;
+  display: flex;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.slider-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+}
+.slider-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper-0) 88%, transparent);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+.slider-arrow svg { width: 1.15rem; height: 1.15rem; }
+.slider-arrow:hover {
+  background: var(--paper-0);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.slider-arrow-prev { left: 0.75rem; }
+.slider-arrow-next { right: 0.75rem; }
+
+@supports not (background: color-mix(in srgb, red 88%, transparent)) {
+  .slider-arrow { background: var(--paper-0); }
+}
+
+.slider-caption {
+  margin-top: 0.9rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  max-width: 70ch;
+  min-height: 1.65em;
+}
+
+.slider-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+.slider-dot {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.slider-dot span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--paper-3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.slider-dot:hover span { background: var(--muted); }
+.slider-dot[aria-current="true"] span {
+  background: var(--accent);
+  transform: scale(1.5);
+}
+
+/* Announced by screen readers only: the visible caption already carries
+   the same text for sighted users. */
+.slider-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mobile-views { margin-top: clamp(2rem, 4vw, 3rem); }
+.mobile-views-title {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 400;
+}
+.mobile-views-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 3vw, 2rem);
+  margin-top: 1.1rem;
+}
+.mobile-frame {
+  width: clamp(9rem, 42vw, 16.25rem);
+}
+.mobile-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  background: var(--paper-1);
+}
+.mobile-frame figcaption {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 640px) {
+  .slider-arrow { width: 2.25rem; height: 2.25rem; }
+  .slider-arrow-prev { left: 0.4rem; }
+  .slider-arrow-next { right: 0.4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slider-track { transition: none; }
+}
+
+/* Content (sidebar + narrative) */
+
+.case-content { padding-top: clamp(3rem, 7vw, 5rem); }
+.case-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+.case-sidebar { position: sticky; top: 6rem; }
+.sidebar-block {
+  border: 1px solid var(--rule);
+  background: var(--paper-1);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+.sidebar-title {
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+.sidebar-block dl { display: grid; gap: 1rem; }
+.sidebar-block dl > div + div { border-top: 1px solid var(--rule); padding-top: 1rem; }
+.sidebar-block dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.sidebar-block dd { margin-top: 0.3rem; }
+.sidebar-block .m-stack { margin-top: 0.4rem; }
+.live-sites-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.case-narrative section + section { margin-top: clamp(2rem, 4vw, 3rem); }
+.case-narrative h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); }
+.case-narrative p + p { margin-top: 1rem; }
+.case-narrative p { margin-top: 0.85rem; color: var(--muted); }
+
+/* Client quote closing the narrative. Same guillemets and rating
+   treatment as the homepage .quotes list, set on an accent rule so it
+   reads as a voice from outside the page rather than one more
+   paragraph. */
+.case-quote {
+  margin-top: 1.1rem;
+  border-left: 2px solid var(--accent);
+  padding-left: clamp(1rem, 3vw, 1.5rem);
+}
+.case-quote blockquote { font-size: 1.05rem; max-width: 60ch; }
+.case-quote blockquote::before { content: "\00ab\00a0"; color: var(--accent); font-weight: 700; }
+.case-quote blockquote::after { content: "\00a0\00bb"; color: var(--accent); font-weight: 700; }
+.case-quote figcaption {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.9rem;
+}
+.case-quote .who { font-weight: 600; }
+.case-quote .context { color: var(--muted); font-size: 0.9rem; }
+.case-quote .rating {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  color: var(--accent);
+}
+.case-quote-pending {
+  border-left: 2px solid var(--rule);
+  padding-left: clamp(1rem, 3vw, 1.5rem);
+  max-width: 60ch;
+}
+
+@media (max-width: 880px) {
+  .case-grid { grid-template-columns: 1fr; }
+  .case-sidebar { position: static; order: -1; }
+}
+
+/* Related */
+
+/* Border-top comes from the generic `section + section` rule above. */
+.related-cards {
+  margin-top: 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+.related-card {
+  display: block;
+  border: 1px solid var(--rule);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  color: var(--ink);
+  text-decoration: none;
+}
+.related-card:hover { border-color: var(--accent); }
+.related-card h3 { margin-top: 1rem; font-size: 1.15rem; }
+.related-card .mono { color: var(--muted); margin-top: 0.35rem; }
+.related-link { display: inline-block; margin-top: 1rem; font-weight: 600; color: var(--accent); }

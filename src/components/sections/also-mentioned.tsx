@@ -13,8 +13,11 @@ interface TintedMentionProps {
 /**
  * A secondary mention wired to the recoloring mechanism. Renders as a
  * link when `href` is set (Edukai never reaches this branch, it has no
- * clientId), or as a focusable span with no destination (Moduloop Kit),
- * matching the mockup's markup exactly.
+ * clientId), or as a focusable span with no destination for a client
+ * mention with no link, matching the mockup's markup exactly. No current
+ * item in `ALSO_MENTIONED_ITEMS` uses the no-href branch (Moduloop Kits
+ * was promoted to a full case study), but the mechanism stays generic
+ * for a future secondary mention.
  */
 function TintedMention({ clientId, label, href }: TintedMentionProps) {
   const triggerHandlers = useAccentTrigger(clientId);

@@ -84,8 +84,8 @@ export interface CaseStudy {
 /**
  * A secondary mention in the "also worked on" sentence after the main case
  * studies. `href` present renders a link (Edukai); absent renders a
- * focusable, non-navigating span used only as a recoloring trigger
- * (Moduloop Kit), matching the mockup markup.
+ * focusable, non-navigating span used only as a recoloring trigger,
+ * matching the mockup markup.
  */
 export interface AlsoMentionedItem {
   clientId: ClientId | null;
@@ -93,6 +93,106 @@ export interface AlsoMentionedItem {
   href?: string;
   trailingText: string;
 }
+
+/**
+ * A single screenshot in a case-study detail page. `variant` decides where
+ * it is rendered: 'desktop' captures (2400x1500, native browser viewports)
+ * feed the 16/9 carousel, while 'mobile' ones (780x1688 phone captures)
+ * are shown separately as portrait frames underneath, since a landscape
+ * frame would either crush or gut them. See CaseStudyGallery.
+ */
+export interface CaseStudyGalleryImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  variant: 'desktop' | 'mobile';
+}
+
+/**
+ * One prose block in the narrative column (Contexte, Intervention,
+ * Résultat/Statut...). `heading` is free text rather than a fixed union
+ * because it varies per case study: a shipped product gets "Résultat",
+ * one still in progress gets "Statut".
+ */
+export interface CaseStudyNarrativeSection {
+  heading: string;
+  paragraphs: string[];
+}
+
+/**
+ * The client quote closing a case-study narrative.
+ *
+ * `published` carries only the id of an entry in TESTIMONIALS
+ * (constants.ts): the review text itself stays in that single source and
+ * is never copied here, so editing it once updates both the homepage and
+ * the case-study page. `context` places the person next to the project
+ * ("Paul L., Moduloop"), which the homepage list does not do.
+ *
+ * `pending` covers a mission that is delivered but whose client review
+ * has not arrived yet: the slot is declared in the content and the page
+ * renders a plain note, rather than the page inventing a quote or the
+ * section silently disappearing.
+ */
+export type CaseStudyTestimonial =
+  | { status: 'published'; testimonialId: string; context: string }
+  | { status: 'pending'; note: string };
+
+/**
+ * A single link rendered as a hero CTA button or as an inline reference
+ * (e.g. a live client site listed in the sidebar).
+ */
+export interface CaseStudyPageLink {
+  label: string;
+  href: string;
+}
+
+/**
+ * Full content of a case-study detail page (`/realisations/[slug]`).
+ * Distinct from `CaseStudy` above, which only backs the homepage card:
+ * this carries the richer, page-only content (gallery, narrative,
+ * sidebar, related links) that has no equivalent on the homepage.
+ */
+export interface CaseStudyPageContent {
+  slug: string;
+  clientId: ClientId;
+  title: string;
+  missionType: string;
+  /** Lowercase, used inline after "Étude de cas · mission freelance, " in the eyebrow. */
+  periodInline: string;
+  /** Capitalized, used in the sidebar and related-card mono line. */
+  period: string;
+  /** Short label next to the status dot in the hero, e.g. "En production". */
+  statusBadge: string;
+  /** Full-sentence status, reused in the sidebar and narrative sections. */
+  statusDetail: string;
+  lead: string;
+  stack: string[];
+  primaryCta: CaseStudyPageLink;
+  secondaryCtas: CaseStudyPageLink[];
+  gallery: CaseStudyGalleryImage[];
+  narrative: CaseStudyNarrativeSection[];
+  /** Client quote closing the narrative. Absent when no review covers this mission. */
+  testimonial?: CaseStudyTestimonial;
+  /** Live client sites built on this project, shown in the sidebar (Quintyss only so far). */
+  liveClientSites: CaseStudyPageLink[];
+  /** Slugs of other case studies to surface in "Voir aussi", in display order. */
+  relatedSlugs: string[];
+}
+
+/**
+ * The editorial half of a case-study page: every field that is prose.
+ *
+ * Split out so each case study's copy can live in its own file under
+ * src/lib/case-studies/, while the structural half (slug, gallery,
+ * links, stack, related slugs) stays in case-studies-content.ts. That
+ * keeps both sides well under the file-length budget and lets copy be
+ * rewritten without touching a single image entry.
+ */
+export type CaseStudyCopy = Pick<
+  CaseStudyPageContent,
+  'lead' | 'statusBadge' | 'statusDetail' | 'narrative' | 'testimonial'
+>;
 
 export interface ProcessStep {
   id: string;

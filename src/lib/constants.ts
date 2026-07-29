@@ -220,7 +220,7 @@ export const CASE_STUDIES: CaseStudy[] = [
         value: 'Livrée, en phase de test client.',
       },
     ],
-    caseLinkHref: '#proj-hosteed',
+    caseLinkHref: '/realisations/hosteed',
   },
   {
     id: 'moduloop-impact',
@@ -245,7 +245,32 @@ export const CASE_STUDIES: CaseStudy[] = [
         value: 'En production sur moduloop-impact.fr.',
       },
     ],
-    caseLinkHref: '#proj-moduloop',
+    caseLinkHref: '/realisations/moduloop-impact',
+  },
+  {
+    id: 'moduloop-kits',
+    clientId: 'moduloop',
+    title: 'Moduloop Kits',
+    missionType: 'Mission freelance',
+    period: 'depuis août 2025',
+    stack: ['Next.js', 'React', 'Prisma', 'PostgreSQL', 'Better Auth'],
+    details: [
+      {
+        label: 'Contexte',
+        value:
+          "Après Moduloop Impact, Moduloop souhaite proposer des kits d'aménagement prêts à l'emploi, avec un calcul immédiat de l'impact environnemental et du prix au mètre carré de chaque kit.",
+      },
+      {
+        label: 'Intervention',
+        value:
+          'Catalogue de produits, composition de kits, fiches produits détaillées et suivi des projets avec leur impact calculé.',
+      },
+      {
+        label: 'Statut',
+        value: 'Mission en cours depuis août 2025.',
+      },
+    ],
+    caseLinkHref: '/realisations/moduloop-kits',
   },
   {
     id: 'quintyss',
@@ -270,25 +295,19 @@ export const CASE_STUDIES: CaseStudy[] = [
         value: 'En développement actif.',
       },
     ],
-    caseLinkHref: '#proj-quintyss',
+    caseLinkHref: '/realisations/quintyss',
   },
 ];
 
 /**
- * Secondary mentions rendered after the main case studies, as a single
- * sentence. Moduloop Kit is a recoloring trigger with no destination
- * (focusable span, no href). Edukai links out but is intentionally left
- * out of the recoloring mechanism (see CLIENT_COLORS above).
+ * Secondary mention rendered after the main case studies, as a single
+ * sentence. Edukai links out but is intentionally left out of the
+ * recoloring mechanism (see CLIENT_COLORS above). Moduloop Kits was
+ * promoted from this list to a full case study, see `CASE_STUDIES` above.
  */
-export const ALSO_MENTIONED_INTRO = 'Également : ';
+export const ALSO_MENTIONED_INTRO = 'Également, à titre personnel : ';
 
 export const ALSO_MENTIONED_ITEMS: AlsoMentionedItem[] = [
-  {
-    clientId: 'moduloop',
-    label: 'Moduloop Kit',
-    trailingText:
-      ", plateforme de kits d'aménagement avec impact environnemental et prix au m², mission en cours depuis août 2025. Et à titre personnel, ",
-  },
   {
     clientId: null,
     label: 'Edukai',
