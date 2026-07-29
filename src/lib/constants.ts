@@ -48,8 +48,46 @@ export const SITE_CONFIG: SiteConfig = {
  * homepage section keeps its own entry point through the hero's
  * "Voir mes réalisations" call to action, which still scrolls in place.
  */
+/**
+ * Header only, since `FOOTER_NAVIGATION` below took over the footer. Five
+ * entries is the ceiling: the list already wraps onto a second row at
+ * 320px, so nothing is added here without measuring that width first.
+ */
 export const NAVIGATION: NavItem[] = [
   { id: 'services', label: 'Services', href: '/#services' },
+  { id: 'realisations', label: 'Réalisations', href: '/realisations' },
+  { id: 'processus', label: 'Processus', href: '/#processus' },
+  { id: 'a-propos', label: 'À propos', href: '/#a-propos' },
+  { id: 'faq', label: 'FAQ', href: '/#faq' },
+];
+
+/**
+ * The footer's secondary navigation. It used to render `NAVIGATION`
+ * directly; it now renders this superset instead, and the two lists have
+ * deliberately diverged.
+ *
+ * The header cannot grow. Its five entries already wrap onto a second row
+ * at 320px, and an earlier fix cut a sixth entry for exactly that reason,
+ * so the three landing pages are not going in it. The footer has no such
+ * ceiling: it is a stacked block with no competing brand mark or call to
+ * action on the same row, so extra entries cost nothing but height.
+ *
+ * That is what earns the three landing pages a site-wide internal link,
+ * the same thing `/realisations` gets from the header. Footer links on
+ * their own are a weak ranking signal, which is why they are not the only
+ * ones: the homepage services section links the same three pages in
+ * running prose, where the link actually carries editorial weight.
+ *
+ * Order is not alphabetical. The three landing pages follow `services`
+ * because they are what that section leads to, and the buying order is
+ * "what am I buying, what does it cost, and what if a site already
+ * exists".
+ */
+export const FOOTER_NAVIGATION: NavItem[] = [
+  { id: 'services', label: 'Services', href: '/#services' },
+  { id: 'site-vitrine', label: 'Site vitrine', href: '/site-vitrine' },
+  { id: 'tarifs', label: 'Tarifs', href: '/tarifs' },
+  { id: 'refonte', label: 'Refonte de site', href: '/refonte-site-web' },
   { id: 'realisations', label: 'Réalisations', href: '/realisations' },
   { id: 'processus', label: 'Processus', href: '/#processus' },
   { id: 'a-propos', label: 'À propos', href: '/#a-propos' },

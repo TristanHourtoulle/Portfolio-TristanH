@@ -1,6 +1,6 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
-import { FOOTER_LEGAL_LINKS, NAVIGATION, SITE_CONFIG } from '@/lib/constants';
+import { FOOTER_LEGAL_LINKS, FOOTER_NAVIGATION, SITE_CONFIG } from '@/lib/constants';
 import type { FooterLink } from '@/lib/types';
 
 const ICONS: Record<NonNullable<FooterLink['icon']>, typeof Github> = {
@@ -41,7 +41,7 @@ export function SiteFooter() {
         </div>
         <nav aria-label="Navigation secondaire">
           <ul>
-            {NAVIGATION.map((item) => (
+            {FOOTER_NAVIGATION.map((item) => (
               <li key={item.id}>
                 <Link href={item.href}>{item.label}</Link>
               </li>

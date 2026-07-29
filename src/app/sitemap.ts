@@ -8,6 +8,10 @@ import { SITE_CONFIG } from '@/lib/constants';
  * scanning the app directory at build time would silently enrol any new
  * route, including ones that should stay out of the index.
  *
+ * `/site-vitrine`, `/tarifs` and `/refonte-site-web` are the three landing
+ * pages. They each declare their own canonical and no `robots` override, so
+ * they belong here exactly like `/realisations` does.
+ *
  * `/mentions-legales` is absent on purpose. It declares
  * `robots: { index: false, follow: true }` in its own metadata, and a
  * sitemap is a statement of "these are the URLs I want indexed". Listing a
@@ -15,7 +19,13 @@ import { SITE_CONFIG } from '@/lib/constants';
  * "Submitted URL marked noindex" error. The page stays crawlable through
  * robots.txt and through the footer link, which is all it needs.
  */
-const STATIC_PATHS = ['/', '/realisations'] as const;
+const STATIC_PATHS = [
+  '/',
+  '/realisations',
+  '/site-vitrine',
+  '/tarifs',
+  '/refonte-site-web',
+] as const;
 
 /**
  * Turns a route path into the absolute URL the sitemap should advertise.
@@ -69,7 +79,7 @@ function absoluteUrl(path: string): string {
  * No `changeFrequency` and no `priority`
  * --------------------------------------
  * Google has said publicly that it ignores both. `priority` is relative
- * within a single sitemap, so on a six-URL sitemap it could not express
+ * within a single sitemap, so on a nine-URL sitemap it could not express
  * anything a crawler cannot already work out from the site's own internal
  * linking. `changeFrequency` would be a guess about the future, and the
  * same "no value beats a wrong value" argument as `lastModified` applies.
