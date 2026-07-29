@@ -8,7 +8,7 @@ export function ServicesSection() {
       <div className="wrap">
         <SectionHeading
           eyebrow="Services"
-          title="Trois façons de travailler ensemble"
+          title="Site vitrine, application web sur mesure, ou produit complet"
           titleId="services-title"
           lead="Chaque offre part d'un problème concret, avec un périmètre clair et un délai posés avant de commencer."
         />

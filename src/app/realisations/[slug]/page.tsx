@@ -57,26 +57,43 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
   const path = `/realisations/${page.slug}`;
 
   /**
+   * `metaDescription`, not `lead`. The two used to be the same string,
+   * which meant the SERP snippet was whatever the page happened to open
+   * with: three of the four leads ran past 180 characters and were being
+   * cut mid-sentence. They are separate fields now, so the visible copy
+   * can be rewritten without silently rewriting the snippet, and vice
+   * versa (see `metaDescription` in types.ts).
+   *
    * `openGraph` is redeclared in full rather than inherited: Next replaces
    * the parent object wholesale instead of merging its fields, so omitting
    * `siteName` here would silently drop the one set in the root layout.
+   *
+   * These pages have declared `og:type: article` from the start without
+   * ever supplying the two fields that type exists for. `publishedTime`
+   * is month-precision on purpose: the only dates the projects have are
+   * the human periods the clients gave ("mai à novembre 2025"), and a
+   * fabricated day-of-month would buy a fuller-looking string with a
+   * fact nobody can stand behind. See `publishedTimeIso` in types.ts for
+   * what the month means on an open-ended mission.
    */
   return {
     title,
-    description: page.lead,
+    description: page.metaDescription,
     alternates: { canonical: path },
     openGraph: {
       title: socialTitle,
-      description: page.lead,
+      description: page.metaDescription,
       type: 'article',
       locale: 'fr_FR',
       siteName: SITE_CONFIG.brandName,
       url: path,
+      publishedTime: page.publishedTimeIso,
+      authors: [SITE_CONFIG.siteUrl],
     },
     twitter: {
       card: 'summary_large_image',
       title: socialTitle,
-      description: page.lead,
+      description: page.metaDescription,
     },
   };
 }

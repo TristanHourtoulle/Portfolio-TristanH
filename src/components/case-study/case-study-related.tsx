@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CLIENT_COLOR_BY_ID } from '@/lib/constants';
+import { CLIENT_COLOR_BY_ID, CLIENT_LOGO_SIZES } from '@/lib/constants';
 import { CASE_STUDY_PAGE_BY_SLUG } from '@/lib/case-studies-content';
 
 interface CaseStudyRelatedProps {
@@ -12,6 +12,14 @@ interface CaseStudyRelatedProps {
  * `relatedSlugs`. Unresolvable slugs are skipped rather than thrown on,
  * so a future typo in the content file degrades gracefully instead of
  * breaking the page.
+ *
+ * "Voir aussi" is an <h2>, not the <span> it used to be. The <h3>s on
+ * the cards below it were otherwise orphans: they sat under the last
+ * narrative <h2> of the case study they had nothing to do with. It keeps
+ * the `.eyebrow` class and its `id`, so the look and the section's
+ * `aria-labelledby` are both unchanged (see `.eyebrow` in globals.css,
+ * which now states its own weight and line-height precisely so it can
+ * ride on a heading element without shifting).
  */
 export function CaseStudyRelated({ relatedSlugs }: CaseStudyRelatedProps) {
   const relatedPages = relatedSlugs
@@ -25,9 +33,9 @@ export function CaseStudyRelated({ relatedSlugs }: CaseStudyRelatedProps) {
   return (
     <section className="case-related" aria-labelledby="related-title">
       <div className="wrap">
-        <span className="eyebrow" id="related-title">
+        <h2 className="eyebrow" id="related-title">
           Voir aussi
-        </span>
+        </h2>
         <div className="related-cards">
           {relatedPages.map((page) => {
             const client = CLIENT_COLOR_BY_ID[page.clientId];
@@ -40,6 +48,7 @@ export function CaseStudyRelated({ relatedSlugs }: CaseStudyRelatedProps) {
                     aria-hidden="true"
                     width={client.logo.width}
                     height={client.logo.height}
+                    sizes={CLIENT_LOGO_SIZES}
                   />
                 </span>
                 <h3>{page.title}</h3>

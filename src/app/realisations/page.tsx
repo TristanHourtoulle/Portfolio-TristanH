@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { CtaSection } from '@/components/sections/cta-section';
 import { SiteFooter } from '@/components/site-footer';
 import { CASE_STUDY_PAGES } from '@/lib/case-studies-content';
-import { CLIENT_COLOR_BY_ID, SITE_CONFIG } from '@/lib/constants';
+import { CLIENT_COLOR_BY_ID, CLIENT_LOGO_SIZES, SITE_CONFIG } from '@/lib/constants';
 
 /**
  * Bare subject: the root layout's `title.template` appends the brand
@@ -120,6 +120,7 @@ export default function RealisationsPage() {
                           aria-hidden="true"
                           width={client.logo.width}
                           height={client.logo.height}
+                          sizes={CLIENT_LOGO_SIZES}
                         />
                       </span>
                       <span className="case-index-meta mono">

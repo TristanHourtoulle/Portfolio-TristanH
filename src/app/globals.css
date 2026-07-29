@@ -117,7 +117,7 @@ body::after {
 }
 
 a, button, summary,
-.eyebrow, .figure, .step-num, .swatch, .badge-dispo .dot {
+.eyebrow, .hero-kicker, .figure, .step-num, .swatch, .badge-dispo .dot {
   transition: color .45s ease, background-color .45s ease, border-color .45s ease;
 }
 
@@ -154,9 +154,19 @@ a:hover { text-decoration-thickness: 2px; }
   letter-spacing: 0.01em;
 }
 
+/* `font-weight`, `line-height` and `text-wrap` are stated rather than
+   left to inherit because this class now rides on an <h2> as well as on
+   plain <span>s ("Voir aussi", see CaseStudyRelated). Without them the
+   `h1, h2, h3` rule below would give that one instance 600 weight and a
+   1.12 line box, and the label would sit differently from every other
+   eyebrow on the site. On a <span> all three are what was already
+   inherited, so nothing else moves. */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.65;
+  text-wrap: inherit;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: var(--accent);
@@ -291,6 +301,24 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 .hero h1 {
   font-size: clamp(2.3rem, 5.6vw, 4rem);
   max-width: 16ch;
+}
+/* The keyword line inside the <h1> (see HeroSection). Visually this is an
+   `.eyebrow`, but it cannot use that class: `.eyebrow` sets a bottom
+   margin of 1rem and a color that the <h1>'s own rules would otherwise
+   fight over, and more to the point it belongs to the section-head
+   pattern, where it is a sibling of the heading rather than a child. Every
+   metric of the <h1> is overridden here, since a 4rem, 600-weight,
+   -0.035em line is exactly what this must not look like. */
+.hero-kicker {
+  display: block;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.65;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
 }
 .hero .sub {
   margin-top: 1.5rem;
@@ -651,7 +679,16 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   gap: 0.4rem;
   align-self: start;
 }
-.about-aside strong { color: var(--ink); font-weight: 600; }
+/* Was a <strong>, is now the <h3> the tools column always deserved (see
+   AboutSection). Same 600 weight it had; `letter-spacing` and
+   `line-height` are pinned back to the inherited values so the mono list
+   below it does not shift up against a 1.12 line box. */
+.about-aside h3 {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.65;
+}
 @media (max-width: 760px) {
   .about-grid { grid-template-columns: 1fr; }
 }
@@ -674,6 +711,16 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
+}
+/* Each question is an <h3> inside its <summary> (see FaqSection). The
+   summary already carries the intended type, so the heading simply takes
+   all of it back by inheritance rather than restating six properties; the
+   two that `font` does not cover are listed after it. The result is the
+   same row of pixels as when the question was bare summary text. */
+.faq-list summary h3 {
+  font: inherit;
+  letter-spacing: inherit;
+  text-wrap: inherit;
 }
 .faq-list summary::-webkit-details-marker { display: none; }
 .faq-list summary::after {
@@ -932,6 +979,22 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   white-space: nowrap;
 }
 .case-hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); max-width: 20ch; }
+/* The qualifier that now follows the client name inside the case-study
+   <h1> ("Hosteed, plateforme de location de logements"). It is a block so
+   the brand name keeps a line of its own and still leads the page; the
+   comma stays behind on that first line, which is how a title and its
+   subtitle are set anyway. `max()` rather than a bare `em` factor because
+   0.4em of the mobile end of the clamp above would fall to 0.84rem, small
+   enough to read as caption text rather than as part of the heading. */
+.case-title-qualifier {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: max(1.05rem, 0.4em);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  color: var(--muted);
+}
 .hero-lead {
   margin-top: 1.25rem;
   font-size: 1.15rem;
@@ -1233,8 +1296,17 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   background: var(--paper-1);
   padding: clamp(1.25rem, 3vw, 1.75rem);
 }
+/* This label is an <h2> (it names the sidebar's whole fact block, see
+   CaseStudyContent). `font-weight` and `line-height` are restated because
+   they used to come from the body: as a heading they would otherwise
+   become 600 and 1.12 and the label would read as a title rather than as
+   the quiet mono caps it is. `letter-spacing` and `font-size` need no
+   restating, the `.mono` class it also carries already wins those. */
 .sidebar-title {
   color: var(--muted);
+  font-weight: 400;
+  line-height: 1.65;
+  text-wrap: inherit;
   text-transform: uppercase;
   margin-bottom: 1.1rem;
 }

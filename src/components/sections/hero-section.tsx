@@ -39,7 +39,25 @@ export function HeroSection() {
     <section className="hero" aria-labelledby="hero-title">
       <div className="wrap">
         <div className="hero-copy">
-          <h1 id="hero-title">{HERO_CONTENT.title}</h1>
+          {/*
+            The kicker sits INSIDE the <h1> so it counts as heading text:
+            the slogan alone contains no term anyone searches for, and a
+            sibling <span> above the heading would have carried the words
+            with none of the weight. It is styled like the `.eyebrow`
+            that opens every other section, so the slogan keeps its size
+            and its position and the hero stops being the one section
+            without an eyebrow.
+
+            The `{' '}` is load-bearing rather than cosmetic. `.hero-kicker`
+            is display:block, so the browser drops that space when it
+            paints, but it stays in the DOM text: without it the flattened
+            heading a crawler or a screen reader reads would run the two
+            lines together as "...freelanceVotre produit web".
+          */}
+          <h1 id="hero-title">
+            <span className="hero-kicker">{HERO_CONTENT.titleKicker}</span>{' '}
+            {HERO_CONTENT.title}
+          </h1>
           <p className="sub">{HERO_CONTENT.subtitle}</p>
           <div className="hero-ctas">
             <Button variant="primary" href={HERO_CONTENT.primaryCtaHref}>

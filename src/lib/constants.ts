@@ -2,6 +2,7 @@ import type {
   AboutContent,
   AlsoMentionedItem,
   CaseStudy,
+  CaseStudySlug,
   ClientColor,
   ClientId,
   FaqItem,
@@ -110,6 +111,29 @@ export const CLIENT_COLORS: ClientColor[] = [
 ];
 
 /**
+ * `sizes` for every client logo rendered through next/image.
+ *
+ * Without it, next/image has no idea how big the box is, so it builds an
+ * x-descriptor srcset from the file's own intrinsic width: Hosteed
+ * (500x271) shipped a 640px-wide derivative at 1x and a 1080px-wide one
+ * at 2x, for a logo that paints about 58 CSS px across.
+ *
+ * The number is the frame, not the file. `.logo-box` and `.hero-logo`
+ * are the same box in globals.css: `max-width: 8rem` with
+ * `padding: 0.4rem 0.7rem`, so the widest the image itself can ever be
+ * painted is 8rem minus 1.4rem of padding, 105.6px at a 16px root, and
+ * 6rem below 820px. 128px is quoted rather than 106px so the value stays
+ * an upper bound if the reader enlarges their root font size, and
+ * because 128 is one of Next's own `imageSizes` entries: a 1x screen
+ * then gets an exact-fit derivative and a 2x screen the 256px one.
+ *
+ * Shared by the four surfaces that render a logo (homepage card,
+ * case-study hero, related cards, /realisations index) so the value
+ * cannot be corrected in one of them and forgotten in the other three.
+ */
+export const CLIENT_LOGO_SIZES = '128px';
+
+/**
  * Lookup by id, used to read a case study's swatch/identity color
  * without scanning the array on every render.
  */
@@ -121,6 +145,7 @@ export const CLIENT_COLOR_BY_ID: Record<ClientId, ClientColor> = Object.fromEntr
  * Hero section content.
  */
 export const HERO_CONTENT: HeroContent = {
+  titleKicker: 'Développeur web freelance',
   title: 'Votre produit web, conçu et développé par la même personne.',
   subtitle:
     'Sites vitrines, applications sur mesure et produits complets pour PME, startups et agences. Design dans Figma, développement en Next.js et TypeScript, un seul interlocuteur du premier appel à la mise en ligne.',
@@ -159,7 +184,7 @@ export const OFFERS: Offer[] = [
     features: [
       'Maquette Figma validée avant la première ligne de code',
       'Développement Next.js, rapide et responsive',
-      'SEO technique et suivi des visites',
+      'Référencement naturel (SEO technique) et suivi des visites',
       'Mise en ligne, nom de domaine et formation incluse',
     ],
     priceNote: 'À partir de',
@@ -210,6 +235,30 @@ export const OFFERS: Offer[] = [
 ];
 
 /**
+ * Single source of truth for each project's technology stack.
+ *
+ * The same list is rendered in three places: the homepage card, the
+ * detail-page hero pills and the detail-page "En bref" sidebar. It used
+ * to be written out twice, here and in case-studies-content.ts, and the
+ * two copies had already drifted: the homepage announced Moduloop Kits
+ * as "Next.js, React" where the case study said "Next.js 16, React 19",
+ * and it announced Quintyss as "Node.js, PostgreSQL, Stripe" where the
+ * case study listed Fastify, Drizzle and Railway as well. A visitor
+ * moving from the card to the page was reading two different answers to
+ * the same question.
+ *
+ * Declared here rather than in case-studies-content.ts because that file
+ * already imports this one; putting it the other way round would close
+ * an import cycle. Case-study pages read these entries by slug.
+ */
+export const CASE_STUDY_STACKS: Record<CaseStudySlug, readonly string[]> = {
+  hosteed: ['Next.js', 'TypeScript', 'Tailwind', 'PostgreSQL', 'VPS client'],
+  'moduloop-impact': ['Next.js', 'TypeScript', 'Tailwind', 'Node.js'],
+  'moduloop-kits': ['Next.js 16', 'React 19', 'Prisma', 'PostgreSQL', 'Better Auth'],
+  quintyss: ['Next.js', 'TypeScript', 'Fastify', 'Drizzle', 'PostgreSQL', 'Stripe', 'Railway'],
+};
+
+/**
  * Selected case studies, in the order they appear in the mockup.
  */
 export const CASE_STUDIES: CaseStudy[] = [
@@ -219,7 +268,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Hosteed',
     missionType: 'Mission freelance',
     period: 'mai à novembre 2025',
-    stack: ['Next.js', 'TypeScript', 'Tailwind', 'PostgreSQL', 'VPS client'],
+    stack: CASE_STUDY_STACKS.hosteed,
     details: [
       {
         label: 'Contexte',
@@ -244,7 +293,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Moduloop Impact',
     missionType: 'Mission freelance',
     period: 'février à juin 2024',
-    stack: ['Next.js', 'TypeScript', 'Tailwind', 'Node.js'],
+    stack: CASE_STUDY_STACKS['moduloop-impact'],
     details: [
       {
         label: 'Contexte',
@@ -269,7 +318,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Moduloop Kits',
     missionType: 'Mission freelance',
     period: 'depuis août 2025',
-    stack: ['Next.js', 'React', 'Prisma', 'PostgreSQL', 'Better Auth'],
+    stack: CASE_STUDY_STACKS['moduloop-kits'],
     details: [
       {
         label: 'Contexte',
@@ -294,12 +343,12 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Quintyss V3',
     missionType: 'Mission freelance',
     period: 'depuis mars 2025',
-    stack: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Stripe'],
+    stack: CASE_STUDY_STACKS.quintyss,
     details: [
       {
         label: 'Contexte',
         value:
-          'CMS nouvelle génération : créer un site via une interface intuitive, avec paiements, articles, blog, SEO et traduction automatisée.',
+          'CMS nouvelle génération : créer un site via une interface intuitive, avec paiements, articles, blog, référencement et traduction automatisée.',
       },
       {
         label: 'Intervention',

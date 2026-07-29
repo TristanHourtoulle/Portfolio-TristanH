@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from './constants';
+import { CASE_STUDY_STACKS, SITE_CONFIG } from './constants';
 import { HOSTEED_COPY } from './case-studies/hosteed-copy';
 import { MODULOOP_IMPACT_COPY } from './case-studies/moduloop-impact-copy';
 import { MODULOOP_KITS_COPY } from './case-studies/moduloop-kits-copy';
@@ -36,11 +36,13 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
     slug: 'hosteed',
     clientId: 'hosteed',
     title: 'Hosteed',
+    titleQualifier: 'plateforme de location de logements',
     missionType: 'Mission freelance',
     periodInline: 'mai à novembre 2025',
     period: 'Mai à novembre 2025',
+    publishedTimeIso: '2025-11',
     ...HOSTEED_COPY,
-    stack: ['Next.js', 'TypeScript', 'Tailwind', 'PostgreSQL', 'VPS client'],
+    stack: CASE_STUDY_STACKS.hosteed,
     primaryCta: { label: "Discuter d'un projet similaire", href: SITE_CONFIG.calendlyUrl },
     secondaryCtas: [],
     gallery: [
@@ -80,11 +82,13 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
     slug: 'moduloop-impact',
     clientId: 'moduloop',
     title: 'Moduloop Impact',
+    titleQualifier: "calculateur d'impact environnemental",
     missionType: 'Mission freelance',
     periodInline: 'février à juin 2024',
     period: 'Février à juin 2024',
+    publishedTimeIso: '2024-06',
     ...MODULOOP_IMPACT_COPY,
-    stack: ['Next.js', 'TypeScript', 'Tailwind', 'Node.js'],
+    stack: CASE_STUDY_STACKS['moduloop-impact'],
     primaryCta: { label: "Discuter d'un projet similaire", href: SITE_CONFIG.calendlyUrl },
     secondaryCtas: [{ label: 'Voir le site ↗', href: 'https://moduloop-impact.fr' }],
     gallery: [
@@ -180,11 +184,13 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
     slug: 'moduloop-kits',
     clientId: 'moduloop',
     title: 'Moduloop Kits',
+    titleQualifier: "configurateur de kits d'aménagement",
     missionType: 'Mission freelance',
     periodInline: 'depuis août 2025',
     period: 'Depuis août 2025',
+    publishedTimeIso: '2025-08',
     ...MODULOOP_KITS_COPY,
-    stack: ['Next.js 16', 'React 19', 'Prisma', 'PostgreSQL', 'Better Auth'],
+    stack: CASE_STUDY_STACKS['moduloop-kits'],
     primaryCta: { label: "Discuter d'un projet similaire", href: SITE_CONFIG.calendlyUrl },
     secondaryCtas: [],
     gallery: [
@@ -245,11 +251,13 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
     slug: 'quintyss',
     clientId: 'quintyss',
     title: 'Quintyss V3',
+    titleQualifier: 'CMS multi-sites',
     missionType: 'Mission freelance',
     periodInline: 'depuis mars 2025',
     period: 'Depuis mars 2025',
+    publishedTimeIso: '2025-03',
     ...QUINTYSS_COPY,
-    stack: ['Next.js', 'TypeScript', 'Fastify', 'Drizzle', 'PostgreSQL', 'Stripe', 'Railway'],
+    stack: CASE_STUDY_STACKS.quintyss,
     primaryCta: { label: "Discuter d'un projet similaire", href: SITE_CONFIG.calendlyUrl },
     secondaryCtas: [],
     gallery: [

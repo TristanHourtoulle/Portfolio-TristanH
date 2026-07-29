@@ -8,7 +8,7 @@ export function CaseStudiesSection() {
       <div className="wrap">
         <div className="section-head">
           <span className="eyebrow">Réalisations</span>
-          <h2 id="realisations-title">Réalisations sélectionnées</h2>
+          <h2 id="realisations-title">Quatre applications web conçues et développées sur mesure</h2>
           <p className="retint-hint">Survolez un projet : la page prend la couleur de son client.</p>
         </div>
         <div className="projects-list">

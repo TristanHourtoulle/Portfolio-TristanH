@@ -70,13 +70,27 @@ export interface CaseStudyDetail {
   value: string;
 }
 
+/**
+ * Slug of a case study. The same four values identify a homepage card
+ * (`CaseStudy.id`), a detail page (`CaseStudyPageContent.slug`) and a
+ * stack entry (`CASE_STUDY_STACKS` in constants.ts), so the union is
+ * declared once and every one of those keys is checked against it.
+ */
+export type CaseStudySlug = 'hosteed' | 'moduloop-impact' | 'moduloop-kits' | 'quintyss';
+
 export interface CaseStudy {
-  id: string;
+  id: CaseStudySlug;
   clientId: ClientId;
   title: string;
   missionType: string;
   period: string;
-  stack: string[];
+  /**
+   * Read from CASE_STUDY_STACKS rather than written inline: the same
+   * project's stack is displayed on the homepage card, in the detail
+   * page hero and in its sidebar, and three hand-kept copies had already
+   * drifted apart (see the doc comment on CASE_STUDY_STACKS).
+   */
+  stack: readonly string[];
   details: CaseStudyDetail[];
   caseLinkHref: string;
 }
@@ -154,20 +168,52 @@ export interface CaseStudyPageLink {
  * sidebar, related links) that has no equivalent on the homepage.
  */
 export interface CaseStudyPageContent {
-  slug: string;
+  slug: CaseStudySlug;
   clientId: ClientId;
   title: string;
+  /**
+   * Short noun phrase appended to the client name inside the <h1>, e.g.
+   * "plateforme de location de logements". A bare brand name is a query
+   * nobody types, so the heading has to say what the thing is; the
+   * qualifier renders as a smaller second line so the client name still
+   * leads visually. Lowercase, since it follows a comma in the heading.
+   */
+  titleQualifier: string;
   missionType: string;
   /** Lowercase, used inline after "Étude de cas · mission freelance, " in the eyebrow. */
   periodInline: string;
   /** Capitalized, used in the sidebar and related-card mono line. */
   period: string;
+  /**
+   * ISO 8601 date at month precision, fed to `openGraph.publishedTime`.
+   *
+   * Month precision, not day, because `period` above is all the client
+   * ever gave ("mai à novembre 2025"): inventing a day-of-month would be
+   * a fabricated fact for the sake of a fuller-looking string.
+   *
+   * It marks the moment the case study documents. For a finished mission
+   * that is the delivery month, the end of `period`. For an open-ended
+   * one ("depuis mars 2025") there is no delivery to point at, so it is
+   * the month the mission started, which is the only real date the
+   * project has.
+   */
+  publishedTimeIso: string;
   /** Short label next to the status dot in the hero, e.g. "En production". */
   statusBadge: string;
   /** Full-sentence status, reused in the sidebar and narrative sections. */
   statusDetail: string;
+  /** Visible opening paragraph of the page. Written for the page, not for a SERP. */
   lead: string;
-  stack: string[];
+  /**
+   * Written for the search result, and kept separate from `lead` on
+   * purpose. The two jobs conflict: `lead` opens the page and can run
+   * long, while a description over roughly 160 characters gets truncated
+   * mid-sentence in the SERP. Reusing `lead` meant every edit to the
+   * visible copy silently rewrote the snippet, and three of the four
+   * leads were already well past the budget.
+   */
+  metaDescription: string;
+  stack: readonly string[];
   primaryCta: CaseStudyPageLink;
   secondaryCtas: CaseStudyPageLink[];
   gallery: CaseStudyGalleryImage[];
@@ -191,7 +237,7 @@ export interface CaseStudyPageContent {
  */
 export type CaseStudyCopy = Pick<
   CaseStudyPageContent,
-  'lead' | 'statusBadge' | 'statusDetail' | 'narrative' | 'testimonial'
+  'lead' | 'metaDescription' | 'statusBadge' | 'statusDetail' | 'narrative' | 'testimonial'
 >;
 
 export interface ProcessStep {
@@ -221,6 +267,15 @@ export interface TrustStats {
 }
 
 export interface HeroContent {
+  /**
+   * Small line rendered inside the <h1>, above `title`. The slogan below
+   * does the conversion work but contains no term a prospect would type,
+   * which left the page's single most weighted heading with no subject.
+   * The kicker states the trade in plain words and is styled like the
+   * `.eyebrow` that already opens every other section, so the hero stops
+   * being the one section without one.
+   */
+  titleKicker: string;
   title: string;
   subtitle: string;
   primaryCtaLabel: string;

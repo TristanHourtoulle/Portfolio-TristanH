@@ -11,6 +11,14 @@ interface CaseStudyContentProps {
  * narrative prose, which closes on the client's quote when one covers
  * the mission. Collapses to a single column, sidebar first, under 880px
  * (see `.case-grid` in globals.css).
+ *
+ * "En bref" is an <h2>, not the <p> it used to be. It labels the single
+ * most structured and most extractable block on the page (client,
+ * mission type, period, status, stack, live sites), and that block was
+ * sitting under no heading at all. It is a sibling topic of the
+ * narrative sections' own <h2>s, so it takes the same level.
+ * `.sidebar-title` in globals.css restates the weight and line-height
+ * the paragraph had, so the label looks exactly as before.
  */
 export function CaseStudyContent({ page }: CaseStudyContentProps) {
   return (
@@ -18,7 +26,7 @@ export function CaseStudyContent({ page }: CaseStudyContentProps) {
       <div className="wrap case-grid">
         <aside className="case-sidebar">
           <div className="sidebar-block">
-            <p className="sidebar-title mono">En bref</p>
+            <h2 className="sidebar-title mono">En bref</h2>
             <dl>
               <div>
                 <dt>Client</dt>

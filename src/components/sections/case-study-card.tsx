@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { CLIENT_COLOR_BY_ID } from '@/lib/constants';
+import { CLIENT_COLOR_BY_ID, CLIENT_LOGO_SIZES } from '@/lib/constants';
 import type { CaseStudy } from '@/lib/types';
 import { useAccentTrigger } from '@/components/providers/accent-provider';
 
@@ -32,6 +32,7 @@ export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
             aria-hidden="true"
             width={client.logo.width}
             height={client.logo.height}
+            sizes={CLIENT_LOGO_SIZES}
           />
         </span>
         <p className="project-type">
