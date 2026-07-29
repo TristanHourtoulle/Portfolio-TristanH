@@ -10,6 +10,7 @@ import { FaqSection } from '@/components/sections/faq-section';
 import { CtaSection } from '@/components/sections/cta-section';
 import type { Metadata } from 'next';
 import { SiteFooter } from '@/components/site-footer';
+import { buildHomeStructuredData, serializeJsonLd } from '@/lib/structured-data';
 
 /**
  * Only the canonical is declared here: title, description and Open Graph
@@ -33,19 +34,34 @@ export const revalidate = 86400;
 
 export default function Home() {
   return (
-    <AccentProvider>
-      <main id="contenu" tabIndex={-1}>
-        <HeroSection />
-        <TrustSection />
-        <ServicesSection />
-        <CaseStudiesSection />
-        <ProcessSection />
-        <TestimonialsSection />
-        <AboutSection />
-        <FaqSection />
-        <CtaSection />
-      </main>
-      <SiteFooter />
-    </AccentProvider>
+    <>
+      {/*
+        The site's identity graph (Person, Organization, WebSite,
+        Service with its offer catalog, FAQPage) is emitted here and on
+        no other route: Google asks for Organization on the homepage or
+        a single about page, not repeated site-wide, and the other
+        routes reference these nodes by @id instead of restating them.
+        It sits outside AccentProvider so it stays entirely on the
+        server side of the client boundary.
+      */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildHomeStructuredData()) }}
+      />
+      <AccentProvider>
+        <main id="contenu" tabIndex={-1}>
+          <HeroSection />
+          <TrustSection />
+          <ServicesSection />
+          <CaseStudiesSection />
+          <ProcessSection />
+          <TestimonialsSection />
+          <AboutSection />
+          <FaqSection />
+          <CtaSection />
+        </main>
+        <SiteFooter />
+      </AccentProvider>
+    </>
   );
 }

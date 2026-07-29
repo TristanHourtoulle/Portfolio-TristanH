@@ -29,8 +29,17 @@ export const metadata: Metadata = {
     default: 'Tristan Hourtoulle · Design et développement web freelance',
     template: '%s · Tristan Hourtoulle',
   },
+  /**
+   * Kept inside the ~155 character budget Google renders before it
+   * truncates a French snippet. The previous value ran to 182 and lost
+   * its closing clause ("de la maquette Figma à la mise en ligne"),
+   * which is the differentiator the whole line exists to deliver. This
+   * one is 151 and keeps every term a prospect actually types: the two
+   * trades, the two deliverables, the three audiences, and both ends of
+   * the process.
+   */
   description:
-    "Développeur web full-stack et designer freelance. Sites vitrines, applications sur mesure et produits complets pour PME, startups et agences, de la maquette Figma à la mise en ligne.",
+    'Développeur web full-stack et designer freelance. Sites vitrines et applications sur mesure pour PME, startups et agences, de Figma à la mise en ligne.',
   openGraph: {
     title: 'Tristan Hourtoulle · Design et développement web freelance',
     description:

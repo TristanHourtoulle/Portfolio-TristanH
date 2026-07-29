@@ -5,6 +5,7 @@ import { CtaSection } from '@/components/sections/cta-section';
 import { SiteFooter } from '@/components/site-footer';
 import { CASE_STUDY_PAGES } from '@/lib/case-studies-content';
 import { CLIENT_COLOR_BY_ID, CLIENT_LOGO_SIZES, SITE_CONFIG } from '@/lib/constants';
+import { buildRealisationsStructuredData, serializeJsonLd } from '@/lib/structured-data';
 
 /**
  * Bare subject: the root layout's `title.template` appends the brand
@@ -69,6 +70,15 @@ export const metadata: Metadata = {
 export default function RealisationsPage() {
   return (
     <>
+      {/*
+        Mirrors the visible trail immediately below, item for item. This
+        is the one type on the site that still earns a real SERP
+        enhancement, so the two must not be allowed to disagree.
+      */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildRealisationsStructuredData()) }}
+      />
       <main id="contenu" tabIndex={-1}>
         <nav className="case-breadcrumb" aria-label="Fil d'Ariane">
           <div className="wrap">

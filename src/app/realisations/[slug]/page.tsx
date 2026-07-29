@@ -9,6 +9,7 @@ import { CtaSection } from '@/components/sections/cta-section';
 import { SiteFooter } from '@/components/site-footer';
 import { CASE_STUDY_PAGES, CASE_STUDY_PAGE_BY_SLUG } from '@/lib/case-studies-content';
 import { SITE_CONFIG } from '@/lib/constants';
+import { buildCaseStudyStructuredData, serializeJsonLd } from '@/lib/structured-data';
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>;
@@ -116,6 +117,16 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
   return (
     <div className="case-page" data-accent={page.clientId}>
+      {/*
+        Two nodes: the BreadcrumbList mirroring the visible trail below,
+        and the study itself as a CreativeWork. The identity nodes it
+        refers to (Person, Organization) are declared in full on the
+        homepage, so nothing is restated here beyond the @id.
+      */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildCaseStudyStructuredData(page)) }}
+      />
       <main id="contenu" tabIndex={-1}>
         {/*
           A real trail, now that /realisations exists as a route: the middle
