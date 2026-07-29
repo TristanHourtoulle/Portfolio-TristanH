@@ -245,11 +245,19 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .brand .mono { color: var(--muted); margin-left: 0.5rem; }
 .site-nav { margin-left: auto; }
+/* The list wraps instead of scrolling. It used to carry `overflow-x: auto`,
+   which turned a too-narrow header into a silent horizontal scroller: at
+   320px the five entries needed 376px inside a 280px box, so "À propos" and
+   "FAQ" sat off screen behind a gesture with no visual cue. Wrapping keeps
+   every entry reachable at any width, in any translation, and needs no
+   client-side JavaScript, so the header stays a Server Component. On desktop
+   the row has room to spare, so it never wraps and renders as before. */
 .site-nav ul {
   display: flex;
-  gap: 1.4rem;
+  flex-wrap: wrap;
+  column-gap: 1.4rem;
+  row-gap: 0.35rem;
   list-style: none;
-  overflow-x: auto;
 }
 .site-nav a {
   color: var(--ink);
@@ -260,8 +268,16 @@ a:hover { text-decoration-thickness: 2px; }
 .site-nav a:hover { color: var(--accent); }
 .header-actions { display: flex; align-items: center; gap: 0.9rem; }
 
+/* Under 760px the nav drops to its own full-width row and wraps onto a second
+   line below roughly 400px. The sticky header pays for that line in height, so
+   the vertical rhythm is tightened here to buy it back. The links also become
+   inline-block with vertical padding: wrapped rows sit close together, and a
+   bare text line is only ~18px tall, under the 24px minimum target size. */
 @media (max-width: 760px) {
+  .site-header .wrap { gap: 0.65rem; padding-block: 0.6rem; }
   .site-nav { order: 3; width: 100%; margin-left: 0; }
+  .site-nav ul { column-gap: 0.9rem; }
+  .site-nav a { display: inline-block; padding-block: 0.25rem; }
 }
 
 /* ==========================================================================

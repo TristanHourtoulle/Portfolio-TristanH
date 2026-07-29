@@ -3,9 +3,10 @@ import { NAVIGATION, SITE_CONFIG } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 
 /**
- * Sticky header. No mobile hamburger menu: the mockup lets the nav list
- * scroll horizontally under 760px instead (see .site-nav in globals.css),
- * so this stays a plain Server Component with no interactivity.
+ * Sticky header. No mobile hamburger menu: under 760px the nav list moves to
+ * its own full-width row and wraps onto a second line when it has to (see
+ * .site-nav in globals.css), so every entry stays visible without a disclosure
+ * widget and this stays a plain Server Component with no interactivity.
  */
 export function SiteHeader() {
   return (
