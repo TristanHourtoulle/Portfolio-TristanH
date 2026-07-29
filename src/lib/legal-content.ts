@@ -9,8 +9,8 @@ import type { LegalPageContent } from './types';
  * is no remaining placeholder value in this file.
  */
 export const LEGAL_CONTENT: LegalPageContent = {
-  lastUpdatedIso: '2026-07-28',
-  lastUpdatedLabel: '28 juillet 2026',
+  lastUpdatedIso: '2026-07-29',
+  lastUpdatedLabel: '29 juillet 2026',
   editor: {
     name: 'Tristan Hourtoulle',
     legalStatus: 'Entreprise individuelle (EI)',
@@ -40,9 +40,21 @@ export const LEGAL_CONTENT: LegalPageContent = {
       id: 'donnees-personnelles',
       title: 'Données personnelles',
       paragraphs: [
-        "Ce site ne dépose aucun cookie et ne collecte lui-même aucune donnée personnelle : il n'y a ni traceur ni formulaire de contact.",
+        "Ce site ne dépose aucun cookie et n'écrit rien dans la mémoire de votre navigateur, ni localStorage ni sessionStorage. Il ne comporte aucun formulaire de contact et ne vous demande donc aucune information.",
+        "La seule collecte effectuée par le site est une mesure d'audience anonyme, décrite dans la section suivante.",
         "La prise de rendez-vous se fait via Calendly, un service tiers qui collecte les informations que vous y saisissez (nom, email, disponibilités). Cette collecte relève de la politique de confidentialité de Calendly, disponible sur calendly.com/privacy.",
         `Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition sur vos données personnelles. Pour l'exercer, écrivez à ${SITE_CONFIG.email}.`,
+      ],
+    },
+    {
+      id: 'mesure-audience',
+      title: "Mesure d'audience",
+      paragraphs: [
+        "La fréquentation et les performances du site sont mesurées avec Vercel Web Analytics et Vercel Speed Insights, deux outils fournis par l'hébergeur du site, Vercel Inc. Ils sont servis depuis ce domaine et non depuis un domaine tiers.",
+        "Les informations relevées se limitent à des statistiques : la page consultée, le site ou le moteur de recherche d'où vous venez, le pays, le type d'appareil, le navigateur et le système d'exploitation, ainsi que les temps de chargement réellement mesurés dans votre navigateur. Un clic sur le lien de prise de rendez-vous est également compté, avec la page d'où il part et le libellé du bouton cliqué.",
+        "Aucun cookie n'est déposé et aucun identifiant n'est enregistré sur votre appareil. Les vues d'une même visite sont rapprochées grâce à une empreinte calculée sur les serveurs de Vercel à partir des caractéristiques de la requête, dont l'adresse IP, qui n'est pas conservée avec les statistiques. Cette empreinte est supprimée automatiquement au bout de 24 heures. Ces mesures ne permettent ni de vous identifier, ni de vous suivre d'un site à l'autre.",
+        "La base légale de ce traitement est l'intérêt légitime de l'éditeur, au sens de l'article 6.1.f du RGPD, à connaître l'audience et les performances de son site. Comme rien n'est lu ni écrit sur votre terminal, ce traitement n'entre pas dans le champ du consentement préalable prévu à l'article 82 de la loi Informatique et Libertés, ce qui explique l'absence de bandeau cookies.",
+        "Vercel Inc. intervient ici comme sous-traitant. Sa politique de confidentialité est disponible sur vercel.com/legal/privacy-policy.",
       ],
     },
     {
