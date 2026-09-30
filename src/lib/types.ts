@@ -19,7 +19,8 @@ export interface ClientColor {
   ink: string;
   /** Contrast ratio of `ink` against #F6F3EA. */
   inkContrastRatio: number;
-  logo: ClientLogo;
+  /** Absent when the client does not allow its logo to be shown. */
+  logo?: ClientLogo;
 }
 
 export type ButtonVariant = 'primary' | 'ghost' | 'invert' | 'invert-ghost';
@@ -35,7 +36,8 @@ export interface CaseStudy {
   id: CaseStudySlug;
   clientId: ClientId;
   title: string;
-  missionType: string;
+  /** Nature of the engagement, for instance freelance work or an internship. */
+  engagementType: string;
   period: string;
   stack: readonly string[];
   details: CaseStudyDetail[];
@@ -92,7 +94,8 @@ export interface CaseStudyPageContent {
   title: string;
   /** Lowercase noun phrase appended to the client name inside the <h1>. */
   titleQualifier: string;
-  missionType: string;
+  /** Nature of the engagement, for instance freelance work or an internship. */
+  engagementType: string;
   /** Lowercase form, used inline in the eyebrow. */
   periodInline: string;
   /** Capitalized form, used in the sidebar and related-card mono line. */
@@ -127,6 +130,20 @@ export type CaseStudyCopy = Pick<
   'lead' | 'metaDescription' | 'statusBadge' | 'statusDetail' | 'narrative' | 'testimonial'
 >;
 
+/**
+ * One dated row of the experience timeline, keyed to its case study.
+ */
+export interface ExperienceEntry {
+  slug: CaseStudySlug;
+  /** Nature of the engagement, for instance an internship or freelance work. */
+  engagement: string;
+  role: string;
+  summary: string;
+  status: string;
+  /** Optional closing line, used when the engagement needs one. */
+  note?: string;
+}
+
 export interface ProcessStep {
   id: string;
   numberLabel: string;
@@ -143,7 +160,6 @@ export interface Testimonial {
 
 export interface TrustStats {
   clientsCount: number;
-  averageRating: number;
   productsInProduction: number;
 }
 

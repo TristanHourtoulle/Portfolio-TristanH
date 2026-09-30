@@ -22,18 +22,20 @@ export function CaseStudyCard({ caseStudy }: CaseStudyCardProps) {
     <article className="project" aria-labelledby={titleId} {...triggerHandlers}>
       <div className="project-side">
         <span className="swatch" aria-hidden="true" style={{ backgroundColor: client.brand }} />
-        <span className="logo-box">
-          <Image
-            src={client.logo.src}
-            alt=""
-            aria-hidden="true"
-            width={client.logo.width}
-            height={client.logo.height}
-            sizes={CLIENT_LOGO_SIZES}
-          />
-        </span>
+        {client.logo && (
+          <span className="logo-box">
+            <Image
+              src={client.logo.src}
+              alt=""
+              aria-hidden="true"
+              width={client.logo.width}
+              height={client.logo.height}
+              sizes={CLIENT_LOGO_SIZES}
+            />
+          </span>
+        )}
         <p className="project-type">
-          {caseStudy.missionType}
+          {caseStudy.engagementType}
           <br />
           {caseStudy.period}
         </p>

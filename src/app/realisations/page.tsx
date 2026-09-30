@@ -65,9 +65,9 @@ export default function RealisationsPage() {
                 Réalisations : quatre produits web conçus et développés
               </h1>
               <p className="lead">
-                Des missions freelance menées de la maquette Figma à la mise en ligne, pour des PME,
-                des startups et des agences. Chaque étude de cas détaille le contexte du client, mon
-                intervention et le résultat livré, captures du produit réel à l&apos;appui.
+                Quatre produits menés de la maquette Figma à la mise en ligne, en stage puis en
+                freelance, pour des PME, des startups et des agences. Chaque étude de cas détaille
+                le contexte, mon intervention et le résultat livré.
               </p>
             </div>
 
@@ -81,18 +81,20 @@ export default function RealisationsPage() {
                       href={`/realisations/${page.slug}`}
                       data-accent={page.clientId}
                     >
-                      <span className="hero-logo">
-                        <Image
-                          src={client.logo.src}
-                          alt=""
-                          aria-hidden="true"
-                          width={client.logo.width}
-                          height={client.logo.height}
-                          sizes={CLIENT_LOGO_SIZES}
-                        />
-                      </span>
+                      {client.logo && (
+                        <span className="hero-logo">
+                          <Image
+                            src={client.logo.src}
+                            alt=""
+                            aria-hidden="true"
+                            width={client.logo.width}
+                            height={client.logo.height}
+                            sizes={CLIENT_LOGO_SIZES}
+                          />
+                        </span>
+                      )}
                       <span className="case-index-meta mono">
-                        {page.missionType} · {page.period}
+                        {page.engagementType} · {page.period}
                       </span>
                       <h2>{page.title}</h2>
                       <p className="case-index-lead">{page.lead}</p>

@@ -4,13 +4,13 @@ export const MODULOOP_KITS_COPY: CaseStudyCopy = {
   lead: "Impact calcule, Kits vend : composer un kit d'aménagement, le chiffrer à l'achat comme à la location, et présenter l'offre avec son impact environnemental et son prix au mètre carré.",
   metaDescription:
     "Application web sur mesure pour composer un kit d'aménagement, le chiffrer à l'achat comme à la location, et sortir une offre avec son impact et son prix au m².",
-  statusBadge: 'Mission en cours',
-  statusDetail: 'Mission en cours depuis août 2025.',
+  statusBadge: 'En cours',
+  statusDetail: 'En cours depuis août 2025.',
   narrative: [
     {
       heading: 'Pourquoi un deuxième outil',
       paragraphs: [
-        "Impact calcule, Kits vend. La formule résume la différence entre les deux missions menées pour Moduloop.",
+        "Impact calcule, Kits vend. La formule résume la différence entre les deux projets menés pour Moduloop.",
         "Moduloop Impact mesure l'impact environnemental d'un projet d'aménagement déjà défini : le projet existe, l'outil le chiffre. Il manquait l'étape d'avant, celle où l'on part d'un besoin et où l'on doit construire une proposition. C'est le rôle de Kits : composer une offre commerciale et la chiffrer pour la présenter à un client.",
       ],
     },
@@ -31,7 +31,7 @@ export const MODULOOP_KITS_COPY: CaseStudyCopy = {
     {
       heading: 'Où en est le projet',
       paragraphs: [
-        "Mission en cours depuis août 2025. Le développement se poursuit avec Moduloop, écran par écran, avec des allers-retours réguliers sur les usages réels de leur équipe commerciale.",
+        "En cours depuis août 2025. Le développement se poursuit avec Moduloop, écran par écran, avec des allers-retours réguliers sur les usages réels de leur équipe commerciale.",
       ],
     },
   ],

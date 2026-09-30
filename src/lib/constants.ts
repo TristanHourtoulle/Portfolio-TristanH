@@ -6,6 +6,7 @@ import type {
   ClientColor,
   ClientId,
   CtaContent,
+  ExperienceEntry,
   FooterLink,
   HeroContent,
   NavItem,
@@ -48,12 +49,14 @@ export const PROFILE_SECONDARY_ACTION: ProfileAction | null =
   CV_ACTION === null ? null : LINKEDIN_ACTION;
 
 export const NAVIGATION: NavItem[] = [
+  { id: 'experience', label: 'Expérience', href: '/#experience' },
   { id: 'realisations', label: 'Réalisations', href: '/realisations' },
   { id: 'processus', label: 'Processus', href: '/#processus' },
   { id: 'a-propos', label: 'À propos', href: '/#a-propos' },
 ];
 
 export const FOOTER_NAVIGATION: NavItem[] = [
+  { id: 'experience', label: 'Expérience', href: '/#experience' },
   { id: 'realisations', label: 'Réalisations', href: '/realisations' },
   { id: 'processus', label: 'Processus', href: '/#processus' },
   { id: 'a-propos', label: 'À propos', href: '/#a-propos' },
@@ -82,7 +85,6 @@ export const CLIENT_COLORS: ClientColor[] = [
     brand: '#6F93F4',
     ink: '#01164E',
     inkContrastRatio: 12.43,
-    logo: { src: '/images/clients/quintyss.svg', width: 65, height: 65 },
   },
 ];
 
@@ -93,13 +95,13 @@ export const CLIENT_COLOR_BY_ID: Record<ClientId, ClientColor> = Object.fromEntr
 ) as Record<ClientId, ClientColor>;
 
 export const HERO_CONTENT: HeroContent = {
-  titleKicker: 'Développeur web freelance',
-  title: 'Votre produit web, conçu et développé par la même personne.',
+  titleKicker: 'Développeur web full-stack',
+  title: 'Quatre applications web livrées, de la maquette au code.',
   subtitle:
-    'Sites vitrines, applications sur mesure et produits complets pour PME, startups et agences. Design dans Figma, développement en Next.js et TypeScript, un seul interlocuteur du premier appel à la mise en ligne.',
-  secondaryCtaLabel: 'Voir mes réalisations',
+    "Je travaille dans Figma, Next.js et TypeScript. Je cherche un CDI en équipe produit, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
+  secondaryCtaLabel: 'Voir le détail des projets',
   secondaryCtaHref: '/#realisations',
-  locationNote: 'Basé en France · missions à distance',
+  locationNote: 'Basé en France · poste en CDI',
 };
 
 export const CTA_CONTENT: CtaContent = {
@@ -111,7 +113,6 @@ export const AVAILABILITY_LEAD_DAYS = 15;
 
 export const TRUST_STATS: TrustStats = {
   clientsCount: 12,
-  averageRating: 5,
   productsInProduction: 3,
 };
 
@@ -127,7 +128,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'hosteed',
     clientId: 'hosteed',
     title: 'Hosteed',
-    missionType: 'Mission freelance',
+    engagementType: 'Freelance',
     period: 'mai à novembre 2025',
     stack: CASE_STUDY_STACKS.hosteed,
     details: [
@@ -152,7 +153,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'moduloop-impact',
     clientId: 'moduloop',
     title: 'Moduloop Impact',
-    missionType: 'Mission freelance',
+    engagementType: 'Stage de 3e année',
     period: 'février à juin 2024',
     stack: CASE_STUDY_STACKS['moduloop-impact'],
     details: [
@@ -168,7 +169,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         label: 'Résultat',
-        value: 'En production sur moduloop-impact.fr.',
+        value:
+          "En production sur moduloop-impact.fr. Moduloop m'a ensuite repris en freelance pour la maintenance, puis pour construire Moduloop Kits.",
       },
     ],
     caseLinkHref: '/realisations/moduloop-impact',
@@ -177,7 +179,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'moduloop-kits',
     clientId: 'moduloop',
     title: 'Moduloop Kits',
-    missionType: 'Mission freelance',
+    engagementType: 'Freelance',
     period: 'depuis août 2025',
     stack: CASE_STUDY_STACKS['moduloop-kits'],
     details: [
@@ -193,7 +195,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         label: 'Statut',
-        value: 'Mission en cours depuis août 2025.',
+        value: 'En cours depuis août 2025.',
       },
     ],
     caseLinkHref: '/realisations/moduloop-kits',
@@ -202,7 +204,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     id: 'quintyss',
     clientId: 'quintyss',
     title: 'Quintyss V3',
-    missionType: 'Mission freelance',
+    engagementType: 'Freelance',
     period: 'depuis mars 2025',
     stack: CASE_STUDY_STACKS.quintyss,
     details: [
@@ -214,7 +216,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: 'Intervention',
         value:
-          "Full-stack et lead dev d'une équipe de deux développeurs : architecture, développement et revue de code.",
+          "Full-stack et référent technique d'une équipe de deux développeurs : architecture, développement et revue de code.",
       },
       {
         label: 'Statut',
@@ -224,6 +226,52 @@ export const CASE_STUDIES: CaseStudy[] = [
     caseLinkHref: '/realisations/quintyss',
   },
 ];
+
+export const CASE_STUDY_BY_SLUG: Record<CaseStudySlug, CaseStudy> = Object.fromEntries(
+  CASE_STUDIES.map((caseStudy) => [caseStudy.id, caseStudy])
+) as Record<CaseStudySlug, CaseStudy>;
+
+export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
+  {
+    slug: 'moduloop-kits',
+    engagement: 'Freelance',
+    role: 'Développeur full-stack',
+    summary:
+      "Configurateur de kits de mobilier : composer un kit, le chiffrer à l'achat comme à la location sur 1, 2 ou 3 ans, et sortir une offre avec son impact environnemental et son prix au m2.",
+    status: 'En production.',
+  },
+  {
+    slug: 'hosteed',
+    engagement: 'Freelance',
+    role: 'Développeur full-stack',
+    summary:
+      "Plateforme de location de logements à Madagascar, reconstruite depuis la base après un WordPress devenu instable : recherche, réservation, paiement Stripe, back-office.",
+    status: 'En phase de test client.',
+  },
+  {
+    slug: 'quintyss',
+    engagement: 'Freelance',
+    role: 'Développeur full-stack, référent technique',
+    summary:
+      "CMS multi-sites : le client modifie ses pages lui-même, widget par widget et en temps réel, sans développeur ni remise en ligne.",
+    status: 'En développement actif.',
+  },
+  {
+    slug: 'moduloop-impact',
+    engagement: 'Stage de 3e année',
+    role: 'Développeur full-stack',
+    summary:
+      "Calculateur d'impact environnemental qui remplace un calcul sur tableur : catalogue produits, comparaison du neuf et du réemploi, export des résultats.",
+    status: 'En production sur moduloop-impact.fr.',
+    note: "À la fin du stage, Moduloop m'a repris en freelance pour la maintenance, puis pour construire Kits.",
+  },
+];
+
+export const EXPERIENCE_SECTION = {
+  eyebrow: 'Expérience',
+  title: 'Quatre produits livrés, en stage puis en freelance',
+  lead: "Ce que j'ai construit depuis 2024, dans quel cadre, avec quelle technologie et sur quelle période.",
+};
 
 export const ALSO_MENTIONED_INTRO = 'Également, à titre personnel : ';
 

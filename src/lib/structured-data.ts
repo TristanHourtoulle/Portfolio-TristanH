@@ -174,6 +174,9 @@ export function buildRealisationsStructuredData(): JsonLdGraph {
 
 function buildCaseStudyNode(page: CaseStudyPageContent): JsonLdValue {
   const path = `/realisations/${page.slug}`;
+  const images = page.gallery
+    .filter((image) => image.variant === 'desktop')
+    .map((image) => absolute(image.src));
 
   return {
     '@type': 'CreativeWork',
@@ -184,9 +187,7 @@ function buildCaseStudyNode(page: CaseStudyPageContent): JsonLdValue {
     inLanguage: 'fr-FR',
     datePublished: page.publishedTimeIso,
     keywords: page.stack.join(', '),
-    image: page.gallery
-      .filter((image) => image.variant === 'desktop')
-      .map((image) => absolute(image.src)),
+    image: images.length > 0 ? images : undefined,
     author: {
       '@type': 'Person',
       '@id': PERSON_ID,

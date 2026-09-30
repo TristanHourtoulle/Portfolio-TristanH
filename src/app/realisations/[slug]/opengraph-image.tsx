@@ -50,7 +50,7 @@ export default async function Image({ params }: OpenGraphImageProps) {
         eyebrow={`ÉTUDE DE CAS · ${page.period.toUpperCase()}`}
         eyebrowColor={client.ink}
         ruleColor={client.brand}
-        footerNote={page.missionType}
+        footerNote={page.engagementType}
       >
         <div
           style={{

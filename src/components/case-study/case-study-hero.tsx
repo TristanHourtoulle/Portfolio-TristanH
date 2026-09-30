@@ -17,20 +17,22 @@ export function CaseStudyHero({ page }: CaseStudyHeroProps) {
     <section className="case-hero" aria-labelledby="case-title">
       <div className="wrap">
         <div className="hero-meta-row">
-          <span className="hero-logo">
-            <Image
-              src={client.logo.src}
-              alt=""
-              aria-hidden="true"
-              width={client.logo.width}
-              height={client.logo.height}
-              sizes={CLIENT_LOGO_SIZES}
-            />
-          </span>
+          {client.logo && (
+            <span className="hero-logo">
+              <Image
+                src={client.logo.src}
+                alt=""
+                aria-hidden="true"
+                width={client.logo.width}
+                height={client.logo.height}
+                sizes={CLIENT_LOGO_SIZES}
+              />
+            </span>
+          )}
           <span className="hero-status">{page.statusBadge}</span>
         </div>
         <span className="eyebrow">
-          Étude de cas · mission freelance, {page.periodInline}
+          Étude de cas · {page.engagementType.toLowerCase()}, {page.periodInline}
         </span>
         <h1 id="case-title">
           {page.title},{' '}

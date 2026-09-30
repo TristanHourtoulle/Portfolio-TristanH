@@ -31,7 +31,7 @@ export const MODULOOP_IMPACT_COPY: CaseStudyCopy = {
     {
       heading: 'Impact mesure, Kits vend',
       paragraphs: [
-        "Moduloop Impact répond à une question précise : quel est l'impact d'un projet déjà défini. Une seconde mission, Moduloop Kits, est née plus tard pour l'autre moitié du besoin, en amont : composer une offre et la chiffrer avant même que le projet existe.",
+        "Moduloop Impact répond à une question précise : quel est l'impact d'un projet déjà défini. À la fin du stage, Moduloop m'a repris en freelance pour la maintenance de l'outil, puis pour construire Moduloop Kits, qui couvre l'autre moitié du besoin, en amont : composer une offre et la chiffrer avant même que le projet existe.",
       ],
     },
     {

@@ -17,12 +17,12 @@ export function CaseStudyContent({ page }: CaseStudyContentProps) {
             <h2 className="sidebar-title mono">En bref</h2>
             <dl>
               <div>
-                <dt>Client</dt>
+                <dt>Entreprise</dt>
                 <dd>{page.title}</dd>
               </div>
               <div>
-                <dt>Type de mission</dt>
-                <dd>{page.missionType}</dd>
+                <dt>Type d&apos;expérience</dt>
+                <dd>{page.engagementType}</dd>
               </div>
               <div>
                 <dt>Période</dt>
@@ -44,7 +44,7 @@ export function CaseStudyContent({ page }: CaseStudyContentProps) {
               </div>
               {page.liveClientSites.length > 0 && (
                 <div>
-                  <dt>Sites clients en production</dt>
+                  <dt>Sites en production</dt>
                   <dd>
                     <ul className="live-sites-list">
                       {page.liveClientSites.map((site) => (

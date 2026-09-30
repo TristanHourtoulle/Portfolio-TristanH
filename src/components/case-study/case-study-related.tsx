@@ -30,16 +30,18 @@ export function CaseStudyRelated({ relatedSlugs }: CaseStudyRelatedProps) {
             const client = CLIENT_COLOR_BY_ID[page.clientId];
             return (
               <Link key={page.slug} className="related-card" href={`/realisations/${page.slug}`}>
-                <span className="hero-logo">
-                  <Image
-                    src={client.logo.src}
-                    alt=""
-                    aria-hidden="true"
-                    width={client.logo.width}
-                    height={client.logo.height}
-                    sizes={CLIENT_LOGO_SIZES}
-                  />
-                </span>
+                {client.logo && (
+                  <span className="hero-logo">
+                    <Image
+                      src={client.logo.src}
+                      alt=""
+                      aria-hidden="true"
+                      width={client.logo.width}
+                      height={client.logo.height}
+                      sizes={CLIENT_LOGO_SIZES}
+                    />
+                  </span>
+                )}
                 <h3>{page.title}</h3>
                 <p className="mono">{page.period}</p>
                 <span className="related-link">

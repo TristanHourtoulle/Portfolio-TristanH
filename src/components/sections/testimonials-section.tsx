@@ -9,7 +9,7 @@ export function TestimonialsSection() {
           eyebrow="Témoignages"
           title="Ce que disent les clients"
           titleId="temoignages-title"
-          lead="Cinq avis reçus sur les missions freelance, tous notés 5 sur 5."
+          lead="Cinq avis reçus de clients avec qui j'ai travaillé, tous notés 5 sur 5."
         />
         <div className="quotes">
           {TESTIMONIALS.map((testimonial) => (
