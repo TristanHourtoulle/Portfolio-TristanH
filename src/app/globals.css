@@ -157,6 +157,18 @@ a:hover { text-decoration-thickness: 2px; }
 .btn-ghost:hover { background: var(--bg-soft); }
 .btn-invert { background: var(--paper-0); color: var(--accent); border-color: var(--paper-0); }
 .btn-invert:hover { opacity: 0.9; }
+.btn-invert-ghost { background: transparent; color: var(--paper-0); border-color: rgba(246, 243, 234, 0.72); }
+.btn-invert-ghost:hover { border-color: var(--paper-0); background: rgba(246, 243, 234, 0.14); }
+
+.cta-text-link {
+  align-self: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.cta-text-link:hover { color: var(--accent); }
 
 .site-header {
   position: sticky;

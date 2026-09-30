@@ -22,7 +22,7 @@ export interface ClientColor {
   logo: ClientLogo;
 }
 
-export type ButtonVariant = 'primary' | 'ghost' | 'invert';
+export type ButtonVariant = 'primary' | 'ghost' | 'invert' | 'invert-ghost';
 
 export interface CaseStudyDetail {
   label: string;
@@ -107,8 +107,8 @@ export interface CaseStudyPageContent {
   lead: string;
   metaDescription: string;
   stack: readonly string[];
-  primaryCta: CaseStudyPageLink;
-  secondaryCtas: CaseStudyPageLink[];
+  /** Outbound links to the live product, shown under the hero. */
+  externalLinks: CaseStudyPageLink[];
   gallery: CaseStudyGalleryImage[];
   narrative: CaseStudyNarrativeSection[];
   /** Client quote closing the narrative. */
@@ -152,11 +152,21 @@ export interface HeroContent {
   titleKicker: string;
   title: string;
   subtitle: string;
-  primaryCtaLabel: string;
-  primaryCtaHref: string;
   secondaryCtaLabel: string;
   secondaryCtaHref: string;
   locationNote: string;
+}
+
+export interface CtaContent {
+  title: string;
+  lead: string;
+}
+
+export interface ProfileAction {
+  label: string;
+  href: string;
+  /** Present only when the link must be saved to disk under this name. */
+  downloadFileName?: string;
 }
 
 export interface SiteConfig {
@@ -164,7 +174,7 @@ export interface SiteConfig {
   brandTagline: string;
   /** Canonical production origin, without a trailing slash. */
   siteUrl: string;
-  calendlyUrl: string;
+  linkedinUrl: string;
   email: string;
 }
 

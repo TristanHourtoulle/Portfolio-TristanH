@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { NAVIGATION, SITE_CONFIG } from '@/lib/constants';
-import { Button } from '@/components/ui/button';
+import { ProfileActions } from '@/components/ui/profile-actions';
 
 /**
  * Sticky site header.
@@ -23,9 +23,7 @@ export function SiteHeader() {
           </ul>
         </nav>
         <div className="header-actions">
-          <Button variant="primary" href={SITE_CONFIG.calendlyUrl}>
-            Réserver un appel
-          </Button>
+          <ProfileActions />
         </div>
       </div>
     </header>

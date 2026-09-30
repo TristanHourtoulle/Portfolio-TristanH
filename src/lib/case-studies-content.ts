@@ -1,4 +1,4 @@
-import { CASE_STUDY_STACKS, SITE_CONFIG } from './constants';
+import { CASE_STUDY_STACKS } from './constants';
 import { HOSTEED_COPY } from './case-studies/hosteed-copy';
 import { MODULOOP_IMPACT_COPY } from './case-studies/moduloop-impact-copy';
 import { MODULOOP_KITS_COPY } from './case-studies/moduloop-kits-copy';
@@ -17,8 +17,7 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
     publishedTimeIso: '2025-11',
     ...HOSTEED_COPY,
     stack: CASE_STUDY_STACKS.hosteed,
-    primaryCta: { label: "Discuter d'un projet similaire", href: SITE_CONFIG.calendlyUrl },
-    secondaryCtas: [],
+    externalLinks: [],
     gallery: [
       {
         src: '/images/case-studies/hosteed/hero-recherche.webp',
@@ -63,8 +62,7 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
     publishedTimeIso: '2024-06',
     ...MODULOOP_IMPACT_COPY,
     stack: CASE_STUDY_STACKS['moduloop-impact'],
-    primaryCta: { label: "Discuter d'un projet similaire", href: SITE_CONFIG.calendlyUrl },
-    secondaryCtas: [{ label: 'Voir le site ↗', href: 'https://moduloop-impact.fr' }],
+    externalLinks: [{ label: 'Voir le site ↗', href: 'https://moduloop-impact.fr' }],
     gallery: [
       {
         src: '/images/case-studies/moduloop-impact/calculateur-hero.webp',
@@ -165,8 +163,7 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
     publishedTimeIso: '2025-08',
     ...MODULOOP_KITS_COPY,
     stack: CASE_STUDY_STACKS['moduloop-kits'],
-    primaryCta: { label: "Discuter d'un projet similaire", href: SITE_CONFIG.calendlyUrl },
-    secondaryCtas: [],
+    externalLinks: [],
     gallery: [
       {
         src: '/images/case-studies/moduloop-kits/catalogue-produits.webp',
@@ -232,8 +229,7 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
     publishedTimeIso: '2025-03',
     ...QUINTYSS_COPY,
     stack: CASE_STUDY_STACKS.quintyss,
-    primaryCta: { label: "Discuter d'un projet similaire", href: SITE_CONFIG.calendlyUrl },
-    secondaryCtas: [],
+    externalLinks: [],
     gallery: [
       {
         src: '/images/case-studies/quintyss/editeur-slider-champs.webp',

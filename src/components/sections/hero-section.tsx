@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { HERO_CONTENT } from '@/lib/constants';
 import { getAvailabilityLabel } from '@/lib/availability';
-import { Button } from '@/components/ui/button';
+import { ProfileActions } from '@/components/ui/profile-actions';
 
 /**
  * Homepage hero.
@@ -19,12 +19,10 @@ export function HeroSection() {
           </h1>
           <p className="sub">{HERO_CONTENT.subtitle}</p>
           <div className="hero-ctas">
-            <Button variant="primary" href={HERO_CONTENT.primaryCtaHref}>
-              {HERO_CONTENT.primaryCtaLabel}
-            </Button>
-            <Button variant="ghost" href={HERO_CONTENT.secondaryCtaHref}>
+            <ProfileActions />
+            <a className="cta-text-link" href={HERO_CONTENT.secondaryCtaHref}>
               {HERO_CONTENT.secondaryCtaLabel}
-            </Button>
+            </a>
           </div>
         </div>
         <div className="hero-side">

@@ -5,10 +5,12 @@ import type {
   CaseStudySlug,
   ClientColor,
   ClientId,
+  CtaContent,
   FooterLink,
   HeroContent,
   NavItem,
   ProcessStep,
+  ProfileAction,
   SiteConfig,
   Testimonial,
   TrustStats,
@@ -18,9 +20,32 @@ export const SITE_CONFIG: SiteConfig = {
   brandName: 'Tristan Hourtoulle',
   brandTagline: 'design et dev',
   siteUrl: 'https://www.tristanhourtoulle.fr',
-  calendlyUrl: 'https://calendly.com/tristan68420/30min',
+  linkedinUrl: 'https://www.linkedin.com/in/tristan-hourtoulle/',
   email: 'tristan.hourtoulle@icloud.com',
 };
+
+export const CV_PDF_PATH: string | null = null;
+
+export const CV_DOWNLOAD_FILE_NAME = 'tristan-hourtoulle-cv.pdf';
+
+const LINKEDIN_ACTION: ProfileAction = {
+  label: 'Profil LinkedIn',
+  href: SITE_CONFIG.linkedinUrl,
+};
+
+const CV_ACTION: ProfileAction | null =
+  CV_PDF_PATH === null
+    ? null
+    : {
+        label: 'Télécharger mon CV (PDF)',
+        href: CV_PDF_PATH,
+        downloadFileName: CV_DOWNLOAD_FILE_NAME,
+      };
+
+export const PROFILE_PRIMARY_ACTION: ProfileAction = CV_ACTION ?? LINKEDIN_ACTION;
+
+export const PROFILE_SECONDARY_ACTION: ProfileAction | null =
+  CV_ACTION === null ? null : LINKEDIN_ACTION;
 
 export const NAVIGATION: NavItem[] = [
   { id: 'realisations', label: 'Réalisations', href: '/realisations' },
@@ -72,11 +97,14 @@ export const HERO_CONTENT: HeroContent = {
   title: 'Votre produit web, conçu et développé par la même personne.',
   subtitle:
     'Sites vitrines, applications sur mesure et produits complets pour PME, startups et agences. Design dans Figma, développement en Next.js et TypeScript, un seul interlocuteur du premier appel à la mise en ligne.',
-  primaryCtaLabel: 'Réserver un appel de 30 min, gratuit',
-  primaryCtaHref: SITE_CONFIG.calendlyUrl,
   secondaryCtaLabel: 'Voir mes réalisations',
   secondaryCtaHref: '/#realisations',
   locationNote: 'Basé en France · missions à distance',
+};
+
+export const CTA_CONTENT: CtaContent = {
+  title: 'Disponible pour un poste en CDI.',
+  lead: "Développeur full-stack, deux ans de freelance et quatre applications web livrées en production. Je cherche une équipe produit où je conçois et développe au quotidien, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
 };
 
 export const AVAILABILITY_LEAD_DAYS = 15;
@@ -285,7 +313,7 @@ export const ABOUT_CONTENT: AboutContent = {
 
 export const FOOTER_LEGAL_LINKS: FooterLink[] = [
   { id: 'github', label: 'GitHub', href: 'https://github.com/TristanHourtoulle', icon: 'github' },
-  { id: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/tristan-hourtoulle/', icon: 'linkedin' },
+  { id: 'linkedin', label: 'LinkedIn', href: SITE_CONFIG.linkedinUrl, icon: 'linkedin' },
   { id: 'email', label: 'Email', href: `mailto:${SITE_CONFIG.email}`, icon: 'mail' },
   { id: 'mentions', label: 'Mentions légales', href: '/mentions-legales' },
 ];

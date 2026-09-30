@@ -3,7 +3,6 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SkipLink } from '@/components/skip-link';
 import { SiteHeader } from '@/components/site-header';
-import { CalendlyConversionTracker } from '@/components/analytics/calendly-conversion-tracker';
 import { apfelGrotezk, commitMono } from '@/lib/fonts';
 import { SITE_CONFIG } from '@/lib/constants';
 import './globals.css';
@@ -51,7 +50,6 @@ export default function RootLayout({
         {children}
         <Analytics />
         <SpeedInsights />
-        <CalendlyConversionTracker />
       </body>
     </html>
   );

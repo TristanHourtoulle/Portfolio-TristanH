@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { CLIENT_COLOR_BY_ID, CLIENT_LOGO_SIZES } from '@/lib/constants';
+import { ProfileActions } from '@/components/ui/profile-actions';
 import type { CaseStudyPageContent } from '@/lib/types';
 
 interface CaseStudyHeroProps {
@@ -42,18 +43,16 @@ export function CaseStudyHero({ page }: CaseStudyHeroProps) {
           ))}
         </ul>
         <div className="hero-ctas">
-          <a className="btn btn-primary" href={page.primaryCta.href}>
-            {page.primaryCta.label}
-          </a>
-          {page.secondaryCtas.map((cta) => (
+          <ProfileActions />
+          {page.externalLinks.map((link) => (
             <a
-              key={cta.href}
-              className="btn btn-ghost"
-              href={cta.href}
+              key={link.href}
+              className="cta-text-link"
+              href={link.href}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {cta.label}
+              {link.label}
             </a>
           ))}
         </div>

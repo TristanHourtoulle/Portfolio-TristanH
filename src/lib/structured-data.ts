@@ -121,11 +121,6 @@ function buildServiceNode(): JsonLdValue {
       '@type': 'Audience',
       audienceType: 'PME, startups et agences',
     },
-    availableChannel: {
-      '@type': 'ServiceChannel',
-      name: HERO_CONTENT.primaryCtaLabel,
-      serviceUrl: SITE_CONFIG.calendlyUrl,
-    },
   };
 }
 
