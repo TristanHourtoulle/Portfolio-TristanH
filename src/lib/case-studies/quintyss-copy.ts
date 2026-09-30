@@ -1,12 +1,12 @@
 import type { CaseStudyCopy } from '../types';
 
 export const QUINTYSS_COPY: CaseStudyCopy = {
-  lead: "CMS nouvelle génération : le client modifie son site lui-même, widget par widget et en temps réel, sans développeur et sans remise en ligne. Un même socle fait vivre plusieurs sites clients.",
+  lead: "CMS multi-sites repris en V3 : un socle commun capable de faire vivre plusieurs sites clients, et un éditeur qui appliquait les modifications widget par widget sans redéploiement.",
   metaDescription:
-    "CMS multi-sites où le client modifie ses pages lui-même, widget par widget, sans développeur ni remise en ligne. Un socle commun fait vivre plusieurs sites.",
+    "CMS multi-sites : un socle commun pour plusieurs sites clients et un éditeur appliquant les modifications widget par widget, sans redéploiement.",
   statusBadge: 'Intervention terminée',
   statusDetail:
-    "Deux sites en production et un troisième en attente de validation, intervention terminée en août 2026.",
+    "À la fin de mon intervention, en août 2026, deux sites étaient en production et un troisième en attente de validation.",
   narrative: [
     {
       heading: 'Le point de départ',
@@ -23,10 +23,10 @@ export const QUINTYSS_COPY: CaseStudyCopy = {
       ],
     },
     {
-      heading: 'Le client modifie son site lui-même',
+      heading: "L'édition sans redéploiement",
       paragraphs: [
-        "C'est le point qui change tout au quotidien. Dans l'éditeur de page, tout est modifiable par widget, en temps réel, sans remise en ligne. Le client change son hero slider, publie un article, met à jour ses événements, et le site en ligne suit immédiatement.",
-        "Aucun développeur n'intervient, aucune mise en production à programmer, aucun délai à subir pour une correction de dernière minute. Ce qui était un ticket et une attente devient une modification de quelques minutes, faite directement par la personne qui en a besoin.",
+        "C'est la pièce la plus structurante de l'architecture. L'éditeur traitait chaque bloc de page comme une unité de contenu à part entière, hero slider, article ou agenda, stockée et versionnée côté serveur plutôt que figée dans le code du site.",
+        "Le rendu public devait donc dépendre de l'état en base et non d'un artefact produit au build, avec une invalidation de cache assez fine pour que la page en ligne reste cohérente après chaque enregistrement. C'est ce choix qui sortait le développeur de la boucle d'édition, et c'est aussi celui qui a le plus contraint le reste de la plateforme.",
       ],
     },
     {

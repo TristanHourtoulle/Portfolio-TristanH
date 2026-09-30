@@ -2,14 +2,13 @@ import { ImageResponse } from 'next/og';
 import { HERO_CONTENT, SITE_CONFIG } from '@/lib/constants';
 import { loadOgFonts, OgCard, OG_CONTENT_TYPE, OG_PALETTE, OG_SIZE } from '@/lib/og-image';
 
-/**
- * Share card for `/`.
- */
-
 export const alt = `${SITE_CONFIG.brandName} · Développeur web full-stack`;
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 
+/**
+ * Share card for `/`.
+ */
 export default async function Image() {
   return new ImageResponse(
     (

@@ -4,10 +4,6 @@ import { CASE_STUDY_PAGE_BY_SLUG, CASE_STUDY_PAGES } from '@/lib/case-studies-co
 import { CLIENT_COLOR_BY_ID, SITE_CONFIG } from '@/lib/constants';
 import { loadOgFonts, OgCard, OG_CONTENT_TYPE, OG_PALETTE, OG_SIZE } from '@/lib/og-image';
 
-/**
- * Share card for each `/realisations/[slug]`.
- */
-
 interface OpenGraphImageProps {
   params: Promise<{ slug: string }>;
 }
@@ -34,6 +30,9 @@ export async function generateImageMetadata({ params }: OpenGraphImageProps) {
   ];
 }
 
+/**
+ * Share card for each `/realisations/[slug]`.
+ */
 export default async function Image({ params }: OpenGraphImageProps) {
   const { slug } = await params;
   const page = CASE_STUDY_PAGE_BY_SLUG[slug];

@@ -152,12 +152,7 @@ function buildCaseStudyNode(page: CaseStudyPageContent): JsonLdValue {
     datePublished: page.publishedTimeIso,
     keywords: page.stack.join(', '),
     image: images.length > 0 ? images : undefined,
-    author: {
-      '@type': 'Person',
-      '@id': PERSON_ID,
-      name: SITE_CONFIG.brandName,
-      url: absolute('/'),
-    },
+    author: { '@id': PERSON_ID },
   };
 }
 
@@ -170,6 +165,7 @@ export function buildCaseStudyStructuredData(page: CaseStudyPageContent): JsonLd
         { name: 'Réalisations', path: '/realisations' },
         { name: page.title },
       ]),
+      buildPersonNode(),
       buildCaseStudyNode(page),
     ],
   };

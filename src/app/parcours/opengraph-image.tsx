@@ -3,10 +3,6 @@ import { SITE_CONFIG } from '@/lib/constants';
 import { PARCOURS_CONTENT } from '@/lib/parcours-content';
 import { loadOgFonts, OgCard, OG_CONTENT_TYPE, OG_PALETTE, OG_SIZE } from '@/lib/og-image';
 
-/**
- * Share card for `/parcours`.
- */
-
 const HEADLINE = 'Six ans à Epitech, deux mandats d’assistant';
 
 const FACTS: readonly string[] = [
@@ -19,6 +15,9 @@ export const alt = `${PARCOURS_CONTENT.metaTitle} · ${SITE_CONFIG.brandName}`;
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 
+/**
+ * Share card for `/parcours`.
+ */
 export default async function Image() {
   return new ImageResponse(
     (

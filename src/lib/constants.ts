@@ -182,7 +182,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: 'Contexte',
         value:
-          "Après Moduloop Impact, Moduloop souhaite proposer des kits d'aménagement prêts à l'emploi, avec un calcul immédiat de l'impact environnemental et du prix au mètre carré de chaque kit.",
+          "Après Moduloop Impact, Moduloop voulait proposer des kits d'aménagement prêts à l'emploi, avec un calcul immédiat de l'impact environnemental et du prix au m² de chaque kit.",
       },
       {
         label: 'Intervention',
@@ -207,7 +207,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: 'Contexte',
         value:
-          'CMS nouvelle génération : créer un site via une interface intuitive, avec paiements, articles, blog, référencement et traduction automatisée.',
+          "CMS multi-sites : un socle commun pour plusieurs sites clients, avec édition des pages par widget, paiements, articles, blog, référencement et traduction automatisée.",
       },
       {
         label: 'Intervention',
@@ -217,7 +217,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: 'Statut',
         value:
-          "Deux sites en production et un troisième en attente de validation, intervention terminée en août 2026.",
+          "À la fin de mon intervention, en août 2026, deux sites étaient en production et un troisième en attente de validation.",
       },
     ],
     caseLinkHref: '/realisations/quintyss',
@@ -234,7 +234,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     engagement: 'Freelance',
     role: 'Développeur full-stack',
     summary:
-      "Configurateur de kits de mobilier : composer un kit, le chiffrer à l'achat comme à la location sur 1, 2 ou 3 ans, et sortir une offre avec son impact environnemental et son prix au m2.",
+      "Configurateur de kits d'aménagement : composer un kit, le chiffrer à l'achat comme à la location sur 1, 2 ou 3 ans, et sortir une offre avec son impact environnemental et son prix au m².",
     status: 'Livré en production en août 2026, fin de mon intervention.',
   },
   {
@@ -251,9 +251,9 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     engagement: 'Freelance',
     role: 'Développeur full-stack, référent technique',
     summary:
-      "CMS multi-sites : le client modifie ses pages lui-même, widget par widget et en temps réel, sans développeur ni remise en ligne.",
+      "CMS multi-sites : un socle commun pour plusieurs sites clients, avec un éditeur qui appliquait les modifications widget par widget, sans redéploiement.",
     status:
-      "Deux sites en production et un troisième en attente de validation, intervention terminée en août 2026.",
+      "À la fin de mon intervention, en août 2026, deux sites étaient en production et un troisième en attente de validation.",
   },
   {
     slug: 'moduloop-impact',

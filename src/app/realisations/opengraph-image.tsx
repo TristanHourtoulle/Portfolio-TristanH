@@ -3,16 +3,15 @@ import { CASE_STUDY_PAGES } from '@/lib/case-studies-content';
 import { CLIENT_COLOR_BY_ID, SITE_CONFIG } from '@/lib/constants';
 import { loadOgFonts, OgCard, OG_CONTENT_TYPE, OG_PALETTE, OG_SIZE } from '@/lib/og-image';
 
-/**
- * Share card for `/realisations`.
- */
-
 const PAGE_TITLE = 'Réalisations et études de cas';
 
 export const alt = `${PAGE_TITLE} · ${SITE_CONFIG.brandName}`;
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 
+/**
+ * Share card for `/realisations`.
+ */
 export default async function Image() {
   return new ImageResponse(
     (

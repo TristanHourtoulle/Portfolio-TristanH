@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     url: '/mentions-legales',
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: SOCIAL_TITLE,
     description: PAGE_DESCRIPTION,
   },

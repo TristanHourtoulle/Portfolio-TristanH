@@ -1,7 +1,7 @@
 import type { CaseStudyCopy } from '../types';
 
 export const MODULOOP_IMPACT_COPY: CaseStudyCopy = {
-  lead: "Le calcul d'impact environnemental d'un projet d'aménagement se faisait à la main, sur tableur. Il se fait désormais dans un outil qui chiffre, compare deux scénarios et sort un document présentable au client.",
+  lead: "Le calcul d'impact environnemental d'un projet d'aménagement se faisait à la main, sur tableur. J'ai livré à la place un outil qui chiffrait, comparait deux scénarios et sortait un document présentable au client.",
   metaDescription:
     "Application web qui remplace le calcul d'impact environnemental sur tableur : catalogue produits, comparaison neuf/réemploi et export PDF.",
   statusBadge: 'Mise en production en juin 2024',
@@ -22,16 +22,16 @@ export const MODULOOP_IMPACT_COPY: CaseStudyCopy = {
       ],
     },
     {
-      heading: 'Ce que ça change au quotidien',
+      heading: 'Ce que ça a changé au quotidien',
       paragraphs: [
-        "Le calcul manuel disparaît : la donnée est saisie une fois et le résultat suit, y compris quand le projet change en cours de route.",
-        "Surtout, chaque résultat s'exporte en PDF. C'est le point qui a le plus compté pour Moduloop. Un tableur ne se montre pas à un client : il porte les formules, les brouillons, les onglets de travail. Un document exporté se présente en réunion et s'envoie tel quel. L'outil ne sert donc pas seulement à calculer, il sert à défendre le chiffre devant le client final.",
+        "À la livraison, le calcul manuel avait disparu : la donnée était saisie une fois et le résultat suivait, y compris quand le projet changeait en cours de route.",
+        "Surtout, chaque résultat s'exportait en PDF. C'est le point qui a le plus compté pour Moduloop. Un tableur ne se montre pas à un client : il porte les formules, les brouillons, les onglets de travail. Un document exporté se présente en réunion et s'envoie tel quel. L'outil ne servait donc pas seulement à calculer, il servait à défendre le chiffre devant le client final.",
       ],
     },
     {
-      heading: 'Impact mesure, Kits vend',
+      heading: 'Deux outils, deux moments',
       paragraphs: [
-        "Moduloop Impact répond à une question précise : quel est l'impact d'un projet déjà défini. À la fin du stage, Moduloop m'a repris en freelance pour la maintenance de l'outil, puis pour construire Moduloop Kits, qui couvre l'autre moitié du besoin, en amont : composer une offre et la chiffrer avant même que le projet existe.",
+        "Moduloop Impact répondait à une question précise : quel est l'impact d'un projet déjà défini. À la fin du stage, Moduloop m'a repris en freelance pour la maintenance de l'outil, puis pour construire Moduloop Kits, qui couvrait l'autre moitié du besoin, en amont : composer une offre et la chiffrer avant même que le projet existe.",
       ],
     },
     {
