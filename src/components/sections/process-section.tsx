@@ -7,9 +7,9 @@ export function ProcessSection() {
       <div className="wrap">
         <SectionHeading
           eyebrow="Processus"
-          title="Comment on travaille ensemble"
+          title="Comment je travaille sur un produit"
           titleId="processus-title"
-          lead="Quatre étapes, toujours dans cet ordre. Vous savez où en est le projet à chaque instant."
+          lead="Quatre étapes, toujours dans cet ordre, sur les quatre produits que j'ai livrés."
         />
         <ol className="process-list">
           {PROCESS_STEPS.map((step) => (

@@ -12,7 +12,7 @@ export function AboutSection() {
       <div className="wrap">
         <div className="section-head">
           <span className="eyebrow">À propos</span>
-          <h2 id="apropos-title">Un interlocuteur, deux métiers&#160;: design et développement</h2>
+          <h2 id="apropos-title">Ce que je fais entrer dans une équipe</h2>
         </div>
         <div className="about-grid">
           <div>

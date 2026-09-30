@@ -274,28 +274,28 @@ export const EXPERIENCE_SECTION = {
 
 export const PROCESS_STEPS: ProcessStep[] = [
   {
-    id: 'decouverte',
+    id: 'cadrage',
     numberLabel: '1',
-    title: 'Appel découverte',
-    note: "30 minutes, gratuit et sans engagement. On parle de votre activité, de votre objectif et de ce qui bloque aujourd'hui.",
+    title: 'Cadrer avant de coder',
+    note: "La question de départ n'est pas esthétique : elle est de savoir ce que le produit est censé produire, et pourquoi il ne le produit pas aujourd'hui. Une refonte ne se décide pas parce qu'un site est vieux, elle se décide quand il coûte quelque chose.",
   },
   {
-    id: 'proposition',
+    id: 'perimetre',
     numberLabel: '2',
-    title: 'Proposition chiffrée',
-    note: 'Sous 5 jours : périmètre détaillé, budget ferme et planning. Vous signez en connaissant le prix et la date de livraison.',
+    title: 'Arrêter le périmètre sur la maquette',
+    note: "Le périmètre ne sort pas d'un gabarit, il se décide au cadrage. La validation de la maquette est le moment où je l'arrête, écran par écran. Pas trois semaines plus tard, sur un produit à moitié construit.",
   },
   {
-    id: 'sprints',
+    id: 'iterations',
     numberLabel: '3',
-    title: 'Sprints hebdomadaires',
-    note: "Une démo chaque semaine, sur un lien de test que vous pouvez partager. Les ajustements se font au fil de l'eau, pas à la fin.",
+    title: 'Montrer tôt, ajuster en continu',
+    note: "Une démo par semaine sur un environnement de test, ouverte à toute l'équipe. Les ajustements se font au fil de l'eau, pas à la fin, et c'est aussi ce qui tient le planning.",
   },
   {
-    id: 'livraison',
+    id: 'autonomie',
     numberLabel: '4',
-    title: 'Livraison et suite',
-    note: 'Mise en ligne, formation à l\'outil, transfert complet du code. Maintenance optionnelle si vous souhaitez déléguer la suite.',
+    title: "Rendre l'équipe autonome",
+    note: "Sur Hosteed, j'ai construit un back-office pour que l'équipe suive les logements, les réservations et les paiements sans qu'un développeur ait à intervenir. Le référencement technique et le suivi des visites font partie du périmètre, pas des options ajoutées ensuite.",
   },
 ];
 
@@ -338,9 +338,9 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const ABOUT_CONTENT: AboutContent = {
   paragraphs: [
-    "Je m'appelle Tristan Hourtoulle, développeur web full-stack et designer freelance. Je conçois les interfaces dans Figma, puis je les développe moi-même en Next.js et TypeScript : rien ne se perd entre la maquette et le produit final.",
-    'Vous parlez à une seule personne, du premier appel à la mise en ligne. Pas de chef de projet à relancer, pas de couche commerciale, pas d\'aller-retour entre un designer et un développeur qui ne se connaissent pas.',
-    'Je travaille depuis 2024 avec des PME, des startups et des agences, sur des produits qui sont aujourd\'hui en production et utilisés chaque jour.',
+    "Je conçois les interfaces dans Figma, puis je les développe moi-même : rien ne se perd entre la maquette et le produit. Quand une contrainte technique apparaît en cours de route, je la règle des deux côtés à la fois, sans qu'il faille la traduire d'un métier à l'autre.",
+    "Ce profil double sert surtout à faire le lien dans une équipe. Mes quatre projets étaient montés différemment : certains arrivaient avec leurs maquettes déjà faites, d'autres avec un développeur en interne. Je prends la partie design, la partie développement ou les deux, selon ce qui manque là où j'arrive.",
+    "Sur Quintyss, j'ai été référent technique de deux développeurs : architecture, revue de code et arbitrages au quotidien. C'est le cadre que je cherche à retrouver, une équipe où les décisions se discutent, où mon code est relu et où je relis celui des autres.",
   ],
   toolsHeading: 'Outils du quotidien',
   tools: ['Figma', 'Next.js · TypeScript', 'Tailwind CSS', 'Node.js · PostgreSQL', 'Railway'],
