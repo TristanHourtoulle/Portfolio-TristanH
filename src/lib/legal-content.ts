@@ -2,8 +2,8 @@ import { SITE_CONFIG } from './constants';
 import type { LegalPageContent } from './types';
 
 export const LEGAL_CONTENT: LegalPageContent = {
-  lastUpdatedIso: '2026-07-29',
-  lastUpdatedLabel: '29 juillet 2026',
+  lastUpdatedIso: '2026-09-30',
+  lastUpdatedLabel: '30 septembre 2026',
   editor: {
     name: 'Tristan Hourtoulle',
     legalStatus: 'Entreprise individuelle (EI)',

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { HERO_CONTENT } from '@/lib/constants';
 import { ProfileActions } from '@/components/ui/profile-actions';
 
@@ -17,9 +18,9 @@ export function HeroSection() {
           <p className="sub">{HERO_CONTENT.subtitle}</p>
           <div className="hero-ctas">
             <ProfileActions />
-            <a className="cta-text-link" href={HERO_CONTENT.secondaryCtaHref}>
+            <Link className="cta-text-link" href={HERO_CONTENT.secondaryCtaHref}>
               {HERO_CONTENT.secondaryCtaLabel}
-            </a>
+            </Link>
           </div>
         </div>
         <div className="hero-side">

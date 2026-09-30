@@ -216,6 +216,19 @@ a:hover { text-decoration-thickness: 2px; }
   .site-nav { order: 3; width: 100%; margin-left: 0; }
   .site-nav ul { column-gap: 0.9rem; }
   .site-nav a { display: inline-block; padding-block: 0.25rem; }
+  .header-actions { order: 2; margin-left: auto; flex-wrap: wrap; justify-content: flex-end; gap: 0.6rem; }
+}
+
+@media (max-width: 560px) {
+  .brand { white-space: normal; }
+  .brand .mono { display: block; margin-left: 0; }
+  .header-actions { width: 100%; margin-left: 0; justify-content: flex-start; }
+  .header-actions .btn {
+    flex: 0 1 auto;
+    text-align: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+  }
 }
 
 section { padding-block: clamp(3.5rem, 8vw, 6rem); }
@@ -1029,7 +1042,6 @@ section + section { border-top: 1px solid var(--rule); }
 }
 .sidebar-block dd { margin-top: 0.3rem; }
 .sidebar-block .m-stack { margin-top: 0.4rem; }
-.live-sites-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
 .case-narrative section + section { margin-top: clamp(2rem, 4vw, 3rem); }
 .case-narrative h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); }
 .case-narrative p + p { margin-top: 1rem; }

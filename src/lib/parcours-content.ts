@@ -6,7 +6,7 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
   lead: "La formation, les stages, les deux mandats d’assistant auprès d’autres étudiants et l’année passée à Kuala Lumpur. Ce que le reste du site ne raconte pas : comment j’ai appris, et dans quelles conditions.",
   metaTitle: 'Parcours',
   metaDescription:
-    "Le parcours de Tristan Hourtoulle : six ans à Epitech, deux mandats d’assistant auprès de 65 puis 34 étudiants, deux stages en entreprise, une quatrième année à Kuala Lumpur et une activité freelance lancée pendant les études.",
+    "Le parcours de Tristan Hourtoulle : six ans à Epitech, deux mandats d’assistant, deux stages en entreprise, une quatrième année à Kuala Lumpur et du freelance.",
   school: {
     name: 'Epitech',
     description:

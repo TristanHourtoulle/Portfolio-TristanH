@@ -7,7 +7,7 @@ import { SectionHeading } from '@/components/ui/section-heading';
  */
 export function ParcoursSection() {
   return (
-    <section id="parcours" aria-labelledby="parcours-teaser-title">
+    <section aria-labelledby="parcours-teaser-title">
       <div className="wrap">
         <SectionHeading
           eyebrow={PARCOURS_TEASER.eyebrow}

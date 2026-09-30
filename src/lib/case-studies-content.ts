@@ -48,7 +48,6 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
         variant: 'mobile',
       },
     ],
-    liveClientSites: [],
     relatedSlugs: ['quintyss', 'moduloop-impact'],
   },
   {
@@ -149,7 +148,6 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
         variant: 'mobile',
       },
     ],
-    liveClientSites: [],
     relatedSlugs: ['moduloop-kits', 'hosteed'],
   },
   {
@@ -215,7 +213,6 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
         variant: 'mobile',
       },
     ],
-    liveClientSites: [],
     relatedSlugs: ['moduloop-impact', 'quintyss'],
   },
   {
@@ -231,7 +228,6 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
     stack: CASE_STUDY_STACKS.quintyss,
     externalLinks: [],
     gallery: [],
-    liveClientSites: [],
     relatedSlugs: ['moduloop-kits', 'hosteed'],
   },
 ];

@@ -1,12 +1,9 @@
-import { clsx } from 'clsx';
 import type { ButtonVariant } from '@/lib/types';
 
 interface ButtonProps {
   variant?: ButtonVariant;
   children: React.ReactNode;
   href: string;
-  className?: string;
-  ariaLabel?: string;
   downloadFileName?: string;
 }
 
@@ -27,8 +24,6 @@ export function Button({
   variant = 'primary',
   children,
   href,
-  className,
-  ariaLabel,
   downloadFileName,
 }: ButtonProps) {
   const opensInNewTab =
@@ -37,8 +32,7 @@ export function Button({
   return (
     <a
       href={href}
-      className={clsx(VARIANT_CLASS[variant], className)}
-      aria-label={ariaLabel}
+      className={VARIANT_CLASS[variant]}
       download={downloadFileName}
       target={opensInNewTab ? '_blank' : undefined}
       rel={opensInNewTab ? 'noopener noreferrer' : undefined}

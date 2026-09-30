@@ -17,8 +17,6 @@ export interface ClientColor {
   name: string;
   brand: string;
   ink: string;
-  /** Contrast ratio of `ink` against #F6F3EA. */
-  inkContrastRatio: number;
   /** Absent when the client does not allow its logo to be shown. */
   logo?: ClientLogo;
 }
@@ -64,9 +62,6 @@ export interface CaseStudyNarrativeSection {
 }
 
 /**
- * The client quote closing a case-study narrative.
- */
-/**
  * A single link rendered as a hero CTA button or as an inline reference.
  */
 export interface CaseStudyPageLink {
@@ -103,9 +98,6 @@ export interface CaseStudyPageContent {
   externalLinks: CaseStudyPageLink[];
   gallery: CaseStudyGalleryImage[];
   narrative: CaseStudyNarrativeSection[];
-  /** Client quote closing the narrative. */
-  /** Live client sites built on this project, shown in the sidebar. */
-  liveClientSites: CaseStudyPageLink[];
   /** Slugs of other case studies to surface in "Voir aussi", in display order. */
   relatedSlugs: string[];
 }

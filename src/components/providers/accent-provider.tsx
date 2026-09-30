@@ -13,9 +13,7 @@ import type { ClientId } from '@/lib/types';
 
 interface AccentContextValue {
   hoveredClientId: ClientId | null;
-  pinnedClientId: ClientId | null;
   setHoveredClientId: (clientId: ClientId | null) => void;
-  pinClientId: (clientId: ClientId) => void;
 }
 
 const AccentContext = createContext<AccentContextValue | null>(null);
@@ -29,26 +27,19 @@ interface AccentProviderProps {
  */
 export function AccentProvider({ children }: AccentProviderProps) {
   const [hoveredClientId, setHoveredClientId] = useState<ClientId | null>(null);
-  const [pinnedClientId, setPinnedClientId] = useState<ClientId | null>(null);
-
-  const activeClientId = hoveredClientId ?? pinnedClientId;
 
   useEffect(() => {
     const root = document.documentElement;
-    if (activeClientId) {
-      root.setAttribute('data-accent', activeClientId);
+    if (hoveredClientId) {
+      root.setAttribute('data-accent', hoveredClientId);
     } else {
       root.removeAttribute('data-accent');
     }
-  }, [activeClientId]);
-
-  const pinClientId = useCallback((clientId: ClientId) => {
-    setPinnedClientId(clientId);
-  }, []);
+  }, [hoveredClientId]);
 
   const value = useMemo<AccentContextValue>(
-    () => ({ hoveredClientId, pinnedClientId, setHoveredClientId, pinClientId }),
-    [hoveredClientId, pinnedClientId, pinClientId]
+    () => ({ hoveredClientId, setHoveredClientId }),
+    [hoveredClientId]
   );
 
   return <AccentContext.Provider value={value}>{children}</AccentContext.Provider>;
@@ -59,7 +50,6 @@ export interface AccentTriggerHandlers {
   onMouseLeave: () => void;
   onFocus: () => void;
   onBlur: () => void;
-  onClick: () => void;
 }
 
 /**
@@ -72,13 +62,12 @@ export function useAccentTrigger(clientId: ClientId): AccentTriggerHandlers {
   if (!context) {
     throw new Error('useAccentTrigger must be used within an AccentProvider');
   }
-  const { setHoveredClientId, pinClientId } = context;
+  const { setHoveredClientId } = context;
 
   const onMouseEnter = useCallback(() => setHoveredClientId(clientId), [setHoveredClientId, clientId]);
   const onMouseLeave = useCallback(() => setHoveredClientId(null), [setHoveredClientId]);
   const onFocus = useCallback(() => setHoveredClientId(clientId), [setHoveredClientId, clientId]);
   const onBlur = useCallback(() => setHoveredClientId(null), [setHoveredClientId]);
-  const onClick = useCallback(() => pinClientId(clientId), [pinClientId, clientId]);
 
-  return { onMouseEnter, onMouseLeave, onFocus, onBlur, onClick };
+  return { onMouseEnter, onMouseLeave, onFocus, onBlur };
 }

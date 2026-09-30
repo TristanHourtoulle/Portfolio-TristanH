@@ -41,22 +41,6 @@ export function CaseStudyContent({ page }: CaseStudyContentProps) {
                   </ul>
                 </dd>
               </div>
-              {page.liveClientSites.length > 0 && (
-                <div>
-                  <dt>Sites en production</dt>
-                  <dd>
-                    <ul className="live-sites-list">
-                      {page.liveClientSites.map((site) => (
-                        <li key={site.href}>
-                          <a href={site.href} target="_blank" rel="noopener noreferrer">
-                            {site.label}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </dd>
-                </div>
-              )}
             </dl>
           </div>
         </aside>

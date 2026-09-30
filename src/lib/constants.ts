@@ -23,9 +23,12 @@ export const SITE_CONFIG: SiteConfig = {
   email: 'tristan.hourtoulle@icloud.com',
 };
 
+/**
+ * Public path of the CV PDF, set once the file is added to `public/`.
+ */
 export const CV_PDF_PATH: string | null = null;
 
-export const CV_DOWNLOAD_FILE_NAME = 'tristan-hourtoulle-cv.pdf';
+const CV_DOWNLOAD_FILE_NAME = 'tristan-hourtoulle-cv.pdf';
 
 const LINKEDIN_ACTION: ProfileAction = {
   label: 'Profil LinkedIn',
@@ -62,13 +65,12 @@ export const FOOTER_NAVIGATION: NavItem[] = [
   { id: 'a-propos', label: 'À propos', href: '/#a-propos' },
 ];
 
-export const CLIENT_COLORS: ClientColor[] = [
+const CLIENT_COLORS: ClientColor[] = [
   {
     id: 'moduloop',
     name: 'Moduloop',
     brand: '#00AAAB',
     ink: '#006C6D',
-    inkContrastRatio: 4.51,
     logo: { src: '/images/clients/moduloop.png', width: 300, height: 79 },
   },
   {
@@ -76,7 +78,6 @@ export const CLIENT_COLORS: ClientColor[] = [
     name: 'Hosteed',
     brand: '#015993',
     ink: '#015993',
-    inkContrastRatio: 5.21,
     logo: { src: '/images/clients/hosteed.png', width: 500, height: 271 },
   },
   {
@@ -84,7 +85,6 @@ export const CLIENT_COLORS: ClientColor[] = [
     name: 'Quintyss',
     brand: '#6F93F4',
     ink: '#01164E',
-    inkContrastRatio: 12.43,
   },
 ];
 

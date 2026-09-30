@@ -3,7 +3,7 @@ import type { CaseStudyCopy } from '../types';
 export const QUINTYSS_COPY: CaseStudyCopy = {
   lead: "CMS nouvelle génération : le client modifie son site lui-même, widget par widget et en temps réel, sans développeur et sans remise en ligne. Un même socle fait vivre plusieurs sites clients.",
   metaDescription:
-    "CMS multi-sites où le client modifie ses pages lui-même, widget par widget, sans développeur ni remise en ligne. Un même socle fait vivre plusieurs sites clients.",
+    "CMS multi-sites où le client modifie ses pages lui-même, widget par widget, sans développeur ni remise en ligne. Un socle commun fait vivre plusieurs sites.",
   statusBadge: 'Intervention terminée',
   statusDetail:
     "Deux sites en production et un troisième en attente de validation, intervention terminée en août 2026.",

@@ -1,5 +1,4 @@
 import { ABOUT_CONTENT, FOOTER_LEGAL_LINKS, SITE_CONFIG } from './constants';
-import { LEGAL_CONTENT } from './legal-content';
 import { PARCOURS_CONTENT } from './parcours-content';
 import type { CaseStudyPageContent } from './types';
 
@@ -32,14 +31,11 @@ function absolute(path: string): string {
 }
 
 const PERSON_ID = `${SITE_URL}/#person`;
-const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 
 const SOCIAL_PROFILE_URLS: readonly string[] = FOOTER_LEGAL_LINKS.filter((link) =>
   link.href.startsWith('https://'),
 ).map((link) => link.href);
-
-const SIRET_DIGITS = LEGAL_CONTENT.editor.siret.replace(/\D/g, '');
 
 const KNOWS_ABOUT: readonly string[] = ABOUT_CONTENT.tools.flatMap((tool) =>
   tool
@@ -47,9 +43,6 @@ const KNOWS_ABOUT: readonly string[] = ABOUT_CONTENT.tools.flatMap((tool) =>
     .map((entry) => entry.trim())
     .filter((entry) => entry.length > 0),
 );
-
-const ORGANIZATION_DESCRIPTION =
-  'Entreprise individuelle de Tristan Hourtoulle, développeur web full-stack.';
 
 const PROFESSION = 'Développeur web full-stack';
 
@@ -73,30 +66,6 @@ function buildPersonNode(): JsonLdValue {
     knowsLanguage: 'fr-FR',
     alumniOf: ALUMNI_OF,
     sameAs: SOCIAL_PROFILE_URLS,
-    worksFor: { '@id': ORGANIZATION_ID },
-  };
-}
-
-function buildOrganizationNode(): JsonLdValue {
-  return {
-    '@type': 'Organization',
-    '@id': ORGANIZATION_ID,
-    name: SITE_CONFIG.brandName,
-    legalName: LEGAL_CONTENT.editor.name,
-    url: absolute('/'),
-    description: ORGANIZATION_DESCRIPTION,
-    email: `mailto:${SITE_CONFIG.email}`,
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'FR',
-    },
-    identifier: {
-      '@type': 'PropertyValue',
-      propertyID: 'SIRET',
-      value: SIRET_DIGITS,
-    },
-    founder: { '@id': PERSON_ID },
-    sameAs: SOCIAL_PROFILE_URLS,
   };
 }
 
@@ -107,7 +76,7 @@ function buildWebSiteNode(): JsonLdValue {
     url: absolute('/'),
     name: SITE_CONFIG.brandName,
     inLanguage: 'fr-FR',
-    publisher: { '@id': ORGANIZATION_ID },
+    publisher: { '@id': PERSON_ID },
   };
 }
 
@@ -119,7 +88,6 @@ export function buildHomeStructuredData(): JsonLdGraph {
     '@context': 'https://schema.org',
     '@graph': [
       buildPersonNode(),
-      buildOrganizationNode(),
       buildWebSiteNode(),
     ],
   };
