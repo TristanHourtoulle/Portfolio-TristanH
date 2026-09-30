@@ -1,12 +1,10 @@
 import { AccentProvider } from '@/components/providers/accent-provider';
 import { HeroSection } from '@/components/sections/hero-section';
 import { TrustSection } from '@/components/sections/trust-section';
-import { ServicesSection } from '@/components/sections/services-section';
 import { CaseStudiesSection } from '@/components/sections/case-studies-section';
 import { ProcessSection } from '@/components/sections/process-section';
 import { TestimonialsSection } from '@/components/sections/testimonials-section';
 import { AboutSection } from '@/components/sections/about-section';
-import { FaqSection } from '@/components/sections/faq-section';
 import { CtaSection } from '@/components/sections/cta-section';
 import type { Metadata } from 'next';
 import { SiteFooter } from '@/components/site-footer';
@@ -37,10 +35,10 @@ export default function Home() {
     <>
       {/*
         The site's identity graph (Person, Organization, WebSite,
-        Service with its offer catalog, FAQPage) is emitted here and on
-        no other route: Google asks for Organization on the homepage or
-        a single about page, not repeated site-wide, and the other
-        routes reference these nodes by @id instead of restating them.
+        Service) is emitted here and on no other route: Google asks for
+        Organization on the homepage or a single about page, not repeated
+        site-wide, and the other routes reference these nodes by @id
+        instead of restating them.
         It sits outside AccentProvider so it stays entirely on the
         server side of the client boundary.
       */}
@@ -52,12 +50,10 @@ export default function Home() {
         <main id="contenu" tabIndex={-1}>
           <HeroSection />
           <TrustSection />
-          <ServicesSection />
           <CaseStudiesSection />
           <ProcessSection />
           <TestimonialsSection />
           <AboutSection />
-          <FaqSection />
           <CtaSection />
         </main>
         <SiteFooter />

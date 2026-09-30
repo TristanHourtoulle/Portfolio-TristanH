@@ -2,7 +2,7 @@
  * Production typography setup.
  *
  * Apfel Grotezk (display and text, Collletttivo, SIL OFL 1.1) and Commit
- * Mono (labels, stacks, figures and prices, Eigil Nikolajsen, SIL OFL 1.1)
+ * Mono (labels, stacks and figures, Eigil Nikolajsen, SIL OFL 1.1)
  * are self-hosted from `public/fonts/` via `next/font/local`. Both
  * licenses were verified to allow commercial use and redistribution of the
  * font files before they were added to this repository; see
@@ -11,7 +11,8 @@
  *
  * Only the weights actually used by `globals.css` are shipped:
  *   - Apfel Grotezk Regular (400), Mittel (600), Fett (700)
- *   - Commit Mono Regular (400), Bold (700, used by `.price`)
+ *   - Commit Mono Regular (400), Bold (700, used by `.figure` and
+ *     `.step-num`)
  *
  * A note on `fallback`, because the arrays below do not do what their
  * shape suggests. `adjustFontFallback` defaults to 'Arial' on

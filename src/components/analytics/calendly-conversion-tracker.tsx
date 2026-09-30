@@ -26,7 +26,7 @@ const UNLABELLED_CTA = '(sans libelle)';
  * Tracks the site's only conversion: a click on a Calendly booking link.
  *
  * Every Calendly CTA is rendered by a Server Component (`SiteHeader`,
- * `HeroSection`, `ServicesSection`, `CtaSection`, `CaseStudyHero`, and the
+ * `HeroSection`, `CtaSection`, `CaseStudyHero`, and the
  * four case studies' `primaryCta`), all of them through the shared
  * `Button`. Attaching an `onClick` to any of those would force `Button`
  * itself to become a Client Component, which would in turn pull every

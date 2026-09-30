@@ -51,20 +51,6 @@ export interface ClientColor {
 
 export type ButtonVariant = 'primary' | 'ghost' | 'invert';
 
-export interface Offer {
-  id: string;
-  numberLabel: string;
-  title: string;
-  problem: string;
-  features: string[];
-  priceNote: string;
-  price: string;
-  isPriceCased: boolean;
-  delay: string;
-  ctaLabel: string;
-  ctaHref: string;
-}
-
 export interface CaseStudyDetail {
   label: string;
   value: string;
@@ -252,12 +238,6 @@ export interface Testimonial {
   name: string;
   rating: number;
   review: string;
-}
-
-export interface FaqItem {
-  id: string;
-  question: string;
-  answer: string;
 }
 
 export interface TrustStats {

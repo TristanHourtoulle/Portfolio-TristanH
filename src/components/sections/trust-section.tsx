@@ -1,8 +1,8 @@
 import { TRUST_STATS } from '@/lib/constants';
 
 /**
- * Band of headline proof figures, sitting between the hero and the
- * offers.
+ * Band of headline proof figures, sitting between the hero and the case
+ * studies.
  *
  * It is an <aside>, not a <div role="note">. `note` is not a landmark
  * and is unevenly supported, so the accessible name that was attached to
@@ -14,8 +14,11 @@ import { TRUST_STATS } from '@/lib/constants';
  *
  * <section> would have been the other candidate but is avoided on
  * purpose: globals.css draws its section rules with `section + section`,
- * so promoting this band to a section would have given the offers
- * section a divider it does not have today.
+ * so promoting this band to a section would put three sections in a row,
+ * hero then band then case studies, and draw a rule on the case-studies
+ * section that follows it, which it does not have today. The band keeps
+ * its own top rule either way, through the `.trust` half of that
+ * selector.
  *
  * The name has to come from aria-label rather than a heading, since the
  * band shows no title of its own and inventing a visible one would

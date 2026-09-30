@@ -5,11 +5,9 @@ import type {
   CaseStudySlug,
   ClientColor,
   ClientId,
-  FaqItem,
   FooterLink,
   HeroContent,
   NavItem,
-  Offer,
   ProcessStep,
   SiteConfig,
   Testimonial,
@@ -28,7 +26,7 @@ export const SITE_CONFIG: SiteConfig = {
 };
 
 /**
- * Shared navigation, used by both the header and the footer.
+ * The header's navigation. The footer runs on `FOOTER_NAVIGATION` below.
  */
 /**
  * Hrefs use an absolute `/#id` form rather than a bare `#id`. On the
@@ -49,49 +47,28 @@ export const SITE_CONFIG: SiteConfig = {
  * "Voir mes réalisations" call to action, which still scrolls in place.
  */
 /**
- * Header only, since `FOOTER_NAVIGATION` below took over the footer. Five
- * entries is the ceiling: the list already wraps onto a second row at
- * 320px, so nothing is added here without measuring that width first.
+ * Header only, since `FOOTER_NAVIGATION` below took over the footer.
+ * Three entries are left, well under the width ceiling: five were enough
+ * to make the list wrap onto a second row at 320px, so anything added
+ * back here is measured at that width first.
  */
 export const NAVIGATION: NavItem[] = [
-  { id: 'services', label: 'Services', href: '/#services' },
   { id: 'realisations', label: 'Réalisations', href: '/realisations' },
   { id: 'processus', label: 'Processus', href: '/#processus' },
   { id: 'a-propos', label: 'À propos', href: '/#a-propos' },
-  { id: 'faq', label: 'FAQ', href: '/#faq' },
 ];
 
 /**
- * The footer's secondary navigation. It used to render `NAVIGATION`
- * directly; it now renders this superset instead, and the two lists have
- * deliberately diverged.
- *
- * The header cannot grow. Its five entries already wrap onto a second row
- * at 320px, and an earlier fix cut a sixth entry for exactly that reason,
- * so the three landing pages are not going in it. The footer has no such
- * ceiling: it is a stacked block with no competing brand mark or call to
- * action on the same row, so extra entries cost nothing but height.
- *
- * That is what earns the three landing pages a site-wide internal link,
- * the same thing `/realisations` gets from the header. Footer links on
- * their own are a weak ranking signal, which is why they are not the only
- * ones: the homepage services section links the same three pages in
- * running prose, where the link actually carries editorial weight.
- *
- * Order is not alphabetical. The three landing pages follow `services`
- * because they are what that section leads to, and the buying order is
- * "what am I buying, what does it cost, and what if a site already
- * exists".
+ * The footer's secondary navigation. It holds the same three entries as
+ * `NAVIGATION` today. The split is kept on purpose: the footer is a
+ * stacked block with no width ceiling, so it is where the CV download and
+ * the LinkedIn link will go, and the header will not carry either. Until
+ * then the duplication is accepted.
  */
 export const FOOTER_NAVIGATION: NavItem[] = [
-  { id: 'services', label: 'Services', href: '/#services' },
-  { id: 'site-vitrine', label: 'Site vitrine', href: '/site-vitrine' },
-  { id: 'tarifs', label: 'Tarifs', href: '/tarifs' },
-  { id: 'refonte', label: 'Refonte de site', href: '/refonte-site-web' },
   { id: 'realisations', label: 'Réalisations', href: '/realisations' },
   { id: 'processus', label: 'Processus', href: '/#processus' },
   { id: 'a-propos', label: 'À propos', href: '/#a-propos' },
-  { id: 'faq', label: 'FAQ', href: '/#faq' },
 ];
 
 /**
@@ -208,69 +185,6 @@ export const TRUST_STATS: TrustStats = {
   averageRating: 5,
   productsInProduction: 3,
 };
-
-/**
- * Services / offers section.
- */
-export const OFFERS: Offer[] = [
-  {
-    id: 'vitrine',
-    numberLabel: 'Offre 1',
-    title: 'Site vitrine et landing page',
-    problem:
-      'Votre activité est invisible en ligne, ou votre site actuel ne convertit pas les visiteurs en contacts.',
-    features: [
-      'Maquette Figma validée avant la première ligne de code',
-      'Développement Next.js, rapide et responsive',
-      'Référencement naturel (SEO technique) et suivi des visites',
-      'Mise en ligne, nom de domaine et formation incluse',
-    ],
-    priceNote: 'À partir de',
-    price: '1 500 €',
-    isPriceCased: false,
-    delay: 'Livré en 2 à 4 semaines',
-    ctaLabel: 'En parler 30 minutes →',
-    ctaHref: SITE_CONFIG.calendlyUrl,
-  },
-  {
-    id: 'application',
-    numberLabel: 'Offre 2',
-    title: 'Application web sur mesure',
-    problem:
-      'Vos outils actuels ne suivent plus : tableurs partagés, saisies manuelles, logiciels génériques inadaptés à votre métier.',
-    features: [
-      'Cadrage fonctionnel et maquettes des écrans clés',
-      'Base de données PostgreSQL et authentification',
-      'Tableaux de bord, rôles et permissions',
-      'Tests, déploiement et documentation de reprise',
-    ],
-    priceNote: 'À partir de',
-    price: '3 000 €',
-    isPriceCased: false,
-    delay: '6 à 10 semaines',
-    ctaLabel: 'En parler 30 minutes →',
-    ctaHref: SITE_CONFIG.calendlyUrl,
-  },
-  {
-    id: 'bout-en-bout',
-    numberLabel: 'Offre 3',
-    title: 'Design et développement de bout en bout',
-    problem:
-      "Vous lancez un produit et il vous faudrait une équipe entière : un designer, un développeur front, un développeur back.",
-    features: [
-      "Identité de l'interface et design system dans Figma",
-      'Développement full-stack complet',
-      'Sprints hebdomadaires avec démo chaque semaine',
-      'Formation, passation et maintenance optionnelle',
-    ],
-    priceNote: 'Tarification',
-    price: 'Au cas par cas',
-    isPriceCased: true,
-    delay: "8 à 12 semaines · budget posé après l'appel",
-    ctaLabel: 'On en parle en 30 minutes →',
-    ctaHref: SITE_CONFIG.calendlyUrl,
-  },
-];
 
 /**
  * Single source of truth for each project's technology stack.
@@ -502,60 +416,6 @@ export const ABOUT_CONTENT: AboutContent = {
   toolsHeading: 'Outils du quotidien',
   tools: ['Figma', 'Next.js · TypeScript', 'Tailwind CSS', 'Node.js · PostgreSQL', 'Railway'],
 };
-
-/**
- * FAQ section.
- */
-export const FAQ_ITEMS: FaqItem[] = [
-  {
-    id: 'delais',
-    question: 'Quels sont les délais typiques ?',
-    answer:
-      'Un site vitrine se livre en 2 à 4 semaines, une application sur mesure en 6 à 12 semaines selon le périmètre. Le planning est posé dans la proposition chiffrée et suivi en sprints hebdomadaires.',
-  },
-  {
-    id: 'budget',
-    question: 'Comment se calcule le budget ?',
-    answer:
-      "Chaque projet reçoit une proposition à prix ferme, établie après l'appel découverte. Le budget dépend du périmètre réel : nombre d'écrans, fonctionnalités, intégrations. Vous connaissez le montant total avant de vous engager.",
-  },
-  {
-    id: 'code',
-    question: 'Qui possède le code à la fin ?',
-    answer:
-      "Vous, à 100 %. Le code est versionné sur un dépôt qui vous appartient dès le début du projet, et tout est transféré à la livraison. Aucune dépendance technique à mon égard.",
-  },
-  {
-    id: 'apres-livraison',
-    question: 'Que se passe-t-il après la livraison ?',
-    answer:
-      "Une session de formation est incluse pour que vous soyez autonome sur l'outil. Je corrige gratuitement les anomalies pendant 30 jours, et je propose une maintenance optionnelle si vous préférez déléguer les évolutions.",
-  },
-  {
-    id: 'hebergement',
-    question: 'Qui héberge le site, et combien ça coûte ensuite ?',
-    answer:
-      "Si vous disposez déjà d'une infrastructure, votre propre VPS par exemple, le site y est hébergé et vous ne payez aucun frais d'hébergement. Sinon, je m'en charge et je le facture annuellement : comptez 2 à 3 euros par mois pour un site vitrine, environ 10 euros par mois pour une application sur mesure plus lourde. Dans les deux cas, vous savez exactement où vit votre projet.",
-  },
-  {
-    id: 'distance',
-    question: 'Travaillez-vous à distance ?',
-    answer:
-      'Oui, avec tous mes clients, où qu\'ils soient. Une démo en visio a lieu chaque semaine, et des déplacements ponctuels restent possibles selon le projet.',
-  },
-  {
-    id: 'preparation',
-    question: "Que faut-il préparer avant l'appel découverte ?",
-    answer:
-      'Votre objectif principal, deux ou trois exemples de sites ou d\'outils que vous aimez, et une idée de votre budget. Trente minutes suffisent pour cadrer l\'essentiel.',
-  },
-  {
-    id: 'perimetre-partiel',
-    question: 'Puis-je vous confier uniquement le design, ou uniquement le développement ?',
-    answer:
-      "Oui. Certains clients arrivent avec leurs maquettes, d'autres avec un développeur en interne. L'offre s'ajuste au périmètre dont vous avez réellement besoin.",
-  },
-];
 
 /**
  * Footer links.

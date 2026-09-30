@@ -1,13 +1,11 @@
 import {
   ABOUT_CONTENT,
-  FAQ_ITEMS,
   FOOTER_LEGAL_LINKS,
   HERO_CONTENT,
-  OFFERS,
   SITE_CONFIG,
 } from './constants';
 import { LEGAL_CONTENT } from './legal-content';
-import type { CaseStudyPageContent, Offer } from './types';
+import type { CaseStudyPageContent } from './types';
 
 /**
  * JSON-LD graphs emitted by the site, built from the same constants the
@@ -60,7 +58,8 @@ import type { CaseStudyPageContent, Offer } from './types';
  * schema.org type: the types used here are shallow, and modelling all of
  * schema.org would be a library, not a file. `undefined` is allowed in
  * objects because `JSON.stringify` drops those keys, which is how an
- * optional property (a price that does not exist) is left out.
+ * optional property (the `item` URL on the last breadcrumb, which points
+ * at the current page and is therefore omitted) is left out.
  */
 type JsonLdValue =
   | string
@@ -229,159 +228,12 @@ function buildWebSiteNode(): JsonLdValue {
   };
 }
 
-/**
- * Turns a display price into the bare number schema.org expects.
- *
- * `Offer.price` in constants.ts is written for a human ("1 500 €"): it
- * carries a currency sign and a thousands separator, and the sibling
- * `priceNote` adds the qualifier ("À partir de"). schema.org has no
- * room for any of that in `price`, which is why the caller feeds the
- * result to `minPrice` on a `PriceSpecification` instead.
- *
- * Returns null on anything with a decimal mark. Stripping non-digits
- * from "1 500,50 €" would silently yield 150050, so an unparseable
- * price drops the whole `priceSpecification` rather than inventing a
- * hundredfold one. No current offer has decimals; this is a guard for
- * the edit that adds one.
- */
-function parseDisplayPrice(price: string): number | null {
-  if (/[.,]/.test(price)) {
-    return null;
-  }
-
-  const digits = price.replace(/\D/g, '');
-  if (digits.length === 0) {
-    return null;
-  }
-
-  const value = Number(digits);
-  return Number.isFinite(value) && value > 0 ? value : null;
-}
-
-/**
- * One entry of the offer catalog.
- *
- * `isPriceCased` marks the offer whose price is "Au cas par cas". It
- * gets no `priceSpecification` at all: there is no number to state, and
- * putting a placeholder there would publish a figure the business has
- * never quoted.
- *
- * No `valueAddedTaxIncluded` either. The business is under franchise en
- * base (article 293 B), so no VAT applies at all. `false` would say VAT
- * gets added on top and `true` would say it is baked in; both describe a
- * tax that does not exist on these invoices.
- *
- * The type stays `Service`, not `Product`. Marking freelance work as a
- * product to force a price into the SERP is exactly the misuse Google's
- * guidelines name, and there is no rich result for service pricing to
- * win in the first place.
- */
-/**
- * Offer id to the landing page that documents that offer in full.
- *
- * Only `vitrine` has one. `/refonte-site-web` is deliberately absent: a
- * refonte is not a fourth thing sold, it is the vitrine offer applied to a
- * site that already exists, which is what that page's own scope section
- * says. `/tarifs` is absent for the same kind of reason, it prices all
- * three offers rather than being the home of any one of them.
- *
- * Partial on purpose, so the lookup returns `undefined` for the two
- * offers with no page and the `??` below is load-bearing rather than
- * decorative.
- */
-const OFFER_PAGE_PATH: Partial<Record<string, string>> = {
-  vitrine: '/site-vitrine',
-};
-
-/**
- * Stable identity for the service sold under one offer, on the origin like
- * every other node id here.
- *
- * It exists so `/site-vitrine` can describe the same service the homepage
- * catalog already lists instead of declaring a second, competing one. Two
- * `Service` nodes with different ids and the same name is how a site ends
- * up telling a consumer it sells two products that happen to be identical.
- */
-function offerServiceId(offer: Offer): string {
-  return `${SITE_URL}/#service-${offer.id}`;
-}
-
-/**
- * Where the offer is documented: its own page when it has one, the
- * homepage services section otherwise. Now that `/site-vitrine` exists,
- * pointing the vitrine offer at `/#services` would send a reader to the
- * shorter of the two descriptions.
- */
-function offerPageUrl(offer: Offer): string {
-  return absolute(OFFER_PAGE_PATH[offer.id] ?? '/#services');
-}
-
-/**
- * Properties only the offer's own page can supply. Both are optional and
- * both are dropped by `JSON.stringify` when left out, which is why this is
- * a second parameter rather than a spread over the returned object: a
- * spread would need a cast back through `Record`, and the point of
- * `JsonLdValue` is that nothing in this file needs one.
- */
-interface OfferServiceExtras {
-  /** The page that is the full description of this service. */
-  readonly mainEntityOfPage?: string;
-  /** The commercial offer, price included. */
-  readonly offers?: JsonLdValue;
-}
-
-/** The service itself, shared by the homepage catalog and `/site-vitrine`. */
-function buildOfferServiceNode(offer: Offer, extras: OfferServiceExtras = {}): JsonLdValue {
-  return {
-    '@type': 'Service',
-    '@id': offerServiceId(offer),
-    name: offer.title,
-    serviceType: offer.title,
-    url: offerPageUrl(offer),
-    description: `${offer.features.join('. ')}.`,
-    provider: { '@id': ORGANIZATION_ID },
-    areaServed: AREA_SERVED,
-    mainEntityOfPage: extras.mainEntityOfPage,
-    offers: extras.offers,
-  };
-}
-
-/**
- * `minPrice` in EUR, or `undefined` for the cased offer. Split out of
- * `buildOfferNode` so the price stated on `/site-vitrine` cannot come out
- * different from the price stated on `/`.
- */
-function buildPriceSpecification(offer: Offer): JsonLdValue | undefined {
-  const minPrice = offer.isPriceCased ? null : parseDisplayPrice(offer.price);
-
-  if (minPrice === null) {
-    return undefined;
-  }
-
-  return {
-    '@type': 'PriceSpecification',
-    minPrice,
-    priceCurrency: 'EUR',
-  };
-}
-
-function buildOfferNode(offer: Offer): JsonLdValue {
-  return {
-    '@type': 'Offer',
-    name: offer.title,
-    url: offerPageUrl(offer),
-    itemOffered: buildOfferServiceNode(offer),
-    priceSpecification: buildPriceSpecification(offer),
-  };
-}
-
 function buildServiceNode(): JsonLdValue {
   return {
     '@type': 'Service',
     '@id': SERVICE_ID,
     name: 'Design et développement web freelance',
     serviceType: 'Design et développement web',
-    url: absolute('/#services'),
     description: HERO_CONTENT.subtitle,
     provider: { '@id': ORGANIZATION_ID },
     areaServed: AREA_SERVED,
@@ -398,44 +250,6 @@ function buildServiceNode(): JsonLdValue {
       name: HERO_CONTENT.primaryCtaLabel,
       serviceUrl: SITE_CONFIG.calendlyUrl,
     },
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Offres',
-      itemListElement: OFFERS.map(buildOfferNode),
-    },
-  };
-}
-
-/**
- * The FAQ section as `FAQPage`.
- *
- * No rich result will come of this, and that is not a bug to chase.
- * Google narrowed FAQ rich results to well-known government and health
- * sites in September 2023, then retired the feature outright: it stopped
- * appearing in Search on 7 May 2026 and the documentation page was
- * removed on 15 June 2026. FAQPage is no longer in the search gallery at
- * all. It stays here because it is still valid schema.org, still within
- * guidelines, and still the machine-readable form of a real question and
- * answer pair for the engines and assistants that do read it.
- *
- * Its `@id` is the FAQ section anchor rather than the homepage URL, so
- * the node does not fight the `WebSite` node over the identity of `/`.
- */
-function buildFaqNode(): JsonLdValue {
-  return {
-    '@type': 'FAQPage',
-    '@id': absolute('/#faq'),
-    url: absolute('/#faq'),
-    inLanguage: 'fr-FR',
-    isPartOf: { '@id': WEBSITE_ID },
-    mainEntity: FAQ_ITEMS.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer,
-      },
-    })),
   };
 }
 
@@ -453,7 +267,6 @@ export function buildHomeStructuredData(): JsonLdGraph {
       buildOrganizationNode(),
       buildWebSiteNode(),
       buildServiceNode(),
-      buildFaqNode(),
     ],
   };
 }
@@ -495,75 +308,6 @@ export function buildRealisationsStructuredData(): JsonLdGraph {
     '@context': 'https://schema.org',
     '@graph': [
       buildBreadcrumbNode('/realisations', [HOME_CRUMB, { name: 'Réalisations' }]),
-    ],
-  };
-}
-
-/**
- * `/site-vitrine`.
- *
- * This is the one landing page that gets a `Service` node, and it does not
- * get a new one: it re-states `@id` `#service-vitrine`, the identity the
- * homepage offer catalog already gives that service, and adds the two
- * things this document can say that `/#services` cannot. `mainEntityOfPage`
- * declares that this page, not the homepage section, is the full
- * description of the service. `offers` carries the starting price, read
- * through the same helper the catalog uses, so `/` and `/site-vitrine`
- * cannot end up quoting two different figures.
- *
- * Restating name, url and provider rather than emitting a bare `@id`
- * reference follows the convention `buildCaseStudyNode` set: a consumer
- * that fetches this page on its own must not be left holding a dangling
- * identifier.
- *
- * `/refonte-site-web` gets no `Service` node. The page states that its
- * scope is the vitrine offer applied to an existing site, so a second
- * service node there would assert an offering the business does not sell
- * and contradict the page's own copy.
- *
- * `/tarifs` gets no `Offer` nodes. They would be byte-for-byte the three
- * the homepage catalog already emits, which is the duplication this file
- * refuses elsewhere for `Organization`; one of the three is cased and has
- * no number at all, so the markup could only ever describe two thirds of
- * the visible table; and there is no rich result for service pricing to
- * win, as `buildOfferNode` already notes. The visible table stays the
- * thing that answers the question.
- */
-export function buildSiteVitrineStructuredData(): JsonLdGraph {
-  const offer = OFFERS[0];
-  const priceSpecification = buildPriceSpecification(offer);
-
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [
-      buildBreadcrumbNode('/site-vitrine', [HOME_CRUMB, { name: 'Site vitrine' }]),
-      buildOfferServiceNode(offer, {
-        mainEntityOfPage: absolute('/site-vitrine'),
-        offers: {
-          '@type': 'Offer',
-          name: offer.title,
-          url: absolute('/site-vitrine'),
-          priceSpecification,
-        },
-      }),
-    ],
-  };
-}
-
-/** `/tarifs`. Breadcrumb only, for the reasons given just above. */
-export function buildTarifsStructuredData(): JsonLdGraph {
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [buildBreadcrumbNode('/tarifs', [HOME_CRUMB, { name: 'Tarifs' }])],
-  };
-}
-
-/** `/refonte-site-web`. Breadcrumb only, for the reasons given just above. */
-export function buildRefonteStructuredData(): JsonLdGraph {
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [
-      buildBreadcrumbNode('/refonte-site-web', [HOME_CRUMB, { name: 'Refonte de site web' }]),
     ],
   };
 }
