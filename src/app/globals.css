@@ -74,7 +74,7 @@ body::after {
 }
 
 a, button, summary,
-.eyebrow, .hero-kicker, .figure, .step-num, .swatch, .badge-dispo .dot {
+.eyebrow, .hero-kicker, .step-num, .swatch, .badge-dispo .dot {
   transition: color .45s ease, background-color .45s ease, border-color .45s ease;
 }
 
@@ -219,9 +219,8 @@ a:hover { text-decoration-thickness: 2px; }
 }
 
 section { padding-block: clamp(3.5rem, 8vw, 6rem); }
-section + section, .trust { border-top: 1px solid var(--rule); }
+section + section { border-top: 1px solid var(--rule); }
 
-.trust,
 #temoignages,
 .site-footer { background: var(--paper-1); }
 
@@ -338,21 +337,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   .hero .wrap { grid-template-columns: 1fr; }
   .hero-side { flex-direction: row; flex-wrap: wrap; align-items: center; }
   .portrait { display: none; }
-}
-
-.trust { padding-block: clamp(1.75rem, 4vw, 2.5rem); }
-.trust p {
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  max-width: none;
-  line-height: 1.8;
-}
-.figure {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  font-size: 1.15em;
-  color: var(--accent);
-  padding-inline: 0.1em;
 }
 
 .project {

@@ -4,15 +4,15 @@ export const HOSTEED_COPY: CaseStudyCopy = {
   lead: "Plateforme de location de logements dédiée à Madagascar, sur le modèle d'Airbnb : recherche, fiches logements, réservation et paiement en ligne, reconstruite de zéro après un site WordPress devenu instable.",
   metaDescription:
     "Plateforme de réservation de logements à Madagascar, reconstruite de zéro après un WordPress instable : recherche, réservation, paiement Stripe et back-office.",
-  statusBadge: 'En phase de test client',
-  statusDetail: 'Livrée, en phase de test client.',
+  statusBadge: 'Livrée en novembre 2025',
+  statusDetail:
+    "Livrée en novembre 2025, en phase de test chez le client à la fin de mon intervention.",
   narrative: [
     {
       heading: 'Le point de départ',
       paragraphs: [
         "Hosteed est une plateforme de location de logements dédiée à Madagascar, sur le modèle d'Airbnb : on cherche un séjour, on consulte une fiche logement, on réserve et on paie en ligne.",
-        "Avant ce projet, le site tournait sur WordPress et posait de gros problèmes de performance. Les pages étaient lentes, le comportement imprévisible, et le site allait jusqu'à tomber complètement. C'est précisément ce qui a déclenché l'appel : le sujet n'était plus une fonctionnalité manquante, c'était un site sur lequel on ne pouvait plus compter.",
-        "Sur une plateforme de réservation, une panne ne coûte pas seulement une visite. Elle coûte la réservation qui était en train de se faire, et la confiance du voyageur qui ne reviendra pas.",
+        "Avant ce projet, le site tournait sur WordPress et posait de gros problèmes de performance. Les pages étaient lentes, le comportement imprévisible, et le site allait jusqu'à tomber complètement. C'est précisément ce qui a déclenché le projet : le sujet n'était plus une fonctionnalité manquante, c'était un site sur lequel on ne pouvait plus compter.",
       ],
     },
     {
@@ -30,9 +30,9 @@ export const HOSTEED_COPY: CaseStudyCopy = {
       ],
     },
     {
-      heading: 'Où en est le projet',
+      heading: 'La fin de mon intervention',
       paragraphs: [
-        "La plateforme est livrée et se trouve aujourd'hui en phase de test chez le client, qui la valide avant ouverture. Elle n'est donc pas encore accessible au public.",
+        "Mon intervention a couru de mai à novembre 2025. À sa fin, la plateforme était livrée et en phase de test chez le client, qui la validait avant ouverture : elle n'était pas encore ouverte au public, et je n'ai pas suivi le projet au-delà.",
       ],
     },
   ],

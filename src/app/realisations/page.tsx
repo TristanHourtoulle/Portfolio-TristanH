@@ -66,8 +66,8 @@ export default function RealisationsPage() {
               </h1>
               <p className="lead">
                 Quatre produits menés de la maquette Figma à la mise en ligne, en stage puis en
-                freelance, pour des PME, des startups et des agences. Chaque étude de cas détaille
-                le contexte, mon intervention et le résultat livré.
+                freelance. Chaque étude de cas détaille le contexte, mon intervention et le
+                résultat livré.
               </p>
             </div>
 

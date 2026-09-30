@@ -13,12 +13,11 @@ import type {
   ProfileAction,
   SiteConfig,
   Testimonial,
-  TrustStats,
 } from './types';
 
 export const SITE_CONFIG: SiteConfig = {
   brandName: 'Tristan Hourtoulle',
-  brandTagline: 'design et dev',
+  brandTagline: 'développeur web full-stack',
   siteUrl: 'https://www.tristanhourtoulle.fr',
   linkedinUrl: 'https://www.linkedin.com/in/tristan-hourtoulle/',
   email: 'tristan.hourtoulle@icloud.com',
@@ -109,12 +108,7 @@ export const HERO_CONTENT: HeroContent = {
 
 export const CTA_CONTENT: CtaContent = {
   title: 'Disponible pour un poste en CDI.',
-  lead: "Développeur full-stack, deux ans de freelance et quatre applications web livrées en production. Je cherche une équipe produit où je conçois et développe au quotidien, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
-};
-
-export const TRUST_STATS: TrustStats = {
-  clientsCount: 12,
-  productsInProduction: 3,
+  lead: "Développeur full-stack, deux ans de freelance et quatre applications web conçues et livrées. Je cherche une équipe produit où je conçois et développe au quotidien, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
 };
 
 export const CASE_STUDY_STACKS: Record<CaseStudySlug, readonly string[]> = {
@@ -145,7 +139,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         label: 'Statut',
-        value: 'Livrée, en phase de test client.',
+        value:
+          "Livrée en novembre 2025, en phase de test chez le client à la fin de mon intervention.",
       },
     ],
     caseLinkHref: '/realisations/hosteed',
@@ -171,7 +166,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: 'Résultat',
         value:
-          "En production sur moduloop-impact.fr. Moduloop m'a ensuite repris en freelance pour la maintenance, puis pour construire Moduloop Kits.",
+          "Mise en production sur moduloop-impact.fr en juin 2024, à la fin de mon stage. Moduloop m'a ensuite repris en freelance pour la maintenance, puis pour construire Moduloop Kits.",
       },
     ],
     caseLinkHref: '/realisations/moduloop-impact',
@@ -221,7 +216,8 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         label: 'Statut',
-        value: 'Trois sites livrés sur le socle, intervention terminée en août 2026.',
+        value:
+          "Deux sites en production et un troisième en attente de validation, intervention terminée en août 2026.",
       },
     ],
     caseLinkHref: '/realisations/quintyss',
@@ -247,7 +243,8 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     role: 'Développeur full-stack',
     summary:
       "Plateforme de location de logements à Madagascar, reconstruite depuis la base après un WordPress devenu instable : recherche, réservation, paiement Stripe, back-office.",
-    status: 'En phase de test client.',
+    status:
+      "Livrée en novembre 2025, en phase de test chez le client à la fin de mon intervention.",
   },
   {
     slug: 'quintyss',
@@ -255,7 +252,8 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     role: 'Développeur full-stack, référent technique',
     summary:
       "CMS multi-sites : le client modifie ses pages lui-même, widget par widget et en temps réel, sans développeur ni remise en ligne.",
-    status: 'Trois sites livrés sur le socle, intervention terminée en août 2026.',
+    status:
+      "Deux sites en production et un troisième en attente de validation, intervention terminée en août 2026.",
   },
   {
     slug: 'moduloop-impact',
@@ -263,7 +261,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     role: 'Développeur full-stack',
     summary:
       "Calculateur d'impact environnemental qui remplace un calcul sur tableur : catalogue produits, comparaison du neuf et du réemploi, export des résultats.",
-    status: 'En production sur moduloop-impact.fr.',
+    status: 'Mise en production sur moduloop-impact.fr en juin 2024, à la fin de mon stage.',
     note: "À la fin du stage, Moduloop m'a repris en freelance pour la maintenance, puis pour construire Kits.",
   },
 ];
@@ -279,25 +277,25 @@ export const PROCESS_STEPS: ProcessStep[] = [
     id: 'cadrage',
     numberLabel: '1',
     title: 'Cadrer avant de coder',
-    note: "La question de départ n'est pas esthétique : elle est de savoir ce que le produit est censé produire, et pourquoi il ne le produit pas aujourd'hui. Une refonte ne se décide pas parce qu'un site est vieux, elle se décide quand il coûte quelque chose.",
+    note: "Je commence par ce que le produit est censé produire, et par ce qui l'en empêche. Sur Hosteed, le sujet n'était pas une fonctionnalité manquante mais un site qui tombait : cela a décidé l'architecture avant la première ligne de code.",
   },
   {
     id: 'perimetre',
     numberLabel: '2',
     title: 'Arrêter le périmètre sur la maquette',
-    note: "Le périmètre ne sort pas d'un gabarit, il se décide au cadrage. La validation de la maquette est le moment où je l'arrête, écran par écran. Pas trois semaines plus tard, sur un produit à moitié construit.",
+    note: "Je conçois dans Figma, donc la maquette est le moment où le périmètre se fige, écran par écran, avec les cas limites et les états vides. Ce qui se décide là ne se redécouvre pas trois semaines plus tard sur un produit à moitié construit.",
   },
   {
     id: 'iterations',
     numberLabel: '3',
     title: 'Montrer tôt, ajuster en continu',
-    note: "Une démo par semaine sur un environnement de test, ouverte à toute l'équipe. Les ajustements se font au fil de l'eau, pas à la fin, et c'est aussi ce qui tient le planning.",
+    note: "Une démo par semaine sur un environnement de test, ouverte à toute l'équipe. Je préfère un retour sur un écran qui tourne à une validation sur un document, et les ajustements se font au fil de l'eau plutôt qu'en fin de projet.",
   },
   {
     id: 'autonomie',
     numberLabel: '4',
     title: "Rendre l'équipe autonome",
-    note: "Sur Hosteed, j'ai construit un back-office pour que l'équipe suive les logements, les réservations et les paiements sans qu'un développeur ait à intervenir. Le référencement technique et le suivi des visites font partie du périmètre, pas des options ajoutées ensuite.",
+    note: "Sur Hosteed, j'ai construit un back-office pour que l'équipe suive les logements, les réservations et les paiements sans passer par un développeur. Sur Quintyss, l'éditeur permettait au client de modifier ses pages lui-même. Je considère le back-office, le référencement technique et le suivi des visites comme du produit, pas comme de la finition.",
   },
 ];
 
@@ -343,7 +341,7 @@ export const ABOUT_CONTENT: AboutContent = {
   paragraphs: [
     "Je conçois les interfaces dans Figma, puis je les développe moi-même : rien ne se perd entre la maquette et le produit. Quand une contrainte technique apparaît en cours de route, je la règle des deux côtés à la fois, sans qu'il faille la traduire d'un métier à l'autre.",
     "Ce profil double sert surtout à faire le lien dans une équipe. Mes quatre projets étaient montés différemment : certains arrivaient avec leurs maquettes déjà faites, d'autres avec un développeur en interne. Je prends la partie design, la partie développement ou les deux, selon ce qui manque là où j'arrive.",
-    "Sur Quintyss, j'ai été référent technique de deux développeurs : architecture, revue de code et arbitrages au quotidien. C'est le cadre que je cherche à retrouver, une équipe où les décisions se discutent, où mon code est relu et où je relis celui des autres.",
+    "Sur Quintyss, j'ai été référent technique d'une équipe de deux développeurs : architecture, revue de code et arbitrages au quotidien. C'est le cadre que je cherche à retrouver, une équipe où les décisions se discutent, où mon code est relu et où je relis celui des autres.",
   ],
   toolsHeading: 'Outils du quotidien',
   tools: ['Figma', 'Next.js · TypeScript', 'Tailwind CSS', 'Node.js · PostgreSQL', 'Railway'],

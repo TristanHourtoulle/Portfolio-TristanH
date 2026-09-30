@@ -6,7 +6,7 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
   lead: "La formation, les stages, les deux mandats d’assistant auprès d’autres étudiants et l’année passée à Kuala Lumpur. Ce que le reste du site ne raconte pas : comment j’ai appris, et dans quelles conditions.",
   metaTitle: 'Parcours',
   metaDescription:
-    "Le parcours de Tristan Hourtoulle : six ans à Epitech, deux mandats d’assistant auprès de 65 puis 34 étudiants, trois stages, une quatrième année à Kuala Lumpur et une activité freelance lancée pendant les études.",
+    "Le parcours de Tristan Hourtoulle : six ans à Epitech, deux mandats d’assistant auprès de 65 puis 34 étudiants, deux stages en entreprise, une quatrième année à Kuala Lumpur et une activité freelance lancée pendant les études.",
   school: {
     name: 'Epitech',
     description:
@@ -52,7 +52,7 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
       heading: 'Moduloop Impact, en autonomie complète',
       paragraphs: [
         "Stage de troisième année chez Moduloop, dans une startup, en autonomie complète sur le produit.",
-        "L’application est en production et l’étude de cas en détaille le contexte, mon intervention et le résultat.",
+        "L’application a été mise en production en juin 2024, à la fin du stage, et l’étude de cas en détaille le contexte, mon intervention et le résultat.",
       ],
       link: {
         label: 'Lire l’étude de cas Moduloop Impact',
@@ -61,7 +61,7 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
     },
     {
       id: 'freelance',
-      period: 'depuis juillet 2024',
+      period: 'juillet 2024 à août 2026',
       context: 'Activité indépendante',
       heading: 'Freelance lancé un mois après le stage, en parallèle des études',
       paragraphs: [

@@ -11,7 +11,7 @@ const HEADLINE = 'Six ans à Epitech, deux mandats d’assistant';
 
 const FACTS: readonly string[] = [
   '65 puis 34 étudiants encadrés',
-  'Trois stages',
+  'Deux stages en entreprise',
   'Quatrième année à Kuala Lumpur',
 ];
 

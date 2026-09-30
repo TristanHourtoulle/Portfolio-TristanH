@@ -5,7 +5,8 @@ export const QUINTYSS_COPY: CaseStudyCopy = {
   metaDescription:
     "CMS multi-sites où le client modifie ses pages lui-même, widget par widget, sans développeur ni remise en ligne. Un même socle fait vivre plusieurs sites clients.",
   statusBadge: 'Intervention terminée',
-  statusDetail: 'Trois sites livrés sur le socle, intervention terminée en août 2026.',
+  statusDetail:
+    "Deux sites en production et un troisième en attente de validation, intervention terminée en août 2026.",
   narrative: [
     {
       heading: 'Le point de départ',
@@ -26,14 +27,6 @@ export const QUINTYSS_COPY: CaseStudyCopy = {
       paragraphs: [
         "C'est le point qui change tout au quotidien. Dans l'éditeur de page, tout est modifiable par widget, en temps réel, sans remise en ligne. Le client change son hero slider, publie un article, met à jour ses événements, et le site en ligne suit immédiatement.",
         "Aucun développeur n'intervient, aucune mise en production à programmer, aucun délai à subir pour une correction de dernière minute. Ce qui était un ticket et une attente devient une modification de quelques minutes, faite directement par la personne qui en a besoin.",
-        "Pour une structure sans équipe technique, c'est la différence entre un site que l'on subit et un site que l'on pilote.",
-      ],
-    },
-    {
-      heading: "Ce que ça donnait à la fin de mon intervention",
-      paragraphs: [
-        "Trois sites tournaient sur ce socle, deux en production et un déployé en attente de validation. Chacun avait ses contenus, sa charte et ses pages propres, et tous étaient administrés depuis la même plateforme.",
-        "Le déploiement d'un nouveau site se comptait alors en heures. C'est de cette architecture que je suis le plus fier sur ce projet : elle ne se voit sur aucun écran, et c'est pourtant elle qui sépare un site de plus à maintenir d'une plateforme capable d'accueillir un nouveau client dans la journée.",
       ],
     },
     {
@@ -45,7 +38,8 @@ export const QUINTYSS_COPY: CaseStudyCopy = {
     {
       heading: 'La fin de mon intervention',
       paragraphs: [
-        "Mon intervention a couru de mars 2025 à août 2026. À sa fin, trois sites tournaient sur le socle : deux en production et un troisième déployé en attente de validation.",
+        "Mon intervention a couru de mars 2025 à août 2026. À sa fin, trois sites tournaient sur le socle : deux en production et un troisième déployé, en attente de validation. Chacun avait ses contenus, sa charte et ses pages propres, et tous étaient administrés depuis la même plateforme.",
+        "Le déploiement d'un nouveau site se comptait alors en heures. C'est de cette architecture que je suis le plus fier sur ce projet : elle ne se voit sur aucun écran, et c'est pourtant elle qui sépare un site de plus à maintenir d'une plateforme capable d'accueillir un nouveau client dans la journée.",
       ],
     },
   ],

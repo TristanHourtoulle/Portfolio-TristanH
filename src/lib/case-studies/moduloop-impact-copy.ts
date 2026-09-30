@@ -4,8 +4,8 @@ export const MODULOOP_IMPACT_COPY: CaseStudyCopy = {
   lead: "Le calcul d'impact environnemental d'un projet d'aménagement se faisait à la main, sur tableur. Il se fait désormais dans un outil qui chiffre, compare deux scénarios et sort un document présentable au client.",
   metaDescription:
     "Application web qui remplace le calcul d'impact environnemental sur tableur : catalogue produits, comparaison neuf/réemploi et export PDF.",
-  statusBadge: 'En production',
-  statusDetail: 'En production sur moduloop-impact.fr.',
+  statusBadge: 'Mise en production en juin 2024',
+  statusDetail: 'Mise en production sur moduloop-impact.fr en juin 2024, à la fin de mon stage.',
   narrative: [
     {
       heading: 'Le point de départ',
@@ -35,8 +35,10 @@ export const MODULOOP_IMPACT_COPY: CaseStudyCopy = {
       ],
     },
     {
-      heading: 'Où en est le projet',
-      paragraphs: ['En production sur moduloop-impact.fr.'],
+      heading: 'La fin de mon stage',
+      paragraphs: [
+        "L'outil a été mis en production sur moduloop-impact.fr en juin 2024, à la fin de mon stage.",
+      ],
     },
   ],
 };

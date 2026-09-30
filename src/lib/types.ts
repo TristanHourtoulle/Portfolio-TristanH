@@ -153,11 +153,6 @@ export interface Testimonial {
   review: string;
 }
 
-export interface TrustStats {
-  clientsCount: number;
-  productsInProduction: number;
-}
-
 export interface HeroContent {
   /** Small line rendered inside the <h1>, above `title`. */
   titleKicker: string;

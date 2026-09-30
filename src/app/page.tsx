@@ -1,6 +1,5 @@
 import { AccentProvider } from '@/components/providers/accent-provider';
 import { HeroSection } from '@/components/sections/hero-section';
-import { TrustSection } from '@/components/sections/trust-section';
 import { ExperienceSection } from '@/components/sections/experience-section';
 import { CaseStudiesSection } from '@/components/sections/case-studies-section';
 import { ProcessSection } from '@/components/sections/process-section';
@@ -26,7 +25,6 @@ export default function Home() {
       <AccentProvider>
         <main id="contenu" tabIndex={-1}>
           <HeroSection />
-          <TrustSection />
           <ExperienceSection />
           <CaseStudiesSection />
           <ProcessSection />
