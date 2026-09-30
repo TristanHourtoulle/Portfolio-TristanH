@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { CASE_STUDY_PAGES } from '@/lib/case-studies-content';
 import { SITE_CONFIG } from '@/lib/constants';
 
-const STATIC_PATHS = ['/', '/realisations'] as const;
+const STATIC_PATHS = ['/', '/realisations', '/parcours'] as const;
 
 /**
  * Turns a route path into the absolute URL the sitemap should advertise.

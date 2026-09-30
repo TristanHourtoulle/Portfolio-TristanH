@@ -246,3 +246,59 @@ export interface LegalPageContent {
   host: LegalHost;
   sections: LegalSection[];
 }
+
+/**
+ * An outbound or internal link rendered inside a parcours entry.
+ */
+export interface ParcoursLink {
+  label: string;
+  href: string;
+}
+
+/**
+ * One dated block of the parcours page.
+ */
+export interface ParcoursEntry {
+  id: string;
+  /** Dates of the entry, shown in the left column. */
+  period: string;
+  /** Short qualifier under the period, for instance the school or the company. */
+  context: string;
+  heading: string;
+  paragraphs: string[];
+  /** Optional link closing the entry. */
+  link?: ParcoursLink;
+}
+
+/**
+ * The school behind the formation, reused by the structured data.
+ */
+export interface ParcoursSchool {
+  name: string;
+  /** Wikidata-free plain description, used as the schema.org description. */
+  description: string;
+}
+
+/**
+ * Full content of the parcours page (`/parcours`).
+ */
+export interface ParcoursPageContent {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  metaTitle: string;
+  metaDescription: string;
+  school: ParcoursSchool;
+  entries: ParcoursEntry[];
+}
+
+/**
+ * The homepage block pointing at the parcours page.
+ */
+export interface ParcoursTeaserContent {
+  eyebrow: string;
+  title: string;
+  paragraphs: string[];
+  linkLabel: string;
+  linkHref: string;
+}

@@ -5,6 +5,7 @@ import {
   SITE_CONFIG,
 } from './constants';
 import { LEGAL_CONTENT } from './legal-content';
+import { PARCOURS_CONTENT } from './parcours-content';
 import type { CaseStudyPageContent } from './types';
 
 type JsonLdValue =
@@ -57,6 +58,12 @@ const PROFESSION = 'Développeur web full-stack et designer freelance';
 
 const AREA_SERVED = { '@type': 'Country', name: 'France' } as const;
 
+const ALUMNI_OF = {
+  '@type': 'CollegeOrUniversity',
+  name: PARCOURS_CONTENT.school.name,
+  description: PARCOURS_CONTENT.school.description,
+} as const;
+
 function buildPersonNode(): JsonLdValue {
   return {
     '@type': 'Person',
@@ -69,6 +76,7 @@ function buildPersonNode(): JsonLdValue {
     email: `mailto:${SITE_CONFIG.email}`,
     knowsAbout: KNOWS_ABOUT,
     knowsLanguage: 'fr-FR',
+    alumniOf: ALUMNI_OF,
     sameAs: SOCIAL_PROFILE_URLS,
     worksFor: { '@id': ORGANIZATION_ID },
   };
@@ -168,6 +176,16 @@ export function buildRealisationsStructuredData(): JsonLdGraph {
     '@context': 'https://schema.org',
     '@graph': [
       buildBreadcrumbNode('/realisations', [HOME_CRUMB, { name: 'Réalisations' }]),
+    ],
+  };
+}
+
+export function buildParcoursStructuredData(): JsonLdGraph {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      buildBreadcrumbNode('/parcours', [HOME_CRUMB, { name: 'Parcours' }]),
+      buildPersonNode(),
     ],
   };
 }

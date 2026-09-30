@@ -6,6 +6,7 @@ import { CaseStudiesSection } from '@/components/sections/case-studies-section';
 import { ProcessSection } from '@/components/sections/process-section';
 import { TestimonialsSection } from '@/components/sections/testimonials-section';
 import { AboutSection } from '@/components/sections/about-section';
+import { ParcoursSection } from '@/components/sections/parcours-section';
 import { CtaSection } from '@/components/sections/cta-section';
 import type { Metadata } from 'next';
 import { SiteFooter } from '@/components/site-footer';
@@ -31,6 +32,7 @@ export default function Home() {
           <ProcessSection />
           <TestimonialsSection />
           <AboutSection />
+          <ParcoursSection />
           <CtaSection />
         </main>
         <SiteFooter />

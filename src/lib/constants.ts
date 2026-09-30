@@ -50,6 +50,7 @@ export const PROFILE_SECONDARY_ACTION: ProfileAction | null =
 export const NAVIGATION: NavItem[] = [
   { id: 'experience', label: 'Expérience', href: '/#experience' },
   { id: 'realisations', label: 'Réalisations', href: '/realisations' },
+  { id: 'parcours', label: 'Parcours', href: '/parcours' },
   { id: 'processus', label: 'Processus', href: '/#processus' },
   { id: 'a-propos', label: 'À propos', href: '/#a-propos' },
 ];
@@ -57,6 +58,7 @@ export const NAVIGATION: NavItem[] = [
 export const FOOTER_NAVIGATION: NavItem[] = [
   { id: 'experience', label: 'Expérience', href: '/#experience' },
   { id: 'realisations', label: 'Réalisations', href: '/realisations' },
+  { id: 'parcours', label: 'Parcours', href: '/parcours' },
   { id: 'processus', label: 'Processus', href: '/#processus' },
   { id: 'a-propos', label: 'À propos', href: '/#a-propos' },
 ];
