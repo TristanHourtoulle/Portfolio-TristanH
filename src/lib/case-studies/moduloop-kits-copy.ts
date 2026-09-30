@@ -1,18 +1,5 @@
 import type { CaseStudyCopy } from '../types';
 
-/**
- * Editorial copy for /realisations/moduloop-kits.
- *
- * The structuring idea, stated by the client and repeated from the other
- * side in moduloop-impact-copy.ts: Impact calculates, Kits sells. Impact
- * measures a project that already exists; Kits composes and prices a
- * commercial offer. Anything written here has to keep that line visible.
- *
- * The purchase/rental double pricing is a decision-support feature, not
- * a billing detail: the point is to put both priced scenarios side by
- * side before arbitrating. No figure is quoted, since the client gave
- * none.
- */
 export const MODULOOP_KITS_COPY: CaseStudyCopy = {
   lead: "Impact calcule, Kits vend : composer un kit d'aménagement, le chiffrer à l'achat comme à la location, et présenter l'offre avec son impact environnemental et son prix au mètre carré.",
   metaDescription:

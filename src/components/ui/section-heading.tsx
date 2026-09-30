@@ -6,8 +6,7 @@ interface SectionHeadingProps {
 }
 
 /**
- * The eyebrow / h2 / lead paragraph pattern repeated at the top of every
- * content section in the mockup (`.section-head`).
+ * Eyebrow, heading and lead paragraph of a content section.
  */
 export function SectionHeading({ eyebrow, title, titleId, lead }: SectionHeadingProps) {
   return (

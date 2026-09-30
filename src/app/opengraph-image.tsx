@@ -4,14 +4,6 @@ import { loadOgFonts, OgCard, OG_CONTENT_TYPE, OG_PALETTE, OG_SIZE } from '@/lib
 
 /**
  * Share card for `/`.
- *
- * Picked up automatically by the file convention, which is why the root
- * layout deliberately leaves `openGraph.image` and `twitter.image` unset:
- * this file fills both, and `metadataBase` makes the emitted URL absolute.
- *
- * The headline is `HERO_CONTENT.title` verbatim. It is the one sentence
- * the site already leads with, so the card and the page make the same
- * promise, and no claim is written here that a visitor will not find.
  */
 
 export const alt = `${SITE_CONFIG.brandName} · Design et développement web freelance`;

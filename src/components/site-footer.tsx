@@ -10,13 +10,8 @@ const ICONS: Record<NonNullable<FooterLink['icon']>, typeof Github> = {
 };
 
 /**
- * Read at render time, on the server only: `SiteFooter` has no `'use
- * client'` directive, so this runs during the server render, not in the
- * browser. Computing it in a Client Component (useEffect or first
- * render) would let the server-rendered HTML and the browser's own
- * clock disagree at the New Year's midnight boundary, producing a
- * hydration mismatch. Same reasoning as getAvailabilityLabel in
- * src/lib/availability.ts.
+ * Current year.
+ * @returns the four-digit year at render time
  */
 function getCurrentYear(): number {
   return new Date().getFullYear();
@@ -50,15 +45,6 @@ export function SiteFooter() {
         </nav>
         <nav aria-label="Liens externes et légaux">
           <ul>
-            {/*
-              Three kinds of destination share this list, and only one of
-              them is a route. `/mentions-legales` goes through next/link so
-              it is prefetched and navigated client-side like the rest of the
-              site; the GitHub and LinkedIn profiles open in a new tab with
-              the usual `rel`; the `mailto:` hands off to the mail client and
-              must stay a plain anchor, since next/link only knows how to
-              route URLs this app can render.
-            */}
             {FOOTER_LEGAL_LINKS.map((link) => {
               const Icon = link.icon ? ICONS[link.icon] : null;
               const isInternal = link.href.startsWith('/');

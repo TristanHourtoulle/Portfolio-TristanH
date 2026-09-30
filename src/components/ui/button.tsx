@@ -16,9 +16,7 @@ const VARIANT_CLASS: Record<ButtonVariant, string> = {
 };
 
 /**
- * Every call-to-action in the design is a link (Calendly, an in-page
- * anchor, or mailto), so this stays link-only, matching the mockup's
- * `.btn` classes rather than reinventing a generic clickable button.
+ * Call-to-action link styled as a button.
  */
 export function Button({ variant = 'primary', children, href, className, ariaLabel }: ButtonProps) {
   const isExternal = href.startsWith('http') || href.startsWith('mailto:');

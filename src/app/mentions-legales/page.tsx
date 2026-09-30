@@ -3,39 +3,17 @@ import { SiteFooter } from '@/components/site-footer';
 import { SITE_CONFIG } from '@/lib/constants';
 import { LEGAL_CONTENT } from '@/lib/legal-content';
 
-/**
- * Bare subject: the root layout's `title.template` appends the brand suffix
- * to `<title>`, so repeating it here would duplicate it.
- */
 const PAGE_TITLE = 'Mentions légales';
 
-/**
- * Social titles are spelled out in full instead. Next applies `title.template`
- * to `<title>` only, never to `openGraph.title` or `twitter.title`, and a
- * shared card is stripped of any site chrome that would otherwise carry the
- * brand, so the suffix has to travel with the string itself.
- */
 const SOCIAL_TITLE = `${PAGE_TITLE} · ${SITE_CONFIG.brandName}`;
 const PAGE_DESCRIPTION =
   "Mentions légales du portfolio de Tristan Hourtoulle : éditeur, hébergeur, propriété intellectuelle, données personnelles et droit applicable.";
 
-/**
- * Not indexed on purpose: this is administrative boilerplate with no
- * search intent behind it, and letting it rank would only dilute the
- * portfolio's own pages in results. It stays reachable and crawlable
- * (`follow: true`) from the footer link on every page, so linked
- * destinations such as Calendly's privacy policy are not orphaned.
- */
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   robots: { index: false, follow: true },
   alternates: { canonical: '/mentions-legales' },
-  /**
-   * Redeclared in full because Next replaces the parent `openGraph`
-   * instead of merging it: inheriting the layout's block would leave this
-   * page advertising the homepage as its `og:url`.
-   */
   openGraph: {
     title: SOCIAL_TITLE,
     description: PAGE_DESCRIPTION,

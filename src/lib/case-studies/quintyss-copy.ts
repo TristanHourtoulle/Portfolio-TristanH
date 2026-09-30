@@ -1,30 +1,5 @@
 import type { CaseStudyCopy } from '../types';
 
-/**
- * Editorial copy for /realisations/quintyss.
- *
- * Written for a business reader: benefit, decision, risk and time saved,
- * not the technology stack (which the sidebar already lists).
- *
- * Three constraints govern this file.
- * 1. The strongest product argument is the page editor: every widget is
- *    editable in real time, with no redeployment and no developer. It
- *    gets its own section rather than a bullet in a list.
- * 2. Only three figures are allowed on this project: three client sites
- *    on the platform, a new client deployed in a matter of hours, and
- *    the 788 files in the media library. Nothing else is quantified. The
- *    three sites are broken down the way the shipped screenshots
- *    describe them (two live, one deployed and awaiting client sign-off)
- *    rather than lumped together as three in production, which would
- *    overstate the third. The 788 is read straight off the library's own
- *    counter in editeur-mediatheque.webp, which also states 784 of them
- *    sit on S3; it is written exactly, not rounded to "près de 800",
- *    which is both vaguer and, as it happens, wrong.
- * 3. culturekids.ch must never be used as proof here. That domain still
- *    serves the V2, which is not this mission's work. The V3 site built
- *    for Culture Kids is named without its domain; kcfribourg.ch is the
- *    address that can actually be shown.
- */
 export const QUINTYSS_COPY: CaseStudyCopy = {
   lead: "CMS nouvelle génération : le client modifie son site lui-même, widget par widget et en temps réel, sans développeur et sans remise en ligne. Un même socle fait vivre plusieurs sites clients.",
   metaDescription:

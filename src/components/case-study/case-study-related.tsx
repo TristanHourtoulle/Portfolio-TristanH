@@ -8,18 +8,7 @@ interface CaseStudyRelatedProps {
 }
 
 /**
- * "Voir aussi" cards linking to the other case-study pages listed in
- * `relatedSlugs`. Unresolvable slugs are skipped rather than thrown on,
- * so a future typo in the content file degrades gracefully instead of
- * breaking the page.
- *
- * "Voir aussi" is an <h2>, not the <span> it used to be. The <h3>s on
- * the cards below it were otherwise orphans: they sat under the last
- * narrative <h2> of the case study they had nothing to do with. It keeps
- * the `.eyebrow` class and its `id`, so the look and the section's
- * `aria-labelledby` are both unchanged (see `.eyebrow` in globals.css,
- * which now states its own weight and line-height precisely so it can
- * ride on a heading element without shifting).
+ * "Voir aussi" cards linking to other case-study pages.
  */
 export function CaseStudyRelated({ relatedSlugs }: CaseStudyRelatedProps) {
   const relatedPages = relatedSlugs
@@ -53,12 +42,6 @@ export function CaseStudyRelated({ relatedSlugs }: CaseStudyRelatedProps) {
                 </span>
                 <h3>{page.title}</h3>
                 <p className="mono">{page.period}</p>
-                {/*
-                  The whole card is the link, so the h3 inside it is already
-                  part of the accessible name and of the anchor text: unlike
-                  the homepage card, this closing line needs no title of its
-                  own. The arrow stays decoration.
-                */}
                 <span className="related-link">
                   Lire l&apos;étude de cas <span aria-hidden="true">→</span>
                 </span>

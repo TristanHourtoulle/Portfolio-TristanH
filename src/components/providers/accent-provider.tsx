@@ -25,19 +25,7 @@ interface AccentProviderProps {
 }
 
 /**
- * Drives the case-study recoloring mechanism from the mockup: hovering,
- * focusing, or clicking an element tied to a client retints the whole
- * page through a `data-accent` attribute on <html>, which globals.css
- * maps to that client's brand and ink colors. A click pins the color;
- * moving away then falls back to the pinned client instead of the
- * default accent.
- *
- * The attribute has to live on `document.documentElement`, which sits
- * outside this component's own subtree (the header is rendered from the
- * root layout, above wherever this provider is mounted). Reaching it is
- * therefore the one deliberate, minimal DOM write in the app, done here
- * as a side effect keyed off the derived state below rather than an
- * imperative listener per element.
+ * Provides the case-study accent recoloring context.
  */
 export function AccentProvider({ children }: AccentProviderProps) {
   const [hoveredClientId, setHoveredClientId] = useState<ClientId | null>(null);
@@ -75,9 +63,9 @@ export interface AccentTriggerHandlers {
 }
 
 /**
- * Returns the event handlers a component needs to act as a recoloring
- * trigger for the given client. Spread the result onto the interactive
- * element (a case-study card, or a secondary-mention span/link).
+ * Accent recoloring handlers for a client.
+ * @param clientId - client whose accent the element triggers
+ * @returns handlers to spread onto the interactive element
  */
 export function useAccentTrigger(clientId: ClientId): AccentTriggerHandlers {
   const context = useContext(AccentContext);

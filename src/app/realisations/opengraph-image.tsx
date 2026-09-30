@@ -5,16 +5,6 @@ import { loadOgFonts, OgCard, OG_CONTENT_TYPE, OG_PALETTE, OG_SIZE } from '@/lib
 
 /**
  * Share card for `/realisations`.
- *
- * The four client names do the work here. A card that only said
- * "Réalisations" would be interchangeable with every other portfolio in
- * the feed, whereas "Hosteed, Moduloop, Quintyss" is the part a prospect
- * who was given a reference recognises. They are read from
- * `CASE_STUDY_PAGES` rather than typed out, so adding a fifth study
- * updates the card with the page.
- *
- * Each name is set in its own client `ink`, the contrast-measured value,
- * never the decorative `brand`.
  */
 
 const PAGE_TITLE = 'Réalisations et études de cas';
@@ -41,7 +31,6 @@ export default async function Image() {
           {PAGE_TITLE}
         </div>
 
-        {/* Wraps rather than truncates, so a fifth study cannot push a name off the card. */}
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
           {CASE_STUDY_PAGES.map((page, index) => (
             <div key={page.slug} style={{ display: 'flex', alignItems: 'center' }}>
@@ -54,7 +43,6 @@ export default async function Image() {
               >
                 {page.title}
               </div>
-              {/* Separator trails its name so a wrap never opens a line with a dot. */}
               {index < CASE_STUDY_PAGES.length - 1 && (
                 <div
                   style={{

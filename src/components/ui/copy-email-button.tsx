@@ -11,10 +11,7 @@ interface CopyEmailButtonProps {
 }
 
 /**
- * Copies the email via the Clipboard API, falling back to a hidden
- * textarea + execCommand for browsers or contexts (non-HTTPS, older
- * WebViews) where navigator.clipboard is unavailable. Shows a temporary
- * "Copié" label, exactly like the mockup's copy-email button.
+ * Button that copies the email address to the clipboard.
  */
 export function CopyEmailButton({ email }: CopyEmailButtonProps) {
   const [isCopied, setIsCopied] = useState(false);

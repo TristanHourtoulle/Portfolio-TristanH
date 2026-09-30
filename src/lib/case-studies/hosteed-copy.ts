@@ -1,19 +1,5 @@
 import type { CaseStudyCopy } from '../types';
 
-/**
- * Editorial copy for /realisations/hosteed.
- *
- * Written for a business reader, not a developer: what was broken, what
- * was rebuilt, and where the project stands. Two facts are load-bearing
- * and must not drift: the platform is delivered and still in client
- * testing (it is NOT open to the public), and the four hard parts of the
- * mission were genuinely concurrent, none of them dominant.
- *
- * No traffic, revenue or performance figure appears here on purpose: the
- * client provided none, so none is claimed. The only number stated is
- * the order of magnitude of the data model, which comes straight from
- * the client's own account of the mission.
- */
 export const HOSTEED_COPY: CaseStudyCopy = {
   lead: "Plateforme de location de logements dédiée à Madagascar, sur le modèle d'Airbnb : recherche, fiches logements, réservation et paiement en ligne, reconstruite de zéro après un site WordPress devenu instable.",
   metaDescription:

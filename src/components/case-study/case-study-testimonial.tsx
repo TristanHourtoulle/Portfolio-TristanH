@@ -7,18 +7,6 @@ interface CaseStudyTestimonialProps {
 
 /**
  * Client quote closing a case-study narrative.
- *
- * The review text is never stored in the case-study content: only an id
- * is, and the quote is resolved here against TESTIMONIALS, the same
- * source the homepage list reads. One edit there updates both places,
- * and the two can never drift apart. The lookup is a linear scan over a
- * handful of static entries, run once at build time on a prerendered
- * page.
- *
- * A missing id renders nothing at all: a pull quote with an empty body
- * would be worse than no section. A `pending` slot renders a plain note
- * instead, so a delivered mission still awaiting its review says so
- * rather than staying silent.
  */
 export function CaseStudyTestimonial({ testimonial }: CaseStudyTestimonialProps) {
   if (testimonial.status === 'pending') {

@@ -5,32 +5,6 @@ import { MODULOOP_KITS_COPY } from './case-studies/moduloop-kits-copy';
 import { QUINTYSS_COPY } from './case-studies/quintyss-copy';
 import type { CaseStudyPageContent } from './types';
 
-/**
- * Structure of the four case-study detail pages (`/realisations/[slug]`):
- * identity, gallery, links and related studies.
- *
- * The prose of each page (lead, status wording, narrative sections and
- * client quote) lives in its own file under ./case-studies/ and is
- * spread in below. Copy is rewritten far more often than screenshots
- * change, and the two now sit in different files so neither edit has to
- * step over the other.
- *
- * `relatedSlugs` is a link graph, not a free-form list, and it is kept
- * balanced by hand: every study points at two others and is pointed at by
- * exactly two. The earlier set had all four studies pointing at Quintyss
- * or Moduloop Impact and none at Moduloop Kits, which left that page with
- * a single inbound link on the entire site, the one from /realisations.
- * The pairings still have to read sensibly to a human, so the two
- * Moduloop projects reference each other, and Hosteed and Quintyss, the
- * two products with a public site sitting on top of a back office,
- * reference each other too.
- *
- * The narratives are built strictly from what each client stated about
- * their own mission. Where no figure was given, none is written: no
- * traffic, no revenue, no percentage of gain, no user count. The only
- * numbers on these pages (Hosteed's data model, Quintyss's three client
- * sites and its deployment time) come directly from those accounts.
- */
 export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
   {
     slug: 'hosteed',

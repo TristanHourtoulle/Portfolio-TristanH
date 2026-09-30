@@ -1,21 +1,5 @@
 import type { CaseStudyCopy } from '../types';
 
-/**
- * Editorial copy for /realisations/moduloop-impact.
- *
- * Two things this page has to land. First, the before/after: the impact
- * calculation used to be done by hand, and the PDF export is what makes
- * the result showable to the end client, which a spreadsheet never is.
- * Second, the split with Moduloop Kits: Impact measures a project that
- * already exists, Kits builds and prices an offer. The same distinction
- * is stated from the other side in moduloop-kits-copy.ts, and the two
- * wordings are meant to stay consistent.
- *
- * No percentage of avoided emissions is quoted anywhere: the comparison
- * figure depends entirely on the project being simulated, and the client
- * supplied no reference number, so the page describes the comparison
- * without pretending to a headline result.
- */
 export const MODULOOP_IMPACT_COPY: CaseStudyCopy = {
   lead: "Le calcul d'impact environnemental d'un projet d'aménagement se faisait à la main, sur tableur. Il se fait désormais dans un outil qui chiffre, compare deux scénarios et sort un document présentable au client.",
   metaDescription:

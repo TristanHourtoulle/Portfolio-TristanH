@@ -9,23 +9,6 @@ interface ErrorPageProps {
 
 /**
  * Route-level error boundary for everything under the root layout.
- *
- * Must be a Client Component: Next attaches it as a real React error
- * boundary, and only a client boundary can catch a render error and offer
- * a retry. It replaces the page content only, so the header, the skip
- * link and the "Réserver un appel" button stay in place and a visitor who
- * hits an error can still book.
- *
- * No footer here, unlike the 404 page: `SiteFooter` reads the current
- * year at render time, which is correct on the server but would run in
- * the browser once imported into this Client Component. The 404 page is a
- * Server Component and has no such constraint.
- *
- * Nothing is logged and the error message is never shown. The message can
- * carry internals (paths, query fragments) that have no place on a public
- * page, and the site has no logger to send it to. `digest` is the hash
- * Next puts in the server logs for the same error, so surfacing it gives
- * a visitor something quotable without leaking anything.
  */
 export default function ErrorPage({ error, reset }: ErrorPageProps) {
   return (

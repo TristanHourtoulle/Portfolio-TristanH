@@ -1,27 +1,5 @@
 @import "tailwindcss";
 
-/* ==========================================================================
-   Design tokens
-   ==========================================================================
-   Light theme only, by design decision: no `.dark` variant, no theme
-   toggle. Values are ported from the validated mockup
-   (home-direction-a.html), with the accent split into `--accent-brand`
-   (decorative, exact client color) and `--accent` (text-safe, darkened
-   variant) to fix the contrast issue the original hypotheses had. See
-   src/lib/constants.ts (CLIENT_COLORS) for the measured ratios; the hex
-   values below are kept in sync with that file by hand, since CSS
-   attribute selectors cannot read TypeScript constants.
-
-   Every text-bearing token here is measured against the DARKEST surface
-   it can land on, not against the lightest. The paper scale runs
-   paper-0 -> paper-3, and accent-colored text appears on three of those
-   grounds (paper-0 body, paper-1 for #temoignages / footer / sidebars,
-   and the #realisations tint built on paper-2), so tuning against
-   paper-0 alone silently shipped sub-4.5:1 text on the darker two. The
-   binding surface for --accent and --muted is therefore the
-   #realisations ground, `color-mix(--accent-brand 4%, --paper-2)`.
-   ========================================================================== */
-
 :root {
   color-scheme: light;
 
@@ -32,51 +10,31 @@
   --bg: var(--paper-0);
   --bg-soft: var(--paper-1);
   --ink: #24221B;
-  /* 5.79:1 on paper-0, 5.30:1 on paper-1, 4.56:1 on the darkest
-     #realisations ground. Secondary text lands on all three. */
   --muted: #655E50;
-  /* Hairline dividers and decorative framing only. Deliberately below
-     3:1: no control is identified by a --rule border alone (every one of
-     them also carries a high-contrast label or glyph), and WCAG 1.4.11
-     does not cover decorative separators. */
   --rule: #D8D2C2;
   --ok: #2E7D46;
-  /* Idle state of non-text controls that must stay perceivable but
-     recessive (carousel pagination dots). 3.39:1 on paper-0, clearing
-     the 1.4.11 threshold for UI components. Distinct from --paper-3,
-     which stays a decorative surface. */
   --control-idle: #8A8374;
 
-  /* Edukai's exact brand blue lives in --accent-brand and is used
-     decoratively. --accent is the text-safe darkening of it: #2563EB
-     only reached 3.67:1 on the #realisations ground and 4.27:1 on
-     paper-1, so it could not carry small text there. */
   --accent-brand: #2563EB;
-  --accent: #2057CE; /* 5.71:1 paper-0, 5.23:1 paper-1, 4.50:1 #realisations */
+  --accent: #2057CE;
   --on-accent: var(--paper-0);
 
   --font-sans: var(--font-display), 'Avenir Next', Avenir, Futura, Candara, 'Trebuchet MS', sans-serif;
   --font-mono: var(--font-mono-local), ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 }
 
-/* Case-study recoloring mechanism: driven by [data-accent] on <html>,
-   toggled by AccentProvider (src/components/providers/accent-provider.tsx). */
 :root[data-accent="moduloop"] {
   --accent-brand: #00AAAB;
-  --accent: #006C6D; /* 5.62:1 paper-0, 5.15:1 paper-1, 4.51:1 #realisations */
+  --accent: #006C6D;
 }
 :root[data-accent="hosteed"] {
   --accent-brand: #015993;
-  --accent: #015993; /* 6.64:1 paper-0, 6.08:1 paper-1, 5.21:1 #realisations */
+  --accent: #015993;
 }
 :root[data-accent="quintyss"] {
   --accent-brand: #6F93F4;
-  --accent: #01164E; /* 15.44:1 paper-0, 14.14:1 paper-1, 12.43:1 #realisations */
+  --accent: #01164E;
 }
-
-/* ==========================================================================
-   Base
-   ========================================================================== */
 
 * {
   box-sizing: border-box;
@@ -97,7 +55,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Paper grain, purely decorative. */
 body::after {
   content: "";
   position: fixed;
@@ -154,13 +111,6 @@ a:hover { text-decoration-thickness: 2px; }
   letter-spacing: 0.01em;
 }
 
-/* `font-weight`, `line-height` and `text-wrap` are stated rather than
-   left to inherit because this class now rides on an <h2> as well as on
-   plain <span>s ("Voir aussi", see CaseStudyRelated). Without them the
-   `h1, h2, h3` rule below would give that one instance 600 weight and a
-   1.12 line box, and the label would sit differently from every other
-   eyebrow on the site. On a <span> all three are what was already
-   inherited, so nothing else moves. */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -191,10 +141,6 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .skip-link:focus-visible { left: 0.5rem; top: 0.5rem; }
 
-/* ==========================================================================
-   Buttons
-   ========================================================================== */
-
 .btn {
   display: inline-block;
   font-family: inherit;
@@ -209,16 +155,8 @@ a:hover { text-decoration-thickness: 2px; }
 .btn-primary:hover { opacity: 0.88; }
 .btn-ghost { background: transparent; color: var(--accent); }
 .btn-ghost:hover { background: var(--bg-soft); }
-/* Sits on the final CTA band, so its label must be read against paper,
-   not against the band. --accent-brand here put Moduloop's teal at
-   2.58:1 and Quintyss' periwinkle at 2.65:1 on --paper-0; --accent is
-   the text-safe pair of the same hue. */
 .btn-invert { background: var(--paper-0); color: var(--accent); border-color: var(--paper-0); }
 .btn-invert:hover { opacity: 0.9; }
-
-/* ==========================================================================
-   Header
-   ========================================================================== */
 
 .site-header {
   position: sticky;
@@ -245,14 +183,6 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .brand .mono { color: var(--muted); margin-left: 0.5rem; }
 .site-nav { margin-left: auto; }
-/* The list wraps instead of scrolling. It used to carry `overflow-x: auto`,
-   which turned a too-narrow header into a silent horizontal scroller: at
-   320px the entries needed more width than the 280px box gave them, so the
-   last ones sat off screen behind a gesture with no visual cue. The list is
-   shorter now, but wrapping stays: it keeps every entry reachable at any
-   width, under longer labels and in any translation, and needs no
-   client-side JavaScript, so the header stays a Server Component. On desktop
-   the row has room to spare, so it never wraps and renders as before. */
 .site-nav ul {
   display: flex;
   flex-wrap: wrap;
@@ -269,21 +199,12 @@ a:hover { text-decoration-thickness: 2px; }
 .site-nav a:hover { color: var(--accent); }
 .header-actions { display: flex; align-items: center; gap: 0.9rem; }
 
-/* Under 760px the nav drops to its own full-width row and wraps onto a second
-   line below roughly 400px. The sticky header pays for that line in height, so
-   the vertical rhythm is tightened here to buy it back. The links also become
-   inline-block with vertical padding: wrapped rows sit close together, and a
-   bare text line is only ~18px tall, under the 24px minimum target size. */
 @media (max-width: 760px) {
   .site-header .wrap { gap: 0.65rem; padding-block: 0.6rem; }
   .site-nav { order: 3; width: 100%; margin-left: 0; }
   .site-nav ul { column-gap: 0.9rem; }
   .site-nav a { display: inline-block; padding-block: 0.25rem; }
 }
-
-/* ==========================================================================
-   Sections (shared)
-   ========================================================================== */
 
 section { padding-block: clamp(3.5rem, 8vw, 6rem); }
 section + section, .trust { border-top: 1px solid var(--rule); }
@@ -304,10 +225,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 .section-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); max-width: 22ch; }
 .section-head .lead { margin-top: 0.9rem; color: var(--muted); }
 
-/* ==========================================================================
-   Hero
-   ========================================================================== */
-
 .hero { padding-block: clamp(4rem, 10vw, 7.5rem); }
 .hero .wrap {
   display: grid;
@@ -319,13 +236,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   font-size: clamp(2.3rem, 5.6vw, 4rem);
   max-width: 16ch;
 }
-/* The keyword line inside the <h1> (see HeroSection). Visually this is an
-   `.eyebrow`, but it cannot use that class: `.eyebrow` sets a bottom
-   margin of 1rem and a color that the <h1>'s own rules would otherwise
-   fight over, and more to the point it belongs to the section-head
-   pattern, where it is a sibling of the heading rather than a child. Every
-   metric of the <h1> is overridden here, since a 4rem, 600-weight,
-   -0.035em line is exactly what this must not look like. */
 .hero-kicker {
   display: block;
   margin-bottom: 1rem;
@@ -409,10 +319,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   .portrait { display: none; }
 }
 
-/* ==========================================================================
-   Trust banner
-   ========================================================================== */
-
 .trust { padding-block: clamp(1.75rem, 4vw, 2.5rem); }
 .trust p {
   font-size: clamp(1.05rem, 2vw, 1.3rem);
@@ -427,10 +333,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   color: var(--accent);
   padding-inline: 0.1em;
 }
-
-/* ==========================================================================
-   Case studies
-   ========================================================================== */
 
 .retint-hint {
   font-family: var(--font-mono);
@@ -463,16 +365,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   border: 1px solid var(--rule);
 }
 
-/*
- * Client logo, shown under the color swatch: the color stays the primary
- * identity mechanism (see CLIENT_COLORS in constants.ts), the logo only
- * supports it. The fixed box normalizes three very different source
- * ratios (Hosteed 500x271, Moduloop 300x79, Quintyss 65x65) to one common
- * footprint, with object-fit: contain so nothing stretches or crops. The
- * neutral --paper-1 surface with a --rule border matches the swatch's own
- * framing and gives every logo a consistent, sober backdrop on the warmer
- * --bg paper beneath it.
- */
 .logo-box {
   display: flex;
   flex-shrink: 0;
@@ -535,10 +427,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 .also [data-client] { color: var(--ink); font-weight: 600; cursor: default; }
 .also a[data-client] { color: var(--accent); cursor: pointer; }
 
-/* ==========================================================================
-   Process
-   ========================================================================== */
-
 .process-list {
   list-style: none;
   counter-reset: step;
@@ -577,10 +465,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   .process-list .step-note { grid-column: 2; }
 }
 
-/* ==========================================================================
-   Testimonials
-   ========================================================================== */
-
 .quotes {
   columns: 2;
   column-gap: clamp(1.5rem, 4vw, 3rem);
@@ -613,10 +497,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   .quotes { columns: 1; }
 }
 
-/* ==========================================================================
-   About
-   ========================================================================== */
-
 .about-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
@@ -634,10 +514,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   gap: 0.4rem;
   align-self: start;
 }
-/* Was a <strong>, is now the <h3> the tools column always deserved (see
-   AboutSection). Same 600 weight it had; `letter-spacing` and
-   `line-height` are pinned back to the inherited values so the mono list
-   below it does not shift up against a 1.12 line box. */
 .about-aside h3 {
   color: var(--ink);
   font-weight: 600;
@@ -648,18 +524,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   .about-grid { grid-template-columns: 1fr; }
 }
 
-/* ==========================================================================
-   Final CTA
-   ========================================================================== */
-
-/* The band paints on --accent, not --accent-brand. It is the only place
-   in the site where the client color becomes a full-bleed text
-   background, and the raw brand values could not carry --paper-0 text:
-   Moduloop reached 2.58:1 and Quintyss 2.65:1. --accent is the same hue
-   deepened until it clears AA (4.51:1 to 15.44:1 depending on client),
-   so the band keeps each client's identity while the headline, the lead
-   and the two controls all become legible. Quintyss shifts most
-   visibly, from periwinkle to deep marine. */
 .cta-final {
   background: var(--accent);
   color: var(--paper-0);
@@ -672,9 +536,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   font-size: clamp(1.9rem, 4.5vw, 3.1rem);
   max-width: 18ch;
 }
-/* 0.85 alpha left this at 3.80:1 even on the default band. At 0.92 it
-   clears AA on every client band (5.02:1 to 13.13:1) while still
-   reading a step quieter than the headline. */
 .cta-final .lead {
   margin-top: 1rem;
   font-size: 1.1rem;
@@ -687,10 +548,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   flex-wrap: wrap;
   align-items: center;
 }
-/* The border is the only thing that shapes this control: the background
-   is transparent and there is no fill to read it by. At 0.55 alpha it
-   was 1.66:1 on the Moduloop band, below the 3:1 that 1.4.11 asks of a
-   UI component boundary. 0.72 clears it on every band (3.70:1+). */
 .copy-email {
   background: transparent;
   border: 1px solid rgba(246, 243, 234, 0.72);
@@ -707,10 +564,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 .copy-email .copy-icon { flex-shrink: 0; width: 0.9rem; height: 0.9rem; }
 .copy-email.copied { background: rgba(246, 243, 234, 0.14); }
 .cta-final :focus-visible { outline-color: var(--paper-0); }
-
-/* ==========================================================================
-   Footer
-   ========================================================================== */
 
 .site-footer {
   border-top: 1px solid var(--rule);
@@ -733,18 +586,12 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 }
 .site-footer a { color: var(--ink); text-decoration: none; }
 .site-footer a:hover { color: var(--accent); text-decoration: underline; }
-/* Icon + label links (GitHub, LinkedIn, Email). Gap matches the
-   icon-to-label spacing already used on .copy-email above. */
 .site-footer .icon-link {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
 }
 .site-footer .copyright { margin-top: 0.75rem; }
-
-/* ==========================================================================
-   Legal page (mentions légales)
-   ========================================================================== */
 
 .legal-head {
   margin-bottom: clamp(2rem, 5vw, 3.5rem);
@@ -799,24 +646,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   .legal-facts > div { grid-template-columns: 1fr; }
 }
 
-/* ==========================================================================
-   Case-study detail pages (/realisations/[slug])
-   ==========================================================================
-   `.case-page` carries the client's `data-accent` set once, server-side,
-   in page.tsx. Unlike the homepage's :root[data-accent] rules (toggled at
-   runtime by AccentProvider on <html>), these override --accent /
-   --accent-brand locally: custom properties inherit from any ancestor,
-   not just :root, so every --accent consumer below this wrapper (buttons,
-   links, the eyebrow, .cta-final's background...) recolors with zero
-   client JS. Values are kept in sync with CLIENT_COLORS in constants.ts
-   and the :root[data-accent] block above by hand.
-
-   `.case-index-card` joins each selector below because the /realisations
-   index applies the same mechanism at a smaller scope: it shows all four
-   clients at once, so the accent is set per card instead of per page.
-   Declaring it here keeps the three hex pairs in a single place.
-   ========================================================================== */
-
 .case-page[data-accent="moduloop"],
 .case-index-card[data-accent="moduloop"] {
   --accent-brand: #00AAAB;
@@ -833,10 +662,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   --accent: #01164E;
 }
 
-/* Breadcrumb. Shared by /realisations and /realisations/[slug], which open
-   on the same trail, so the rules live here once rather than once per
-   page. Kept in the mono voice used by every other piece of metadata on
-   these pages (period, stack, status badge). */
 .case-breadcrumb { padding-block: 1.25rem; }
 .breadcrumb-trail {
   display: flex;
@@ -850,15 +675,8 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 }
 .breadcrumb-trail a { color: var(--muted); text-decoration: none; }
 .breadcrumb-trail a:hover { color: var(--accent); }
-/* Separator drawn as generated content: it is punctuation between items,
-   not content, so it stays out of the markup and out of the list items'
-   own text. */
 .breadcrumb-trail li + li::before { content: "›"; margin-right: 0.45rem; }
-/* The current page is the only item that is not a link. Ink rather than
-   muted, so the trail reads as ending somewhere. */
 .breadcrumb-trail [aria-current="page"] { color: var(--ink); }
-
-/* Hero */
 
 .case-hero { padding-block: clamp(2.5rem, 6vw, 4rem) clamp(3rem, 7vw, 5rem); }
 .hero-meta-row {
@@ -890,13 +708,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   white-space: nowrap;
 }
 .case-hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); max-width: 20ch; }
-/* The qualifier that now follows the client name inside the case-study
-   <h1> ("Hosteed, plateforme de location de logements"). It is a block so
-   the brand name keeps a line of its own and still leads the page; the
-   comma stays behind on that first line, which is how a title and its
-   subtitle are set anyway. `max()` rather than a bare `em` factor because
-   0.4em of the mobile end of the clamp above would fall to 0.84rem, small
-   enough to read as caption text rather than as part of the heading. */
 .case-title-qualifier {
   display: block;
   margin-top: 0.6rem;
@@ -926,17 +737,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   border: 1px solid var(--rule);
   padding: 0.3rem 0.65rem;
 }
-
-/* Screens: desktop carousel + phone views.
-
-   The carousel frame is locked to 16/9 while the source captures are
-   native 16/10 browser viewports at 2400x1500. The images are therefore
-   laid in with `object-fit: cover` and `object-position: top center`: the
-   frame keeps the ratio the client asked for, and what gets trimmed is
-   the bottom 10% of the viewport, which on every one of these captures is
-   empty page background rather than interface. Cropping at export time
-   would have thrown those pixels away for good; cropping in CSS keeps the
-   full 16/10 file on disk. */
 
 .case-screens { padding-top: 0; }
 
@@ -1014,42 +814,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   .slider-arrow { background: var(--paper-0); }
 }
 
-/* The carousel advances on its own every 5s, so every caption swap is a
-   layout change the user did not ask for and counts in full towards CLS,
-   again and again for as long as the page stays open. The reserve has to
-   fit the longest caption in the project, not the current one.
-
-   `min-height: 1.65em` only ever held one line: the computed
-   line-height here is 24.75px (font-size 15px, the unitless 1.65
-   inherited from body) and 1.65em is exactly 24.75px. Captions are full
-   sentences, so on a phone the box was going from one line to four and
-   dragging the pagination dots and everything under them with it.
-
-   The values below are measured, not estimated: every alt string in
-   src/lib/case-studies-content.ts was injected into the real caption
-   element on all four case-study pages and the resulting box height read
-   back. The worst case is the Judo Club Marly caption, and it breaks
-   line count at these viewport widths:
-
-     >= 285px  5 lines      >= 460px  3 lines
-     >= 355px  4 lines      >= 655px  2 lines (the 70ch cap takes over)
-
-   Each breakpoint is set above its measured boundary rather than on it,
-   so every band reserves at least what it needs. Over-reserving never
-   shifts anything; under-reserving does. One line stays in `em` so the
-   reserve tracks the caption's own line box if the user scales text. */
-/* The caption box reserves its height by holding every caption of the
-   carousel at once, stacked in a single grid cell, with all but the current
-   one hidden. `visibility: hidden` keeps a box in the layout (unlike
-   `display: none`) and removes the text from the accessibility tree, so the
-   cell measures the tallest caption while only one is seen or announced.
-
-   This replaces a set of hand-tuned `min-height` values, one per breakpoint,
-   calibrated on the longest caption that existed the day they were written.
-   That reserve was an invariant nothing enforced: a longer caption added
-   later would have quietly brought the layout shift back. Here the reserve is
-   computed by the browser from the captions actually present, at whatever
-   width the visitor is on, so it cannot fall out of date. */
 .slider-caption {
   display: grid;
   margin-top: 0.9rem;
@@ -1060,15 +824,10 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 .slider-caption > p {
   grid-area: 1 / 1;
   visibility: hidden;
-  /* Beats the global `p { max-width: 65ch }`, which would otherwise wrap the
-     captions narrower than the 70ch box that measures them. */
   max-width: none;
 }
 .slider-caption > p[data-current='true'] { visibility: visible; }
 
-/* Pagination on the left, play/pause on the right, on one baseline. The
-   row keeps a min-height so that hiding the toggle under
-   prefers-reduced-motion cannot shorten it and pull the narrative up. */
 .slider-controls {
   display: flex;
   align-items: center;
@@ -1092,11 +851,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   background: none;
   cursor: pointer;
 }
-/* Pagination dots are real controls, so the idle ones need 3:1 against
-   the paper they sit on: --paper-3 gave 1.42:1 and made the whole
-   control near-invisible until hovered. --control-idle is 3.39:1.
-   Current-slide state is never signalled by color alone: the active dot
-   is also scaled up, and the button carries aria-current. */
 .slider-dot span {
   width: 0.5rem;
   height: 0.5rem;
@@ -1110,14 +864,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   transform: scale(1.5);
 }
 
-/* The one control on this page that has to be findable without touching
-   anything, since it is what WCAG 2.2.2 hangs on. It is therefore a
-   labelled pill and not a bare glyph: at 12px the difference between two
-   bars and a triangle is not a reliable signal, and "PAUSE" is. The
-   framing borrows the page's own vocabulary (mono caps, hairline rule,
-   accent on hover) so it reads as part of the caption line rather than as
-   a media player dropped into it. --muted on paper-0 is 5.79:1, well past
-   the 4.5:1 the small type needs. */
 .slider-toggle {
   margin-left: auto;
   display: inline-flex;
@@ -1138,8 +884,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 .slider-toggle svg { width: 0.7rem; height: 0.7rem; flex: none; }
 .slider-toggle:hover { color: var(--accent); border-color: var(--accent); }
 
-/* Announced by screen readers only: the visible caption already carries
-   the same text for sighted users. */
 .slider-status {
   position: absolute;
   width: 1px;
@@ -1153,11 +897,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 }
 
 .mobile-views { margin-top: clamp(2rem, 4vw, 3rem); }
-/* This label is a <p>, not a heading (it names a row of thumbnails, it is
-   not a topic of the page). `line-height` is restated here because it was
-   previously inherited from the `h1, h2, h3` rule: without it the label
-   would pick up the body's 1.65 and grow its own box by ~13px, pushing
-   every thumbnail down. */
 .mobile-views-title {
   color: var(--muted);
   text-transform: uppercase;
@@ -1196,14 +935,8 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 
 @media (prefers-reduced-motion: reduce) {
   .slider-track { transition: none; }
-  /* Autoplay is off entirely under this query (see case-study-slider.tsx),
-     so a play/pause control here would govern nothing. Hidden in CSS
-     rather than unmounted in React so it is already absent on first
-     paint and never shifts the row. */
   .slider-toggle { display: none; }
 }
-
-/* Content (sidebar + narrative) */
 
 .case-content { padding-top: clamp(3rem, 7vw, 5rem); }
 .case-grid {
@@ -1218,12 +951,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   background: var(--paper-1);
   padding: clamp(1.25rem, 3vw, 1.75rem);
 }
-/* This label is an <h2> (it names the sidebar's whole fact block, see
-   CaseStudyContent). `font-weight` and `line-height` are restated because
-   they used to come from the body: as a heading they would otherwise
-   become 600 and 1.12 and the label would read as a title rather than as
-   the quiet mono caps it is. `letter-spacing` and `font-size` need no
-   restating, the `.mono` class it also carries already wins those. */
 .sidebar-title {
   color: var(--muted);
   font-weight: 400;
@@ -1249,10 +976,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 .case-narrative p + p { margin-top: 1rem; }
 .case-narrative p { margin-top: 0.85rem; color: var(--muted); }
 
-/* Client quote closing the narrative. Same guillemets and rating
-   treatment as the homepage .quotes list, set on an accent rule so it
-   reads as a voice from outside the page rather than one more
-   paragraph. */
 .case-quote {
   margin-top: 1.1rem;
   border-left: 2px solid var(--accent);
@@ -1287,9 +1010,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   .case-sidebar { position: static; order: -1; }
 }
 
-/* Related */
-
-/* Border-top comes from the generic `section + section` rule above. */
 .related-cards {
   margin-top: 1.75rem;
   display: grid;
@@ -1308,34 +1028,18 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 .related-card .mono { color: var(--muted); margin-top: 0.35rem; }
 .related-link { display: inline-block; margin-top: 1rem; font-weight: 600; color: var(--accent); }
 
-/* ==========================================================================
-   Réalisations index (/realisations)
-   ==========================================================================
-   The four case studies laid out as one grid, on the --paper-1 ground the
-   site already uses to seat cards (see .trust, #temoignages, the footer),
-   so the --paper-0 cards read as objects on a surface rather than as
-   outlines drawn on the page. The per-card `data-accent` is declared with
-   the detail-page selectors above.
-   ========================================================================== */
-
 .case-index { background: var(--paper-1); }
 
 .case-index-head { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
 .case-index-head h1 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); max-width: 24ch; }
 .case-index-head .lead { margin-top: 1rem; color: var(--muted); max-width: 62ch; }
 
-/* `min(100%, 22rem)` rather than a bare 22rem: below a 22rem viewport the
-   bare form would make the track wider than the container and push the
-   page into a horizontal scroll. */
 .case-index-list {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
   gap: clamp(1.25rem, 3vw, 1.75rem);
 }
-/* The whole card is the anchor, so it also has to be the full height of
-   its grid cell: two cards on the same row must end on the same line even
-   when one lead runs longer than the other. */
 .case-index-card {
   display: block;
   height: 100%;
@@ -1348,21 +1052,9 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 .case-index-card:hover { border-color: var(--accent); }
 .case-index-meta { display: block; margin-top: 1.25rem; color: var(--muted); }
 .case-index-card h2 { margin-top: 0.5rem; font-size: clamp(1.3rem, 2.4vw, 1.6rem); }
-/* The 65ch cap on `p` is meant for prose in a full-width column; inside a
-   card the card is already the measure. */
 .case-index-lead { margin-top: 0.85rem; color: var(--muted); max-width: none; }
 .case-index-card .stack { display: block; margin-top: 1.1rem; }
 .case-index-card .related-link { margin-top: 1.4rem; }
-
-/* ==========================================================================
-   Error pages (404 and the route error boundary)
-   ==========================================================================
-   Both are a single centred column with two ways out. They deliberately
-   look like an ordinary page of the site rather than a system screen:
-   the header, its booking button and the footer stay in place, so a
-   visitor who lands here by a stale link is still one click from the
-   thing the site exists for.
-   ========================================================================== */
 
 .error-page { padding-block: clamp(4rem, 10vw, 7rem); }
 .error-page h1 { font-size: clamp(2rem, 4.5vw, 3rem); max-width: 18ch; }

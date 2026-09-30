@@ -1,13 +1,6 @@
 import { SITE_CONFIG } from './constants';
 import type { LegalPageContent } from './types';
 
-/**
- * Content for the mentions légales page (`/mentions-legales`).
- *
- * All fields below have been confirmed by the client, including the SIRET
- * (931 059 588 00018, Luhn checksum verified) and the postal address. There
- * is no remaining placeholder value in this file.
- */
 export const LEGAL_CONTENT: LegalPageContent = {
   lastUpdatedIso: '2026-07-29',
   lastUpdatedLabel: '29 juillet 2026',
@@ -15,9 +8,6 @@ export const LEGAL_CONTENT: LegalPageContent = {
     name: 'Tristan Hourtoulle',
     legalStatus: 'Entreprise individuelle (EI)',
     addressLines: ['3bis rue des Aubépines', '68190 Ensisheim, France'],
-    // Grouped for readability (SIREN in three groups of three, then the
-    // five-digit NIC), the usual French display convention. The digits
-    // themselves are unchanged: 931059588 00018.
     siret: '931 059 588 00018',
     vatMention: 'TVA non applicable, article 293 B du Code général des impôts.',
     email: SITE_CONFIG.email,
