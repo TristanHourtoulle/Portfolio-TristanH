@@ -12,15 +12,15 @@ const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.siteUrl),
   title: {
-    default: 'Tristan Hourtoulle · Design et développement web freelance',
+    default: 'Tristan Hourtoulle · Développeur web full-stack',
     template: '%s · Tristan Hourtoulle',
   },
   description:
-    'Développeur web full-stack et designer freelance. Sites vitrines et applications sur mesure pour PME, startups et agences, de Figma à la mise en ligne.',
+    "Développeur web full-stack, quatre applications livrées de la maquette au code. Je cherche un CDI en équipe produit à partir d'octobre 2026.",
   openGraph: {
-    title: 'Tristan Hourtoulle · Design et développement web freelance',
+    title: 'Tristan Hourtoulle · Développeur web full-stack',
     description:
-      "Développeur web full-stack et designer freelance. Un seul interlocuteur du premier appel à la mise en ligne.",
+      'Quatre applications web livrées, de Figma au déploiement. Disponible en CDI début octobre 2026, à Mulhouse, Strasbourg ou en remote.',
     type: 'website',
     locale: 'fr_FR',
     siteName: SITE_CONFIG.brandName,
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tristan Hourtoulle · Design et développement web freelance',
+    title: 'Tristan Hourtoulle · Développeur web full-stack',
     description:
-      "Développeur web full-stack et designer freelance. Un seul interlocuteur du premier appel à la mise en ligne.",
+      'Quatre applications web livrées, de Figma au déploiement. Disponible en CDI début octobre 2026, à Mulhouse, Strasbourg ou en remote.',
   },
   ...(googleSiteVerification
     ? { verification: { google: googleSiteVerification } }

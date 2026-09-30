@@ -1,9 +1,4 @@
-import {
-  ABOUT_CONTENT,
-  FOOTER_LEGAL_LINKS,
-  HERO_CONTENT,
-  SITE_CONFIG,
-} from './constants';
+import { ABOUT_CONTENT, FOOTER_LEGAL_LINKS, SITE_CONFIG } from './constants';
 import { LEGAL_CONTENT } from './legal-content';
 import { PARCOURS_CONTENT } from './parcours-content';
 import type { CaseStudyPageContent } from './types';
@@ -39,7 +34,6 @@ function absolute(path: string): string {
 const PERSON_ID = `${SITE_URL}/#person`;
 const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
-const SERVICE_ID = `${SITE_URL}/#service`;
 
 const SOCIAL_PROFILE_URLS: readonly string[] = FOOTER_LEGAL_LINKS.filter((link) =>
   link.href.startsWith('https://'),
@@ -54,9 +48,10 @@ const KNOWS_ABOUT: readonly string[] = ABOUT_CONTENT.tools.flatMap((tool) =>
     .filter((entry) => entry.length > 0),
 );
 
-const PROFESSION = 'Développeur web full-stack et designer freelance';
+const ORGANIZATION_DESCRIPTION =
+  'Entreprise individuelle de Tristan Hourtoulle, développeur web full-stack.';
 
-const AREA_SERVED = { '@type': 'Country', name: 'France' } as const;
+const PROFESSION = 'Développeur web full-stack';
 
 const ALUMNI_OF = {
   '@type': 'CollegeOrUniversity',
@@ -89,7 +84,7 @@ function buildOrganizationNode(): JsonLdValue {
     name: SITE_CONFIG.brandName,
     legalName: LEGAL_CONTENT.editor.name,
     url: absolute('/'),
-    description: HERO_CONTENT.subtitle,
+    description: ORGANIZATION_DESCRIPTION,
     email: `mailto:${SITE_CONFIG.email}`,
     address: {
       '@type': 'PostalAddress',
@@ -116,22 +111,6 @@ function buildWebSiteNode(): JsonLdValue {
   };
 }
 
-function buildServiceNode(): JsonLdValue {
-  return {
-    '@type': 'Service',
-    '@id': SERVICE_ID,
-    name: 'Design et développement web freelance',
-    serviceType: 'Design et développement web',
-    description: HERO_CONTENT.subtitle,
-    provider: { '@id': ORGANIZATION_ID },
-    areaServed: AREA_SERVED,
-    audience: {
-      '@type': 'Audience',
-      audienceType: 'PME, startups et agences',
-    },
-  };
-}
-
 /**
  * Homepage graph.
  */
@@ -142,7 +121,6 @@ export function buildHomeStructuredData(): JsonLdGraph {
       buildPersonNode(),
       buildOrganizationNode(),
       buildWebSiteNode(),
-      buildServiceNode(),
     ],
   };
 }

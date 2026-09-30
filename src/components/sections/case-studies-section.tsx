@@ -7,7 +7,7 @@ export function CaseStudiesSection() {
       <div className="wrap">
         <div className="section-head">
           <span className="eyebrow">Réalisations</span>
-          <h2 id="realisations-title">Quatre applications web conçues et développées sur mesure</h2>
+          <h2 id="realisations-title">Quatre applications web conçues et développées de bout en bout</h2>
         </div>
         <div className="projects-list">
           {CASE_STUDIES.map((caseStudy) => (

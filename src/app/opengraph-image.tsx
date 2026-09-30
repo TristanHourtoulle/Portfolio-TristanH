@@ -6,14 +6,14 @@ import { loadOgFonts, OgCard, OG_CONTENT_TYPE, OG_PALETTE, OG_SIZE } from '@/lib
  * Share card for `/`.
  */
 
-export const alt = `${SITE_CONFIG.brandName} · Design et développement web freelance`;
+export const alt = `${SITE_CONFIG.brandName} · Développeur web full-stack`;
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 
 export default async function Image() {
   return new ImageResponse(
     (
-      <OgCard eyebrow="DESIGN ET DÉVELOPPEMENT WEB FREELANCE" footerNote={HERO_CONTENT.locationNote}>
+      <OgCard eyebrow="DÉVELOPPEUR WEB FULL-STACK" footerNote={HERO_CONTENT.locationNote}>
         <div
           style={{
             fontSize: 76,

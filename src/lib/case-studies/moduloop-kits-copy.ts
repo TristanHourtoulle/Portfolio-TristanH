@@ -3,7 +3,7 @@ import type { CaseStudyCopy } from '../types';
 export const MODULOOP_KITS_COPY: CaseStudyCopy = {
   lead: "Impact calcule, Kits vend : composer un kit d'aménagement, le chiffrer à l'achat comme à la location, et présenter l'offre avec son impact environnemental et son prix au mètre carré.",
   metaDescription:
-    "Application web sur mesure pour composer un kit d'aménagement, le chiffrer à l'achat comme à la location, et sortir une offre avec son impact et son prix au m².",
+    "Application web pour composer un kit d'aménagement, le chiffrer à l'achat comme à la location, et sortir une offre avec son impact et son prix au m².",
   statusBadge: 'Livré',
   statusDetail: 'Livré en production en août 2026, fin de mon intervention.',
   narrative: [
