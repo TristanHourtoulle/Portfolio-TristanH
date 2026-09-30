@@ -15,8 +15,6 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 
-export const revalidate = 86400;
-
 export default function Home() {
   return (
     <>

@@ -1,6 +1,5 @@
 import type {
   AboutContent,
-  AlsoMentionedItem,
   CaseStudy,
   CaseStudySlug,
   ClientColor,
@@ -101,15 +100,15 @@ export const HERO_CONTENT: HeroContent = {
     "Je travaille dans Figma, Next.js et TypeScript. Je cherche un CDI en équipe produit, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
   secondaryCtaLabel: 'Voir le détail des projets',
   secondaryCtaHref: '/#realisations',
-  locationNote: 'Basé en France · poste en CDI',
+  availableFromLabel: 'Prochaine disponibilité',
+  availableFromValue: 'Début octobre 2026',
+  locationNote: 'Mulhouse et Strasbourg · remote, hybride ou présentiel',
 };
 
 export const CTA_CONTENT: CtaContent = {
   title: 'Disponible pour un poste en CDI.',
   lead: "Développeur full-stack, deux ans de freelance et quatre applications web livrées en production. Je cherche une équipe produit où je conçois et développe au quotidien, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
 };
-
-export const AVAILABILITY_LEAD_DAYS = 15;
 
 export const TRUST_STATS: TrustStats = {
   clientsCount: 12,
@@ -180,7 +179,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     clientId: 'moduloop',
     title: 'Moduloop Kits',
     engagementType: 'Freelance',
-    period: 'depuis août 2025',
+    period: 'août 2025 à août 2026',
     stack: CASE_STUDY_STACKS['moduloop-kits'],
     details: [
       {
@@ -195,7 +194,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         label: 'Statut',
-        value: 'En cours depuis août 2025.',
+        value: 'Livré en production en août 2026, fin de mon intervention.',
       },
     ],
     caseLinkHref: '/realisations/moduloop-kits',
@@ -205,7 +204,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     clientId: 'quintyss',
     title: 'Quintyss V3',
     engagementType: 'Freelance',
-    period: 'depuis mars 2025',
+    period: 'mars 2025 à août 2026',
     stack: CASE_STUDY_STACKS.quintyss,
     details: [
       {
@@ -220,7 +219,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
       {
         label: 'Statut',
-        value: 'En développement actif.',
+        value: 'Trois sites livrés sur le socle, intervention terminée en août 2026.',
       },
     ],
     caseLinkHref: '/realisations/quintyss',
@@ -238,7 +237,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     role: 'Développeur full-stack',
     summary:
       "Configurateur de kits de mobilier : composer un kit, le chiffrer à l'achat comme à la location sur 1, 2 ou 3 ans, et sortir une offre avec son impact environnemental et son prix au m2.",
-    status: 'En production.',
+    status: 'Livré en production en août 2026, fin de mon intervention.',
   },
   {
     slug: 'hosteed',
@@ -254,7 +253,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     role: 'Développeur full-stack, référent technique',
     summary:
       "CMS multi-sites : le client modifie ses pages lui-même, widget par widget et en temps réel, sans développeur ni remise en ligne.",
-    status: 'En développement actif.',
+    status: 'Trois sites livrés sur le socle, intervention terminée en août 2026.',
   },
   {
     slug: 'moduloop-impact',
@@ -272,18 +271,6 @@ export const EXPERIENCE_SECTION = {
   title: 'Quatre produits livrés, en stage puis en freelance',
   lead: "Ce que j'ai construit depuis 2024, dans quel cadre, avec quelle technologie et sur quelle période.",
 };
-
-export const ALSO_MENTIONED_INTRO = 'Également, à titre personnel : ';
-
-export const ALSO_MENTIONED_ITEMS: AlsoMentionedItem[] = [
-  {
-    clientId: null,
-    label: 'Edukai',
-    href: 'https://edukai.fr',
-    trailingText:
-      ', fiches de révision, quiz et résumés générés par IA à partir des cours des étudiants, en ligne sur edukai.fr.',
-  },
-];
 
 export const PROCESS_STEPS: ProcessStep[] = [
   {

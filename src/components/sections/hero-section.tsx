@@ -1,14 +1,11 @@
 import Image from 'next/image';
 import { HERO_CONTENT } from '@/lib/constants';
-import { getAvailabilityLabel } from '@/lib/availability';
 import { ProfileActions } from '@/components/ui/profile-actions';
 
 /**
  * Homepage hero.
  */
 export function HeroSection() {
-  const availabilityLabel = getAvailabilityLabel();
-
   return (
     <section className="hero" aria-labelledby="hero-title">
       <div className="wrap">
@@ -40,7 +37,10 @@ export function HeroSection() {
           </div>
           <p className="badge-dispo">
             <span className="dot" aria-hidden="true" />
-            Prochaine disponibilité : <span>{availabilityLabel}</span>
+            <span className="badge-dispo-text">
+              <span className="badge-dispo-label">{HERO_CONTENT.availableFromLabel}</span>
+              <span className="badge-dispo-value">{HERO_CONTENT.availableFromValue}</span>
+            </span>
           </p>
           <p className="hero-meta mono">{HERO_CONTENT.locationNote}</p>
         </div>

@@ -9,8 +9,7 @@ export function TrustSection() {
       <div className="wrap">
         <p>
           Depuis 2024 : <span className="figure">{TRUST_STATS.clientsCount}</span> clients accompagnés et{' '}
-          <span className="figure">{TRUST_STATS.productsInProduction}</span> produits en production,
-          utilisés chaque jour.
+          <span className="figure">{TRUST_STATS.productsInProduction}</span> produits en production.
         </p>
       </div>
     </aside>

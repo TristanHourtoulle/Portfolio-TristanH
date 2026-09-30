@@ -44,13 +44,6 @@ export interface CaseStudy {
   caseLinkHref: string;
 }
 
-export interface AlsoMentionedItem {
-  clientId: ClientId | null;
-  label: string;
-  href?: string;
-  trailingText: string;
-}
-
 /**
  * A single screenshot in a case-study detail page.
  */
@@ -170,6 +163,10 @@ export interface HeroContent {
   subtitle: string;
   secondaryCtaLabel: string;
   secondaryCtaHref: string;
+  /** First line of the "available from" badge. */
+  availableFromLabel: string;
+  /** Second line of the badge: the date he becomes available. */
+  availableFromValue: string;
   locationNote: string;
 }
 

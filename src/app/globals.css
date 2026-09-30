@@ -305,20 +305,29 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 .badge-dispo {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.6rem;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   color: var(--ink);
   border: 1px solid var(--rule);
-  padding: 0.45rem 0.8rem;
+  padding: 0.5rem 0.85rem;
 }
 .badge-dispo .dot {
+  flex: none;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--ok);
   animation: pulse 2.2s ease-in-out infinite;
 }
+.badge-dispo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  line-height: 1.25;
+}
+.badge-dispo-label { color: var(--muted); }
+.badge-dispo-value { color: var(--ink); font-weight: 700; white-space: nowrap; }
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }
@@ -344,22 +353,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   font-size: 1.15em;
   color: var(--accent);
   padding-inline: 0.1em;
-}
-
-.retint-hint {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  color: var(--muted);
-  margin-top: 0.75rem;
-}
-.retint-hint::before {
-  content: "";
-  display: inline-block;
-  width: 0.7em;
-  height: 0.7em;
-  background: var(--accent);
-  margin-right: 0.55em;
-  transition: background-color .45s ease;
 }
 
 .project {
@@ -429,16 +422,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   .project-side { flex-direction: row; align-items: center; }
   .logo-box { width: 6rem; }
 }
-
-.also {
-  margin-top: 1.75rem;
-  color: var(--muted);
-  font-size: 0.95rem;
-  max-width: none;
-}
-.also a { text-decoration: underline; }
-.also [data-client] { color: var(--ink); font-weight: 600; cursor: default; }
-.also a[data-client] { color: var(--accent); cursor: pointer; }
 
 .timeline {
   list-style: none;
@@ -831,7 +814,7 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   padding: 0.3rem 0.65rem;
 }
 
-.case-screens { padding-top: 0; }
+.case-screens { padding-top: clamp(2.5rem, 5vw, 3.5rem); }
 
 .screens-slider { position: relative; }
 

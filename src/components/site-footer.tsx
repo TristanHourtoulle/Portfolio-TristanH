@@ -9,17 +9,7 @@ const ICONS: Record<NonNullable<FooterLink['icon']>, typeof Github> = {
   mail: Mail,
 };
 
-/**
- * Current year.
- * @returns the four-digit year at render time
- */
-function getCurrentYear(): number {
-  return new Date().getFullYear();
-}
-
 export function SiteFooter() {
-  const currentYear = getCurrentYear();
-
   return (
     <footer className="site-footer">
       <div className="wrap">
@@ -31,7 +21,7 @@ export function SiteFooter() {
           </p>
           <p>Développeur web full-stack et designer freelance.</p>
           <p className="copyright">
-            © {currentYear} {SITE_CONFIG.brandName}. Tous droits réservés.
+            © {SITE_CONFIG.brandName}. Tous droits réservés.
           </p>
         </div>
         <nav aria-label="Navigation secondaire">

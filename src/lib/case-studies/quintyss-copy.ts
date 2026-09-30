@@ -4,8 +4,8 @@ export const QUINTYSS_COPY: CaseStudyCopy = {
   lead: "CMS nouvelle génération : le client modifie son site lui-même, widget par widget et en temps réel, sans développeur et sans remise en ligne. Un même socle fait vivre plusieurs sites clients.",
   metaDescription:
     "CMS multi-sites où le client modifie ses pages lui-même, widget par widget, sans développeur ni remise en ligne. Un même socle fait vivre plusieurs sites clients.",
-  statusBadge: 'En développement actif',
-  statusDetail: 'En développement actif.',
+  statusBadge: 'Intervention terminée',
+  statusDetail: 'Trois sites livrés sur le socle, intervention terminée en août 2026.',
   narrative: [
     {
       heading: 'Le point de départ',
@@ -17,7 +17,7 @@ export const QUINTYSS_COPY: CaseStudyCopy = {
     {
       heading: 'Mon rôle',
       paragraphs: [
-        "Je suis développeur full-stack et référent technique sur le projet depuis mars 2025. Quatre responsabilités menées de front : l'architecture de la plateforme, la revue du code produit par l'équipe, les choix techniques, et le découpage des tâches avec leur suivi.",
+        "J'ai été développeur full-stack et référent technique sur le projet de mars 2025 à août 2026. Quatre responsabilités menées de front : l'architecture de la plateforme, la revue du code produit par l'équipe, les choix techniques, et le découpage des tâches avec leur suivi.",
         "Pour Quintyss, cela veut dire un interlocuteur qui tient la cohérence de l'ensemble et qui assume les arbitrages, plutôt qu'une addition d'avis techniques qui se contredisent au fil des semaines.",
       ],
     },
@@ -30,10 +30,10 @@ export const QUINTYSS_COPY: CaseStudyCopy = {
       ],
     },
     {
-      heading: "Ce que ça donne aujourd'hui",
+      heading: "Ce que ça donnait à la fin de mon intervention",
       paragraphs: [
-        "Trois sites tournent sur ce socle, deux en production et un déployé en attente de validation. Chacun a ses contenus, sa charte et ses pages propres, et tous sont administrés depuis la même plateforme.",
-        "Le déploiement d'un nouveau site se compte désormais en heures. C'est de cette architecture que je suis le plus fier sur ce projet : elle ne se voit sur aucun écran, et c'est pourtant elle qui sépare un site de plus à maintenir d'une plateforme capable d'accueillir un nouveau client dans la journée.",
+        "Trois sites tournaient sur ce socle, deux en production et un déployé en attente de validation. Chacun avait ses contenus, sa charte et ses pages propres, et tous étaient administrés depuis la même plateforme.",
+        "Le déploiement d'un nouveau site se comptait alors en heures. C'est de cette architecture que je suis le plus fier sur ce projet : elle ne se voit sur aucun écran, et c'est pourtant elle qui sépare un site de plus à maintenir d'une plateforme capable d'accueillir un nouveau client dans la journée.",
       ],
     },
     {
@@ -43,9 +43,9 @@ export const QUINTYSS_COPY: CaseStudyCopy = {
       ],
     },
     {
-      heading: 'Où en est le projet',
+      heading: 'La fin de mon intervention',
       paragraphs: [
-        'En développement actif depuis mars 2025, avec deux sites en production et un troisième déployé en attente de validation.',
+        "Mon intervention a couru de mars 2025 à août 2026. À sa fin, trois sites tournaient sur le socle : deux en production et un troisième déployé en attente de validation.",
       ],
     },
   ],
