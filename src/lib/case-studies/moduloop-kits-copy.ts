@@ -35,9 +35,4 @@ export const MODULOOP_KITS_COPY: CaseStudyCopy = {
       ],
     },
   ],
-  testimonial: {
-    status: 'published',
-    testimonialId: 'paul',
-    context: 'Moduloop',
-  },
 };

@@ -66,10 +66,6 @@ export interface CaseStudyNarrativeSection {
 /**
  * The client quote closing a case-study narrative.
  */
-export type CaseStudyTestimonial =
-  | { status: 'published'; testimonialId: string; context: string }
-  | { status: 'pending'; note: string };
-
 /**
  * A single link rendered as a hero CTA button or as an inline reference.
  */
@@ -108,7 +104,6 @@ export interface CaseStudyPageContent {
   gallery: CaseStudyGalleryImage[];
   narrative: CaseStudyNarrativeSection[];
   /** Client quote closing the narrative. */
-  testimonial?: CaseStudyTestimonial;
   /** Live client sites built on this project, shown in the sidebar. */
   liveClientSites: CaseStudyPageLink[];
   /** Slugs of other case studies to surface in "Voir aussi", in display order. */
@@ -120,7 +115,7 @@ export interface CaseStudyPageContent {
  */
 export type CaseStudyCopy = Pick<
   CaseStudyPageContent,
-  'lead' | 'metaDescription' | 'statusBadge' | 'statusDetail' | 'narrative' | 'testimonial'
+  'lead' | 'metaDescription' | 'statusBadge' | 'statusDetail' | 'narrative'
 >;
 
 /**
@@ -144,10 +139,17 @@ export interface ProcessStep {
   note: string;
 }
 
+/**
+ * Nature of the working relationship behind a quote.
+ */
+export type TestimonialRelation = 'client' | 'peer';
+
 export interface Testimonial {
   id: string;
   name: string;
-  rating: number;
+  relation: TestimonialRelation;
+  /** Organisation the collaboration took place in, when it is public. */
+  context?: string;
   review: string;
 }
 

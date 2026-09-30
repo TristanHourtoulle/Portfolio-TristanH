@@ -1,5 +1,19 @@
 import { TESTIMONIALS } from '@/lib/constants';
 import { SectionHeading } from '@/components/ui/section-heading';
+import type { Testimonial } from '@/lib/types';
+
+/**
+ * Human-readable attribution stating how the author worked with me.
+ */
+function getAttribution(testimonial: Testimonial): string {
+  if (testimonial.relation === 'client') {
+    return 'Client';
+  }
+
+  return testimonial.context
+    ? `A travaillé à mes côtés chez ${testimonial.context}`
+    : 'A travaillé à mes côtés';
+}
 
 export function TestimonialsSection() {
   return (
@@ -7,9 +21,9 @@ export function TestimonialsSection() {
       <div className="wrap">
         <SectionHeading
           eyebrow="Témoignages"
-          title="Ce que disent les clients"
+          title="Ce qu'en disent clients et collègues"
           titleId="temoignages-title"
-          lead="Cinq avis reçus de clients avec qui j'ai travaillé, tous notés 5 sur 5."
+          lead="Cinq retours écrits : trois clients pour qui j'ai livré, deux personnes qui ont travaillé à mes côtés."
         />
         <div className="quotes">
           {TESTIMONIALS.map((testimonial) => (
@@ -17,9 +31,7 @@ export function TestimonialsSection() {
               <blockquote>{testimonial.review}</blockquote>
               <figcaption>
                 <span className="who">{testimonial.name}</span>
-                <span className="rating" aria-label={`Note : ${testimonial.rating} sur 5`}>
-                  {testimonial.rating}/5
-                </span>
+                <span className="relation">{getAttribution(testimonial)}</span>
               </figcaption>
             </figure>
           ))}

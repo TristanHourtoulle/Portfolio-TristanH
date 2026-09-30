@@ -563,11 +563,10 @@ section + section, .trust { border-top: 1px solid var(--rule); }
   gap: 0.9rem;
 }
 .quotes .who { font-weight: 600; }
-.quotes .rating {
+.quotes .relation {
   font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
-  font-size: 0.8125rem;
-  color: var(--accent);
+  font-size: 0.78rem;
+  color: var(--muted);
 }
 @media (max-width: 760px) {
   .quotes { columns: 1; }
@@ -1052,34 +1051,6 @@ section + section, .trust { border-top: 1px solid var(--rule); }
 .case-narrative p + p { margin-top: 1rem; }
 .case-narrative p { margin-top: 0.85rem; color: var(--muted); }
 
-.case-quote {
-  margin-top: 1.1rem;
-  border-left: 2px solid var(--accent);
-  padding-left: clamp(1rem, 3vw, 1.5rem);
-}
-.case-quote blockquote { font-size: 1.05rem; max-width: 60ch; }
-.case-quote blockquote::before { content: "\00ab\00a0"; color: var(--accent); font-weight: 700; }
-.case-quote blockquote::after { content: "\00a0\00bb"; color: var(--accent); font-weight: 700; }
-.case-quote figcaption {
-  margin-top: 0.85rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 0.9rem;
-}
-.case-quote .who { font-weight: 600; }
-.case-quote .context { color: var(--muted); font-size: 0.9rem; }
-.case-quote .rating {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
-  font-size: 0.8125rem;
-  color: var(--accent);
-}
-.case-quote-pending {
-  border-left: 2px solid var(--rule);
-  padding-left: clamp(1rem, 3vw, 1.5rem);
-  max-width: 60ch;
-}
 
 @media (max-width: 880px) {
   .case-grid { grid-template-columns: 1fr; }

@@ -1,4 +1,3 @@
-import { CaseStudyTestimonial } from '@/components/case-study/case-study-testimonial';
 import type { CaseStudyPageContent } from '@/lib/types';
 
 interface CaseStudyContentProps {
@@ -71,7 +70,6 @@ export function CaseStudyContent({ page }: CaseStudyContentProps) {
               ))}
             </section>
           ))}
-          {page.testimonial && <CaseStudyTestimonial testimonial={page.testimonial} />}
         </div>
       </div>
     </section>

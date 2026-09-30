@@ -305,34 +305,35 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 'paul',
     name: 'Paul L.',
-    rating: 5,
+    relation: 'peer',
+    context: 'Moduloop',
     review:
       'Tristan est positif et optimiste, ce qui rend le travail en équipe très agréable. Il est capable de faire face aux problèmes et de les résoudre en toute autonomie. Son travail est de qualité. Son éthique de travail est excellente, il est respectueux des délais et très impliqué.',
   },
   {
     id: 'cyril',
     name: 'Cyril K.',
-    rating: 5,
+    relation: 'client',
     review:
       'Un plaisir de travailler avec Tristan, organisé et sérieux, il se plie en quatre pour trouver les solutions à nos problématiques. Je recommande !',
   },
   {
     id: 'vincent',
     name: 'Vincent G.',
-    rating: 5,
+    relation: 'client',
     review:
       'Deuxième mission accomplie avec succès, rien à dire. On continue les yeux fermés. Merci Tristan pour la qualité de ton accompagnement.',
   },
   {
     id: 'corinne',
     name: 'Corinne E.',
-    rating: 5,
+    relation: 'client',
     review: 'Travail de qualité, bon échange. Je referai appel à ses services si besoin !',
   },
   {
     id: 'timothe',
     name: 'Timothé C.',
-    rating: 5,
+    relation: 'peer',
     review:
       "J'ai pu travailler avec Tristan à de multiples reprises, son travail est toujours qualitatif et rapide.",
   },

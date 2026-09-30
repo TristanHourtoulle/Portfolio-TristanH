@@ -36,8 +36,4 @@ export const HOSTEED_COPY: CaseStudyCopy = {
       ],
     },
   ],
-  testimonial: {
-    status: 'pending',
-    note: "Le témoignage du client sur ce projet sera publié ici dès la fin de la phase de validation.",
-  },
 };

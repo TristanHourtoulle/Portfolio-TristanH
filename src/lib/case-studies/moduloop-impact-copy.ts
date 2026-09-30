@@ -39,9 +39,4 @@ export const MODULOOP_IMPACT_COPY: CaseStudyCopy = {
       paragraphs: ['En production sur moduloop-impact.fr.'],
     },
   ],
-  testimonial: {
-    status: 'published',
-    testimonialId: 'paul',
-    context: 'Moduloop',
-  },
 };
