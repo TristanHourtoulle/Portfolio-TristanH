@@ -70,11 +70,12 @@ export function CaseStudySlider({ images, label }: CaseStudySliderProps) {
     [goTo, index]
   );
 
-  if (count === 0) {
+  const current = images[index] ?? images[0];
+
+  if (current === undefined) {
     return null;
   }
 
-  const current = images[index] ?? images[0];
   const statusText = `Image ${index + 1} sur ${count} : ${current.alt}`;
 
   return (

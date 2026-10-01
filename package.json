@@ -14,7 +14,8 @@
     "build": "next build",
     "start": "node scripts/next-port.mjs start",
     "start:default": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
