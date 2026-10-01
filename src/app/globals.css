@@ -939,8 +939,11 @@ section + section { border-top: 1px solid var(--rule); }
 }
 .slider-caption > p[data-current='true'] { visibility: visible; }
 
+/* The pause control drops below the dots when the row runs out of width,
+   rather than the dots wrapping: their 24px touch targets stay intact. */
 .slider-controls {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
   margin-top: 0.9rem;
