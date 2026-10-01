@@ -96,9 +96,9 @@ export const CLIENT_COLOR_BY_ID: Record<ClientId, ClientColor> = Object.fromEntr
 
 export const HERO_CONTENT: HeroContent = {
   titleKicker: 'Développeur web full-stack',
-  title: 'Quatre applications web livrées, de la maquette au code.',
+  title: 'Quatre applications web livrées, de la spec aux tests.',
   subtitle:
-    "Je travaille dans Figma, Next.js et TypeScript. Je cherche un CDI en équipe produit, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
+    "Je développe en React, Next.js et TypeScript. Je cherche un CDI en équipe produit, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
   secondaryCtaLabel: 'Voir le détail des projets',
   secondaryCtaHref: '/#realisations',
   availableFromLabel: 'Prochaine disponibilité',
@@ -280,10 +280,10 @@ export const PROCESS_STEPS: ProcessStep[] = [
     note: "Je commence par ce que le produit est censé produire, et par ce qui l'en empêche. Sur Hosteed, le sujet n'était pas une fonctionnalité manquante mais un site qui tombait : cela a décidé l'architecture avant la première ligne de code.",
   },
   {
-    id: 'perimetre',
+    id: 'tests-avant-code',
     numberLabel: '2',
-    title: 'Arrêter le périmètre sur la maquette',
-    note: "Je conçois dans Figma, donc la maquette est le moment où le périmètre se fige, écran par écran, avec les cas limites et les états vides. Ce qui se décide là ne se redécouvre pas trois semaines plus tard sur un produit à moitié construit.",
+    title: 'Écrire les tests avant le code',
+    note: "Je pratique le TDD : j'écris d'abord les tests d'intégration de la spec, puis je développe jusqu'à ce qu'ils passent. Cela m'oblige à traiter tous les cas et pas seulement le cas nominal, et la couverture qui en reste protège le produit des régressions à chaque livraison suivante.",
   },
   {
     id: 'iterations',
@@ -339,12 +339,12 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const ABOUT_CONTENT: AboutContent = {
   paragraphs: [
-    "Je conçois les interfaces dans Figma, puis je les développe moi-même : rien ne se perd entre la maquette et le produit. Quand une contrainte technique apparaît en cours de route, je la règle des deux côtés à la fois, sans qu'il faille la traduire d'un métier à l'autre.",
-    "Ce profil double sert surtout à faire le lien dans une équipe. Mes quatre projets étaient montés différemment : certains arrivaient avec leurs maquettes déjà faites, d'autres avec un développeur en interne. Je prends la partie design, la partie développement ou les deux, selon ce qui manque là où j'arrive.",
+    "Développeur full-stack, mon travail commence à la spec. Je la lis, je repère ce qu'elle ne dit pas et je pose les questions avant d'écrire la première ligne. Ce que je livre ensuite s'intègre à la codebase existante, avec ses conventions et ses contraintes, plutôt qu'à côté d'elle.",
+    "J'écris les tests d'intégration de la spec avant le code, puis je développe jusqu'à ce qu'ils passent. Cette méthode m'oblige à traiter tous les cas et pas seulement le cas nominal, et elle laisse une couverture qui protège le produit des régressions. Je sais aussi travailler à partir d'une maquette Figma, et en produire une quand il n'y en a pas, mais le design n'est pas ma compétence principale.",
     "Sur Quintyss, j'ai été référent technique d'une équipe de deux développeurs : architecture, revue de code et arbitrages au quotidien. C'est le cadre que je cherche à retrouver, une équipe où les décisions se discutent, où mon code est relu et où je relis celui des autres.",
   ],
   toolsHeading: 'Outils du quotidien',
-  tools: ['Figma', 'Next.js · TypeScript', 'Tailwind CSS', 'Node.js · PostgreSQL', 'Railway'],
+  tools: ['React · Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js · PostgreSQL', 'Railway', 'Figma'],
 };
 
 export const FOOTER_LEGAL_LINKS: FooterLink[] = [

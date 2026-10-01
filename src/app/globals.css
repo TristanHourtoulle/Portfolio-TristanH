@@ -21,6 +21,19 @@
 
   --font-sans: var(--font-display), 'Avenir Next', Avenir, Futura, Candara, 'Trebuchet MS', sans-serif;
   --font-mono: var(--font-mono-local), ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --header-h: 79px;
+  --anchor-gap: 1.5rem;
+}
+
+@media (max-width: 760px) {
+  :root { --header-h: 115px; }
+}
+@media (max-width: 560px) {
+  :root { --header-h: 166px; }
+}
+@media (max-width: 400px) {
+  :root { --header-h: 205px; }
 }
 
 :root[data-accent="moduloop"] {
@@ -44,6 +57,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + var(--anchor-gap));
 }
 
 body {

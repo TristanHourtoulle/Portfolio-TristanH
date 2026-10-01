@@ -65,7 +65,7 @@ export default function RealisationsPage() {
                 Réalisations : quatre produits web conçus et développés
               </h1>
               <p className="lead">
-                Quatre produits menés de la maquette Figma à la mise en ligne, en stage puis en
+                Quatre produits menés de la spec à la mise en ligne, en stage puis en
                 freelance. Chaque étude de cas détaille le contexte, mon intervention et le
                 résultat livré.
               </p>

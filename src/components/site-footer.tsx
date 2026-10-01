@@ -19,7 +19,7 @@ export function SiteFooter() {
               {SITE_CONFIG.brandName}
             </Link>
           </p>
-          <p>Développeur web full-stack, de la maquette au code.</p>
+          <p>Développeur web full-stack, de la spec aux tests.</p>
           <p className="copyright">
             © {SITE_CONFIG.brandName}. Tous droits réservés.
           </p>
