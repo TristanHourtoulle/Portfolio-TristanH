@@ -163,10 +163,10 @@ const TARGET: FigureDefinition = {
       </text>
       <text
         className="fig-aim"
-        x={181}
-        y={152}
+        x={188}
+        y={155}
         textAnchor="middle"
-        transform="rotate(-90 181 152)"
+        transform="rotate(-90 188 155)"
       >
         difficulté servie
       </text>
