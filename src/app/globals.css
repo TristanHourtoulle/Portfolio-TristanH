@@ -1056,6 +1056,13 @@ section + section { border-top: 1px solid var(--rule); }
   font-size: 0.875rem;
 }
 
+/* Below 560px the two-per-row wrap leaves a trailing capture alone with half
+   the column empty beside it, so one capture takes the whole column. */
+@media (max-width: 559px) {
+  .mobile-views-list > li { flex: 1 1 100%; }
+  .mobile-frame { width: 100%; max-width: 17rem; }
+}
+
 @media (max-width: 640px) {
   .slider-arrow { width: 2.25rem; height: 2.25rem; }
   .slider-arrow-prev { left: 0.4rem; }
