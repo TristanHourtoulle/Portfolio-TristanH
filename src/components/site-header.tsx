@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { NAVIGATION, SITE_CONFIG } from '@/lib/constants';
 import { ProfileActions } from '@/components/ui/profile-actions';
+import { ScrollProgress } from '@/components/scroll-progress';
 
 /**
  * Sticky site header.
@@ -26,6 +27,7 @@ export function SiteHeader() {
           <ProfileActions />
         </div>
       </div>
+      <ScrollProgress />
     </header>
   );
 }

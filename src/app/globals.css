@@ -1501,3 +1501,103 @@ section + section { border-top: 1px solid var(--rule); }
 @supports not (color: color-mix(in srgb, red 50%, transparent)) {
   .phone-frame { box-shadow: inset 0 0 0 1px var(--muted); }
 }
+
+/* Scroll-linked motion. The accent rule under the header has a resting state of
+   its own: a complete rule, drawn whether or not a scroll timeline exists. */
+.scroll-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  pointer-events: none;
+}
+
+.scroll-progress > span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left center;
+}
+
+/* Double guard. The reader must not have asked for less motion, AND the engine
+   must actually drive view timelines. Every animation lives inside both
+   conditions and nowhere else, keyframes included, so a page that falls outside
+   either one declares no animation at all and reads as its finished self. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* Relative unit: 28% of the element's own height, never a pixel guess, so
+       the choreography stays true at any text scale. No opacity and no clip on
+       text, so every word holds full contrast at every point of the scrub. */
+    @keyframes scrub-rise {
+      from { transform: translateY(28%); }
+      to { transform: translateY(0); }
+    }
+
+    @keyframes scrub-open {
+      from {
+        clip-path: inset(0 0 100% 0);
+        transform: translateY(12%);
+      }
+      to {
+        clip-path: inset(0 0 0 0);
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scrub-grow {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    .scroll-progress > span {
+      animation-name: scrub-grow;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(nearest block);
+    }
+
+    /* Headings only. Nothing here is body copy: the prose, the lists of facts
+       and the quotes all sit still and keep their place on the page. */
+    .section-head > .eyebrow,
+    .section-head > h2,
+    .case-index-head > .eyebrow,
+    .case-index-head > h1,
+    .parcours-head-text > .eyebrow,
+    .parcours-head-text > h1,
+    .legal-head > .eyebrow,
+    .legal-head > h1,
+    .legal-content h2,
+    .cta-final h2,
+    .case-related > .wrap > h2,
+    .case-narrative > section > h2,
+    .parcours-what > h2,
+    .timeline-what > h3,
+    .process-list > li > h3,
+    .perso-teaser-list > li > h3,
+    .realisation-text > h2,
+    .related-card > h3,
+    .project h3,
+    .about-aside > h3 {
+      animation-name: scrub-rise;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view(block);
+      animation-range: entry 0% entry 100%;
+    }
+
+    /* The captures carry the demonstrative gesture. The carousel is left out on
+       purpose: it already moves on its own and has a pause control, and two
+       motion systems on one element answer to neither. */
+    .browser-frame,
+    .phone-frame,
+    .mobile-frame,
+    .case-figure {
+      animation-name: scrub-open;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view(block);
+      animation-range: entry 0% entry 90%;
+    }
+  }
+}
