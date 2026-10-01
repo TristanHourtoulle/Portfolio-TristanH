@@ -1310,9 +1310,9 @@ section + section { border-top: 1px solid var(--rule); }
 .realisation-row .stack { display: block; margin-top: 1.15rem; }
 .realisation-links {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 1.25rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
   margin-top: 1.15rem;
 }
 .realisation-links .related-link { margin-top: 0; }
