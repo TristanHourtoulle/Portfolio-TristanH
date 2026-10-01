@@ -84,11 +84,18 @@ export interface CaseStudyGalleryImage {
 }
 
 /**
+ * A hand-drawn diagram that can close a narrative section.
+ */
+export type CaseStudyFigureId = 'edukai-cycle' | 'edukai-interval' | 'edukai-target';
+
+/**
  * One prose block in the narrative column.
  */
 export interface CaseStudyNarrativeSection {
   heading: string;
   paragraphs: string[];
+  /** Diagram drawn after the paragraphs, when the section earns one. */
+  figure?: CaseStudyFigureId;
 }
 
 /**

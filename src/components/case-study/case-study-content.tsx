@@ -1,4 +1,5 @@
 import type { CaseStudyPageContent } from '@/lib/types';
+import { CaseStudyFigure } from './case-study-figure';
 
 interface CaseStudyContentProps {
   page: CaseStudyPageContent;
@@ -87,6 +88,7 @@ export function CaseStudyContent({ page }: CaseStudyContentProps) {
               {section.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
+              {section.figure && <CaseStudyFigure id={section.figure} />}
             </section>
           ))}
         </div>

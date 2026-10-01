@@ -106,11 +106,13 @@ a, button, summary,
   }
 }
 
+/* Headings fill their measure and only pull a word back to avoid a widow on the
+   last line. Display headlines opt back into balance below. */
 h1, h2, h3 {
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.12;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 p { max-width: 65ch; }
@@ -273,6 +275,7 @@ section + section { border-top: 1px solid var(--rule); }
 .hero h1 {
   font-size: clamp(2.3rem, 5.6vw, 4rem);
   max-width: 16ch;
+  text-wrap: balance;
 }
 .hero-kicker {
   display: block;
@@ -622,6 +625,7 @@ section + section { border-top: 1px solid var(--rule); }
 .cta-final h2 {
   font-size: clamp(1.9rem, 4.5vw, 3.1rem);
   max-width: var(--measure);
+  text-wrap: balance;
 }
 .cta-final .lead {
   margin-top: 1rem;
@@ -814,7 +818,7 @@ section + section { border-top: 1px solid var(--rule); }
   padding: 0.35rem 0.7rem;
   white-space: nowrap;
 }
-.case-hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); max-width: var(--measure); }
+.case-hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); max-width: var(--measure); text-wrap: balance; }
 .case-title-qualifier {
   display: block;
   margin-top: 0.6rem;
@@ -1113,6 +1117,55 @@ section + section { border-top: 1px solid var(--rule); }
 .case-narrative h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); }
 .case-narrative p + p { margin-top: 1rem; }
 .case-narrative p { margin-top: 0.85rem; color: var(--muted); }
+
+/* Hand-drawn diagrams in the narrative
+   Narrow by design and capped, so the drawing scales as one piece and reads the
+   same at 400px as at 1440px. Text inside sits on --paper-0 boxes over a
+   --paper-1 ground, which keeps every label above 4.5:1. */
+.case-figure {
+  margin-top: 1.6rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-1);
+  padding: clamp(0.75rem, 3vw, 1.5rem);
+}
+
+.fig-svg {
+  display: block;
+  width: 100%;
+  max-width: 26rem;
+  height: auto;
+  margin-inline: auto;
+}
+
+.case-figure figcaption {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.fig-svg text { font-family: var(--font-sans); }
+.fig-box rect { fill: var(--paper-0); stroke: var(--rule); stroke-width: 1; }
+.fig-label text { fill: var(--ink); font-size: 15px; }
+.fig-step { fill: var(--ink); font-size: 14px; }
+.fig-tick text, .fig-tick { fill: var(--muted); font-size: 13px; }
+.fig-note text, .fig-note { fill: var(--muted); font-size: 13px; }
+.fig-aim { fill: var(--accent); font-size: 13px; font-weight: 600; }
+
+.fig-arrow line { stroke: var(--muted); stroke-width: 1.4; }
+.fig-arrowhead { fill: var(--muted); stroke: none; }
+.fig-loop path { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+.fig-loop path.fig-loop-head { fill: var(--accent); stroke: none; }
+
+.fig-axis { stroke: var(--rule); stroke-width: 1.5; }
+.fig-guide line { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 3 5; }
+.fig-curve { fill: none; stroke: var(--accent); stroke-width: 2; }
+.fig-span line { stroke: var(--ink); stroke-width: 2.4; }
+.fig-point { fill: var(--accent); stroke: none; }
+.fig-target { stroke: var(--accent); stroke-width: 1.8; }
+.fig-drop { stroke: var(--accent); stroke-width: 1.4; stroke-dasharray: 4 4; }
 
 
 @media (max-width: 880px) {

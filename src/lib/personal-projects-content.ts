@@ -77,6 +77,14 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
           ],
         },
         {
+          heading: "Ce que fait l'application",
+          paragraphs: [
+            "Le parcours tient en cinq étapes. On importe un cours, l'application en extrait les concepts qu'il contient, puis elle choisit une question, l'élève répond, et l'estimation de sa maîtrise est révisée.",
+            "Les trois dernières étapes tournent en boucle, et c'est tout l'intérêt : chaque réponse change ce que l'application sait de l'élève, donc elle change aussi la question suivante.",
+          ],
+          figure: 'edukai-cycle',
+        },
+        {
           heading: "Ce que j'ai construit",
           paragraphs: [
             "Une application mobile native en Expo et React Native, adossée à une API NestJS. L'import d'un cours ne bloque pas l'écran : l'extraction part dans un worker asynchrone sur des files BullMQ, et l'application suit l'avancement pendant que le travail se fait.",
@@ -84,12 +92,21 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
           ],
         },
         {
-          heading: 'Le moteur pédagogique',
+          heading: 'Une fourchette plutôt qu\'un score',
           paragraphs: [
-            "Le cœur de l'application est un modèle psychométrique écrit à la main. La maîtrise de l'élève et la difficulté de chaque question sont tenues comme deux gaussiennes sur une même échelle de logit, mises à jour à chaque réponse par un filtre de type Kalman. La confiance du modèle est donc la variance elle-même, et non un score entretenu à côté.",
-            "La question suivante s'obtient en inversant la logistique pour viser un taux de réussite cible, et non en cherchant à maximiser la réussite : une séance où tout passe n'apprend rien. L'espacement des révisions sort de la même logique, par inversion d'un taux d'oubli, sans table d'intervalles à maintenir.",
-            "Les points d'expérience suivent la même règle : ils ne sont versés que sur la hausse de la borne basse de l'intervalle de crédibilité. Répéter une question déjà facile ne rapporte donc rien, parce que cette borne ne bouge pas.",
+            "Le moteur ne range pas l'élève derrière un pourcentage. Pour chaque concept il tient une fourchette, l'écart entre le niveau le plus bas et le niveau le plus haut qu'il juge encore plausibles, et c'est la largeur de cette fourchette qui dit à quel point il est sûr de lui. Large ne veut pas dire faible : large veut dire qu'il n'a pas encore de quoi trancher.",
+            "À chaque réponse, la fourchette se resserre. La confiance n'est donc pas une donnée entretenue à côté du score, elle est la fourchette elle-même. Sous le capot, la maîtrise de l'élève et la difficulté de chaque question sont deux gaussiennes sur une même échelle de logit, mises à jour par un filtre de type Kalman, et la variance est la confiance.",
+            "Les points d'expérience suivent la même règle : ils ne sont versés que sur la hausse de la borne basse de la fourchette. Reposer une question déjà facile ne rapporte donc rien, parce que cette borne ne bouge pas.",
           ],
+          figure: 'edukai-interval',
+        },
+        {
+          heading: 'Comment la question suivante est choisie',
+          paragraphs: [
+            "Un moteur qui cherche à faire réussir l'élève lui sert des questions faciles, et une séance où tout passe n'apprend rien. Edukai prend le problème dans l'autre sens : il se fixe d'abord le taux de réussite qu'il veut obtenir, autour de 75 %, et c'est de cette cible qu'il déduit la difficulté de la question à servir. La difficulté n'est pas choisie puis subie, elle est calculée pour que l'issue reste incertaine.",
+            "La cible reste tenue entre 60 et 85 %, et remonte à 90 % après une série d'échecs, le temps de remettre l'élève en selle. L'espacement des révisions sort de la même logique, par inversion d'un taux d'oubli, borné entre un et six jours, sans table d'intervalles à maintenir.",
+          ],
+          figure: 'edukai-target',
         },
       ],
       relatedSlugs: ['degommix', 'freelance-manager'],
