@@ -13,7 +13,7 @@ const PAGE_TITLE = 'Réalisations et projets';
 const SOCIAL_TITLE = `${PAGE_TITLE} · ${SITE_CONFIG.brandName}`;
 
 const PAGE_DESCRIPTION =
-  "Quatre produits web livrés en stage et en freelance, Hosteed, Moduloop Impact, Moduloop Kits et Quintyss, et trois projets personnels, Edukai, Freelance Manager et Degommix.";
+  "Quatre produits web livrés en stage et en freelance, Hosteed, Moduloop Impact, Moduloop Kits et Quintyss, et trois projets personnels, Edukai, Freelance Manager et Dégommix.";
 
 /**
  * The filter lives in the query string, so the canonical is pinned to the

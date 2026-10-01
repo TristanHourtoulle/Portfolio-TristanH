@@ -222,7 +222,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
         height: 512,
         shape: 'icon',
       },
-      title: 'Degommix',
+      title: 'Dégommix',
       titleQualifier: 'compteur de points pour les petits chevaux',
       periodInline: 'juillet 2026',
       period: 'Juillet 2026',
@@ -242,7 +242,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       gallery: [
         {
           src: '/images/projects/degommix/ecran-titre.webp',
-          alt: "Écran titre de Degommix sur mobile : le nom sur un parchemin, les quatre écussons de camp et la salutation « Salve ! ».",
+          alt: "Écran titre de Dégommix sur mobile : le nom sur un parchemin, les quatre écussons de camp et la salutation « Salve ! ».",
           width: 780,
           height: 1688,
           variant: 'mobile',
@@ -250,7 +250,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
         },
         {
           src: '/images/projects/degommix/partie-live-annulation.webp',
-          alt: 'Partie de Degommix en direct sur mobile : les quatre joueurs et leurs points, le choix du joueur dégommé, et le journal de la partie.',
+          alt: 'Partie de Dégommix en direct sur mobile : les quatre joueurs et leurs points, le choix du joueur dégommé, et le journal de la partie.',
           width: 780,
           height: 1688,
           variant: 'mobile',
