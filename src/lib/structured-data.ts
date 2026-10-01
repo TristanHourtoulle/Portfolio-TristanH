@@ -47,20 +47,34 @@ const ALUMNI_OF = {
   description: PARCOURS_CONTENT.school.description,
 } as const;
 
+const PERSON_IDENTITY = {
+  '@type': 'Person',
+  '@id': PERSON_ID,
+  name: SITE_CONFIG.brandName,
+  url: canonicalUrl('/'),
+  jobTitle: PROFESSION,
+  sameAs: SOCIAL_PROFILE_URLS,
+} as const;
+
+/**
+ * The identity-only node, for pages that show none of the homepage profile.
+ */
+function buildPersonIdentityNode(): JsonLdValue {
+  return PERSON_IDENTITY;
+}
+
+/**
+ * The full profile node, for the one page that renders its content.
+ */
 function buildPersonNode(): JsonLdValue {
   return {
-    '@type': 'Person',
-    '@id': PERSON_ID,
-    name: SITE_CONFIG.brandName,
-    url: canonicalUrl('/'),
+    ...PERSON_IDENTITY,
     image: canonicalUrl('/images/tristan-hourtoulle.webp'),
-    jobTitle: PROFESSION,
     description: ABOUT_CONTENT.paragraphs[0],
     email: SITE_CONFIG.email,
     knowsAbout: KNOWS_ABOUT,
     knowsLanguage: 'fr-FR',
     alumniOf: ALUMNI_OF,
-    sameAs: SOCIAL_PROFILE_URLS,
   };
 }
 
@@ -117,6 +131,7 @@ export function buildRealisationsStructuredData(): JsonLdGraph {
     '@context': 'https://schema.org',
     '@graph': [
       buildBreadcrumbNode('/realisations', [HOME_CRUMB, { name: 'Réalisations' }]),
+      buildPersonIdentityNode(),
     ],
   };
 }
@@ -126,7 +141,7 @@ export function buildParcoursStructuredData(): JsonLdGraph {
     '@context': 'https://schema.org',
     '@graph': [
       buildBreadcrumbNode('/parcours', [HOME_CRUMB, { name: 'Parcours' }]),
-      buildPersonNode(),
+      buildPersonIdentityNode(),
     ],
   };
 }
@@ -161,7 +176,7 @@ export function buildCaseStudyStructuredData(page: CaseStudyPageContent): JsonLd
         { name: 'Réalisations', path: '/realisations' },
         { name: page.title },
       ]),
-      buildPersonNode(),
+      buildPersonIdentityNode(),
       buildCaseStudyNode(page),
     ],
   };
