@@ -1,4 +1,4 @@
-import { CASE_STUDY_STACKS, CLIENT_COLOR_BY_ID } from './constants';
+import { CASE_STUDY_STACKS, CLIENT_COLOR_BY_ID } from './products';
 import { HOSTEED_COPY } from './case-studies/hosteed-copy';
 import { MODULOOP_IMPACT_COPY } from './case-studies/moduloop-impact-copy';
 import { MODULOOP_KITS_COPY } from './case-studies/moduloop-kits-copy';
@@ -6,11 +6,13 @@ import { QUINTYSS_COPY } from './case-studies/quintyss-copy';
 import { PERSONAL_PROJECTS } from './personal-projects-content';
 import type {
   CaseStudyPageContent,
+  CaseStudySlug,
+  ClientCaseStudyPage,
   ProductMark,
   RealisationFilter,
 } from './types';
 
-export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
+export const CASE_STUDY_PAGES: ClientCaseStudyPage[] = [
   {
     slug: 'hosteed',
     provenance: 'client',
@@ -241,9 +243,11 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
   },
 ];
 
-export const CASE_STUDY_PAGE_BY_SLUG: Record<string, CaseStudyPageContent> = Object.fromEntries(
-  CASE_STUDY_PAGES.map((page) => [page.slug, page])
-);
+export const CASE_STUDY_PAGE_BY_SLUG: Record<CaseStudySlug, ClientCaseStudyPage> =
+  Object.fromEntries(CASE_STUDY_PAGES.map((page) => [page.slug, page])) as Record<
+    CaseStudySlug,
+    ClientCaseStudyPage
+  >;
 
 export const PERSONAL_PROJECT_PAGES: CaseStudyPageContent[] = PERSONAL_PROJECTS.map(
   (project) => project.page

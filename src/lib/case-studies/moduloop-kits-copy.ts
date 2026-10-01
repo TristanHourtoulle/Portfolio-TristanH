@@ -1,6 +1,6 @@
-import type { CaseStudyCopy } from '../types';
+import type { ClientCaseStudyCopy } from '../types';
 
-export const MODULOOP_KITS_COPY: CaseStudyCopy = {
+export const MODULOOP_KITS_COPY: ClientCaseStudyCopy = {
   lead: "Après Impact, qui chiffrait un projet déjà défini, un second outil pour l'étape commerciale : composer un kit d'aménagement, le chiffrer à l'achat comme à la location sur 1, 2 ou 3 ans, et sortir une offre avec son impact environnemental et son prix au m².",
   metaDescription:
     "Application web pour composer un kit d'aménagement, le chiffrer à l'achat comme à la location, et sortir une offre avec son impact et son prix au m².",

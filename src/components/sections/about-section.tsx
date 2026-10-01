@@ -1,4 +1,5 @@
 import { ABOUT_CONTENT } from '@/lib/constants';
+import { SectionHeading } from '@/components/ui/section-heading';
 
 /** Id of the tools column title. */
 const TOOLS_TITLE_ID = 'apropos-tools-title';
@@ -10,10 +11,11 @@ export function AboutSection() {
   return (
     <section id="a-propos" aria-labelledby="apropos-title">
       <div className="wrap">
-        <div className="section-head">
-          <span className="eyebrow">À propos</span>
-          <h2 id="apropos-title">Ce que je fais entrer dans une équipe</h2>
-        </div>
+        <SectionHeading
+          eyebrow="À propos"
+          title="Ce que je fais entrer dans une équipe"
+          titleId="apropos-title"
+        />
         <div className="about-grid">
           <div>
             {ABOUT_CONTENT.paragraphs.map((paragraph) => (

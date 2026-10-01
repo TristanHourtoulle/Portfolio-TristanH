@@ -150,12 +150,30 @@ export interface CaseStudyPageContent {
 }
 
 /**
+ * A client case-study page, whose client fields are always filled in.
+ */
+export type ClientCaseStudyPage = CaseStudyPageContent & {
+  slug: CaseStudySlug;
+  clientId: ClientId;
+  engagementType: string;
+  statusDetail: string;
+};
+
+/**
  * The editorial half of a case-study page: every field that is prose.
  */
 export type CaseStudyCopy = Pick<
   CaseStudyPageContent,
   'lead' | 'metaDescription' | 'statusBadge' | 'statusDetail' | 'narrative'
 >;
+
+/**
+ * The editorial half of a client case study, which always states its status.
+ */
+export type ClientCaseStudyCopy = CaseStudyCopy & {
+  statusBadge: string;
+  statusDetail: string;
+};
 
 /**
  * One dated row of the experience timeline, keyed to its case study.

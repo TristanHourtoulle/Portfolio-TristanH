@@ -1,9 +1,8 @@
+import { CASE_STUDY_PAGE_BY_SLUG, CASE_STUDY_PAGES } from './case-studies-content';
 import type {
   AboutContent,
   CaseStudy,
   CaseStudySlug,
-  ClientColor,
-  ClientId,
   CtaContent,
   ExperienceEntry,
   FooterLink,
@@ -14,6 +13,8 @@ import type {
   SiteConfig,
   Testimonial,
 } from './types';
+
+export { CASE_STUDY_STACKS, CLIENT_COLOR_BY_ID } from './products';
 
 export const SITE_CONFIG: SiteConfig = {
   brandName: 'Tristan Hourtoulle',
@@ -57,45 +58,12 @@ export const NAVIGATION: NavItem[] = [
   { id: 'a-propos', label: 'À propos', href: '/#a-propos' },
 ];
 
-export const FOOTER_NAVIGATION: NavItem[] = [
-  { id: 'experience', label: 'Expérience', href: '/#experience' },
-  { id: 'realisations', label: 'Réalisations', href: '/realisations' },
-  { id: 'parcours', label: 'Parcours', href: '/parcours' },
-  { id: 'processus', label: 'Processus', href: '/#processus' },
-  { id: 'a-propos', label: 'À propos', href: '/#a-propos' },
-];
-
-const CLIENT_COLORS: ClientColor[] = [
-  {
-    id: 'moduloop',
-    name: 'Moduloop',
-    brand: '#00AAAB',
-    ink: '#006C6D',
-    logo: { src: '/images/clients/moduloop.png', width: 300, height: 79 },
-  },
-  {
-    id: 'hosteed',
-    name: 'Hosteed',
-    brand: '#015993',
-    ink: '#015993',
-    logo: { src: '/images/clients/hosteed.png', width: 500, height: 271 },
-  },
-  {
-    id: 'quintyss',
-    name: 'Quintyss',
-    brand: '#6F93F4',
-    ink: '#01164E',
-  },
-];
+export const FOOTER_NAVIGATION: NavItem[] = NAVIGATION;
 
 export const CLIENT_LOGO_SIZES = '128px';
 
 /** Layout hint for the small product mark in the realisations column. */
 export const REALISATION_MARK_SIZES = '(min-width: 900px) 96px, 56px';
-
-export const CLIENT_COLOR_BY_ID: Record<ClientId, ClientColor> = Object.fromEntries(
-  CLIENT_COLORS.map((client) => [client.id, client])
-) as Record<ClientId, ClientColor>;
 
 export const HERO_CONTENT: HeroContent = {
   titleKicker: 'Développeur web full-stack',
@@ -114,118 +82,69 @@ export const CTA_CONTENT: CtaContent = {
   lead: "Développeur full-stack, deux ans de freelance et quatre applications web développées et livrées. Je cherche une équipe produit où je développe et livre au quotidien, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
 };
 
-export const CASE_STUDY_STACKS: Record<CaseStudySlug, readonly string[]> = {
-  hosteed: ['Next.js', 'TypeScript', 'Tailwind', 'PostgreSQL', 'VPS client'],
-  'moduloop-impact': ['Next.js', 'TypeScript', 'Tailwind', 'Node.js'],
-  'moduloop-kits': ['Next.js 16', 'React 19', 'Prisma', 'PostgreSQL', 'Better Auth'],
-  quintyss: ['Next.js', 'TypeScript', 'Fastify', 'Drizzle', 'PostgreSQL', 'Stripe', 'Railway'],
+interface CaseStudyHomeFacts {
+  context: string;
+  contribution: string;
+  statusLabel: string;
+  statusFollowUp?: string;
+}
+
+const CASE_STUDY_HOME_FACTS: Record<CaseStudySlug, CaseStudyHomeFacts> = {
+  hosteed: {
+    context:
+      "Plateforme de location de logements dédiée à Madagascar, sur le modèle d'Airbnb : recherche, fiches logements et réservation.",
+    contribution:
+      'Développement du parcours complet, de la recherche à la réservation, côté voyageur comme côté hôte.',
+    statusLabel: 'Statut',
+  },
+  'moduloop-impact': {
+    context:
+      "Les acteurs de l'aménagement doivent mesurer l'impact environnemental de leurs projets, sans outil adapté à leur métier.",
+    contribution:
+      'Outil de calcul complet : saisie des données du projet d\'aménagement et visualisation des résultats en temps réel.',
+    statusLabel: 'Résultat',
+    statusFollowUp:
+      "Moduloop m'a ensuite repris en freelance pour la maintenance, puis pour construire Moduloop Kits.",
+  },
+  'moduloop-kits': {
+    context:
+      "Après Moduloop Impact, Moduloop voulait proposer des kits d'aménagement prêts à l'emploi, avec un calcul immédiat de l'impact environnemental et du prix au m² de chaque kit.",
+    contribution:
+      'Catalogue de produits, composition de kits, fiches produits détaillées et suivi des projets avec leur impact calculé.',
+    statusLabel: 'Statut',
+  },
+  quintyss: {
+    context:
+      "CMS multi-sites : un socle commun pour plusieurs sites clients, avec édition des pages par widget, paiements, articles, blog, référencement et traduction automatisée.",
+    contribution:
+      "Développeur fullstack indépendant au sein d'une équipe de deux développeurs : architecture de la plateforme, développement et revue de leur code.",
+    statusLabel: 'Statut',
+  },
 };
 
-export const CASE_STUDIES: CaseStudy[] = [
-  {
-    id: 'hosteed',
-    clientId: 'hosteed',
-    title: 'Hosteed',
-    engagementType: 'Freelance',
-    period: 'mai à novembre 2025',
-    stack: CASE_STUDY_STACKS.hosteed,
+export const CASE_STUDIES: CaseStudy[] = CASE_STUDY_PAGES.map((page) => {
+  const facts = CASE_STUDY_HOME_FACTS[page.slug];
+
+  return {
+    id: page.slug,
+    clientId: page.clientId,
+    title: page.title,
+    engagementType: page.engagementType,
+    period: page.periodInline,
+    stack: page.stack,
     details: [
+      { label: 'Contexte', value: facts.context },
+      { label: 'Intervention', value: facts.contribution },
       {
-        label: 'Contexte',
-        value:
-          "Plateforme de location de logements dédiée à Madagascar, sur le modèle d'Airbnb : recherche, fiches logements et réservation.",
-      },
-      {
-        label: 'Intervention',
-        value:
-          'Développement du parcours complet, de la recherche à la réservation, côté voyageur comme côté hôte.',
-      },
-      {
-        label: 'Statut',
-        value:
-          "Livrée en novembre 2025, en phase de test chez le client à la fin de mon intervention.",
+        label: facts.statusLabel,
+        value: facts.statusFollowUp
+          ? `${page.statusDetail} ${facts.statusFollowUp}`
+          : page.statusDetail,
       },
     ],
-    caseLinkHref: '/realisations/hosteed',
-  },
-  {
-    id: 'moduloop-impact',
-    clientId: 'moduloop',
-    title: 'Moduloop Impact',
-    engagementType: 'Stage de 3e année',
-    period: 'février à juin 2024',
-    stack: CASE_STUDY_STACKS['moduloop-impact'],
-    details: [
-      {
-        label: 'Contexte',
-        value:
-          "Les acteurs de l'aménagement doivent mesurer l'impact environnemental de leurs projets, sans outil adapté à leur métier.",
-      },
-      {
-        label: 'Intervention',
-        value:
-          'Outil de calcul complet : saisie des données du projet d\'aménagement et visualisation des résultats en temps réel.',
-      },
-      {
-        label: 'Résultat',
-        value:
-          "Mise en production sur moduloop-impact.fr en juin 2024, à la fin de mon stage. Moduloop m'a ensuite repris en freelance pour la maintenance, puis pour construire Moduloop Kits.",
-      },
-    ],
-    caseLinkHref: '/realisations/moduloop-impact',
-  },
-  {
-    id: 'moduloop-kits',
-    clientId: 'moduloop',
-    title: 'Moduloop Kits',
-    engagementType: 'Freelance',
-    period: 'août 2025 à août 2026',
-    stack: CASE_STUDY_STACKS['moduloop-kits'],
-    details: [
-      {
-        label: 'Contexte',
-        value:
-          "Après Moduloop Impact, Moduloop voulait proposer des kits d'aménagement prêts à l'emploi, avec un calcul immédiat de l'impact environnemental et du prix au m² de chaque kit.",
-      },
-      {
-        label: 'Intervention',
-        value:
-          'Catalogue de produits, composition de kits, fiches produits détaillées et suivi des projets avec leur impact calculé.',
-      },
-      {
-        label: 'Statut',
-        value: 'Livré en production en août 2026, fin de mon intervention.',
-      },
-    ],
-    caseLinkHref: '/realisations/moduloop-kits',
-  },
-  {
-    id: 'quintyss',
-    clientId: 'quintyss',
-    title: 'Quintyss V3',
-    engagementType: 'Freelance',
-    period: 'mars 2025 à août 2026',
-    stack: CASE_STUDY_STACKS.quintyss,
-    details: [
-      {
-        label: 'Contexte',
-        value:
-          "CMS multi-sites : un socle commun pour plusieurs sites clients, avec édition des pages par widget, paiements, articles, blog, référencement et traduction automatisée.",
-      },
-      {
-        label: 'Intervention',
-        value:
-          "Développeur fullstack indépendant au sein d'une équipe de deux développeurs : architecture de la plateforme, développement et revue de leur code.",
-      },
-      {
-        label: 'Statut',
-        value:
-          "À la fin de mon intervention, en août 2026, deux sites étaient en production et un troisième en attente de validation.",
-      },
-    ],
-    caseLinkHref: '/realisations/quintyss',
-  },
-];
+    caseLinkHref: `/realisations/${page.slug}`,
+  };
+});
 
 export const CASE_STUDY_BY_SLUG: Record<CaseStudySlug, CaseStudy> = Object.fromEntries(
   CASE_STUDIES.map((caseStudy) => [caseStudy.id, caseStudy])
@@ -238,7 +157,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     role: 'Développeur full-stack',
     summary:
       "Configurateur de kits d'aménagement : composer un kit, le chiffrer à l'achat comme à la location sur 1, 2 ou 3 ans, et sortir une offre avec son impact environnemental et son prix au m².",
-    status: 'Livré en production en août 2026, fin de mon intervention.',
+    status: CASE_STUDY_PAGE_BY_SLUG['moduloop-kits'].statusDetail,
   },
   {
     slug: 'hosteed',
@@ -246,8 +165,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     role: 'Développeur full-stack',
     summary:
       "Plateforme de location de logements à Madagascar, reconstruite depuis la base après un WordPress devenu instable : recherche, réservation, paiement Stripe, back-office.",
-    status:
-      "Livrée en novembre 2025, en phase de test chez le client à la fin de mon intervention.",
+    status: CASE_STUDY_PAGE_BY_SLUG.hosteed.statusDetail,
   },
   {
     slug: 'quintyss',
@@ -255,8 +173,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     role: 'Développeur fullstack indépendant',
     summary:
       "CMS multi-sites : un socle commun pour plusieurs sites clients, avec un éditeur qui appliquait les modifications widget par widget, sans redéploiement.",
-    status:
-      "À la fin de mon intervention, en août 2026, deux sites étaient en production et un troisième en attente de validation.",
+    status: CASE_STUDY_PAGE_BY_SLUG.quintyss.statusDetail,
   },
   {
     slug: 'moduloop-impact',
@@ -264,7 +181,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     role: 'Développeur full-stack',
     summary:
       "Calculateur d'impact environnemental qui remplace un calcul sur tableur : catalogue produits, comparaison du neuf et du réemploi, export des résultats.",
-    status: 'Mise en production sur moduloop-impact.fr en juin 2024, à la fin de mon stage.',
+    status: CASE_STUDY_PAGE_BY_SLUG['moduloop-impact'].statusDetail,
     note: "À la fin du stage, Moduloop m'a repris en freelance pour la maintenance, puis pour construire Kits.",
   },
 ];

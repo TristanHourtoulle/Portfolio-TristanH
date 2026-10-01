@@ -1,6 +1,6 @@
-import type { CaseStudyCopy } from '../types';
+import type { ClientCaseStudyCopy } from '../types';
 
-export const MODULOOP_IMPACT_COPY: CaseStudyCopy = {
+export const MODULOOP_IMPACT_COPY: ClientCaseStudyCopy = {
   lead: "Le calcul d'impact environnemental d'un projet d'aménagement se faisait à la main, sur tableur. J'ai livré à la place un outil qui chiffrait, comparait deux scénarios et sortait un document présentable au client.",
   metaDescription:
     "Application web qui remplace le calcul d'impact environnemental sur tableur : catalogue produits, comparaison neuf/réemploi et export PDF.",

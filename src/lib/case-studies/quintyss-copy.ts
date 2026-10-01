@@ -1,6 +1,6 @@
-import type { CaseStudyCopy } from '../types';
+import type { ClientCaseStudyCopy } from '../types';
 
-export const QUINTYSS_COPY: CaseStudyCopy = {
+export const QUINTYSS_COPY: ClientCaseStudyCopy = {
   lead: "CMS multi-sites repris en V3 : un socle commun capable de faire vivre plusieurs sites clients, et un éditeur qui appliquait les modifications widget par widget sans redéploiement.",
   metaDescription:
     "CMS multi-sites : un socle commun pour plusieurs sites clients et un éditeur appliquant les modifications widget par widget, sans redéploiement.",

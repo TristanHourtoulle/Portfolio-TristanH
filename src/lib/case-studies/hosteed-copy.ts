@@ -1,6 +1,6 @@
-import type { CaseStudyCopy } from '../types';
+import type { ClientCaseStudyCopy } from '../types';
 
-export const HOSTEED_COPY: CaseStudyCopy = {
+export const HOSTEED_COPY: ClientCaseStudyCopy = {
   lead: "Plateforme de location de logements dédiée à Madagascar, sur le modèle d'Airbnb : recherche, fiches logements, réservation et paiement en ligne, reconstruite de zéro après un site WordPress devenu instable.",
   metaDescription:
     "Plateforme de réservation de logements à Madagascar, reconstruite de zéro après un WordPress instable : recherche, réservation, paiement Stripe et back-office.",
