@@ -84,10 +84,10 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
       id: 'cinquieme-annee',
       period: 'Cinquième année',
       context: 'Statut étudiant-entrepreneur',
-      heading: 'Six mois à temps partiel, puis six mois de stage en entreprise',
+      heading: 'Dernière année validée avec mes propres clients',
       paragraphs: [
-        "La cinquième année se déroule en deux temps : six mois à temps partiel, puis six mois de stage en entreprise.",
-        "J’ai fait les deux sous le statut national étudiant-entrepreneur, en m’appuyant sur des clients que j’avais déjà depuis plus d’un an.",
+        "Le cursus demande six mois à temps partiel, puis six mois en entreprise, et j’ai rempli ces deux temps avec mon activité indépendante plutôt qu’avec un stage.",
+        "Je l’ai fait sous le statut national étudiant-entrepreneur, en m’appuyant sur des clients que j’avais déjà depuis plus d’un an.",
       ],
     },
   ],
