@@ -1289,10 +1289,8 @@ section + section { border-top: 1px solid var(--rule); }
   border-radius: 10px;
 }
 .realisation-mark[data-shape="wordmark"] img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 .realisation-client { margin-top: 0.7rem; font-weight: 600; color: var(--accent); }
@@ -1341,7 +1339,10 @@ section + section { border-top: 1px solid var(--rule); }
   }
   .realisation-meta p { margin-top: 0; }
   .realisation-mark { margin-top: 0; width: 3.5rem; height: 3.5rem; }
-  .realisation-mark[data-shape="wordmark"] { padding: 0.3rem; }
+  /* A landscape wordmark fitted into a square tile collapses to a smudge at
+     this size, so its tile takes the width the mark actually needs. The app
+     icon tile stays square. */
+  .realisation-mark[data-shape="wordmark"] { width: 6.5rem; padding: 0.35rem 0.5rem; }
   .realisation-body-media { grid-template-columns: minmax(0, 1fr); }
   .realisation-shot[data-frame="phone"] { width: 100%; max-width: 15rem; }
   .realisation-shot[data-frame="browser"] { width: 100%; max-width: 26rem; }

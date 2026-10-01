@@ -63,7 +63,7 @@ export const FOOTER_NAVIGATION: NavItem[] = NAVIGATION;
 export const CLIENT_LOGO_SIZES = '128px';
 
 /** Layout hint for the small product mark in the realisations column. */
-export const REALISATION_MARK_SIZES = '(min-width: 900px) 96px, 56px';
+export const REALISATION_MARK_SIZES = '(min-width: 900px) 96px, 104px';
 
 export const HERO_CONTENT: HeroContent = {
   titleKicker: 'Développeur web full-stack',
