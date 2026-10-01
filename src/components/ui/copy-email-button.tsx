@@ -51,12 +51,10 @@ export function CopyEmailButton({ email }: CopyEmailButtonProps) {
       type="button"
       className={clsx('copy-email', isCopied && 'copied')}
       onClick={handleCopy}
-      aria-label="Copier l'adresse email"
     >
       <Copy className="copy-icon" aria-hidden="true" />
-      <span className="copy-label" aria-live="polite">
-        {isCopied ? 'Copié' : email}
-      </span>
+      <span className="sr-only">Copier l&apos;adresse email </span>
+      <span aria-live="polite">{isCopied ? 'Copié' : email}</span>
     </button>
   );
 }
