@@ -1292,8 +1292,18 @@ section + section { border-top: 1px solid var(--rule); }
   margin-top: 1.15rem;
 }
 .realisation-links .related-link { margin-top: 0; }
-.realisation-shot[data-frame="phone"] { width: 13.5rem; }
+.realisation-shot[data-frame="phone"] { width: 11rem; }
 .realisation-shot[data-frame="browser"] { width: 20rem; }
+.realisation-no-shot {
+  width: 20rem;
+  padding: 1.1rem 1.2rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  background: var(--paper-1);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+}
 
 @media (max-width: 900px) {
   .realisation-row { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
@@ -1309,6 +1319,7 @@ section + section { border-top: 1px solid var(--rule); }
   .realisation-body-media { grid-template-columns: minmax(0, 1fr); }
   .realisation-shot[data-frame="phone"] { width: 100%; max-width: 15rem; }
   .realisation-shot[data-frame="browser"] { width: 100%; max-width: 26rem; }
+  .realisation-no-shot { width: 100%; max-width: 26rem; }
 }
 
 .perso-teaser-list {

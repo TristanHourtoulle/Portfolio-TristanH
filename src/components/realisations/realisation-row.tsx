@@ -14,13 +14,19 @@ const PHONE_SIZES = '(min-width: 900px) 220px, 60vw';
 
 const BROWSER_SIZES = '(min-width: 900px) 320px, 88vw';
 
+type RowFrame = 'phone' | 'browser';
+
+const NO_SHOT_NOTE =
+  "Aucune capture sur cette réalisation : le client ne souhaite pas que le produit soit montré. L'étude de cas rend compte de l'architecture, qui est la partie dont je suis le plus fier ici.";
+
 /**
  * Draws the lead capture in the shell the product was captured on.
- * @param image - capture and the frame it belongs in
+ * @param image - the capture to frame
+ * @param frame - shell to draw around it
  * @returns The framed capture.
  */
-function RowShot({ image }: { image: CaseStudyGalleryImage }) {
-  if (image.frame === 'phone') {
+function RowShot({ image, frame }: { image: CaseStudyGalleryImage; frame: RowFrame }) {
+  if (frame === 'phone') {
     return (
       <PhoneFrame
         src={image.src}
@@ -53,13 +59,20 @@ function RowShot({ image }: { image: CaseStudyGalleryImage }) {
  * product is online closes with a secondary link to it, next to the link into
  * the page itself.
  *
+ * Every row also carries a framed capture, so that no entry reads as weightier
+ * than another. A client row that is forbidden from showing its product keeps
+ * the same slot and states the prohibition there, rather than leaving a hole or
+ * standing on a placeholder image.
+ *
  * @param page - the realisation to render
  * @returns The list row.
  */
 export function RealisationRow({ page }: RealisationRowProps) {
   const client = page.clientId ? CLIENT_COLOR_BY_ID[page.clientId] : undefined;
   const mark = resolveRealisationMark(page);
-  const shot = page.provenance === 'perso' ? page.gallery[0] : undefined;
+  const shot = page.gallery[0];
+  const shotFrame: RowFrame = shot?.frame ?? 'browser';
+  const hasNote = shot === undefined && page.provenance === 'client';
   const href = `/realisations/${page.slug}`;
   const linkLabel = page.provenance === 'client' ? "Lire l'étude de cas" : 'Voir le projet';
 
@@ -85,7 +98,11 @@ export function RealisationRow({ page }: RealisationRowProps) {
           <p className="realisation-engagement mono">{page.engagementType}</p>
         )}
       </div>
-      <div className={shot ? 'realisation-body realisation-body-media' : 'realisation-body'}>
+      <div
+        className={
+          shot || hasNote ? 'realisation-body realisation-body-media' : 'realisation-body'
+        }
+      >
         <div className="realisation-text">
           <h2>
             <Link href={href}>{page.title}</Link>,{' '}
@@ -112,10 +129,11 @@ export function RealisationRow({ page }: RealisationRowProps) {
           </div>
         </div>
         {shot && (
-          <div className="realisation-shot" data-frame={shot.frame}>
-            <RowShot image={shot} />
+          <div className="realisation-shot" data-frame={shotFrame}>
+            <RowShot image={shot} frame={shotFrame} />
           </div>
         )}
+        {hasNote && <p className="realisation-no-shot">{NO_SHOT_NOTE}</p>}
       </div>
     </li>
   );

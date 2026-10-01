@@ -18,7 +18,7 @@ export const QUINTYSS_COPY: CaseStudyCopy = {
     {
       heading: 'Mon rôle',
       paragraphs: [
-        "J'ai été développeur full-stack et référent technique sur le projet de mars 2025 à août 2026. Quatre responsabilités menées de front : l'architecture de la plateforme, la revue du code produit par l'équipe, les choix techniques, et le découpage des tâches avec leur suivi.",
+        "Je suis intervenu comme développeur fullstack indépendant sur le projet, de mars 2025 à août 2026. Quatre responsabilités menées de front : l'architecture de la plateforme, la revue du code produit par l'équipe, les choix techniques, et le découpage des tâches avec leur suivi.",
         "Pour Quintyss, cela veut dire une personne qui tient la cohérence de l'ensemble et qui assume les arbitrages, plutôt qu'une addition d'avis techniques qui se contredisent au fil des semaines.",
       ],
     },

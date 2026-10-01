@@ -215,7 +215,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: 'Intervention',
         value:
-          "Full-stack et référent technique d'une équipe de deux développeurs : architecture, développement et revue de code.",
+          "Développeur fullstack indépendant au sein d'une équipe de deux développeurs : architecture de la plateforme, développement et revue de leur code.",
       },
       {
         label: 'Statut',
@@ -252,7 +252,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   {
     slug: 'quintyss',
     engagement: 'Freelance',
-    role: 'Développeur full-stack, référent technique',
+    role: 'Développeur fullstack indépendant',
     summary:
       "CMS multi-sites : un socle commun pour plusieurs sites clients, avec un éditeur qui appliquait les modifications widget par widget, sans redéploiement.",
     status:
@@ -344,7 +344,7 @@ export const ABOUT_CONTENT: AboutContent = {
   paragraphs: [
     "Développeur full-stack, mon travail commence à la spec. Je la lis, je repère ce qu'elle ne dit pas et je pose les questions avant d'écrire la première ligne. Ce que je livre ensuite s'intègre à la codebase existante, avec ses conventions et ses contraintes, plutôt qu'à côté d'elle.",
     "J'écris les tests d'intégration de la spec avant le code, puis je développe jusqu'à ce qu'ils passent. Cette méthode m'oblige à traiter tous les cas et pas seulement le cas nominal, et elle laisse une couverture qui protège le produit des régressions. Je sais aussi travailler à partir d'une maquette Figma, et en produire une quand il n'y en a pas, mais le design n'est pas ma compétence principale.",
-    "Sur Quintyss, j'ai été référent technique d'une équipe de deux développeurs : architecture, revue de code et arbitrages au quotidien. C'est le cadre que je cherche à retrouver, une équipe où les décisions se discutent, où mon code est relu et où je relis celui des autres.",
+    "Sur Quintyss, je suis intervenu comme développeur fullstack indépendant dans une équipe de deux développeurs : j'ai porté l'architecture, relu leur code et tranché les arbitrages au quotidien. C'est le cadre que je cherche à retrouver, une équipe où les décisions se discutent, où mon code est relu et où je relis celui des autres.",
   ],
   toolsHeading: 'Outils du quotidien',
   tools: ['React · Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js · PostgreSQL', 'Railway', 'Figma'],
