@@ -13,9 +13,6 @@ const currentYear = new Date().getFullYear();
 
 /**
  * Site footer.
- *
- * The copyright year is resolved at build time, so it refreshes on each deployment.
- *
  * @returns The footer landmark with branding, navigation and legal links.
  */
 export function SiteFooter() {

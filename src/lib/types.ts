@@ -21,10 +21,7 @@ export interface ProductMark {
   height: number;
   /** True for a vector file, which is served as is rather than re-encoded. */
   isVector?: boolean;
-  /**
-   * Square app icon, which fills its box and takes the app-icon rounding, or
-   * wordmark, which is laid inside a frame without being cropped.
-   */
+  /** Square app icon, cropped to the app-icon rounding, or uncropped wordmark. */
   shape: 'icon' | 'wordmark';
 }
 
@@ -139,11 +136,7 @@ export interface CaseStudyPageContent {
   lead: string;
   metaDescription: string;
   stack: readonly string[];
-  /**
-   * Outbound links to the live product, shown in the "En bref" sidebar and in
-   * the realisations list row. The label names the destination, so the link
-   * still reads out of context.
-   */
+  /** Outbound links to the live product, shown in the sidebar and in the list row. */
   externalLinks: CaseStudyPageLink[];
   gallery: CaseStudyGalleryImage[];
   /** How the gallery draws its captures. Defaults to the desktop carousel. */

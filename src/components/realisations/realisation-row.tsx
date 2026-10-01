@@ -52,19 +52,6 @@ function RowShot({ image, frame }: { image: CaseStudyGalleryImage; frame: RowFra
 
 /**
  * One row of the realisations column, client work and personal project alike.
- *
- * Every row carries a product mark: a client entry shows the client logo, a
- * personal entry shows the application icon. Only the provenance text, the
- * client name and the engagement type, is absent on a personal project, since
- * that is the one thing a personal project genuinely does not have. A row whose
- * product is online closes with a secondary link to it, next to the link into
- * the page itself.
- *
- * Every row also carries a framed capture, so that no entry reads as weightier
- * than another. A client row that is forbidden from showing its product keeps
- * the same slot and states the prohibition there, rather than leaving a hole or
- * standing on a placeholder image.
- *
  * @param page - the realisation to render
  * @returns The list row.
  */

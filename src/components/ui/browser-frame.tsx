@@ -17,12 +17,6 @@ const DEFAULT_SIZES = '(min-width: 1100px) 900px, 92vw';
 
 /**
  * Browser shell drawn in CSS around a desktop screenshot.
- *
- * The chrome is a title bar with three dots and nothing else, so it reads as a
- * window without pretending to be one. The viewport takes its proportions from
- * the screenshot, so a wide dashboard and a tall analytics page both fit without
- * cropping.
- *
  * @returns The framed image.
  */
 export function BrowserFrame({

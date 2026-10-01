@@ -8,13 +8,6 @@ interface CaseStudyContentProps {
 
 /**
  * Sidebar and narrative body of a realisation page.
- *
- * The live product link sits here, among the project's own facts, rather than
- * in the hero action row, which belongs to the hiring actions.
- *
- * Every provenance row is conditional: a personal project simply has no client
- * and no engagement type, and the list closes up rather than showing a label
- * with nothing under it.
  */
 export function CaseStudyContent({ page }: CaseStudyContentProps) {
   return (

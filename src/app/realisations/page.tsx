@@ -17,10 +17,6 @@ const SOCIAL_TITLE = `${REALISATIONS_PAGE_TITLE} · ${SITE_CONFIG.brandName}`;
 const PAGE_DESCRIPTION =
   "Quatre produits web livrés en stage puis en freelance, Hosteed, Moduloop Impact, Moduloop Kits et Quintyss, et trois projets personnels, Edukai, Freelance Manager et Dégommix.";
 
-/**
- * The filter lives in the query string, so the canonical is pinned to the
- * unfiltered page here and the sitemap advertises that single URL.
- */
 export const metadata: Metadata = {
   title: REALISATIONS_PAGE_TITLE,
   description: PAGE_DESCRIPTION,

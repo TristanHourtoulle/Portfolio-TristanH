@@ -209,14 +209,6 @@ const FIGURES: Record<CaseStudyFigureId, FigureDefinition> = {
 
 /**
  * One hand-drawn diagram closing a narrative section.
- *
- * The drawing is hidden from assistive technology and replaced by a real text
- * equivalent: the visible caption carries the takeaway, the hidden paragraph
- * carries everything the geometry says, so nobody is told that a picture exists
- * without being told what is in it.
- *
- * Every diagram is laid out narrow on purpose. It scales as one piece, so what
- * reads at 1440px reads identically at 400px, with no second layout to keep.
  */
 export function CaseStudyFigure({ id }: CaseStudyFigureProps) {
   const figure = FIGURES[id];

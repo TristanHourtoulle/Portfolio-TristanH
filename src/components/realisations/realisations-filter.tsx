@@ -29,10 +29,6 @@ interface RealisationsFilterProps {
 
 /**
  * Filter control for the realisations column.
- *
- * Each state is a real link to the same page with a different query string, so
- * the view survives a shared URL and works with scripting disabled.
- *
  * @returns The three filter links.
  */
 export function RealisationsFilter({ active }: RealisationsFilterProps) {

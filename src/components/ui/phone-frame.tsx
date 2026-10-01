@@ -19,12 +19,6 @@ const DEFAULT_SIZES = '(min-width: 640px) 280px, 62vw';
 
 /**
  * Phone shell drawn in CSS around a mobile screenshot.
- *
- * The shell takes its proportions from the screenshot rather than from a fixed
- * device, so a 402x874 capture and a 390x844 one both sit flush in the bezel.
- * The Dynamic Island is placed in percentages of the screen box, which keeps it
- * on the device's own island whatever the capture ratio.
- *
  * @returns The framed image.
  */
 export function PhoneFrame({
