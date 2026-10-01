@@ -1130,6 +1130,20 @@ section + section { border-top: 1px solid var(--rule); }
 .parcours-head h1 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); max-width: 24ch; }
 .parcours-head .lead { margin-top: 1rem; color: var(--muted); max-width: 62ch; }
 
+.parcours-head,
+.parcours-teaser-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  column-gap: clamp(1.5rem, 4vw, 3rem);
+}
+.epitech-mark {
+  width: clamp(112px, 11vw, 160px);
+  height: auto;
+  justify-self: end;
+  margin-top: 0.4rem;
+}
+
 .parcours-list { list-style: none; }
 .parcours-entry {
   display: grid;
@@ -1167,4 +1181,7 @@ section + section { border-top: 1px solid var(--rule); }
 
 @media (max-width: 820px) {
   .parcours-entry { grid-template-columns: 1fr; gap: 0.75rem; }
+  .parcours-head,
+  .parcours-teaser-layout { grid-template-columns: minmax(0, 1fr); }
+  .epitech-mark { justify-self: start; margin-top: 1.75rem; }
 }

@@ -108,7 +108,7 @@ export const HERO_CONTENT: HeroContent = {
 
 export const CTA_CONTENT: CtaContent = {
   title: 'Disponible pour un poste en CDI.',
-  lead: "Développeur full-stack, deux ans de freelance et quatre applications web conçues et livrées. Je cherche une équipe produit où je conçois et développe au quotidien, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
+  lead: "Développeur full-stack, deux ans de freelance et quatre applications web développées et livrées. Je cherche une équipe produit où je développe et livre au quotidien, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
 };
 
 export const CASE_STUDY_STACKS: Record<CaseStudySlug, readonly string[]> = {
@@ -135,7 +135,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: 'Intervention',
         value:
-          'Conception et développement du parcours complet, de la recherche à la réservation, côté voyageur comme côté hôte.',
+          'Développement du parcours complet, de la recherche à la réservation, côté voyageur comme côté hôte.',
       },
       {
         label: 'Statut',

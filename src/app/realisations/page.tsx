@@ -62,7 +62,7 @@ export default function RealisationsPage() {
             <div className="case-index-head">
               <span className="eyebrow">Études de cas</span>
               <h1 id="realisations-title">
-                Réalisations : quatre produits web conçus et développés
+                Réalisations : quatre produits web développés et mis en ligne
               </h1>
               <p className="lead">
                 Quatre produits menés de la spec à la mise en ligne, en stage puis en

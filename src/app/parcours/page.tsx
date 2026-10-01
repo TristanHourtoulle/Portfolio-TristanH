@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CtaSection } from '@/components/sections/cta-section';
+import { EpitechMark } from '@/components/ui/epitech-mark';
 import { SiteFooter } from '@/components/site-footer';
 import { SITE_CONFIG } from '@/lib/constants';
 import { PARCOURS_CONTENT } from '@/lib/parcours-content';
@@ -54,9 +55,12 @@ export default function ParcoursPage() {
         <section className="parcours" aria-labelledby="parcours-title">
           <div className="wrap">
             <div className="parcours-head">
-              <span className="eyebrow">{PARCOURS_CONTENT.eyebrow}</span>
-              <h1 id="parcours-title">{PARCOURS_CONTENT.title}</h1>
-              <p className="lead">{PARCOURS_CONTENT.lead}</p>
+              <div className="parcours-head-text">
+                <span className="eyebrow">{PARCOURS_CONTENT.eyebrow}</span>
+                <h1 id="parcours-title">{PARCOURS_CONTENT.title}</h1>
+                <p className="lead">{PARCOURS_CONTENT.lead}</p>
+              </div>
+              <EpitechMark />
             </div>
 
             <ol className="parcours-list">
