@@ -61,7 +61,7 @@ function buildPersonNode(): JsonLdValue {
     image: absolute('/images/tristan-hourtoulle.webp'),
     jobTitle: PROFESSION,
     description: ABOUT_CONTENT.paragraphs[0],
-    email: `mailto:${SITE_CONFIG.email}`,
+    email: SITE_CONFIG.email,
     knowsAbout: KNOWS_ABOUT,
     knowsLanguage: 'fr-FR',
     alumniOf: ALUMNI_OF,
