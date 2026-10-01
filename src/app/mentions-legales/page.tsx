@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { SiteFooter } from '@/components/site-footer';
 import { SITE_CONFIG } from '@/lib/constants';
 import { LEGAL_CONTENT } from '@/lib/legal-content';
+import { OG_SIZE } from '@/lib/og-image';
 
 const PAGE_TITLE = 'Mentions légales';
 
@@ -21,6 +22,14 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     siteName: SITE_CONFIG.brandName,
     url: '/mentions-legales',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: OG_SIZE.width,
+        height: OG_SIZE.height,
+        alt: `${SITE_CONFIG.brandName} · Développeur web full-stack`,
+      },
+    ],
   },
   twitter: {
     card: 'summary',
