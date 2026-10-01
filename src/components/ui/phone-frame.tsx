@@ -10,6 +10,8 @@ interface PhoneFrameProps {
   height: number;
   sizes?: string;
   priority?: boolean;
+  /** Set when the capture already shows a top bar of its own, so no island is drawn over it. */
+  carriesOwnTopBar?: boolean;
 }
 
 /** Default layout hint: a single column on small screens, a fixed column beyond. */
@@ -32,6 +34,7 @@ export function PhoneFrame({
   height,
   sizes = DEFAULT_SIZES,
   priority = false,
+  carriesOwnTopBar = false,
 }: PhoneFrameProps) {
   return (
     <div
@@ -48,7 +51,7 @@ export function PhoneFrame({
           quality={90}
           priority={priority}
         />
-        <span className="phone-island" aria-hidden="true" />
+        {!carriesOwnTopBar && <span className="phone-island" aria-hidden="true" />}
       </div>
     </div>
   );

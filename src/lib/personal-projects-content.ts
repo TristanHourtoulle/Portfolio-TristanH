@@ -247,6 +247,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
           height: 1688,
           variant: 'mobile',
           frame: 'phone',
+          carriesOwnTopBar: true,
         },
         {
           src: '/images/projects/degommix/partie-live-annulation.webp',
@@ -255,6 +256,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
           height: 1688,
           variant: 'mobile',
           frame: 'phone',
+          carriesOwnTopBar: true,
         },
         {
           src: '/images/projects/degommix/fin-de-partie-banquet.webp',
@@ -263,6 +265,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
           height: 1688,
           variant: 'mobile',
           frame: 'phone',
+          carriesOwnTopBar: true,
         },
       ],
       narrative: [

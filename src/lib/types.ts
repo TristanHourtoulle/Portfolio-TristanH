@@ -81,6 +81,8 @@ export interface CaseStudyGalleryImage {
   variant: 'desktop' | 'mobile';
   /** Device shell drawn around the capture, in the framed gallery layout. */
   frame?: 'phone' | 'browser';
+  /** Set when the capture already shows a top bar of its own, so the phone shell draws no island over it. */
+  carriesOwnTopBar?: boolean;
 }
 
 /**

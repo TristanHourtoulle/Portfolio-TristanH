@@ -34,6 +34,7 @@ function RowShot({ image, frame }: { image: CaseStudyGalleryImage; frame: RowFra
         width={image.width}
         height={image.height}
         sizes={PHONE_SIZES}
+        carriesOwnTopBar={image.carriesOwnTopBar}
       />
     );
   }

@@ -33,6 +33,7 @@ function FramedShot({ image }: { image: CaseStudyGalleryImage }) {
         width={image.width}
         height={image.height}
         sizes={PHONE_SIZES}
+        carriesOwnTopBar={image.carriesOwnTopBar}
       />
     );
   }
