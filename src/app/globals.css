@@ -810,7 +810,10 @@ section + section { border-top: 1px solid var(--rule); }
   max-height: none;
   object-fit: cover;
 }
+/* Pushed right by its own margin rather than by space-between, so the badge
+   holds the same place on a page that carries no logo beside it. */
 .hero-status {
+  margin-left: auto;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   color: var(--muted);
