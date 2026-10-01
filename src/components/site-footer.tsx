@@ -9,6 +9,15 @@ const ICONS: Record<NonNullable<FooterLink['icon']>, typeof Github> = {
   mail: Mail,
 };
 
+const currentYear = new Date().getFullYear();
+
+/**
+ * Site footer.
+ *
+ * The copyright year is resolved at build time, so it refreshes on each deployment.
+ *
+ * @returns The footer landmark with branding, navigation and legal links.
+ */
 export function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -21,7 +30,7 @@ export function SiteFooter() {
           </p>
           <p>Développeur web full-stack, de la spec aux tests.</p>
           <p className="copyright">
-            © {SITE_CONFIG.brandName}. Tous droits réservés.
+            © {currentYear} {SITE_CONFIG.brandName}. Tous droits réservés.
           </p>
         </div>
         <nav aria-label="Navigation secondaire">
