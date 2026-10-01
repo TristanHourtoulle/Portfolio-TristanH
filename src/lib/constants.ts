@@ -96,9 +96,9 @@ export const CLIENT_COLOR_BY_ID: Record<ClientId, ClientColor> = Object.fromEntr
 
 export const HERO_CONTENT: HeroContent = {
   titleKicker: 'Développeur web full-stack',
-  title: 'Quatre applications web livrées, de la spec aux tests.',
+  title: "Je prends une spec et j'en fais un produit qui tient.",
   subtitle:
-    "Je développe en React, Next.js et TypeScript. Je cherche un CDI en équipe produit, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
+    'Quatre applications web livrées, en React, Next.js et TypeScript. Je cherche un CDI en équipe produit à partir de début octobre 2026.',
   secondaryCtaLabel: 'Voir le détail des projets',
   secondaryCtaHref: '/#realisations',
   availableFromLabel: 'Prochaine disponibilité',
