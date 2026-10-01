@@ -8,7 +8,7 @@ export function CaseStudiesSection() {
       <div className="wrap">
         <SectionHeading
           eyebrow="Réalisations"
-          title="Quatre applications web développées et livrées de bout en bout"
+          title="Quatre produits web livrés de bout en bout, en stage puis en freelance"
           titleId="realisations-title"
         />
         <div className="projects-list">

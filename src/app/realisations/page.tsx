@@ -13,7 +13,7 @@ const PAGE_TITLE = 'Réalisations et projets';
 const SOCIAL_TITLE = `${PAGE_TITLE} · ${SITE_CONFIG.brandName}`;
 
 const PAGE_DESCRIPTION =
-  "Quatre produits web livrés en stage et en freelance, Hosteed, Moduloop Impact, Moduloop Kits et Quintyss, et trois projets personnels, Edukai, Freelance Manager et Dégommix.";
+  "Quatre produits web livrés en stage puis en freelance, Hosteed, Moduloop Impact, Moduloop Kits et Quintyss, et trois projets personnels, Edukai, Freelance Manager et Dégommix.";
 
 /**
  * The filter lives in the query string, so the canonical is pinned to the
@@ -77,13 +77,13 @@ export default async function RealisationsPage({ searchParams }: RealisationsPag
             <div className="case-index-head">
               <span className="eyebrow">Réalisations</span>
               <h1 id="realisations-title">
-                Quatre produits livrés pour des clients, trois projets construits pour moi
+                Quatre produits web livrés en stage puis en freelance, trois projets construits pour moi
               </h1>
               <p className="lead">
-                Les quatre produits ont été menés de la spec à la mise en ligne, en stage puis
-                en freelance, et chacun a son étude de cas. Les trois projets personnels sont
-                là pour ce qu&apos;ils m&apos;ont fait construire et que ces produits ne
-                demandaient pas.
+                Chacun des quatre produits a été mené de la spec à la mise en ligne, et
+                chacun a son étude de cas. Les trois projets personnels sont là pour ce
+                qu&apos;ils m&apos;ont fait construire et que ces produits ne demandaient
+                pas.
               </p>
             </div>
 
