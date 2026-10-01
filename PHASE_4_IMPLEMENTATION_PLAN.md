@@ -205,7 +205,7 @@ export const PROJECTS: Project[] = [
       { label: 'Site web', category: 'type' },
     ],
     status: 'live',
-    url: 'https://tristanhourtoulle.com',
+    url: 'https://www.tristanhourtoulle.fr',
   },
 ];
 
