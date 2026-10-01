@@ -1,11 +1,9 @@
 import { ImageResponse } from 'next/og';
-import { CASE_STUDY_PAGES } from '@/lib/case-studies-content';
+import { REALISATION_PAGES, REALISATIONS_PAGE_TITLE } from '@/lib/case-studies-content';
 import { CLIENT_COLOR_BY_ID, SITE_CONFIG } from '@/lib/constants';
 import { loadOgFonts, OgCard, OG_CONTENT_TYPE, OG_PALETTE, OG_SIZE } from '@/lib/og-image';
 
-const PAGE_TITLE = 'Réalisations et études de cas';
-
-export const alt = `${PAGE_TITLE} · ${SITE_CONFIG.brandName}`;
+export const alt = `${REALISATIONS_PAGE_TITLE} · ${SITE_CONFIG.brandName}`;
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 
@@ -15,27 +13,27 @@ export const contentType = OG_CONTENT_TYPE;
 export default async function Image() {
   return new ImageResponse(
     (
-      <OgCard eyebrow="ÉTUDES DE CAS" footerNote={SITE_CONFIG.brandTagline}>
+      <OgCard eyebrow="RÉALISATIONS ET PROJETS" footerNote={SITE_CONFIG.brandTagline}>
         <div
           style={{
-            fontSize: 92,
+            fontSize: 84,
             fontWeight: 700,
             lineHeight: 1.08,
             letterSpacing: -2,
             color: OG_PALETTE.ink,
-            marginTop: 32,
-            marginBottom: 44,
+            marginTop: 30,
+            marginBottom: 36,
           }}
         >
-          {PAGE_TITLE}
+          {REALISATIONS_PAGE_TITLE}
         </div>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
-          {CASE_STUDY_PAGES.map((page, index) => (
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', rowGap: 14 }}>
+          {REALISATION_PAGES.map((page, index) => (
             <div key={page.slug} style={{ display: 'flex', alignItems: 'center' }}>
               <div
                 style={{
-                  fontSize: 36,
+                  fontSize: 32,
                   fontWeight: 700,
                   color: page.clientId
                     ? CLIENT_COLOR_BY_ID[page.clientId].ink
@@ -44,7 +42,7 @@ export default async function Image() {
               >
                 {page.title}
               </div>
-              {index < CASE_STUDY_PAGES.length - 1 && (
+              {index < REALISATION_PAGES.length - 1 && (
                 <div
                   style={{
                     display: 'flex',

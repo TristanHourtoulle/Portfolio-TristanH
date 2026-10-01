@@ -21,7 +21,7 @@ export default function NotFound() {
                 Retour à l&apos;accueil
               </Link>
               <Link className="btn btn-ghost" href="/realisations">
-                Voir les études de cas
+                Voir les réalisations et projets
               </Link>
             </div>
           </div>

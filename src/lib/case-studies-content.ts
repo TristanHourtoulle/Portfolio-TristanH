@@ -253,6 +253,9 @@ export const PERSONAL_PROJECT_PAGES: CaseStudyPageContent[] = PERSONAL_PROJECTS.
   (project) => project.page
 );
 
+/** The one name of the realisations page, shared by its metadata, its heading and its share card. */
+export const REALISATIONS_PAGE_TITLE = 'Réalisations et projets';
+
 /**
  * The single realisations column: client work first, personal projects after.
  */

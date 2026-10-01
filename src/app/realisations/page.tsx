@@ -4,13 +4,15 @@ import { RealisationRow } from '@/components/realisations/realisation-row';
 import { RealisationsFilter } from '@/components/realisations/realisations-filter';
 import { CtaSection } from '@/components/sections/cta-section';
 import { SiteFooter } from '@/components/site-footer';
-import { filterRealisationPages, resolveRealisationFilter } from '@/lib/case-studies-content';
+import {
+  filterRealisationPages,
+  REALISATIONS_PAGE_TITLE,
+  resolveRealisationFilter,
+} from '@/lib/case-studies-content';
 import { SITE_CONFIG } from '@/lib/constants';
 import { buildRealisationsStructuredData, serializeJsonLd } from '@/lib/structured-data';
 
-const PAGE_TITLE = 'Réalisations et projets';
-
-const SOCIAL_TITLE = `${PAGE_TITLE} · ${SITE_CONFIG.brandName}`;
+const SOCIAL_TITLE = `${REALISATIONS_PAGE_TITLE} · ${SITE_CONFIG.brandName}`;
 
 const PAGE_DESCRIPTION =
   "Quatre produits web livrés en stage puis en freelance, Hosteed, Moduloop Impact, Moduloop Kits et Quintyss, et trois projets personnels, Edukai, Freelance Manager et Dégommix.";
@@ -20,7 +22,7 @@ const PAGE_DESCRIPTION =
  * unfiltered page here and the sitemap advertises that single URL.
  */
 export const metadata: Metadata = {
-  title: PAGE_TITLE,
+  title: REALISATIONS_PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   alternates: { canonical: '/realisations' },
   openGraph: {
@@ -76,14 +78,12 @@ export default async function RealisationsPage({ searchParams }: RealisationsPag
           <div className="wrap">
             <div className="case-index-head">
               <span className="eyebrow">Réalisations</span>
-              <h1 id="realisations-title">
-                Quatre produits web livrés en stage puis en freelance, trois projets construits pour moi
-              </h1>
+              <h1 id="realisations-title">{REALISATIONS_PAGE_TITLE}</h1>
               <p className="lead">
-                Chacun des quatre produits a été mené de la spec à la mise en ligne, et
-                chacun a son étude de cas. Les trois projets personnels sont là pour ce
-                qu&apos;ils m&apos;ont fait construire et que ces produits ne demandaient
-                pas.
+                Quatre produits web livrés en stage puis en freelance, chacun mené de la spec
+                à la mise en ligne et chacun avec son étude de cas. Et trois projets
+                personnels, là pour ce qu&apos;ils m&apos;ont fait construire et que ces
+                produits ne demandaient pas.
               </p>
             </div>
 
