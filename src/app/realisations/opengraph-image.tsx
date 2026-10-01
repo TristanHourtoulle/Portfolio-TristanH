@@ -37,7 +37,9 @@ export default async function Image() {
                 style={{
                   fontSize: 36,
                   fontWeight: 700,
-                  color: CLIENT_COLOR_BY_ID[page.clientId].ink,
+                  color: page.clientId
+                    ? CLIENT_COLOR_BY_ID[page.clientId].ink
+                    : OG_PALETTE.ink,
                 }}
               >
                 {page.title}

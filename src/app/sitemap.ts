@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { CASE_STUDY_PAGES } from '@/lib/case-studies-content';
+import { REALISATION_PAGES } from '@/lib/case-studies-content';
 import { SITE_CONFIG } from '@/lib/constants';
 
 const STATIC_PATHS = ['/', '/realisations', '/parcours'] as const;
@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: absoluteUrl(path),
   }));
 
-  const caseStudyEntries = CASE_STUDY_PAGES.map((page) => ({
+  const caseStudyEntries = REALISATION_PAGES.map((page) => ({
     url: absoluteUrl(`/realisations/${page.slug}`),
   }));
 

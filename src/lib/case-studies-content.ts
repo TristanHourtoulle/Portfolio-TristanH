@@ -1,14 +1,19 @@
-import { CASE_STUDY_STACKS } from './constants';
+import { CASE_STUDY_STACKS, CLIENT_COLOR_BY_ID } from './constants';
 import { HOSTEED_COPY } from './case-studies/hosteed-copy';
 import { MODULOOP_IMPACT_COPY } from './case-studies/moduloop-impact-copy';
 import { MODULOOP_KITS_COPY } from './case-studies/moduloop-kits-copy';
 import { QUINTYSS_COPY } from './case-studies/quintyss-copy';
 import { PERSONAL_PROJECTS } from './personal-projects-content';
-import type { CaseStudyPageContent, RealisationEntry, RealisationFilter } from './types';
+import type {
+  CaseStudyPageContent,
+  ProductMark,
+  RealisationFilter,
+} from './types';
 
 export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
   {
     slug: 'hosteed',
+    provenance: 'client',
     clientId: 'hosteed',
     title: 'Hosteed',
     titleQualifier: 'plateforme de location de logements',
@@ -53,6 +58,7 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
   },
   {
     slug: 'moduloop-impact',
+    provenance: 'client',
     clientId: 'moduloop',
     title: 'Moduloop Impact',
     titleQualifier: "calculateur d'impact environnemental",
@@ -153,6 +159,7 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
   },
   {
     slug: 'moduloop-kits',
+    provenance: 'client',
     clientId: 'moduloop',
     title: 'Moduloop Kits',
     titleQualifier: "configurateur de kits d'aménagement",
@@ -218,6 +225,7 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
   },
   {
     slug: 'quintyss',
+    provenance: 'client',
     clientId: 'quintyss',
     title: 'Quintyss V3',
     titleQualifier: 'CMS multi-sites',
@@ -237,22 +245,37 @@ export const CASE_STUDY_PAGE_BY_SLUG: Record<string, CaseStudyPageContent> = Obj
   CASE_STUDY_PAGES.map((page) => [page.slug, page])
 );
 
-const CLIENT_ENTRIES: RealisationEntry[] = CASE_STUDY_PAGES.map((page) => ({
-  kind: 'client',
-  key: page.slug,
-  page,
-}));
-
-const PERSONAL_ENTRIES: RealisationEntry[] = PERSONAL_PROJECTS.map((project) => ({
-  kind: 'perso',
-  key: project.id,
-  project,
-}));
+export const PERSONAL_PROJECT_PAGES: CaseStudyPageContent[] = PERSONAL_PROJECTS.map(
+  (project) => project.page
+);
 
 /**
  * The single realisations column: client work first, personal projects after.
  */
-export const REALISATION_ENTRIES: RealisationEntry[] = [...CLIENT_ENTRIES, ...PERSONAL_ENTRIES];
+export const REALISATION_PAGES: CaseStudyPageContent[] = [
+  ...CASE_STUDY_PAGES,
+  ...PERSONAL_PROJECT_PAGES,
+];
+
+export const REALISATION_PAGE_BY_SLUG: Record<string, CaseStudyPageContent> = Object.fromEntries(
+  REALISATION_PAGES.map((page) => [page.slug, page])
+);
+
+/**
+ * Resolves the mark that stands in for a product, whatever its provenance.
+ * @param page - the realisation to find a mark for
+ * @returns the product mark, or undefined when there is none to show
+ */
+export function resolveRealisationMark(page: CaseStudyPageContent): ProductMark | undefined {
+  if (page.mark) {
+    return page.mark;
+  }
+  if (!page.clientId) {
+    return undefined;
+  }
+  const logo = CLIENT_COLOR_BY_ID[page.clientId].logo;
+  return logo ? { ...logo, shape: 'wordmark' } : undefined;
+}
 
 /**
  * Reads the active filter from a query-string value.
@@ -269,10 +292,10 @@ export function resolveRealisationFilter(
 /**
  * Narrows the column to the entries the filter keeps.
  * @param filter - active filter state
- * @returns the entries to render, in column order
+ * @returns the pages to render, in column order
  */
-export function filterRealisationEntries(filter: RealisationFilter): RealisationEntry[] {
+export function filterRealisationPages(filter: RealisationFilter): CaseStudyPageContent[] {
   return filter === 'tout'
-    ? REALISATION_ENTRIES
-    : REALISATION_ENTRIES.filter((entry) => entry.kind === filter);
+    ? REALISATION_PAGES
+    : REALISATION_PAGES.filter((page) => page.provenance === filter);
 }

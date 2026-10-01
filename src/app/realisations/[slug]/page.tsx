@@ -7,7 +7,7 @@ import { CaseStudyContent } from '@/components/case-study/case-study-content';
 import { CaseStudyRelated } from '@/components/case-study/case-study-related';
 import { CtaSection } from '@/components/sections/cta-section';
 import { SiteFooter } from '@/components/site-footer';
-import { CASE_STUDY_PAGES, CASE_STUDY_PAGE_BY_SLUG } from '@/lib/case-studies-content';
+import { REALISATION_PAGES, REALISATION_PAGE_BY_SLUG } from '@/lib/case-studies-content';
 import { SITE_CONFIG } from '@/lib/constants';
 import { buildCaseStudyStructuredData, serializeJsonLd } from '@/lib/structured-data';
 
@@ -16,20 +16,21 @@ interface CaseStudyPageProps {
 }
 
 export async function generateStaticParams() {
-  return CASE_STUDY_PAGES.map((page) => ({ slug: page.slug }));
+  return REALISATION_PAGES.map((page) => ({ slug: page.slug }));
 }
 
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const page = CASE_STUDY_PAGE_BY_SLUG[slug];
+  const page = REALISATION_PAGE_BY_SLUG[slug];
 
   if (!page) {
     return {};
   }
 
-  const title = `${page.title} · Étude de cas`;
+  const kindLabel = page.provenance === 'client' ? 'Étude de cas' : 'Projet personnel';
+  const title = `${page.title} · ${kindLabel}`;
 
   const socialTitle = `${title} · ${SITE_CONFIG.brandName}`;
   const path = `/realisations/${page.slug}`;
@@ -57,11 +58,11 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
 }
 
 /**
- * A case-study detail page (`/realisations/[slug]`).
+ * A realisation detail page (`/realisations/[slug]`), client work or personal project.
  */
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { slug } = await params;
-  const page = CASE_STUDY_PAGE_BY_SLUG[slug];
+  const page = REALISATION_PAGE_BY_SLUG[slug];
 
   if (!page) {
     notFound();
@@ -90,7 +91,11 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </div>
         </nav>
         <CaseStudyHero page={page} />
-        <CaseStudyGallery images={page.gallery} label={page.title} />
+        <CaseStudyGallery
+          images={page.gallery}
+          label={page.title}
+          layout={page.galleryLayout}
+        />
         <CaseStudyContent page={page} />
         <CaseStudyRelated relatedSlugs={page.relatedSlugs} />
         <CtaSection />

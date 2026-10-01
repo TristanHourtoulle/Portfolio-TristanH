@@ -90,6 +90,9 @@ const CLIENT_COLORS: ClientColor[] = [
 
 export const CLIENT_LOGO_SIZES = '128px';
 
+/** Layout hint for the small product mark in the realisations column. */
+export const REALISATION_MARK_SIZES = '(min-width: 900px) 96px, 56px';
+
 export const CLIENT_COLOR_BY_ID: Record<ClientId, ClientColor> = Object.fromEntries(
   CLIENT_COLORS.map((client) => [client.id, client])
 ) as Record<ClientId, ClientColor>;

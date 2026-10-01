@@ -1,18 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CLIENT_COLOR_BY_ID, CLIENT_LOGO_SIZES } from '@/lib/constants';
-import { CASE_STUDY_PAGE_BY_SLUG } from '@/lib/case-studies-content';
+import { CLIENT_LOGO_SIZES } from '@/lib/constants';
+import { REALISATION_PAGE_BY_SLUG, resolveRealisationMark } from '@/lib/case-studies-content';
 
 interface CaseStudyRelatedProps {
   relatedSlugs: string[];
 }
 
 /**
- * "Voir aussi" cards linking to other case-study pages.
+ * "Voir aussi" cards linking to other realisation pages.
  */
 export function CaseStudyRelated({ relatedSlugs }: CaseStudyRelatedProps) {
   const relatedPages = relatedSlugs
-    .map((slug) => CASE_STUDY_PAGE_BY_SLUG[slug])
+    .map((slug) => REALISATION_PAGE_BY_SLUG[slug])
     .filter((page) => page !== undefined);
 
   if (relatedPages.length === 0) {
@@ -27,17 +27,17 @@ export function CaseStudyRelated({ relatedSlugs }: CaseStudyRelatedProps) {
         </h2>
         <div className="related-cards">
           {relatedPages.map((page) => {
-            const client = CLIENT_COLOR_BY_ID[page.clientId];
+            const mark = resolveRealisationMark(page);
             return (
               <Link key={page.slug} className="related-card" href={`/realisations/${page.slug}`}>
-                {client.logo && (
-                  <span className="hero-logo">
+                {mark && (
+                  <span className="hero-logo" data-shape={mark.shape}>
                     <Image
-                      src={client.logo.src}
+                      src={mark.src}
                       alt=""
                       aria-hidden="true"
-                      width={client.logo.width}
-                      height={client.logo.height}
+                      width={mark.width}
+                      height={mark.height}
                       sizes={CLIENT_LOGO_SIZES}
                     />
                   </span>
@@ -45,7 +45,8 @@ export function CaseStudyRelated({ relatedSlugs }: CaseStudyRelatedProps) {
                 <h3>{page.title}</h3>
                 <p className="mono">{page.period}</p>
                 <span className="related-link">
-                  Lire l&apos;étude de cas <span aria-hidden="true">→</span>
+                  {page.provenance === 'client' ? "Lire l'étude de cas" : 'Voir le projet'}{' '}
+                  <span aria-hidden="true">→</span>
                 </span>
               </Link>
             );

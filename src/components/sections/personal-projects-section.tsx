@@ -17,9 +17,11 @@ export function PersonalProjectsSection() {
         />
         <ul className="perso-teaser-list">
           {PERSONAL_PROJECTS.map((project) => (
-            <li key={project.id}>
-              <h3>{project.title}</h3>
-              <p className="mono">{project.period}</p>
+            <li key={project.page.slug}>
+              <h3>
+                <Link href={`/realisations/${project.page.slug}`}>{project.page.title}</Link>
+              </h3>
+              <p className="mono">{project.page.period}</p>
               <p>{project.teaser}</p>
             </li>
           ))}

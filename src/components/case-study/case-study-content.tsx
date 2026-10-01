@@ -5,7 +5,11 @@ interface CaseStudyContentProps {
 }
 
 /**
- * Sidebar and narrative body of a case-study page.
+ * Sidebar and narrative body of a realisation page.
+ *
+ * Every provenance row is conditional: a personal project simply has no client
+ * and no engagement type, and the list closes up rather than showing a label
+ * with nothing under it.
  */
 export function CaseStudyContent({ page }: CaseStudyContentProps) {
   return (
@@ -15,22 +19,28 @@ export function CaseStudyContent({ page }: CaseStudyContentProps) {
           <div className="sidebar-block">
             <h2 className="sidebar-title mono">En bref</h2>
             <dl>
-              <div>
-                <dt>Entreprise</dt>
-                <dd>{page.title}</dd>
-              </div>
-              <div>
-                <dt>Type d&apos;expérience</dt>
-                <dd>{page.engagementType}</dd>
-              </div>
+              {page.clientId && (
+                <div>
+                  <dt>Entreprise</dt>
+                  <dd>{page.title}</dd>
+                </div>
+              )}
+              {page.engagementType && (
+                <div>
+                  <dt>Type d&apos;expérience</dt>
+                  <dd>{page.engagementType}</dd>
+                </div>
+              )}
               <div>
                 <dt>Période</dt>
                 <dd>{page.period}</dd>
               </div>
-              <div>
-                <dt>Statut</dt>
-                <dd>{page.statusDetail}</dd>
-              </div>
+              {page.statusDetail && (
+                <div>
+                  <dt>Statut</dt>
+                  <dd>{page.statusDetail}</dd>
+                </div>
+              )}
               <div>
                 <dt>Stack</dt>
                 <dd>

@@ -12,6 +12,22 @@ export interface ClientLogo {
   height: number;
 }
 
+/**
+ * The square mark that stands in for a product, in the list and on its page.
+ */
+export interface ProductMark {
+  src: string;
+  width: number;
+  height: number;
+  /** True for a vector file, which is served as is rather than re-encoded. */
+  isVector?: boolean;
+  /**
+   * Square app icon, which fills its box and takes the app-icon rounding, or
+   * wordmark, which is laid inside a frame without being cropped.
+   */
+  shape: 'icon' | 'wordmark';
+}
+
 export interface ClientColor {
   id: ClientId;
   name: string;
@@ -29,6 +45,18 @@ export interface CaseStudyDetail {
 }
 
 export type CaseStudySlug = 'hosteed' | 'moduloop-impact' | 'moduloop-kits' | 'quintyss';
+
+export type PersonalProjectSlug = 'edukai' | 'freelance-manager' | 'degommix';
+
+/**
+ * Every slug served under `/realisations/[slug]`, whatever the provenance.
+ */
+export type RealisationSlug = CaseStudySlug | PersonalProjectSlug;
+
+/**
+ * Where a realisation comes from: a client engagement or my own time.
+ */
+export type RealisationProvenance = 'client' | 'perso';
 
 export interface CaseStudy {
   id: CaseStudySlug;
@@ -51,6 +79,8 @@ export interface CaseStudyGalleryImage {
   width: number;
   height: number;
   variant: 'desktop' | 'mobile';
+  /** Device shell drawn around the capture, in the framed gallery layout. */
+  frame?: 'phone' | 'browser';
 }
 
 /**
@@ -73,23 +103,27 @@ export interface CaseStudyPageLink {
  * Full content of a case-study detail page (`/realisations/[slug]`).
  */
 export interface CaseStudyPageContent {
-  slug: CaseStudySlug;
-  clientId: ClientId;
+  slug: RealisationSlug;
+  provenance: RealisationProvenance;
+  /** Absent on a project built outside any client engagement. */
+  clientId?: ClientId;
+  /** Product mark, when it is not the client logo. */
+  mark?: ProductMark;
   title: string;
   /** Lowercase noun phrase appended to the client name inside the <h1>. */
   titleQualifier: string;
-  /** Nature of the engagement, for instance freelance work or an internship. */
-  engagementType: string;
+  /** Nature of the engagement, absent when there was no client. */
+  engagementType?: string;
   /** Lowercase form, used inline in the eyebrow. */
   periodInline: string;
   /** Capitalized form, used in the sidebar and related-card mono line. */
   period: string;
   /** ISO 8601 date at month precision, fed to `openGraph.publishedTime`. */
   publishedTimeIso: string;
-  /** Short label next to the status dot in the hero. */
-  statusBadge: string;
-  /** Full-sentence status, reused in the sidebar and narrative sections. */
-  statusDetail: string;
+  /** Short label next to the status dot in the hero, absent when the period carries the status. */
+  statusBadge?: string;
+  /** Full-sentence status, absent when the period carries the status. */
+  statusDetail?: string;
   /** Visible opening paragraph of the page. */
   lead: string;
   metaDescription: string;
@@ -97,6 +131,8 @@ export interface CaseStudyPageContent {
   /** Outbound links to the live product, shown under the hero. */
   externalLinks: CaseStudyPageLink[];
   gallery: CaseStudyGalleryImage[];
+  /** How the gallery draws its captures. Defaults to the desktop carousel. */
+  galleryLayout?: 'slider' | 'frames';
   narrative: CaseStudyNarrativeSection[];
   /** Slugs of other case studies to surface in "Voir aussi", in display order. */
   relatedSlugs: string[];
@@ -298,42 +334,11 @@ export interface ParcoursTeaserContent {
 export type RealisationFilter = 'tout' | 'client' | 'perso';
 
 /**
- * A single framed screenshot shown next to a personal project.
- */
-export interface ProjectScreenshot {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  /** Device shell drawn around the capture. */
-  frame: 'phone' | 'browser';
-}
-
-/**
  * A project built outside any client engagement.
  */
 export interface PersonalProject {
-  id: string;
-  title: string;
-  /** Lowercase noun phrase appended to the name inside the heading. */
-  titleQualifier: string;
-  period: string;
-  lead: string;
+  /** The full page served at `/realisations/[slug]`, exactly like a case study. */
+  page: CaseStudyPageContent;
   /** One-line form, used by the homepage teaser. */
   teaser: string;
-  /** Optional sentence placing the project in time when the period alone misleads. */
-  origin?: string;
-  /** What the project made me build that client work did not. */
-  proof: string;
-  stack: readonly string[];
-  /** Outbound link to the running product, when there is one. */
-  liveLink?: CaseStudyPageLink;
-  screenshot: ProjectScreenshot;
 }
-
-/**
- * One row of the single realisations column, whatever its provenance.
- */
-export type RealisationEntry =
-  | { kind: 'client'; key: string; page: CaseStudyPageContent }
-  | { kind: 'perso'; key: string; project: PersonalProject };

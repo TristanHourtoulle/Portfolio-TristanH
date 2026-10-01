@@ -138,9 +138,10 @@ export function buildParcoursStructuredData(): JsonLdGraph {
 
 function buildCaseStudyNode(page: CaseStudyPageContent): JsonLdValue {
   const path = `/realisations/${page.slug}`;
-  const images = page.gallery
-    .filter((image) => image.variant === 'desktop')
-    .map((image) => absolute(image.src));
+  const desktopImages = page.gallery.filter((image) => image.variant === 'desktop');
+  const images = (desktopImages.length > 0 ? desktopImages : page.gallery).map((image) =>
+    absolute(image.src)
+  );
 
   return {
     '@type': 'CreativeWork',

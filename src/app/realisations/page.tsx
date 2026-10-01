@@ -4,7 +4,7 @@ import { RealisationRow } from '@/components/realisations/realisation-row';
 import { RealisationsFilter } from '@/components/realisations/realisations-filter';
 import { CtaSection } from '@/components/sections/cta-section';
 import { SiteFooter } from '@/components/site-footer';
-import { filterRealisationEntries, resolveRealisationFilter } from '@/lib/case-studies-content';
+import { filterRealisationPages, resolveRealisationFilter } from '@/lib/case-studies-content';
 import { SITE_CONFIG } from '@/lib/constants';
 import { buildRealisationsStructuredData, serializeJsonLd } from '@/lib/structured-data';
 
@@ -50,7 +50,7 @@ interface RealisationsPageProps {
 export default async function RealisationsPage({ searchParams }: RealisationsPageProps) {
   const resolvedSearchParams = await searchParams;
   const filter = resolveRealisationFilter(resolvedSearchParams.type);
-  const entries = filterRealisationEntries(filter);
+  const pages = filterRealisationPages(filter);
 
   return (
     <>
@@ -90,8 +90,8 @@ export default async function RealisationsPage({ searchParams }: RealisationsPag
             <RealisationsFilter active={filter} />
 
             <ul className="realisations-list" id="liste">
-              {entries.map((entry) => (
-                <RealisationRow key={entry.key} entry={entry} />
+              {pages.map((page) => (
+                <RealisationRow key={page.slug} page={page} />
               ))}
             </ul>
           </div>
