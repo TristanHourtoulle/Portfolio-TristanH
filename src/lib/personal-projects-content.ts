@@ -17,7 +17,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       titleQualifier: 'application iOS de révision pour les lycéens',
       periodInline: 'depuis 2024',
       period: 'Depuis 2024',
-      publishedTimeIso: '2024',
+      publishedTimeIso: '2024-01-01',
       lead: "Application iOS pour les lycéens : on importe un cours, l'application en extrait les concepts et interroge dessus. Un moteur pédagogique entretient une estimation statistique de la maîtrise de chaque concept et de la difficulté de chaque question, et choisit la question suivante pour viser un taux de réussite cible.",
       metaDescription:
         "Application iOS qui transforme un cours importé en questions, avec un moteur pédagogique qui estime la maîtrise de chaque concept et vise un taux de réussite cible.",
@@ -130,7 +130,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       titleQualifier: 'pilotage de mon activité de freelance',
       periodInline: 'mars à août 2026',
       period: 'Mars à août 2026',
-      publishedTimeIso: '2026-08',
+      publishedTimeIso: '2026-08-01',
       lead: "L'outil sur lequel je gère ma propre activité de freelance : clients, propositions chiffrées, factures, acomptes, découpage en échéances et relances, avec une couche d'analyse qui calcule mon taux journalier effectif et ma concentration client.",
       metaDescription:
         "Back office de freelance : clients, factures, acomptes, échéances et relances, avec un serveur MCP en production et une arithmétique monétaire exacte au centime.",
@@ -227,7 +227,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       titleQualifier: 'compteur de points pour les petits chevaux',
       periodInline: 'juillet 2026',
       period: 'Juillet 2026',
-      publishedTimeIso: '2026-07',
+      publishedTimeIso: '2026-07-01',
       lead: "PWA mobile qui tient le score des parties physiques du jeu de société des petits chevaux Astérix, construite pour ma mère et moi. Le plateau reste le jeu, l'application enregistre ce qui s'y passe, et tous les téléphones autour de la table restent synchronisés.",
       metaDescription:
         "PWA mobile qui tient le score des parties physiques des petits chevaux Astérix : temps réel multijoueur, serveur qui fait autorité et annulation partagée entre les joueurs.",
