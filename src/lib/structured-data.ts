@@ -1,4 +1,4 @@
-import { ABOUT_CONTENT, FOOTER_LEGAL_LINKS, SITE_CONFIG } from './constants';
+import { ABOUT_CONTENT, SITE_CONFIG } from './constants';
 import { PARCOURS_CONTENT } from './parcours-content';
 import { canonicalUrl } from './site-url';
 import type { CaseStudyPageContent } from './types';
@@ -27,9 +27,10 @@ const SITE_URL = SITE_CONFIG.siteUrl;
 const PERSON_ID = `${SITE_URL}/#person`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 
-const SOCIAL_PROFILE_URLS: readonly string[] = FOOTER_LEGAL_LINKS.filter((link) =>
-  link.href.startsWith('https://'),
-).map((link) => link.href);
+const SOCIAL_PROFILE_URLS: readonly string[] = [
+  'https://github.com/TristanHourtoulle',
+  SITE_CONFIG.linkedinUrl,
+];
 
 const KNOWS_ABOUT: readonly string[] = ABOUT_CONTENT.tools.flatMap((tool) =>
   tool
