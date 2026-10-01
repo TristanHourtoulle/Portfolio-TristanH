@@ -61,6 +61,7 @@ export function CaseStudyContent({ page }: CaseStudyContentProps) {
                             {link.label}
                             <span aria-hidden="true">&nbsp;↗</span>
                           </a>
+                          {link.note && <span className="live-link-note">{link.note}</span>}
                         </li>
                       ))}
                     </ul>

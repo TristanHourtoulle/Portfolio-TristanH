@@ -104,6 +104,8 @@ export interface CaseStudyNarrativeSection {
 export interface CaseStudyPageLink {
   label: string;
   href: string;
+  /** Short factual caveat shown next to the link, such as a sign-in requirement. */
+  note?: string;
 }
 
 /**

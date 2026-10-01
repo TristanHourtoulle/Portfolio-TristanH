@@ -138,6 +138,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
         {
           label: 'freelance-manager.tristanhourtoulle.fr',
           href: 'https://freelance-manager.tristanhourtoulle.fr',
+          note: 'Connexion requise : les données sont rattachées à un compte.',
         },
       ],
       galleryLayout: 'frames',
@@ -231,7 +232,11 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
         "PWA mobile qui tient le score des parties physiques des petits chevaux Astérix : temps réel multijoueur, serveur qui fait autorité et annulation partagée entre les joueurs.",
       stack: ['Next.js', 'Socket.IO', 'PostgreSQL', 'Drizzle', 'Better Auth', 'PWA'],
       externalLinks: [
-        { label: 'degommix.tristanhourtoulle.fr', href: 'https://degommix.tristanhourtoulle.fr' },
+        {
+          label: 'degommix.tristanhourtoulle.fr',
+          href: 'https://degommix.tristanhourtoulle.fr',
+          note: 'Connexion requise : les données sont rattachées à un compte.',
+        },
       ],
       galleryLayout: 'frames',
       gallery: [

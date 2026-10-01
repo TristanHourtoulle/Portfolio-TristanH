@@ -115,16 +115,18 @@ export function RealisationRow({ page }: RealisationRowProps) {
               {linkLabel} <span aria-hidden="true">→</span>
             </Link>
             {page.externalLinks.map((link) => (
-              <a
-                key={link.href}
-                className="live-link"
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.label}
-                <span aria-hidden="true">&nbsp;↗</span>
-              </a>
+              <span key={link.href} className="live-link-item">
+                <a
+                  className="live-link"
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.label}
+                  <span aria-hidden="true">&nbsp;↗</span>
+                </a>
+                {link.note && <span className="live-link-note">{link.note}</span>}
+              </span>
             ))}
           </div>
         </div>

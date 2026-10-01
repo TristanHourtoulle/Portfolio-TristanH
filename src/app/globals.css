@@ -1113,6 +1113,14 @@ section + section { border-top: 1px solid var(--rule); }
   overflow-wrap: anywhere;
 }
 .live-link:hover { color: var(--accent); }
+.live-link-item {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.5rem;
+}
+.live-link-note { font-size: 0.8125rem; color: var(--muted); }
+.sidebar-links .live-link-note { display: block; margin-top: 0.2rem; }
 .case-narrative section + section { margin-top: clamp(2rem, 4vw, 3rem); }
 .case-narrative h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); }
 .case-narrative p + p { margin-top: 1rem; }
