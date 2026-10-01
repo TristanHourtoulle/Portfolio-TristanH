@@ -85,7 +85,7 @@ export default async function RealisationsPage({ searchParams }: RealisationsPag
 
             <RealisationsFilter active={filter} />
 
-            <ul className="realisations-list" id="liste">
+            <ul className="realisations-list">
               {pages.map((page) => (
                 <RealisationRow key={page.slug} page={page} />
               ))}

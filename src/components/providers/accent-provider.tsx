@@ -45,7 +45,7 @@ export function AccentProvider({ children }: AccentProviderProps) {
   return <AccentContext.Provider value={value}>{children}</AccentContext.Provider>;
 }
 
-export interface AccentTriggerHandlers {
+interface AccentTriggerHandlers {
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   onFocus: () => void;
