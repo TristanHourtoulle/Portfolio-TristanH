@@ -68,7 +68,7 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
     publishedTimeIso: '2024-06',
     ...MODULOOP_IMPACT_COPY,
     stack: CASE_STUDY_STACKS['moduloop-impact'],
-    externalLinks: [{ label: 'Voir le site ↗', href: 'https://moduloop-impact.fr' }],
+    externalLinks: [{ label: 'moduloop-impact.fr', href: 'https://moduloop-impact.fr' }],
     gallery: [
       {
         src: '/images/case-studies/moduloop-impact/calculateur-hero.webp',

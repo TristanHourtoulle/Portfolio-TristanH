@@ -92,7 +92,7 @@ export interface CaseStudyNarrativeSection {
 }
 
 /**
- * A single link rendered as a hero CTA button or as an inline reference.
+ * A single outbound link to the live product.
  */
 export interface CaseStudyPageLink {
   label: string;
@@ -128,7 +128,11 @@ export interface CaseStudyPageContent {
   lead: string;
   metaDescription: string;
   stack: readonly string[];
-  /** Outbound links to the live product, shown under the hero. */
+  /**
+   * Outbound links to the live product, shown in the "En bref" sidebar and in
+   * the realisations list row. The label names the destination, so the link
+   * still reads out of context.
+   */
   externalLinks: CaseStudyPageLink[];
   gallery: CaseStudyGalleryImage[];
   /** How the gallery draws its captures. Defaults to the desktop carousel. */

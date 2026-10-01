@@ -52,17 +52,6 @@ export function CaseStudyHero({ page }: CaseStudyHeroProps) {
         </ul>
         <div className="hero-ctas">
           <ProfileActions />
-          {page.externalLinks.map((link) => (
-            <a
-              key={link.href}
-              className="cta-text-link"
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {link.label}
-            </a>
-          ))}
         </div>
       </div>
     </section>

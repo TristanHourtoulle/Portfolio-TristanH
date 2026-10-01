@@ -49,7 +49,9 @@ function RowShot({ image }: { image: CaseStudyGalleryImage }) {
  * Every row carries a product mark: a client entry shows the client logo, a
  * personal entry shows the application icon. Only the provenance text, the
  * client name and the engagement type, is absent on a personal project, since
- * that is the one thing a personal project genuinely does not have.
+ * that is the one thing a personal project genuinely does not have. A row whose
+ * product is online closes with a secondary link to it, next to the link into
+ * the page itself.
  *
  * @param page - the realisation to render
  * @returns The list row.
@@ -91,9 +93,23 @@ export function RealisationRow({ page }: RealisationRowProps) {
           </h2>
           <p className="realisation-lead">{page.lead}</p>
           <p className="stack">{page.stack.join(' · ')}</p>
-          <Link className="related-link" href={href}>
-            {linkLabel} <span aria-hidden="true">→</span>
-          </Link>
+          <div className="realisation-links">
+            <Link className="related-link" href={href}>
+              {linkLabel} <span aria-hidden="true">→</span>
+            </Link>
+            {page.externalLinks.map((link) => (
+              <a
+                key={link.href}
+                className="live-link"
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label}
+                <span aria-hidden="true">&nbsp;↗</span>
+              </a>
+            ))}
+          </div>
         </div>
         {shot && (
           <div className="realisation-shot" data-frame={shot.frame}>

@@ -1090,6 +1090,20 @@ section + section { border-top: 1px solid var(--rule); }
 }
 .sidebar-block dd { margin-top: 0.3rem; }
 .sidebar-block .m-stack { margin-top: 0.4rem; }
+.sidebar-links { display: grid; gap: 0.35rem; margin-top: 0.3rem; }
+
+/* Live product link
+   Secondary by design: the hero action row keeps the hiring weight, so this
+   one is muted text, never a button. */
+.live-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  overflow-wrap: anywhere;
+}
+.live-link:hover { color: var(--accent); }
 .case-narrative section + section { margin-top: clamp(2rem, 4vw, 3rem); }
 .case-narrative h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); }
 .case-narrative p + p { margin-top: 1rem; }
@@ -1212,7 +1226,14 @@ section + section { border-top: 1px solid var(--rule); }
 .realisation-qualifier { font-weight: 400; color: var(--muted); }
 .realisation-lead { margin-top: 0.85rem; color: var(--muted); max-width: 62ch; }
 .realisation-row .stack { display: block; margin-top: 1.15rem; }
-.realisation-row .related-link { margin-top: 1.15rem; }
+.realisation-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 1.25rem;
+  margin-top: 1.15rem;
+}
+.realisation-links .related-link { margin-top: 0; }
 .realisation-shot[data-frame="phone"] { width: 13.5rem; }
 .realisation-shot[data-frame="browser"] { width: 20rem; }
 

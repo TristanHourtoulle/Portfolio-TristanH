@@ -7,6 +7,9 @@ interface CaseStudyContentProps {
 /**
  * Sidebar and narrative body of a realisation page.
  *
+ * The live product link sits here, among the project's own facts, rather than
+ * in the hero action row, which belongs to the hiring actions.
+ *
  * Every provenance row is conditional: a personal project simply has no client
  * and no engagement type, and the list closes up rather than showing a label
  * with nothing under it.
@@ -39,6 +42,28 @@ export function CaseStudyContent({ page }: CaseStudyContentProps) {
                 <div>
                   <dt>Statut</dt>
                   <dd>{page.statusDetail}</dd>
+                </div>
+              )}
+              {page.externalLinks.length > 0 && (
+                <div>
+                  <dt>En ligne</dt>
+                  <dd>
+                    <ul className="sidebar-links">
+                      {page.externalLinks.map((link) => (
+                        <li key={link.href}>
+                          <a
+                            className="live-link"
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {link.label}
+                            <span aria-hidden="true">&nbsp;↗</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </dd>
                 </div>
               )}
               <div>

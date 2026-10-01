@@ -117,7 +117,12 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       metaDescription:
         "Back office de freelance : clients, factures, acomptes, échéances et relances, avec un serveur MCP en production et une arithmétique monétaire exacte au centime.",
       stack: ['Next.js', 'React', 'Prisma', 'PostgreSQL', 'better-auth', 'MCP', 'Railway'],
-      externalLinks: [],
+      externalLinks: [
+        {
+          label: 'freelance-manager.tristanhourtoulle.fr',
+          href: 'https://freelance-manager.tristanhourtoulle.fr',
+        },
+      ],
       galleryLayout: 'frames',
       gallery: [
         {
@@ -208,7 +213,9 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       metaDescription:
         "PWA mobile qui tient le score des parties physiques des petits chevaux Astérix : temps réel multijoueur, serveur qui fait autorité et annulation partagée entre les joueurs.",
       stack: ['Next.js', 'Socket.IO', 'PostgreSQL', 'Drizzle', 'Better Auth', 'PWA'],
-      externalLinks: [{ label: 'Voir le site ↗', href: 'https://degommix.tristanhourtoulle.fr' }],
+      externalLinks: [
+        { label: 'degommix.tristanhourtoulle.fr', href: 'https://degommix.tristanhourtoulle.fr' },
+      ],
       galleryLayout: 'frames',
       gallery: [
         {
