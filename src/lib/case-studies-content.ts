@@ -3,7 +3,8 @@ import { HOSTEED_COPY } from './case-studies/hosteed-copy';
 import { MODULOOP_IMPACT_COPY } from './case-studies/moduloop-impact-copy';
 import { MODULOOP_KITS_COPY } from './case-studies/moduloop-kits-copy';
 import { QUINTYSS_COPY } from './case-studies/quintyss-copy';
-import type { CaseStudyPageContent } from './types';
+import { PERSONAL_PROJECTS } from './personal-projects-content';
+import type { CaseStudyPageContent, RealisationEntry, RealisationFilter } from './types';
 
 export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
   {
@@ -235,3 +236,43 @@ export const CASE_STUDY_PAGES: CaseStudyPageContent[] = [
 export const CASE_STUDY_PAGE_BY_SLUG: Record<string, CaseStudyPageContent> = Object.fromEntries(
   CASE_STUDY_PAGES.map((page) => [page.slug, page])
 );
+
+const CLIENT_ENTRIES: RealisationEntry[] = CASE_STUDY_PAGES.map((page) => ({
+  kind: 'client',
+  key: page.slug,
+  page,
+}));
+
+const PERSONAL_ENTRIES: RealisationEntry[] = PERSONAL_PROJECTS.map((project) => ({
+  kind: 'perso',
+  key: project.id,
+  project,
+}));
+
+/**
+ * The single realisations column: client work first, personal projects after.
+ */
+export const REALISATION_ENTRIES: RealisationEntry[] = [...CLIENT_ENTRIES, ...PERSONAL_ENTRIES];
+
+/**
+ * Reads the active filter from a query-string value.
+ * @param raw - value of the `type` search parameter, as Next.js hands it over
+ * @returns the filter to apply, falling back to the unfiltered column
+ */
+export function resolveRealisationFilter(
+  raw: string | string[] | undefined
+): RealisationFilter {
+  const value = Array.isArray(raw) ? raw[0] : raw;
+  return value === 'client' || value === 'perso' ? value : 'tout';
+}
+
+/**
+ * Narrows the column to the entries the filter keeps.
+ * @param filter - active filter state
+ * @returns the entries to render, in column order
+ */
+export function filterRealisationEntries(filter: RealisationFilter): RealisationEntry[] {
+  return filter === 'tout'
+    ? REALISATION_ENTRIES
+    : REALISATION_ENTRIES.filter((entry) => entry.kind === filter);
+}

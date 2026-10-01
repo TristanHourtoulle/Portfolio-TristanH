@@ -1,19 +1,24 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
+import { RealisationRow } from '@/components/realisations/realisation-row';
+import { RealisationsFilter } from '@/components/realisations/realisations-filter';
 import { CtaSection } from '@/components/sections/cta-section';
 import { SiteFooter } from '@/components/site-footer';
-import { CASE_STUDY_PAGES } from '@/lib/case-studies-content';
-import { CLIENT_COLOR_BY_ID, CLIENT_LOGO_SIZES, SITE_CONFIG } from '@/lib/constants';
+import { filterRealisationEntries, resolveRealisationFilter } from '@/lib/case-studies-content';
+import { SITE_CONFIG } from '@/lib/constants';
 import { buildRealisationsStructuredData, serializeJsonLd } from '@/lib/structured-data';
 
-const PAGE_TITLE = 'Réalisations et études de cas';
+const PAGE_TITLE = 'Réalisations et projets';
 
 const SOCIAL_TITLE = `${PAGE_TITLE} · ${SITE_CONFIG.brandName}`;
 
 const PAGE_DESCRIPTION =
-  "Quatre études de cas détaillées : Hosteed, Moduloop Impact, Moduloop Kits et Quintyss. Le contexte, mon intervention et le résultat livré, captures à l'appui.";
+  "Quatre produits web livrés en stage et en freelance, Hosteed, Moduloop Impact, Moduloop Kits et Quintyss, et trois projets personnels, Edukai, Freelance Manager et Degommix.";
 
+/**
+ * The filter lives in the query string, so the canonical is pinned to the
+ * unfiltered page here and the sitemap advertises that single URL.
+ */
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
@@ -33,10 +38,20 @@ export const metadata: Metadata = {
   },
 };
 
+interface RealisationsPageProps {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
+
 /**
- * The parent route of the four case-study pages.
+ * The single column of realisations, client work and personal projects mixed.
+ * @param searchParams - query string carrying the active filter
+ * @returns The realisations index.
  */
-export default function RealisationsPage() {
+export default async function RealisationsPage({ searchParams }: RealisationsPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const filter = resolveRealisationFilter(resolvedSearchParams.type);
+  const entries = filterRealisationEntries(filter);
+
   return (
     <>
       <script
@@ -60,52 +75,24 @@ export default function RealisationsPage() {
         <section className="case-index" aria-labelledby="realisations-title">
           <div className="wrap">
             <div className="case-index-head">
-              <span className="eyebrow">Études de cas</span>
+              <span className="eyebrow">Réalisations</span>
               <h1 id="realisations-title">
-                Réalisations : quatre produits web développés et mis en ligne
+                Quatre produits livrés pour des clients, trois projets construits pour moi
               </h1>
               <p className="lead">
-                Quatre produits menés de la spec à la mise en ligne, en stage puis en
-                freelance. Chaque étude de cas détaille le contexte, mon intervention et le
-                résultat livré.
+                Les quatre produits ont été menés de la spec à la mise en ligne, en stage puis
+                en freelance, et chacun a son étude de cas. Les trois projets personnels sont
+                là pour ce qu&apos;ils m&apos;ont fait construire et que ces produits ne
+                demandaient pas.
               </p>
             </div>
 
-            <ul className="case-index-list">
-              {CASE_STUDY_PAGES.map((page) => {
-                const client = CLIENT_COLOR_BY_ID[page.clientId];
-                return (
-                  <li key={page.slug}>
-                    <Link
-                      className="case-index-card"
-                      href={`/realisations/${page.slug}`}
-                      data-accent={page.clientId}
-                    >
-                      {client.logo && (
-                        <span className="hero-logo">
-                          <Image
-                            src={client.logo.src}
-                            alt=""
-                            aria-hidden="true"
-                            width={client.logo.width}
-                            height={client.logo.height}
-                            sizes={CLIENT_LOGO_SIZES}
-                          />
-                        </span>
-                      )}
-                      <span className="case-index-meta mono">
-                        {page.engagementType} · {page.period}
-                      </span>
-                      <h2>{page.title}</h2>
-                      <p className="case-index-lead">{page.lead}</p>
-                      <p className="stack">{page.stack.join(' · ')}</p>
-                      <span className="related-link">
-                        Lire l&apos;étude de cas <span aria-hidden="true">→</span>
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
+            <RealisationsFilter active={filter} />
+
+            <ul className="realisations-list" id="liste">
+              {entries.map((entry) => (
+                <RealisationRow key={entry.key} entry={entry} />
+              ))}
             </ul>
           </div>
         </section>

@@ -2,6 +2,7 @@ import { AccentProvider } from '@/components/providers/accent-provider';
 import { HeroSection } from '@/components/sections/hero-section';
 import { ExperienceSection } from '@/components/sections/experience-section';
 import { CaseStudiesSection } from '@/components/sections/case-studies-section';
+import { PersonalProjectsSection } from '@/components/sections/personal-projects-section';
 import { ProcessSection } from '@/components/sections/process-section';
 import { TestimonialsSection } from '@/components/sections/testimonials-section';
 import { AboutSection } from '@/components/sections/about-section';
@@ -27,6 +28,7 @@ export default function Home() {
           <HeroSection />
           <ExperienceSection />
           <CaseStudiesSection />
+          <PersonalProjectsSection />
           <ProcessSection />
           <TestimonialsSection />
           <AboutSection />

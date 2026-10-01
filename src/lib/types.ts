@@ -291,3 +291,49 @@ export interface ParcoursTeaserContent {
   linkLabel: string;
   linkHref: string;
 }
+
+/**
+ * The three states of the realisations filter, mirrored in the URL.
+ */
+export type RealisationFilter = 'tout' | 'client' | 'perso';
+
+/**
+ * A single framed screenshot shown next to a personal project.
+ */
+export interface ProjectScreenshot {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  /** Device shell drawn around the capture. */
+  frame: 'phone' | 'browser';
+}
+
+/**
+ * A project built outside any client engagement.
+ */
+export interface PersonalProject {
+  id: string;
+  title: string;
+  /** Lowercase noun phrase appended to the name inside the heading. */
+  titleQualifier: string;
+  period: string;
+  lead: string;
+  /** One-line form, used by the homepage teaser. */
+  teaser: string;
+  /** Optional sentence placing the project in time when the period alone misleads. */
+  origin?: string;
+  /** What the project made me build that client work did not. */
+  proof: string;
+  stack: readonly string[];
+  /** Outbound link to the running product, when there is one. */
+  liveLink?: CaseStudyPageLink;
+  screenshot: ProjectScreenshot;
+}
+
+/**
+ * One row of the single realisations column, whatever its provenance.
+ */
+export type RealisationEntry =
+  | { kind: 'client'; key: string; page: CaseStudyPageContent }
+  | { kind: 'perso'; key: string; project: PersonalProject };
