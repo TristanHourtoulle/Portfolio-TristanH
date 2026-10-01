@@ -17,7 +17,7 @@ const BROWSER_SIZES = '(min-width: 900px) 320px, 88vw';
 type RowFrame = 'phone' | 'browser';
 
 const NO_SHOT_NOTE =
-  "Aucune capture sur cette réalisation : le client ne souhaite pas que le produit soit montré. L'étude de cas rend compte de l'architecture, qui est la partie dont je suis le plus fier ici.";
+  "Aucune capture sur cette réalisation : le client ne souhaite pas que le projet soit expliqué ni montré avant sa sortie officielle.";
 
 /**
  * Draws the lead capture in the shell the product was captured on.
