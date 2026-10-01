@@ -30,6 +30,6 @@ export const CLIENT_COLOR_BY_ID: Record<ClientId, ClientColor> = Object.fromEntr
 export const CASE_STUDY_STACKS: Record<CaseStudySlug, readonly string[]> = {
   hosteed: ['Next.js', 'TypeScript', 'Tailwind', 'PostgreSQL', 'VPS client'],
   'moduloop-impact': ['Next.js', 'TypeScript', 'Tailwind', 'Node.js'],
-  'moduloop-kits': ['Next.js 16', 'React 19', 'Prisma', 'PostgreSQL', 'Better Auth'],
+  'moduloop-kits': ['Next.js', 'React', 'Prisma', 'PostgreSQL', 'Better Auth'],
   quintyss: ['Next.js', 'TypeScript', 'Fastify', 'Drizzle', 'PostgreSQL', 'Stripe', 'Railway'],
 };

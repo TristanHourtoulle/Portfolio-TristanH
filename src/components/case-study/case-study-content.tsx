@@ -1,3 +1,4 @@
+import { CLIENT_COLOR_BY_ID } from '@/lib/products';
 import type { CaseStudyPageContent } from '@/lib/types';
 import { CaseStudyFigure } from './case-study-figure';
 
@@ -26,7 +27,7 @@ export function CaseStudyContent({ page }: CaseStudyContentProps) {
               {page.clientId && (
                 <div>
                   <dt>Entreprise</dt>
-                  <dd>{page.title}</dd>
+                  <dd>{CLIENT_COLOR_BY_ID[page.clientId].name}</dd>
                 </div>
               )}
               {page.engagementType && (

@@ -31,6 +31,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
         'pgvector',
         'Drizzle',
         'TypeScript',
+        'OpenAI',
       ],
       externalLinks: [],
       galleryLayout: 'frames',
@@ -104,7 +105,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
           heading: 'Comment la question suivante est choisie',
           paragraphs: [
             "Un moteur qui cherche à faire réussir l'élève lui sert des questions faciles, et une séance où tout passe n'apprend rien. Edukai prend le problème dans l'autre sens : il se fixe d'abord le taux de réussite qu'il veut obtenir, autour de 75 %, et c'est de cette cible qu'il déduit la difficulté de la question à servir. La difficulté n'est pas choisie puis subie, elle est calculée pour que l'issue reste incertaine.",
-            "La cible reste tenue entre 60 et 85 %, et remonte à 90 % après une série d'échecs, le temps de remettre l'élève en selle. L'espacement des révisions sort de la même logique, par inversion d'un taux d'oubli, borné entre un et six jours, sans table d'intervalles à maintenir.",
+            "À côté de la cible, une zone de 60 à 85 % de réussite prévue sert à juger si une question reste productive, ni trop facile ni trop difficile. Après trois échecs d'affilée, la cible passe à 90 %, délibérément au-dessus de cette zone, le temps de remettre l'élève en selle. L'espacement des révisions sort de la même logique, par inversion d'un taux d'oubli, borné entre un et six jours, sans table d'intervalles à maintenir.",
           ],
           figure: 'edukai-target',
         },
@@ -128,7 +129,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       title: 'Freelance Manager',
       titleQualifier: 'pilotage de mon activité de freelance',
       periodInline: 'mars à août 2026',
-      period: 'Mars 2026 à août 2026',
+      period: 'Mars à août 2026',
       publishedTimeIso: '2026-08',
       lead: "L'outil sur lequel je gère ma propre activité de freelance : clients, propositions chiffrées, factures, acomptes, découpage en échéances et relances, avec une couche d'analyse qui calcule mon taux journalier effectif et ma concentration client.",
       metaDescription:

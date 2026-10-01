@@ -23,7 +23,7 @@ export const LEGAL_CONTENT: LegalPageContent = {
       title: 'Propriété intellectuelle',
       paragraphs: [
         "L'ensemble du contenu de ce site (textes, images et code source) est la propriété de Tristan Hourtoulle, sauf mention contraire. Toute reproduction, même partielle, est soumise à son autorisation préalable.",
-        "Les logos des clients présentés dans les études de cas restent la propriété de leurs détenteurs respectifs. Ils sont utilisés ici à titre de référence, pour illustrer les projets réalisés.",
+        "Les logos des clients présentés dans les études de cas, ainsi que le logo d’Epitech, restent la propriété de leurs détenteurs respectifs. Ils sont utilisés ici à titre de référence, pour illustrer les projets réalisés et la formation suivie.",
       ],
     },
     {

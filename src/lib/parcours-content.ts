@@ -41,7 +41,7 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
       heading: 'Six mois seul sur un outil interne',
       paragraphs: [
         "Il n’y a pas eu de stage en première année. Le premier a duré six mois, chez Agapachats, à Rouffach, et je l’ai fait seul sur le projet.",
-        "J’ai construit leur outil interne de gestion : les stocks, les prix d’achat et de revente, les fournisseurs rattachés à chaque produit, les étiquettes de vente utilisées par l’équipe de vente, les employés et la cuisine, ainsi que la gestion des droits et le suivi des tickets. En HTML, CSS et PHP, hébergé sur O2Switch.",
+        "J’ai construit leur outil interne de gestion : les stocks, les prix d’achat et de revente, les fournisseurs rattachés à chaque produit, les étiquettes de vente utilisées par l’équipe de vente, mais aussi les employés et la cuisine, ainsi que la gestion des droits et le suivi des tickets. En HTML, CSS et PHP, hébergé sur O2Switch.",
         "L’outil est interne et je n’ai pas l’autorisation d’en montrer des captures : il n’y a donc pas d’étude de cas sur ce site.",
       ],
     },
