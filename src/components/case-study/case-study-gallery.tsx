@@ -29,7 +29,7 @@ function FramedShot({ image }: { image: CaseStudyGalleryImage }) {
     return (
       <PhoneFrame
         src={image.src}
-        alt={image.alt}
+        alt=""
         width={image.width}
         height={image.height}
         sizes={PHONE_SIZES}
@@ -41,7 +41,7 @@ function FramedShot({ image }: { image: CaseStudyGalleryImage }) {
   return (
     <BrowserFrame
       src={image.src}
-      alt={image.alt}
+      alt=""
       width={image.width}
       height={image.height}
       sizes={BROWSER_SIZES}
