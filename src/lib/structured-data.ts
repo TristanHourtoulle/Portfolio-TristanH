@@ -1,5 +1,6 @@
 import { ABOUT_CONTENT, FOOTER_LEGAL_LINKS, SITE_CONFIG } from './constants';
 import { PARCOURS_CONTENT } from './parcours-content';
+import { canonicalUrl } from './site-url';
 import type { CaseStudyPageContent } from './types';
 
 type JsonLdValue =
@@ -22,13 +23,6 @@ export function serializeJsonLd(graph: JsonLdGraph): string {
 }
 
 const SITE_URL = SITE_CONFIG.siteUrl;
-
-/**
- * Site-relative path to absolute URL.
- */
-function absolute(path: string): string {
-  return new URL(path, `${SITE_URL}/`).toString();
-}
 
 const PERSON_ID = `${SITE_URL}/#person`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -57,8 +51,8 @@ function buildPersonNode(): JsonLdValue {
     '@type': 'Person',
     '@id': PERSON_ID,
     name: SITE_CONFIG.brandName,
-    url: absolute('/'),
-    image: absolute('/images/tristan-hourtoulle.webp'),
+    url: canonicalUrl('/'),
+    image: canonicalUrl('/images/tristan-hourtoulle.webp'),
     jobTitle: PROFESSION,
     description: ABOUT_CONTENT.paragraphs[0],
     email: SITE_CONFIG.email,
@@ -73,7 +67,7 @@ function buildWebSiteNode(): JsonLdValue {
   return {
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
-    url: absolute('/'),
+    url: canonicalUrl('/'),
     name: SITE_CONFIG.brandName,
     inLanguage: 'fr-FR',
     publisher: { '@id': PERSON_ID },
@@ -105,12 +99,12 @@ interface BreadcrumbEntry {
 function buildBreadcrumbNode(pagePath: string, entries: readonly BreadcrumbEntry[]): JsonLdValue {
   return {
     '@type': 'BreadcrumbList',
-    '@id': `${absolute(pagePath)}#breadcrumb`,
+    '@id': `${canonicalUrl(pagePath)}#breadcrumb`,
     itemListElement: entries.map((entry, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       name: entry.name,
-      item: entry.path === undefined ? undefined : absolute(entry.path),
+      item: entry.path === undefined ? undefined : canonicalUrl(entry.path),
     })),
   };
 }
@@ -140,14 +134,14 @@ function buildCaseStudyNode(page: CaseStudyPageContent): JsonLdValue {
   const path = `/realisations/${page.slug}`;
   const desktopImages = page.gallery.filter((image) => image.variant === 'desktop');
   const images = (desktopImages.length > 0 ? desktopImages : page.gallery).map((image) =>
-    absolute(image.src)
+    canonicalUrl(image.src)
   );
 
   return {
     '@type': 'CreativeWork',
-    '@id': `${absolute(path)}#case-study`,
+    '@id': `${canonicalUrl(path)}#case-study`,
     name: `${page.title}, ${page.titleQualifier}`,
-    url: absolute(path),
+    url: canonicalUrl(path),
     description: page.metaDescription,
     inLanguage: 'fr-FR',
     datePublished: page.publishedTimeIso,

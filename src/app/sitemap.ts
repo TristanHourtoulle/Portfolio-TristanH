@@ -1,17 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { REALISATION_PAGES } from '@/lib/case-studies-content';
-import { SITE_CONFIG } from '@/lib/constants';
+import { canonicalUrl } from '@/lib/site-url';
 
 const STATIC_PATHS = ['/', '/realisations', '/parcours'] as const;
-
-/**
- * Turns a route path into the absolute URL the sitemap should advertise.
- * @param path - route path, absolute from the site root
- * @returns the absolute URL for that route
- */
-function absoluteUrl(path: string): string {
-  return path === '/' ? SITE_CONFIG.siteUrl : new URL(path, SITE_CONFIG.siteUrl).toString();
-}
 
 /**
  * XML sitemap, served at /sitemap.xml and referenced from robots.txt.
@@ -19,11 +10,11 @@ function absoluteUrl(path: string): string {
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries = STATIC_PATHS.map((path) => ({
-    url: absoluteUrl(path),
+    url: canonicalUrl(path),
   }));
 
   const caseStudyEntries = REALISATION_PAGES.map((page) => ({
-    url: absoluteUrl(`/realisations/${page.slug}`),
+    url: canonicalUrl(`/realisations/${page.slug}`),
   }));
 
   return [...staticEntries, ...caseStudyEntries];
