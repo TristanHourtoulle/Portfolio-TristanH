@@ -259,9 +259,9 @@ section + section { border-top: 1px solid var(--rule); }
   #realisations { background: var(--paper-2); }
 }
 
-.section-head { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
-.section-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); max-width: 22ch; }
-.section-head .lead { margin-top: 0.9rem; color: var(--muted); }
+.section-head { margin-bottom: clamp(2rem, 5vw, 3.5rem); --measure: 43.6rem; }
+.section-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); max-width: var(--measure); }
+.section-head .lead { margin-top: 0.9rem; color: var(--muted); max-width: var(--measure); }
 
 .hero { padding-block: clamp(4rem, 10vw, 7.5rem); }
 .hero .wrap {
@@ -617,15 +617,17 @@ section + section { border-top: 1px solid var(--rule); }
 }
 .cta-final .wrap {
   padding-block: clamp(4rem, 9vw, 6.5rem);
+  --measure: 45.2rem;
 }
 .cta-final h2 {
   font-size: clamp(1.9rem, 4.5vw, 3.1rem);
-  max-width: 18ch;
+  max-width: var(--measure);
 }
 .cta-final .lead {
   margin-top: 1rem;
   font-size: 1.1rem;
   color: rgba(246, 243, 234, 0.92);
+  max-width: var(--measure);
 }
 .cta-final-actions {
   margin-top: 2.25rem;
@@ -679,12 +681,15 @@ section + section { border-top: 1px solid var(--rule); }
 }
 .site-footer .copyright { margin-top: 0.75rem; }
 
+.legal {
+  --measure: 43.6rem;
+}
 .legal-head {
   margin-bottom: clamp(2rem, 5vw, 3.5rem);
 }
 .legal-head h1 {
   font-size: clamp(1.9rem, 3.6vw, 2.6rem);
-  max-width: 24ch;
+  max-width: var(--measure);
 }
 .legal-updated {
   margin-top: 1rem;
@@ -692,7 +697,7 @@ section + section { border-top: 1px solid var(--rule); }
   font-size: 0.9rem;
 }
 .legal-content {
-  max-width: 65ch;
+  max-width: var(--measure);
 }
 .legal-content h2 {
   font-size: clamp(1.3rem, 2.4vw, 1.6rem);
@@ -764,7 +769,7 @@ section + section { border-top: 1px solid var(--rule); }
 .breadcrumb-trail li + li::before { content: "›"; margin-right: 0.45rem; }
 .breadcrumb-trail [aria-current="page"] { color: var(--ink); }
 
-.case-hero { padding-block: clamp(2.5rem, 6vw, 4rem) clamp(3rem, 7vw, 5rem); }
+.case-hero { padding-block: clamp(2.5rem, 6vw, 4rem) clamp(3rem, 7vw, 5rem); --measure: 43.6rem; }
 .hero-meta-row {
   display: flex;
   align-items: center;
@@ -809,7 +814,7 @@ section + section { border-top: 1px solid var(--rule); }
   padding: 0.35rem 0.7rem;
   white-space: nowrap;
 }
-.case-hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); max-width: 20ch; }
+.case-hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); max-width: var(--measure); }
 .case-title-qualifier {
   display: block;
   margin-top: 0.6rem;
@@ -823,7 +828,7 @@ section + section { border-top: 1px solid var(--rule); }
   margin-top: 1.25rem;
   font-size: 1.15rem;
   color: var(--muted);
-  max-width: 60ch;
+  max-width: var(--measure);
 }
 .m-stack {
   list-style: none;
@@ -1135,9 +1140,9 @@ section + section { border-top: 1px solid var(--rule); }
 
 .case-index { background: var(--paper-1); }
 
-.case-index-head { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
-.case-index-head h1 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); max-width: 24ch; }
-.case-index-head .lead { margin-top: 1rem; color: var(--muted); max-width: 62ch; }
+.case-index-head { margin-bottom: clamp(2rem, 5vw, 3.5rem); --measure: 41.6rem; }
+.case-index-head h1 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); max-width: var(--measure); }
+.case-index-head .lead { margin-top: 1rem; color: var(--muted); max-width: var(--measure); }
 
 /* Realisations column
    One list for client work and personal projects. The provenance cell is left
@@ -1266,9 +1271,9 @@ section + section { border-top: 1px solid var(--rule); }
 .perso-teaser-list .mono { display: block; margin-top: 0.35rem; color: var(--muted); }
 .perso-teaser-list p + p { margin-top: 0.75rem; color: var(--muted); }
 
-.error-page { padding-block: clamp(4rem, 10vw, 7rem); }
-.error-page h1 { font-size: clamp(2rem, 4.5vw, 3rem); max-width: 18ch; }
-.error-page .lead { margin-top: 1.25rem; font-size: 1.125rem; color: var(--muted); max-width: 52ch; }
+.error-page { padding-block: clamp(4rem, 10vw, 7rem); --measure: 36.95rem; }
+.error-page h1 { font-size: clamp(2rem, 4.5vw, 3rem); max-width: var(--measure); }
+.error-page .lead { margin-top: 1.25rem; font-size: 1.125rem; color: var(--muted); max-width: var(--measure); }
 .error-actions {
   margin-top: 2.25rem;
   display: flex;
@@ -1279,9 +1284,9 @@ section + section { border-top: 1px solid var(--rule); }
 
 .parcours { background: var(--paper-1); }
 
-.parcours-head { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
-.parcours-head h1 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); max-width: 24ch; }
-.parcours-head .lead { margin-top: 1rem; color: var(--muted); max-width: 62ch; }
+.parcours-head { margin-bottom: clamp(2rem, 5vw, 3.5rem); --measure: 41.6rem; }
+.parcours-head h1 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); max-width: var(--measure); }
+.parcours-head .lead { margin-top: 1rem; color: var(--muted); max-width: var(--measure); }
 
 .parcours-head,
 .parcours-teaser-layout {
@@ -1319,8 +1324,9 @@ section + section { border-top: 1px solid var(--rule); }
   font-size: 0.8125rem;
   color: var(--muted);
 }
-.parcours-what h2 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); max-width: 26ch; }
-.parcours-what p { margin-top: 0.85rem; max-width: 58ch; color: var(--muted); }
+.parcours-what { --measure: 38.95rem; }
+.parcours-what h2 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); max-width: var(--measure); }
+.parcours-what p { margin-top: 0.85rem; max-width: var(--measure); color: var(--muted); }
 .parcours-what p:first-of-type { color: var(--ink); }
 .parcours-link {
   display: inline-block;
