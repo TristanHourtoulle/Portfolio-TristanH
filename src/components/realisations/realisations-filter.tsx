@@ -43,7 +43,7 @@ export function RealisationsFilter({ active }: RealisationsFilterProps) {
           <li key={option.id}>
             <Link
               href={option.href}
-              aria-current={option.id === active ? 'page' : undefined}
+              aria-current={option.id === active ? 'true' : undefined}
               data-active={option.id === active ? 'true' : undefined}
               scroll={false}
             >
