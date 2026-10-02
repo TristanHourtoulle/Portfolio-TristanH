@@ -49,7 +49,7 @@ export default function RootLayout({
         <ScrollManager />
         <SkipLink />
         <SiteHeader />
-        {children}
+        <div id="page-shell">{children}</div>
         <Analytics />
         <SpeedInsights />
       </body>
