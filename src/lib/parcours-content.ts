@@ -25,12 +25,12 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
     },
     {
       id: 'assistant',
-      period: '2021-2022 et 2023-2024',
+      period: 'septembre 2021 à juin 2022, puis septembre 2023 à janvier 2024',
       context: 'Assistant Epitech Région',
       heading: 'Deux mandats à encadrer d’autres étudiants',
       paragraphs: [
-        "Pendant ma deuxième année, j’ai encadré environ 65 étudiants de première année sur le cursus PGE, celui que je suivais moi-même.",
-        "Pendant ma troisième année, j’ai encadré 34 étudiants du cursus MSC, orienté web et long de trois ans. Ce n’était pas mon cursus, et la plupart de ces étudiants étaient plus âgés que moi : ils arrivaient de prépa ou se reconvertissaient vers la tech.",
+        "Premier mandat de septembre 2021 à juin 2022, pendant ma deuxième année : j’ai encadré environ 65 étudiants de première année sur le cursus PGE, celui que je suivais moi-même. Je l’ai mené en parallèle de mes cours et de mon stage chez Agapachats, qui courait de juillet à décembre 2021.",
+        "Second mandat à temps partiel, de septembre 2023 à fin janvier 2024, pendant ma troisième année : j’ai encadré 34 étudiants du cursus MSC, orienté web et long de trois ans. Ce n’était pas mon cursus, et la plupart de ces étudiants étaient plus âgés que moi : ils arrivaient de prépa ou se reconvertissaient vers la tech.",
         "Le rôle consistait à les accompagner, à les faire progresser et à les garder dans le rythme, en allant en priorité vers les plus en difficulté et les profils les plus atypiques. C’est là que j’ai appris à expliquer une notion à quelqu’un qui ne la voit pas encore, et à débloquer une personne sans coder à sa place.",
       ],
     },
@@ -61,9 +61,9 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
     },
     {
       id: 'freelance',
-      period: 'juillet 2024 à août 2026',
+      period: '15 juillet 2024 à août 2026',
       context: 'Activité indépendante',
-      heading: 'Freelance lancé un mois après le stage, en parallèle des études',
+      heading: 'Freelance lancé le 15 juillet 2024, en parallèle des études',
       paragraphs: [
         "Un mois après la fin du stage chez Moduloop, j’ai créé mon entreprise, trouvé mes premiers clients et mis du logiciel en production, tout en continuant une formation exigeante. Beaucoup de nuits courtes à tenir les deux de front.",
         "Je m’y suis mis parce que le remboursement de mon prêt étudiant démarrait pendant ma dernière année d’études, le redoublement ayant décalé la fin du cursus.",
