@@ -4,6 +4,8 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SkipLink } from '@/components/skip-link';
 import { SiteHeader } from '@/components/site-header';
 import { ScrollManager } from '@/components/scroll-manager';
+import { MobileMenuProvider } from '@/components/mobile-menu/mobile-menu-context';
+import { MobileMenuSheet } from '@/components/mobile-menu/mobile-menu-sheet';
 import { apfelGrotezk, commitMono } from '@/lib/fonts';
 import { SITE_CONFIG } from '@/lib/constants';
 import './globals.css';
@@ -46,10 +48,13 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${apfelGrotezk.variable} ${commitMono.variable}`}>
       <body className="antialiased">
-        <ScrollManager />
-        <SkipLink />
-        <SiteHeader />
-        <div id="page-shell">{children}</div>
+        <MobileMenuProvider>
+          <ScrollManager />
+          <SkipLink />
+          <SiteHeader />
+          <div id="page-shell">{children}</div>
+          <MobileMenuSheet />
+        </MobileMenuProvider>
         <Analytics />
         <SpeedInsights />
       </body>

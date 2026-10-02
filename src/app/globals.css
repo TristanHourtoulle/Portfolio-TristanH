@@ -24,6 +24,21 @@
 
   --header-h: 79px;
   --anchor-gap: 1.5rem;
+
+  /* Menu mobile, direction A. Trois plans sur une seule horloge, valeurs
+     mesurees sur buildinamsterdam.com. Ne pas les arrondir. */
+  --menu-dur: 650ms;
+  --menu-ease: cubic-bezier(0.45, 0.02, 0.09, 0.98);
+  --menu-page-pull: 400px;
+  --menu-inner-offset: 30%;
+  --menu-row-dur: 420ms;
+  --menu-row-step: 28ms;
+  --menu-row-base: 160ms;
+  --menu-row-travel: 16px;
+  /* Icone, deux phases de 120ms, keySplines d'apple.com. */
+  --menu-icon-phase: 120ms;
+  --menu-icon-in: cubic-bezier(0.42, 0, 1, 1);
+  --menu-icon-out: cubic-bezier(0, 0, 0.58, 1);
 }
 
 @media (max-width: 760px) {
@@ -246,6 +261,208 @@ a:hover { text-decoration-thickness: 2px; }
     font-size: 0.8125rem;
   }
 }
+
+
+/* ---------------------------------------------------------------------------
+   Menu mobile, direction A.
+
+   Structure imposee par la mesure: le header reste HORS de #page-shell, sinon
+   son getBoundingClientRect().top lit -400 pendant toute la transition. La
+   feuille reste elle aussi hors du shell, parce qu'un ancetre transforme
+   devient le bloc conteneur de ses descendants fixed.
+
+   Etat au repos, hors de toute requete de mouvement: la feuille est en place,
+   les lignes sont en place, la croix est une croix. Les seuls decalages vivent
+   dans @media (prefers-reduced-motion: no-preference), donc sans animation le
+   menu existe quand meme, entier et lisible.
+--------------------------------------------------------------------------- */
+
+.menu-toggle { display: none; }
+
+.menu-sheet {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  /* --header-h est arrondi au pixel; le -1px recouvre la couture sous-pixel
+     qui laissait passer deux pixels de la page sous le header. */
+  top: calc(var(--header-h) - 1px);
+  bottom: 0;
+  /* Sous le grain fixe de body::after (z-index 90) et sous le header (50):
+     la feuille recoit le meme papier que le reste de la page, et la regle de
+     progression du header continue de passer par-dessus son bord haut. */
+  z-index: 45;
+  background: var(--paper-2);
+  overflow: hidden;
+  padding:
+    1.75rem
+    clamp(1.25rem, 4vw, 2.5rem)
+    calc(1.75rem + env(safe-area-inset-bottom, 0px));
+  visibility: hidden;
+}
+
+:root[data-menu="open"] .menu-sheet { visibility: visible; }
+
+.menu-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.menu-nav ul { list-style: none; }
+.menu-nav li { border-top: 1px solid var(--rule); }
+.menu-nav li:last-child { border-bottom: 1px solid var(--rule); }
+.menu-nav a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  min-height: 44px;
+  padding-block: 0.8rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: clamp(1.5rem, 7vw, 1.9rem);
+  letter-spacing: -0.025em;
+  line-height: 1.14;
+}
+
+.menu-num {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.menu-foot { display: flex; flex-direction: column; gap: 0.6rem; }
+.menu-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 44px;
+  padding: 0.95rem 1.1rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+/* Icone, coordonnees d'apple.com portees en pixels: boite de 18 unites, traits
+   a 5 et 12, fusion a 9, epaisseur 1,4. */
+.menu-icon {
+  position: absolute;
+  left: 11px;
+  top: 13px;
+  width: 22px;
+  height: 18px;
+}
+.menu-icon-bar {
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 1.4px;
+  border-radius: 1px;
+  background: currentColor;
+}
+.menu-icon-bar--top { top: 5px; }
+.menu-icon-bar--bottom { top: 12px; }
+:root[data-menu="open"] .menu-icon-bar { top: 9px; }
+:root[data-menu="open"] .menu-icon-bar--top { transform: rotate(45deg); }
+:root[data-menu="open"] .menu-icon-bar--bottom { transform: rotate(-45deg); }
+
+/* Verrou de defilement. Surtout pas overflow:hidden sur html, mesure: cette
+   technique seule pousse le header colle a -3000px. */
+body.menu-locked {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+@media (max-width: 760px) {
+  .site-header .wrap { flex-wrap: nowrap; }
+  .site-nav,
+  .header-actions { display: none; }
+
+  .menu-toggle {
+    display: block;
+    position: relative;
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    margin-right: -0.6rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .menu-sheet { display: flex; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Plan 1, la feuille monte du bas. */
+  .menu-sheet {
+    transform: translateY(100%);
+    transition:
+      transform var(--menu-dur) var(--menu-ease),
+      visibility 0s linear var(--menu-dur);
+  }
+  :root[data-menu="open"] .menu-sheet {
+    transform: translateY(0);
+    transition:
+      transform var(--menu-dur) var(--menu-ease),
+      visibility 0s linear 0s;
+  }
+
+  /* Plan 2, la page se retire vers le haut derriere la feuille. Le decalage
+     lui-meme vit ici: sans mouvement, la page ne bouge pas du tout. */
+  #page-shell { transition: transform var(--menu-dur) var(--menu-ease); }
+
+  /* Plan 3, le contenu de la feuille part plus haut qu'elle et la rattrape. */
+  .menu-inner {
+    transform: translateY(calc(-1 * var(--menu-inner-offset)));
+    transition: transform var(--menu-dur) var(--menu-ease);
+  }
+  :root[data-menu="open"] .menu-inner { transform: translateY(0); }
+
+  /* Decalage ligne par ligne, translation seule, aucune opacite. */
+  .menu-nav a {
+    transform: translateY(var(--menu-row-travel));
+    transition: transform var(--menu-row-dur) var(--menu-ease) 0ms;
+  }
+  :root[data-menu="open"] .menu-nav a {
+    transform: translateY(0);
+    transition-delay: calc(var(--i) * var(--menu-row-step) + var(--menu-row-base));
+  }
+
+  .menu-icon-bar {
+    transition:
+      transform var(--menu-icon-phase) var(--menu-icon-in) 0ms,
+      top var(--menu-icon-phase) var(--menu-icon-out) var(--menu-icon-phase);
+  }
+  :root[data-menu="open"] .menu-icon-bar {
+    transition:
+      top var(--menu-icon-phase) var(--menu-icon-in) 0ms,
+      transform var(--menu-icon-phase) var(--menu-icon-out) var(--menu-icon-phase);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (max-width: 760px) {
+  :root[data-menu="open"] #page-shell {
+    transform: translate3d(0, calc(-1 * var(--menu-page-pull)), 0);
+  }
+}
+
+/* Fermeture provoquee par un lien du menu: la page reprend sa place d'un coup,
+   sinon le navigateur calcule l'ancre sur une page encore decalee et atterrit
+   400px trop bas. La feuille, elle, garde sa descente. */
+:root[data-menu-exit] #page-shell { transition: none; }
 
 section { padding-block: clamp(3.5rem, 8vw, 6rem); }
 section + section { border-top: 1px solid var(--rule); }

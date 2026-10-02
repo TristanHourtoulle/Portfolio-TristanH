@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { NAVIGATION, SITE_CONFIG } from '@/lib/constants';
 import { ProfileActions } from '@/components/ui/profile-actions';
 import { ScrollProgress } from '@/components/scroll-progress';
+import { MobileMenuTrigger } from '@/components/mobile-menu/mobile-menu-trigger';
 
 /**
  * Sticky site header.
@@ -26,6 +27,7 @@ export function SiteHeader() {
         <div className="header-actions">
           <ProfileActions />
         </div>
+        <MobileMenuTrigger />
       </div>
       <ScrollProgress />
     </header>
