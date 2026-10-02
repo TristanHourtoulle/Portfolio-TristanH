@@ -2,27 +2,64 @@
 
 import Image from 'next/image';
 import { useCallback, useEffect, useId, useState } from 'react';
-import type { CaseStudyGalleryImage } from '@/lib/types';
+import type { SliderImage } from '@/lib/types';
+
+type SliderVariant = 'capture' | 'photo';
 
 interface CaseStudySliderProps {
-  images: CaseStudyGalleryImage[];
-  /** Case study title, used to label the carousel region. */
+  images: SliderImage[];
+  /** Subject of the carousel, used to label its region. */
   label: string;
+  /** What the carousel shows, which drives its wording and its frame. */
+  variant?: SliderVariant;
 }
 
 /** Time an image stays on screen before the carousel advances on its own. */
 const AUTOPLAY_INTERVAL_MS = 5000;
 
+interface SliderWording {
+  regionLabel: (label: string) => string;
+  previous: string;
+  next: string;
+  pickLabel: string;
+  itemLabel: (position: number, total: number, alt: string) => string;
+  /** Whether the frame draws the browser chrome above the viewport. */
+  hasChrome: boolean;
+  sizes: string;
+}
+
+const VARIANTS: Record<SliderVariant, SliderWording> = {
+  capture: {
+    regionLabel: (label) => `Captures d'écran de ${label}`,
+    previous: 'Capture précédente',
+    next: 'Capture suivante',
+    pickLabel: 'Choisir une capture',
+    itemLabel: (position, total, alt) => `Capture ${position} sur ${total} : ${alt}`,
+    hasChrome: true,
+    sizes: '(min-width: 1200px) 1040px, 96vw',
+  },
+  photo: {
+    regionLabel: (label) => `Photos de ${label}`,
+    previous: 'Photo précédente',
+    next: 'Photo suivante',
+    pickLabel: 'Choisir une photo',
+    itemLabel: (position, total, alt) => `Photo ${position} sur ${total} : ${alt}`,
+    hasChrome: false,
+    sizes: '(min-width: 900px) 420px, (min-width: 560px) 50vw, 88vw',
+  },
+};
+
 /**
- * Desktop screenshot carousel for a case-study page.
+ * Autoplaying carousel, used for case-study captures and for parcours photographs.
  */
-export function CaseStudySlider({ images, label }: CaseStudySliderProps) {
+export function CaseStudySlider({ images, label, variant = 'capture' }: CaseStudySliderProps) {
   const [index, setIndex] = useState(0);
   const [isPausedByUser, setIsPausedByUser] = useState(false);
   const [isSuspended, setIsSuspended] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isUserDriven, setIsUserDriven] = useState(false);
   const baseId = useId();
+  const wording = VARIANTS[variant];
 
   const count = images.length;
 
@@ -83,20 +120,23 @@ export function CaseStudySlider({ images, label }: CaseStudySliderProps) {
       className="screens-slider"
       role="group"
       aria-roledescription="carousel"
-      aria-label={`Captures d'écran de ${label}`}
+      aria-label={wording.regionLabel(label)}
       onMouseEnter={() => setIsSuspended(true)}
       onMouseLeave={() => setIsSuspended(false)}
       onFocus={() => setIsSuspended(true)}
       onBlur={() => setIsSuspended(false)}
       onKeyDown={handleKeyDown}
       data-autoplay={isAutoplayRunning ? 'running' : 'paused'}
+      data-variant={variant}
     >
       <div className="slider-frame">
-        <span className="slider-chrome" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </span>
+        {wording.hasChrome && (
+          <span className="slider-chrome" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
+        )}
 
         <div className="slider-viewport" id={`${baseId}-viewport`}>
           <ul
@@ -117,7 +157,7 @@ export function CaseStudySlider({ images, label }: CaseStudySliderProps) {
                   alt=""
                   width={image.width}
                   height={image.height}
-                  sizes="(min-width: 1200px) 1040px, 96vw"
+                  sizes={wording.sizes}
                   quality={90}
                 />
               </li>
@@ -131,7 +171,7 @@ export function CaseStudySlider({ images, label }: CaseStudySliderProps) {
                 className="slider-arrow slider-arrow-prev"
                 onClick={() => goTo(index - 1)}
                 aria-controls={`${baseId}-viewport`}
-                aria-label="Capture précédente"
+                aria-label={wording.previous}
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path
@@ -149,7 +189,7 @@ export function CaseStudySlider({ images, label }: CaseStudySliderProps) {
                 className="slider-arrow slider-arrow-next"
                 onClick={() => goTo(index + 1)}
                 aria-controls={`${baseId}-viewport`}
-                aria-label="Capture suivante"
+                aria-label={wording.next}
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path
@@ -177,7 +217,7 @@ export function CaseStudySlider({ images, label }: CaseStudySliderProps) {
 
       {count > 1 && (
         <div className="slider-controls">
-          <div className="slider-dots" role="group" aria-label="Choisir une capture">
+          <div className="slider-dots" role="group" aria-label={wording.pickLabel}>
             {images.map((image, dotIndex) => (
               <button
                 key={image.src}
@@ -186,7 +226,7 @@ export function CaseStudySlider({ images, label }: CaseStudySliderProps) {
                 onClick={() => goTo(dotIndex)}
                 aria-controls={`${baseId}-viewport`}
                 aria-current={dotIndex === index}
-                aria-label={`Capture ${dotIndex + 1} sur ${count} : ${image.alt}`}
+                aria-label={wording.itemLabel(dotIndex + 1, count, image.alt)}
               >
                 <span aria-hidden="true" />
               </button>

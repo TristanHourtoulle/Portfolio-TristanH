@@ -79,6 +79,59 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
         "J’ai passé ma quatrième année à Kuala Lumpur et j’ai continué à faire tourner mon activité freelance depuis là-bas, en tenant les rendez-vous à des horaires décalés pour tomber sur les heures de bureau françaises, six à sept heures plus tôt.",
         "Quintyss V3 en mars 2025 et Hosteed en mai 2025 ont tous les deux démarré pendant ce séjour.",
       ],
+      photos: {
+        label: 'Kuala Lumpur',
+        images: [
+          {
+            src: '/images/parcours/kuala-lumpur/campus-apu.webp',
+            alt: "Le campus d’Asia Pacific University à Kuala Lumpur, où j’ai passé ma quatrième année.",
+            width: 1200,
+            height: 1200,
+          },
+          {
+            src: '/images/parcours/kuala-lumpur/skyline-merdeka.webp',
+            alt: "Kuala Lumpur de nuit, dominée par la flèche éclairée de la tour Merdeka 118.",
+            width: 1200,
+            height: 1200,
+          },
+          {
+            src: '/images/parcours/kuala-lumpur/petronas-jour.webp',
+            alt: "Les tours Petronas de jour, vues d’en bas à travers les arbres du parc.",
+            width: 1200,
+            height: 1200,
+          },
+          {
+            src: '/images/parcours/kuala-lumpur/eq-petronas-nuit.webp',
+            alt: "La tour EQ au premier plan et les tours Petronas éclairées derrière, un soir couvert.",
+            width: 1200,
+            height: 1200,
+          },
+          {
+            src: '/images/parcours/kuala-lumpur/petronas-nuit.webp',
+            alt: "Les tours Petronas illuminées de rouge et d’or à la nuit tombée.",
+            width: 1200,
+            height: 1200,
+          },
+          {
+            src: '/images/parcours/kuala-lumpur/batu-caves-escalier.webp',
+            alt: "L’escalier coloré et la statue dorée de Murugan, à l’entrée des grottes de Batu.",
+            width: 1200,
+            height: 1200,
+          },
+          {
+            src: '/images/parcours/kuala-lumpur/batu-caves-sanctuaire.webp',
+            alt: "Un sanctuaire et sa cloche, au pied de la falaise des grottes de Batu.",
+            width: 1200,
+            height: 1200,
+          },
+          {
+            src: '/images/parcours/kuala-lumpur/coucher-soleil-plage.webp',
+            alt: "Un coucher de soleil sur une plage malaisienne, derrière un cadre en forme de cœur.",
+            width: 1200,
+            height: 1200,
+          },
+        ],
+      },
     },
     {
       id: 'cinquieme-annee',

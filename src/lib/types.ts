@@ -68,13 +68,19 @@ export interface CaseStudy {
 }
 
 /**
- * A single screenshot in a case-study detail page.
+ * An image a carousel can show, be it a capture or a photograph.
  */
-export interface CaseStudyGalleryImage {
+export interface SliderImage {
   src: string;
   alt: string;
   width: number;
   height: number;
+}
+
+/**
+ * A single screenshot in a case-study detail page.
+ */
+export interface CaseStudyGalleryImage extends SliderImage {
   variant: 'desktop' | 'mobile';
   /** Device shell drawn around the capture, in the framed gallery layout. */
   frame?: 'phone' | 'browser';
@@ -319,6 +325,17 @@ export interface ParcoursEntry {
   paragraphs: string[];
   /** Optional link closing the entry. */
   link?: ParcoursLink;
+  /** Photo carousel closing the entry. */
+  photos?: ParcoursPhotos;
+}
+
+/**
+ * The photographs illustrating one parcours entry.
+ */
+export interface ParcoursPhotos {
+  /** Place shown in the photographs, used in the carousel accessible name. */
+  label: string;
+  images: SliderImage[];
 }
 
 /**

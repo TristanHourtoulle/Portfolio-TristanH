@@ -1013,6 +1013,16 @@ section + section { border-top: 1px solid var(--rule); }
   border: 0;
 }
 
+/* The photo carousel keeps the square the crops were cut to, drops the browser
+   chrome that only makes sense over a capture, and stays inside the measure of
+   the prose column it closes. */
+.screens-slider[data-variant='photo'] {
+  margin-top: 1.5rem;
+  max-width: 26rem;
+}
+.screens-slider[data-variant='photo'] .slider-viewport { aspect-ratio: 1 / 1; }
+.screens-slider[data-variant='photo'] .slider-slide img { object-position: center; }
+
 .case-frames-list {
   list-style: none;
   display: grid;

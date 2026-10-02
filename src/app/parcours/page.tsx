@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { CaseStudySlider } from '@/components/case-study/case-study-slider';
 import { CtaSection } from '@/components/sections/cta-section';
 import { EpitechMark } from '@/components/ui/epitech-mark';
 import { SiteFooter } from '@/components/site-footer';
@@ -79,6 +80,13 @@ export default function ParcoursPage() {
                       <Link className="parcours-link" href={entry.link.href}>
                         {entry.link.label} <span aria-hidden="true">→</span>
                       </Link>
+                    ) : null}
+                    {entry.photos ? (
+                      <CaseStudySlider
+                        images={entry.photos.images}
+                        label={entry.photos.label}
+                        variant="photo"
+                      />
                     ) : null}
                   </div>
                 </li>
