@@ -41,14 +41,17 @@
   --menu-icon-out: cubic-bezier(0, 0, 0.58, 1);
 }
 
+/* Replis de --header-h, appliques avant l'hydratation et si JS tombe. Mesures
+   sur le header a burger: 67,19px de 561 a 760, 72,68px en dessous, arrondis au
+   pixel superieur pour que scroll-padding-top ne sous-reserve jamais. */
 @media (max-width: 760px) {
-  :root { --header-h: 115px; }
+  :root { --header-h: 68px; }
 }
 @media (max-width: 560px) {
-  :root { --header-h: 166px; }
+  :root { --header-h: 73px; }
 }
 @media (max-width: 400px) {
-  :root { --header-h: 205px; }
+  :root { --header-h: 73px; }
 }
 
 :root[data-accent="moduloop"] {
