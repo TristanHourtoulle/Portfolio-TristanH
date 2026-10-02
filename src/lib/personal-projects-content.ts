@@ -89,15 +89,16 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
           heading: "Ce que j'ai construit",
           paragraphs: [
             "Une application mobile native en Expo et React Native, adossée à une API NestJS. L'import d'un cours ne bloque pas l'écran : l'extraction part dans un worker asynchrone sur des files BullMQ, et l'application suit l'avancement pendant que le travail se fait.",
-            "L'extraction produit des concepts et des questions, dédupliqués sémantiquement avec pgvector pour qu'un même point de cours présenté deux fois ne devienne pas deux concepts distincts. Toute la génération reste cantonnée dans un seul paquet : une règle ESLint bloquante interdit d'importer le client OpenAI ailleurs, de sorte que la frontière d'architecture tienne sans dépendre de la discipline du moment.",
+            "L'extraction produit des concepts et des questions. Les concepts sont dédupliqués sémantiquement, leurs embeddings stockés en pgvector : au-delà d'un seuil de similarité, un concept fraîchement extrait est fusionné dans un concept existant plutôt que recréé, pour qu'un même point de cours présenté deux fois ne devienne pas deux concepts distincts.",
+            "Toute la génération reste cantonnée dans un seul paquet : une règle ESLint bloquante interdit d'importer le client OpenAI ailleurs, de sorte que la frontière d'architecture tienne sans dépendre de la discipline du moment.",
           ],
         },
         {
           heading: 'Une fourchette plutôt qu\'un score',
           paragraphs: [
             "Le moteur ne range pas l'élève derrière un pourcentage. Pour chaque concept il tient une fourchette, l'écart entre le niveau le plus bas et le niveau le plus haut qu'il juge encore plausibles, et c'est la largeur de cette fourchette qui dit à quel point il est sûr de lui. Large ne veut pas dire faible : large veut dire qu'il n'a pas encore de quoi trancher.",
-            "À chaque réponse, la fourchette se resserre. La confiance n'est donc pas une donnée entretenue à côté du score, elle est la fourchette elle-même. Sous le capot, la maîtrise de l'élève et la difficulté de chaque question sont deux gaussiennes sur une même échelle de logit, mises à jour par un filtre de type Kalman, et la variance est la confiance.",
-            "Les points d'expérience suivent la même règle : ils ne sont versés que sur la hausse de la borne basse de la fourchette. Reposer une question déjà facile ne rapporte donc rien, parce que cette borne ne bouge pas.",
+            "Chaque réponse resserre la fourchette, et le temps la rouvre : la confiance se dégrade à taux fixe par jour d'absence. Ce que l'élève gagne en répondant, il le reperd en ne revenant pas, et c'est cet équilibre que le moteur entretient. La confiance n'est donc pas une donnée entretenue à côté du score, elle est la fourchette elle-même. Sous le capot, la maîtrise de l'élève et la difficulté de chaque question sont deux gaussiennes sur une même échelle de logit, mises à jour par un filtre de type Kalman, et la variance est la confiance.",
+            "Les points d'expérience suivent la même règle : le moteur retient le plus haut niveau prouvé sur un concept et ne paie que le terrain gagné au-dessus. Reposer une question déjà facile ne rapporte donc rien, non pas parce que l'estimation ne bouge pas, mais parce qu'elle ne dépasse pas ce qui a déjà été payé. Ce repère s'érode avec l'oubli, de sorte que réapprendre un concept perdu de vue se paie à nouveau.",
           ],
           figure: 'edukai-interval',
         },
@@ -105,7 +106,8 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
           heading: 'Comment la question suivante est choisie',
           paragraphs: [
             "Un moteur qui cherche à faire réussir l'élève lui sert des questions faciles, et une séance où tout passe n'apprend rien. Edukai prend le problème dans l'autre sens : il se fixe d'abord le taux de réussite qu'il veut obtenir, autour de 75 %, et c'est de cette cible qu'il déduit la difficulté de la question à servir. La difficulté n'est pas choisie puis subie, elle est calculée pour que l'issue reste incertaine.",
-            "À côté de la cible, une zone de 60 à 85 % de réussite prévue sert à juger si une question reste productive, ni trop facile ni trop difficile. Après trois échecs d'affilée, la cible passe à 90 %, délibérément au-dessus de cette zone, le temps de remettre l'élève en selle. L'espacement des révisions sort de la même logique, par inversion d'un taux d'oubli, borné entre un et six jours, sans table d'intervalles à maintenir.",
+            "Une zone de 60 à 85 % de réussite prévue est définie comme la bande productive, mais elle ne filtre rien pour l'instant : c'est un garde-fou écrit et testé, pas encore branché sur la décision. Après trois échecs d'affilée, la cible passe de 75 à 90 %, délibérément au-dessus de cette bande, le temps de remettre l'élève en selle.",
+            "L'espacement des révisions ne sort pas d'une table d'intervalles mais de cette même fourchette : elle se rouvre à taux fixe par jour d'absence, et la date de révision est le moment où elle sera retombée à l'ignorance de départ. L'intervalle est donc une inversion de ce taux d'oubli, borné entre un et six jours, les deux horizons que SM-2 donne pour la consolidation et le premier espacement réel.",
           ],
           figure: 'edukai-target',
         },

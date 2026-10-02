@@ -81,14 +81,14 @@ const CYCLE: FigureDefinition = {
 
 const INTERVAL: FigureDefinition = {
   caption:
-    'La largeur de la fourchette est la confiance du modèle. À centre égal, une fourchette étroite veut dire qu’il a tranché.',
+    'La largeur de la fourchette est la confiance du modèle. Chaque réponse la resserre, et le temps la rouvre.',
   description:
-    'Deux états du même concept, lus sur une même échelle horizontale graduée fragile, en cours, solide, acquis. Au début, la courbe est large et plate et la fourchette couvre presque toute l’échelle, de fragile jusqu’au-delà de solide : le modèle n’a pas encore de quoi trancher. Après plusieurs réponses, la même courbe est resserrée et pointue, et la fourchette ne couvre plus qu’une bande étroite entre en cours et solide. Le centre de l’estimation est laissé identique dans les deux états, pour isoler ce qui change : la largeur.',
+    'Trois états du même concept, lus sur une même échelle horizontale graduée fragile, en cours, solide, acquis. Au début, la courbe est large et plate et la fourchette couvre presque toute l’échelle, de fragile jusqu’au-delà de solide : le modèle n’a pas encore de quoi trancher. Après plusieurs réponses, la même courbe est resserrée et pointue, et la fourchette ne couvre plus qu’une bande étroite entre en cours et solide. Après une absence, la courbe s’est rouverte : la fourchette est de nouveau plus large que dans l’état précédent, sans revenir jusqu’à sa largeur de départ. Le centre de l’estimation est laissé identique dans les trois états, pour isoler ce qui change : la largeur.',
   drawing: (
-    <svg viewBox="0 0 360 270" className="fig-svg" aria-hidden="true" focusable="false">
+    <svg viewBox="0 0 360 388" className="fig-svg" aria-hidden="true" focusable="false">
       <g className="fig-guide">
         {LADDER.map((tick) => (
-          <line key={tick.label} x1={tick.x} y1={30} x2={tick.x} y2={238} />
+          <line key={tick.label} x1={tick.x} y1={30} x2={tick.x} y2={356} />
         ))}
       </g>
 
@@ -117,10 +117,24 @@ const INTERVAL: FigureDefinition = {
       </g>
       <circle className="fig-point" cx={192} cy={212} r={4} />
 
-      <line className="fig-axis" x1={22} y1={238} x2={344} y2={238} />
+      <text className="fig-step" x={22} y={250}>
+        Après une absence : rouverte
+      </text>
+      <path
+        className="fig-curve"
+        d="M 110 316 C 146 316, 152 268, 192 268 C 232 268, 238 316, 274 316"
+      />
+      <g className="fig-span">
+        <line x1={110} y1={330} x2={274} y2={330} />
+        <line x1={110} y1={323} x2={110} y2={337} />
+        <line x1={274} y1={323} x2={274} y2={337} />
+      </g>
+      <circle className="fig-point" cx={192} cy={330} r={4} />
+
+      <line className="fig-axis" x1={22} y1={356} x2={344} y2={356} />
       <g className="fig-tick">
         {LADDER.map((tick) => (
-          <text key={tick.label} x={tick.x} y={258} textAnchor="middle">
+          <text key={tick.label} x={tick.x} y={376} textAnchor="middle">
             {tick.label}
           </text>
         ))}
