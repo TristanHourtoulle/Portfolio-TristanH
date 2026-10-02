@@ -50,3 +50,6 @@ design-to-code
 
 # Playwright CLI debris (ad hoc verification scripts, not project tooling)
 .playwright-cli/
+
+# Notes de travail locales, sans place dans un depot public
+docs/
