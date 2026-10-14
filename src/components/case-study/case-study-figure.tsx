@@ -23,7 +23,7 @@ const LADDER = [
 const CYCLE_STEPS = [
   { y: 6, label: 'Un cours importé' },
   { y: 74, label: 'Ses concepts extraits' },
-  { y: 160, label: 'Une question choisie' },
+  { y: 160, label: 'Une question fabriquée' },
   { y: 228, label: 'La réponse de l’élève' },
   { y: 296, label: 'L’estimation révisée' },
 ];
@@ -44,7 +44,7 @@ const CYCLE: FigureDefinition = {
   caption:
     'Le cours ne passe qu’une fois par l’extraction. Les trois dernières étapes, elles, tournent en boucle.',
   description:
-    'Enchaînement vertical de cinq étapes. Les deux premières n’ont lieu qu’une fois par cours : un cours importé, puis ses concepts extraits. Les trois suivantes forment une boucle : une question est choisie, l’élève répond, l’estimation de sa maîtrise est révisée. Une flèche de retour remonte de cette révision vers le choix de la question, et le tour reprend à chaque réponse.',
+    'Enchaînement vertical de cinq étapes. Les deux premières n’ont lieu qu’une fois par cours : un cours importé, puis ses concepts extraits. Les trois suivantes forment une boucle : une question est fabriquée, l’élève répond, l’estimation de sa maîtrise est révisée. Une flèche de retour remonte de cette révision vers la fabrication de la question, et le tour reprend à chaque réponse.',
   drawing: (
     <svg viewBox="0 0 360 366" className="fig-svg" aria-hidden="true" focusable="false">
       <g className="fig-box">

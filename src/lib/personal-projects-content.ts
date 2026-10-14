@@ -3,7 +3,7 @@ import type { PersonalProject } from './types';
 export const PERSONAL_PROJECTS: PersonalProject[] = [
   {
     teaser:
-      'Un cours importé devient des questions, choisies par un modèle qui estime la maîtrise de chaque concept.',
+      'Un cours importé devient des questions, taillées par un modèle qui estime la maîtrise de chaque concept.',
     page: {
       slug: 'edukai',
       provenance: 'perso',
@@ -18,7 +18,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       periodInline: 'depuis 2024',
       period: 'Depuis 2024',
       publishedTimeIso: '2024-01-01',
-      lead: "Application iOS pour les lycéens : on importe un cours, l'application en extrait les concepts et interroge dessus. Un moteur pédagogique entretient une estimation statistique de la maîtrise de chaque concept et de la difficulté de chaque question, et choisit la question suivante pour viser un taux de réussite cible.",
+      lead: "Application iOS pour les lycéens : on importe un cours, l'application en extrait les concepts et interroge dessus. Un moteur pédagogique entretient une estimation statistique de la maîtrise de chaque concept et de la difficulté de chaque question, et commande la question suivante pour viser un taux de réussite cible.",
       metaDescription:
         "Application iOS qui transforme un cours importé en questions, avec un moteur pédagogique qui estime la maîtrise de chaque concept et vise un taux de réussite cible.",
       stack: [
@@ -84,7 +84,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
         {
           heading: "D'où vient le projet",
           paragraphs: [
-            "Edukai part d'une idée à moi, que j'ai proposée en projet de fin d'études à Epitech, sur le parcours entrepreneuriat, l'un des trois ouverts. Nous étions trois à la porter. Le projet a démarré en 2024, s'est achevé en février 2026, et je développe l'application sur mon temps libre depuis.",
+            "Edukai part d'une idée à moi, que j'ai proposée en projet de fin d'études à Epitech, sur le parcours entrepreneuriat, l'un des trois proposés. Nous étions trois à la porter. Le projet a démarré en 2024, s'est achevé en février 2026, et je développe l'application sur mon temps libre depuis.",
             "Le problème tient en une phrase que tout le monde a vécue : on apprend un cours par cœur pour un contrôle, et trois mois plus tard il n'en reste rien. C'est coûteux en temps et en énergie, et inefficace sur la durée. Un lycéen a ses cours, pas le temps de fabriquer ses propres questions, et aucune idée de ce qu'il maîtrise réellement. L'application prend le cours en entrée et rend les deux choses qui manquent, des questions et une mesure.",
             "Le nom mélange l'éducation et l'intelligence artificielle. La mascotte est un manchot, symbole de travail collectif.",
           ],
@@ -108,8 +108,10 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
         {
           heading: "Ce que fait l'application",
           paragraphs: [
-            "Le parcours tient en cinq étapes. On importe un cours, l'application en extrait les concepts qu'il contient, puis elle choisit une question, l'élève répond, et l'estimation de sa maîtrise est révisée.",
-            "Les trois dernières étapes tournent en boucle, et c'est tout l'intérêt : chaque réponse change ce que l'application sait de l'élève, donc elle change aussi la question suivante.",
+            "Le parcours tient en cinq étapes. On importe un cours, l'application en extrait les concepts qu'il contient, puis une question est fabriquée, l'élève répond, et l'estimation de sa maîtrise est révisée.",
+            "L'extraction est une lecture libre du cours : rien n'est pioché dans une liste imposée. Chaque concept proposé est ensuite confronté à tous ceux que l'application connaît déjà, et selon qu'il leur ressemble assez ou non, il les rejoint ou il est créé et rattaché au référentiel de sa matière.",
+            "Dès l'import terminé, un travail de fond fabrique trois questions à choix multiple par concept. Faute d'élève à qui les ajuster, elles visent une difficulté neutre : le réglage fin ne commence qu'une fois que quelqu'un répond.",
+            "Les trois dernières étapes tournent ensuite en boucle, et c'est tout l'intérêt : chaque réponse change ce que l'application sait de l'élève, donc elle change aussi la question suivante.",
           ],
           figure: 'edukai-cycle',
         },
@@ -124,9 +126,11 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
         {
           heading: 'Une fourchette plutôt qu\'un score',
           paragraphs: [
-            "Le moteur ne range pas l'élève derrière un pourcentage. Pour chaque concept il tient une fourchette, l'écart entre le niveau le plus bas et le niveau le plus haut qu'il juge encore plausibles, et c'est la largeur de cette fourchette qui dit à quel point il est sûr de lui. Large ne veut pas dire faible : large veut dire qu'il n'a pas encore de quoi trancher.",
+            "Un seuil unique, du type « acquis au-dessus de 50 % de bonnes réponses », serait commode et faux : il met derrière le même chiffre l'élève qui a compris et celui qui a simplement eu de la chance sur trois questions. La maîtrise n'est jamais binaire, et la mesurer par un point revient à jeter ce qu'on ne sait pas encore.",
+            "Le moteur ne range donc pas l'élève derrière un pourcentage. Pour chaque concept il tient une fourchette, l'écart entre le niveau le plus bas et le niveau le plus haut qu'il juge encore plausibles, et c'est la largeur de cette fourchette qui dit à quel point il est sûr de lui. Large ne veut pas dire faible : large veut dire qu'il n'a pas encore de quoi trancher.",
             "Chaque réponse resserre la fourchette, et le temps la rouvre : la confiance se dégrade à taux fixe par jour d'absence. Ce que l'élève gagne en répondant, il le reperd en ne revenant pas, et c'est cet équilibre que le moteur entretient. La confiance n'est donc pas une donnée entretenue à côté du score, elle est la fourchette elle-même. Sous le capot, la maîtrise de l'élève et la difficulté de chaque question sont deux gaussiennes sur une même échelle de logit, mises à jour par un filtre de type Kalman, et la variance est la confiance.",
             "Les points d'expérience suivent la même règle : le moteur retient le plus haut niveau prouvé sur un concept et ne paie que le terrain gagné au-dessus. Reposer une question déjà facile ne rapporte donc rien, non pas parce que l'estimation ne bouge pas, mais parce qu'elle ne dépasse pas ce qui a déjà été payé. Ce repère s'érode avec l'oubli, de sorte que réapprendre un concept perdu de vue se paie à nouveau.",
+            "« Acquis » se lit donc sur la fourchette et jamais sur une moyenne : il faut à la fois que la borne basse passe le seuil, autrement dit que même en étant pessimiste l'élève réussisse assez souvent, et que la fourchette soit assez étroite. Une estimation haute mais incertaine et une estimation sûre mais moyenne échouent toutes les deux, pour des raisons opposées. Entre l'ignorance et l'acquisition, le concept passe par quatre états plutôt que par un interrupteur.",
           ],
           figure: 'edukai-interval',
         },
@@ -134,10 +138,20 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
           heading: 'Comment la question suivante est choisie',
           paragraphs: [
             "Un moteur qui cherche à faire réussir l'élève lui sert des questions faciles, et une séance où tout passe n'apprend rien. Edukai prend le problème dans l'autre sens : il se fixe d'abord le taux de réussite qu'il veut obtenir, autour de 75 %, et c'est de cette cible qu'il déduit la difficulté de la question à servir. La difficulté n'est pas choisie puis subie, elle est calculée pour que l'issue reste incertaine.",
-            "Une zone de 60 à 85 % de réussite prévue est définie comme la bande productive, mais elle ne filtre rien pour l'instant : c'est un garde-fou écrit et testé, pas encore branché sur la décision. Après trois échecs d'affilée, la cible passe de 75 à 90 %, délibérément au-dessus de cette bande, le temps de remettre l'élève en selle.",
+            "Une zone de 60 à 85 % de réussite prévue est définie comme la bande productive, mais elle ne filtre rien pour l'instant : c'est un garde-fou écrit et testé, pas encore branché sur la décision. Le relèvement de la cible de 75 à 90 % après trois échecs d'affilée, délibérément au-dessus de cette bande pour remettre l'élève en selle, est écrit lui aussi et attend le même branchement.",
+            "Cette décision ne consiste pas à trier dans un stock figé. À chaque réponse, juste et fausse pareillement, le moteur repart de la fourchette qu'il vient de réviser, en déduit le concept à travailler et la difficulté à viser, et c'est à cette commande que la question suivante est fabriquée, dans un travail de fond pour que personne n'attende devant l'écran. Quand cette fabrication échoue, le repli prend parmi les questions déjà calibrées celle dont la difficulté est la plus proche de la cible.",
+            "Le format, lui, n'est jamais un levier de difficulté : choix multiple, vrai ou faux, texte à trous, réponses multiples, remise en ordre ou classement par catégories tournent pour la variété, et s'infléchissent seulement vers les formats les plus légers quand l'élève est en difficulté. Faire porter la difficulté au format reviendrait à la régler deux fois, dans deux endroits qui finiraient par se contredire.",
             "L'espacement des révisions ne sort pas d'une table d'intervalles mais de cette même fourchette : elle se rouvre à taux fixe par jour d'absence, et la date de révision est le moment où elle sera retombée à l'ignorance de départ. L'intervalle est donc une inversion de ce taux d'oubli, borné entre un et six jours, les deux horizons que SM-2 donne pour la consolidation et le premier espacement réel.",
           ],
           figure: 'edukai-target',
+        },
+        {
+          heading: 'Où en est le projet',
+          paragraphs: [
+            "La séance du jour pioche aujourd'hui dans tous les cours suivis plutôt que dans un seul. Elle écarte les concepts déjà acquis, classe les autres du plus faible et du plus incertain au mieux tenu, et garde un plancher par cours pour qu'un petit cours ne soit jamais enterré par un gros.",
+            "La suite serait de réviser en fonction d'une échéance, un contrôle, le bac, le brevet. Elle n'y est pas : aucune date d'examen n'est conservée côté serveur et rien dans la sélection n'en lit une. L'application sait compter les jours jusqu'à l'examen et le rappeler, mais ce compte à rebours ne change pas une seule question.",
+            "Le projet est toujours en développement, avec un premier cerveau qui tourne. Je ne sais pas jusqu'où il ira. Je veux le pousser parce qu'il me tient à cœur, et parce qu'il me rend meilleur techniquement.",
+          ],
         },
       ],
       relatedSlugs: ['degommix', 'freelance-manager'],
