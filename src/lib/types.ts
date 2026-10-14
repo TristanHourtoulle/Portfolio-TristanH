@@ -104,6 +104,27 @@ export interface CaseStudyNarrativeSection {
 }
 
 /**
+ * A promo film shown on a realisation page, played only on demand.
+ */
+export interface CaseStudyVideo {
+  src: string;
+  /** Still shown in the frame until playback actually starts. */
+  poster: string;
+  /** Intrinsic width of the picture, in pixels. */
+  width: number;
+  /** Intrinsic height of the picture, in pixels. */
+  height: number;
+  /** Section heading above the player. */
+  title: string;
+  /** What the film shows, for a reader who cannot or will not play it. */
+  description: string;
+  /** Accessible name of the start control. */
+  playLabel: string;
+  /** Running time, shown on the start control. */
+  durationLabel: string;
+}
+
+/**
  * A single outbound link to the live product.
  */
 export interface CaseStudyPageLink {
@@ -144,6 +165,8 @@ export interface CaseStudyPageContent {
   stack: readonly string[];
   /** Outbound links to the live product, shown in the sidebar and in the list row. */
   externalLinks: CaseStudyPageLink[];
+  /** Promo film, when the realisation has one. */
+  video?: CaseStudyVideo;
   gallery: CaseStudyGalleryImage[];
   /** How the gallery draws its captures. Defaults to the desktop carousel. */
   galleryLayout?: 'slider' | 'frames';

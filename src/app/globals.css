@@ -1072,6 +1072,113 @@ section + section { border-top: 1px solid var(--rule); }
   padding: 0.3rem 0.65rem;
 }
 
+/* Promo film. The shell is the phone shell the captures already use, so the
+   film inherits the same bezel and the same scroll-linked opening; only what
+   fills the screen differs. Nothing of the file is fetched until the start
+   control is pressed, so the still has to carry the whole frame until then. */
+.case-video { padding-top: clamp(2.5rem, 5vw, 3.5rem); }
+
+.case-video-layout {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+  align-items: center;
+  justify-items: center;
+}
+@media (min-width: 760px) {
+  .case-video-layout {
+    grid-template-columns: minmax(0, 17.5rem) minmax(0, 1fr);
+    justify-items: start;
+  }
+}
+
+.case-video-player {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.case-video-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--ink);
+}
+
+.case-video-still {
+  position: absolute;
+  inset: 0;
+}
+
+.case-video-start {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: var(--paper-0);
+  cursor: pointer;
+  /* The still is bright and nearly white, so the control carries its own
+     contrast: a tinted disc and a pill behind the label. The scrim only has to
+     say the surface is pressable. */
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--ink) 6%, transparent),
+    color-mix(in srgb, var(--ink) 30%, transparent)
+  );
+  transition: background-color .25s ease;
+}
+.case-video-start:hover {
+  background-color: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+/* The shell clips its overflow, so the ring is drawn inside the screen rather
+   than outside it, where it would be cut off. */
+.case-video-start:focus-visible { outline-offset: -5px; }
+
+.case-video-start-mark {
+  display: grid;
+  place-items: center;
+  width: clamp(3rem, 22%, 3.75rem);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow:
+    0 0 0 5px color-mix(in srgb, var(--paper-0) 26%, transparent),
+    0 14px 34px -14px color-mix(in srgb, var(--ink) 85%, transparent);
+  transition: transform .25s ease;
+}
+.case-video-start-mark svg { width: 46%; height: 46%; }
+.case-video-start:hover .case-video-start-mark { transform: scale(1.07); }
+
+.case-video-start-text {
+  display: grid;
+  gap: 0.1rem;
+  justify-items: center;
+  padding: 0.4rem 0.85rem 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 80%, transparent);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.case-video-start-text .mono {
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  opacity: 0.84;
+}
+
+.case-video-text { max-width: 34rem; }
+.case-video-text h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); }
+.case-video-text p { margin-top: 0.85rem; color: var(--muted); }
+
 .case-screens { padding-top: clamp(2.5rem, 5vw, 3.5rem); }
 
 .screens-slider { position: relative; }
@@ -1713,6 +1820,9 @@ section + section { border-top: 1px solid var(--rule); }
   aspect-ratio: 125 / 37;
   border-radius: 999px;
   background: #0B0A08;
+  /* Decorative, and it sits above the screen: it must never swallow a click
+     meant for what is inside the shell. */
+  pointer-events: none;
 }
 
 .browser-frame {

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { CaseStudyHero } from '@/components/case-study/case-study-hero';
 import { CaseStudyGallery } from '@/components/case-study/case-study-gallery';
 import { CaseStudyContent } from '@/components/case-study/case-study-content';
+import { CaseStudyVideo } from '@/components/case-study/case-study-video';
 import { CaseStudyRelated } from '@/components/case-study/case-study-related';
 import { CtaSection } from '@/components/sections/cta-section';
 import { SiteFooter } from '@/components/site-footer';
@@ -91,6 +92,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </div>
         </nav>
         <CaseStudyHero page={page} />
+        {page.video && <CaseStudyVideo video={page.video} />}
         <CaseStudyGallery
           images={page.gallery}
           label={page.title}

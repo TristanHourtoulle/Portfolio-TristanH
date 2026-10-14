@@ -34,6 +34,17 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
         'OpenAI',
       ],
       externalLinks: [],
+      video: {
+        src: '/videos/projects/edukai/video-promo.mp4',
+        poster: '/images/projects/edukai/video-promo-affiche.webp',
+        width: 1080,
+        height: 1920,
+        title: 'Edukai en 32 secondes',
+        description:
+          "Film de présentation sans voix off : un cours de biologie est passé au crible, ses concepts clés sont nommés un à un, l'application en tire des questions à choix multiple, et la fourchette de maîtrise se resserre à mesure que les réponses tombent.",
+        playLabel: "Lire la vidéo de présentation d'Edukai, 32 secondes, avec du son",
+        durationLabel: '32 s · avec du son',
+      },
       galleryLayout: 'frames',
       gallery: [
         {
