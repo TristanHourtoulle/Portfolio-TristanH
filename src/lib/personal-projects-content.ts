@@ -41,7 +41,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
         height: 1920,
         title: 'Edukai en 32 secondes',
         description:
-          "Film de présentation sans voix off : un cours de biologie est passé au crible, ses concepts clés sont nommés un à un, l'application en tire des questions à choix multiple, et la fourchette de maîtrise se resserre à mesure que les réponses tombent.",
+          "Film de présentation sans voix off : il s'ouvre sur une pile de cours en pagaille, en tire un cours de biologie qu'il passe au crible, nomme ses concepts clés un à un, et montre l'application en faire des questions à choix multiple.",
         playLabel: "Lire la vidéo de présentation d'Edukai, 32 secondes, avec du son",
         durationLabel: '32 s · avec du son',
       },
@@ -84,8 +84,25 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
         {
           heading: "D'où vient le projet",
           paragraphs: [
-            "Edukai est né de mon projet de fin d'études à Epitech, commencé en 2024. Le projet de fin d'études s'est achevé en février 2026, et je développe l'application sur mon temps libre depuis.",
-            "Le point de départ était simple à formuler et difficile à tenir : un lycéen a ses cours, pas le temps de fabriquer ses propres questions, et aucune idée de ce qu'il maîtrise réellement. L'application prend le cours en entrée et rend les deux choses qui manquent, des questions et une mesure.",
+            "Edukai part d'une idée à moi, que j'ai proposée en projet de fin d'études à Epitech, sur le parcours entrepreneuriat, l'un des trois ouverts. Nous étions trois à la porter. Le projet a démarré en 2024, s'est achevé en février 2026, et je développe l'application sur mon temps libre depuis.",
+            "Le problème tient en une phrase que tout le monde a vécue : on apprend un cours par cœur pour un contrôle, et trois mois plus tard il n'en reste rien. C'est coûteux en temps et en énergie, et inefficace sur la durée. Un lycéen a ses cours, pas le temps de fabriquer ses propres questions, et aucune idée de ce qu'il maîtrise réellement. L'application prend le cours en entrée et rend les deux choses qui manquent, des questions et une mesure.",
+            "Le nom mélange l'éducation et l'intelligence artificielle. La mascotte est un manchot, symbole de travail collectif.",
+          ],
+        },
+        {
+          heading: 'La première version, sur le web',
+          paragraphs: [
+            "La v1 était un site. On y déposait un cours ou des notes de cours, l'application les analysait, et il en sortait séparément un résumé et une liste de vingt questions d'entraînement. Les statistiques se limitaient à un pourcentage de bonnes réponses, avec un historique pour suivre la progression.",
+            "Une grande part de l'effort est passée dans le design et l'expérience : la maquette a été refaite plus de trois fois avant de nous satisfaire. Le but n'était pas de livrer un outil de plus, que personne ne comprendrait ni n'aurait envie d'ouvrir deux fois.",
+            "Côté école, toutes les notes du projet se sont jouées sur cette version, et c'est elle qui a validé l'année et le module.",
+          ],
+        },
+        {
+          heading: 'Reprendre le projet seul',
+          paragraphs: [
+            "En mars 2026, mes deux coéquipiers sont partis, l'un en CDI, l'autre à son compte. J'ai repris le projet seul, et j'ai commencé par l'ouvrir en grand : ce qui tenait, ce qui ne tenait pas, et pourquoi. Nommer les faiblesses de sa propre solution est la partie la moins agréable de l'exercice, et c'est celle qui a décidé de la suite.",
+            "Deux conclusions en sont sorties. La première n'est pas technique : le web fermait le marché. Un lycéen révise dans le bus et entre deux cours, sur son téléphone, pas devant un navigateur. La v2 serait donc une application mobile, et ce choix a entraîné tout le reste.",
+            "La seconde portait sur le moteur. Mesurer la maîtrise par un pourcentage de bonnes réponses, et servir les questions dans l'ordre où elles sortaient, ne valait pas mieux qu'une fiche de révision. Il fallait un cœur plus précis et mieux ordonné, construit sur des notions établies plutôt que sur des règles inventées au fil de l'eau : la courbe de l'oubli et la difficulté adaptative.",
           ],
         },
         {
