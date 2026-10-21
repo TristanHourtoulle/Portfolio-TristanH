@@ -25,7 +25,7 @@ export function SiteFooter() {
               {SITE_CONFIG.brandName}
             </Link>
           </p>
-          <p>Développeur web full-stack, de la spec aux tests.</p>
+          <p>Développeur web full-stack · Recherche de CDI</p>
           <p className="copyright">
             © {currentYear} {SITE_CONFIG.brandName}. Tous droits réservés.
           </p>

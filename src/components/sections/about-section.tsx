@@ -13,7 +13,7 @@ export function AboutSection() {
       <div className="wrap">
         <SectionHeading
           eyebrow="À propos"
-          title="Ce que je fais entrer dans une équipe"
+          title="Mon expérience et ce que je cherche pour la suite"
           titleId="apropos-title"
         />
         <div className="about-grid">

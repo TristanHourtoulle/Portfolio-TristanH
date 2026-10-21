@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     template: '%s · Tristan Hourtoulle',
   },
   description:
-    "Développeur web full-stack, quatre produits web livrés en stage puis en freelance, de la spec aux tests. Je cherche un CDI en équipe produit à partir de début octobre 2026.",
+    'Tristan Hourtoulle, développeur web full-stack en recherche de CDI. Projets clients en React, Next.js et TypeScript : réservation, calcul d’impact et CMS multi-sites.',
   openGraph: {
     title: 'Tristan Hourtoulle · Développeur web full-stack',
     description:
-      'Quatre produits web livrés en stage puis en freelance, de la spec aux tests. Disponible en CDI début octobre 2026, à Mulhouse, Strasbourg ou en remote.',
+      'Tristan Hourtoulle, développeur web full-stack en recherche de CDI. Projets clients en React, Next.js et TypeScript : réservation, calcul d’impact et CMS multi-sites.',
     type: 'website',
     locale: 'fr_FR',
     siteName: SITE_CONFIG.brandName,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Tristan Hourtoulle · Développeur web full-stack',
     description:
-      'Quatre produits web livrés en stage puis en freelance, de la spec aux tests. Disponible en CDI début octobre 2026, à Mulhouse, Strasbourg ou en remote.',
+      'Tristan Hourtoulle, développeur web full-stack en recherche de CDI. Projets clients en React, Next.js et TypeScript : réservation, calcul d’impact et CMS multi-sites.',
   },
   ...(googleSiteVerification
     ? { verification: { google: googleSiteVerification } }

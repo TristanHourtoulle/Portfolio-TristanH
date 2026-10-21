@@ -1,43 +1,34 @@
 import type { ClientCaseStudyCopy } from '../types';
 
 export const MODULOOP_IMPACT_COPY: ClientCaseStudyCopy = {
-  lead: "Le calcul d'impact environnemental d'un projet d'aménagement se faisait à la main, sur tableur. J'ai livré à la place un outil qui chiffrait, comparait deux scénarios et sortait un document présentable au client.",
+  lead: 'Pendant mon stage chez Moduloop, j’ai développé une application pour calculer l’impact environnemental des projets d’aménagement. Elle remplaçait un travail sur tableur et permettait de comparer des scénarios puis d’exporter les résultats en PDF.',
   metaDescription:
-    "Application web qui remplace le calcul d'impact environnemental sur tableur : catalogue produits, comparaison neuf/réemploi et export PDF.",
+    'Calculateur d’impact environnemental développé chez Moduloop : catalogue produits, comparaison du neuf et du réemploi, résultats par projet et export PDF.',
   statusBadge: 'Mise en production en juin 2024',
-  statusDetail: 'Mise en production sur moduloop-impact.fr en juin 2024, à la fin de mon stage.',
+  statusDetail: 'Application mise en production en juin 2024, à la fin de mon stage.',
   narrative: [
     {
-      heading: 'Le point de départ',
+      heading: 'Le calcul avant l’application',
       paragraphs: [
-        "Les acteurs de l'aménagement doivent mesurer l'impact environnemental de leurs projets, sans outil adapté à leur métier.",
-        "Chez Moduloop, ce calcul était manuel. Chaque projet repartait d'un tableur, avec la saisie et les formules à reprendre à chaque fois. Le résultat finissait par tomber, mais au prix d'un travail refait projet après projet, et sous une forme que personne ne pouvait montrer telle quelle.",
+        'Chez Moduloop, les données des projets d’aménagement étaient saisies dans un tableur pour en calculer l’impact environnemental. Le besoin était de regrouper cette saisie, le calcul et la présentation des résultats dans un outil dédié.',
       ],
     },
     {
-      heading: "Ce que j'ai construit",
+      heading: 'Composer et comparer les projets',
       paragraphs: [
-        "Un outil de calcul complet. L'utilisateur compose son projet à partir d'un catalogue de produits, en neuf ou en réemploi, et l'outil calcule quatre indicateurs environnementaux, puis les met en visuel plutôt qu'en colonnes de chiffres.",
-        "Deux scénarios peuvent être montés côte à côte, l'un en neuf et l'autre en réemploi, pour chiffrer l'écart au lieu de l'estimer. Chaque projet garde son détail produit par produit, et l'outil remonte les produits qui pèsent le plus dans le total.",
+        'J’ai développé un catalogue de produits neufs et de réemploi à partir duquel l’utilisateur compose son projet. L’application calcule quatre indicateurs environnementaux et permet de comparer deux scénarios, avec le détail des résultats par produit.',
       ],
     },
     {
-      heading: 'Ce que ça a changé au quotidien',
+      heading: 'Présenter les résultats',
       paragraphs: [
-        "À la livraison, le calcul manuel avait disparu : la donnée était saisie une fois et le résultat suivait, y compris quand le projet changeait en cours de route.",
-        "Surtout, chaque résultat s'exportait en PDF. C'est le point qui a le plus compté pour Moduloop. Un tableur ne se montre pas à un client : il porte les formules, les brouillons, les onglets de travail. Un document exporté se présente en réunion et s'envoie tel quel. L'outil ne servait donc pas seulement à calculer, il servait à défendre le chiffre devant le client final.",
+        'Les résultats sont présentés dans l’application et peuvent être exportés en PDF. Moduloop pouvait ainsi utiliser les mêmes données pour travailler sur un projet et pour en présenter les résultats à son client.',
       ],
     },
     {
-      heading: 'Deux outils, deux moments',
+      heading: 'La suite de la collaboration',
       paragraphs: [
-        "Moduloop Impact répondait à une question précise : quel est l'impact d'un projet déjà défini. À la fin du stage, Moduloop m'a repris en freelance pour la maintenance de l'outil, puis pour construire Moduloop Kits, qui couvrait l'autre moitié du besoin, en amont : composer une offre et la chiffrer avant même que le projet existe.",
-      ],
-    },
-    {
-      heading: 'La fin de mon stage',
-      paragraphs: [
-        "L'outil a été mis en production sur moduloop-impact.fr en juin 2024, à la fin de mon stage.",
+        'L’application a été mise en production en juin 2024, à la fin de mon stage de troisième année. J’en ai ensuite assuré la maintenance en freelance, avant de développer Moduloop Kits pour la préparation des offres commerciales.',
       ],
     },
   ],

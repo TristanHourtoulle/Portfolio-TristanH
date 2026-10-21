@@ -6,10 +6,10 @@ export function ProcessSection() {
     <section id="processus" aria-labelledby="processus-title">
       <div className="wrap">
         <SectionHeading
-          eyebrow="Processus"
-          title="Comment je travaille sur un produit"
+          eyebrow="Méthode de travail"
+          title="Comment j’aborde un développement"
           titleId="processus-title"
-          lead="Quatre étapes, toujours dans cet ordre, sur les quatre produits que j'ai livrés."
+          lead="Du besoin initial aux retours sur les premières versions."
         />
         <ol className="process-list">
           {PROCESS_STEPS.map((step) => (

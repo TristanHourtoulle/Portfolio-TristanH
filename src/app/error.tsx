@@ -18,10 +18,9 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
         <section className="error-page" aria-labelledby="error-title">
           <div className="wrap">
             <span className="eyebrow">Erreur</span>
-            <h1 id="error-title">Quelque chose s&apos;est mal passé</h1>
+            <h1 id="error-title">La page n’a pas pu s’afficher</h1>
             <p className="lead">
-              Cette page n&apos;a pas pu s&apos;afficher. Vous pouvez réessayer, ou revenir à
-              l&apos;accueil. Si le problème persiste, écrivez-moi et je regarde.
+              Vous pouvez réessayer ou revenir à l’accueil. Si le problème persiste, vous pouvez me le signaler par e-mail.
             </p>
             <div className="error-actions">
               <button className="btn btn-primary" type="button" onClick={reset}>

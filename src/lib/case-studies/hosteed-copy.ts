@@ -1,38 +1,41 @@
 import type { ClientCaseStudyCopy } from '../types';
 
 export const HOSTEED_COPY: ClientCaseStudyCopy = {
-  lead: "Plateforme de location de logements dédiée à Madagascar, sur le modèle d'Airbnb : recherche, fiches logements, réservation et paiement en ligne, reconstruite de zéro après un site WordPress devenu instable.",
+  lead: 'J’ai reconstruit une plateforme de location de logements à Madagascar après des problèmes de stabilité sur son site WordPress. Le projet couvrait la recherche de logements, la réservation, le paiement en ligne et le back-office.',
   metaDescription:
-    "Plateforme de réservation de logements à Madagascar, reconstruite de zéro après un WordPress instable : recherche, réservation, paiement Stripe et back-office.",
-  statusBadge: 'Livrée en novembre 2025',
+    'Refonte d’une plateforme de location à Madagascar : recherche de logements, réservation, paiement Stripe et back-office. Mission freelance de mai à novembre 2025.',
+  statusBadge: 'Livrée au client en novembre 2025',
   statusDetail:
-    "Livrée en novembre 2025, en phase de test chez le client à la fin de mon intervention.",
+    'Plateforme livrée et en test chez le client en novembre 2025, à la fin de mon intervention.',
   narrative: [
     {
-      heading: 'Le point de départ',
+      heading: 'Pourquoi refaire la plateforme',
       paragraphs: [
-        "Hosteed est une plateforme de location de logements dédiée à Madagascar, sur le modèle d'Airbnb : on cherche un séjour, on consulte une fiche logement, on réserve et on paie en ligne.",
-        "Avant ce projet, le site tournait sur WordPress et posait de gros problèmes de performance. Les pages étaient lentes, le comportement imprévisible, et le site allait jusqu'à tomber complètement. C'est précisément ce qui a déclenché le projet : le sujet n'était plus une fonctionnalité manquante, c'était un site sur lequel on ne pouvait plus compter.",
+        'Le site existant fonctionnait sous WordPress. Ses lenteurs et ses interruptions de service avaient conduit le client à demander une refonte. Le besoin portait sur l’ensemble de la plateforme, et pas seulement sur quelques écrans.',
       ],
     },
     {
-      heading: "Ce que j'ai construit",
+      heading: 'Le parcours de réservation',
       paragraphs: [
-        "Plutôt que de rafistoler l'existant, la plateforme a été reprise depuis la base, sur une architecture faite pour ce métier. Le parcours complet a été reconstruit : recherche de séjour, fiche logement, réservation et paiement, côté voyageur comme côté hôte.",
-        "Le paiement passe par Stripe, de la demande de réservation jusqu'à l'encaissement. Un back-office dédié permet à l'équipe de suivre les logements, les réservations et les paiements sans qu'un développeur ait à intervenir.",
+        'J’ai développé le parcours de recherche, les fiches des logements, la réservation et le paiement avec Stripe, ainsi que les fonctionnalités destinées aux hôtes.',
       ],
     },
     {
-      heading: 'Le plus difficile',
+      heading: 'Le travail côté administration',
       paragraphs: [
-        "Quatre chantiers avançaient en même temps, et aucun ne pouvait attendre les trois autres : le tunnel de paiement Stripe, un modèle de données d'une cinquantaine de tables, la performance qui était la raison même du projet, et le back-office.",
-        "Aucun de ces quatre n'a été plus dur que les autres, et c'est justement ce qui rendait le projet exigeant. Le back-office, en particulier, se traite trop souvent comme un reste : ici, c'est l'écran que l'équipe ouvre tous les jours, donc il a été traité comme un produit à part entière.",
+        'Le back-office permettait à l’équipe de suivre les logements, les réservations et les paiements. Il faisait partie du périmètre dès le développement, afin que l’exploitation de la plateforme ne dépende pas d’interventions dans le code.',
       ],
     },
     {
-      heading: 'La fin de mon intervention',
+      heading: 'Les chantiers techniques',
       paragraphs: [
-        "Mon intervention a couru de mai à novembre 2025. À sa fin, la plateforme était livrée et en phase de test chez le client, qui la validait avant ouverture : elle n'était pas encore ouverte au public, et je n'ai pas suivi le projet au-delà.",
+        'Le projet associait un modèle de données d’une cinquantaine de tables, l’intégration du paiement, le travail sur les performances et la construction du back-office. Ces éléments devaient fonctionner ensemble dans un même parcours de réservation.',
+      ],
+    },
+    {
+      heading: 'À la fin de la mission',
+      paragraphs: [
+        'J’ai travaillé sur Hosteed de mai à novembre 2025. À la fin de la mission, la plateforme était livrée et en test chez le client avant son ouverture au public. Je n’ai pas suivi la suite du projet.',
       ],
     },
   ],

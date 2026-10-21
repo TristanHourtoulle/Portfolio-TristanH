@@ -1,45 +1,47 @@
 import type { ClientCaseStudyCopy } from '../types';
 
 export const QUINTYSS_COPY: ClientCaseStudyCopy = {
-  lead: "CMS multi-sites repris en V3 : un socle commun capable de faire vivre plusieurs sites clients, et un éditeur qui appliquait les modifications widget par widget sans redéploiement.",
+  lead: 'J’ai participé à la V3 d’un CMS pour administrer plusieurs sites clients depuis une même plateforme. Mon travail portait sur l’architecture, le développement, les revues de code et un éditeur permettant de publier les modifications sans redéploiement.',
   metaDescription:
-    "CMS multi-sites : un socle commun pour plusieurs sites clients et un éditeur appliquant les modifications widget par widget, sans redéploiement.",
-  statusBadge: 'Intervention terminée',
+    'Développement d’un CMS multi-sites : architecture commune, édition des pages sans redéploiement, revues de code et suivi technique de mars 2025 à août 2026.',
+  statusBadge: 'Mission terminée en août 2026',
   statusDetail:
-    "À la fin de mon intervention, en août 2026, deux sites étaient en production et un troisième en attente de validation.",
+    'À la fin de ma mission : deux sites en production et un troisième déployé, en attente de validation.',
   narrative: [
     {
-      heading: 'Le point de départ',
+      heading: 'Passer à un socle multi-sites',
       paragraphs: [
-        "Quintyss édite des sites pour ses propres clients. La V2 ne tenait plus : l'architecture était à bout de souffle, chaque évolution coûtait de plus en plus cher, et il devenait impossible de multiplier les sites clients sans repartir presque de zéro à chaque fois.",
-        "La V3 a donc été reprise sur cette question précise : faire en sorte qu'un seul socle puisse faire vivre plusieurs sites clients distincts, sans que chaque nouveau client soit un projet entier.",
+        'Quintyss développe des sites pour ses clients. La V3 devait permettre d’en accueillir plusieurs sur une architecture commune, tout en conservant les contenus, les pages et la charte propres à chacun.',
       ],
     },
     {
-      heading: 'Mon rôle',
+      heading: 'Mon rôle dans le développement',
       paragraphs: [
-        "Je suis intervenu comme développeur fullstack indépendant sur le projet, de mars 2025 à août 2026. Quatre responsabilités menées de front : l'architecture de la plateforme, la revue du code produit par l'équipe, les choix techniques, et le découpage des tâches avec leur suivi.",
-        "Pour Quintyss, cela veut dire une personne qui tient la cohérence de l'ensemble et qui assume les arbitrages, plutôt qu'une addition d'avis techniques qui se contredisent au fil des semaines.",
+        'Je suis intervenu en freelance de mars 2025 à août 2026. En plus du développement, je participais aux choix d’architecture, à la revue du code et au découpage et au suivi des tâches.',
       ],
     },
     {
-      heading: "L'édition sans redéploiement",
+      heading: 'Publier sans redéployer',
       paragraphs: [
-        "C'est la pièce la plus structurante de l'architecture. L'éditeur traitait chaque bloc de page comme une unité de contenu à part entière, hero slider, article ou agenda, stockée et versionnée côté serveur plutôt que figée dans le code du site.",
-        "Le rendu public devait donc dépendre de l'état en base et non d'un artefact produit au build, avec une invalidation de cache assez fine pour que la page en ligne reste cohérente après chaque enregistrement. C'est ce choix qui sortait le développeur de la boucle d'édition, et c'est aussi celui qui a le plus contraint le reste de la plateforme.",
+        'L’éditeur traitait chaque bloc de page comme un contenu enregistré et versionné côté serveur. Les pages publiques utilisaient ces données plutôt qu’un contenu figé au moment du build. La gestion du cache devait donc répercuter les modifications enregistrées sur les pages concernées.',
       ],
     },
     {
-      heading: 'Pas de visuels sur cette page',
+      heading: 'Ce que cela permettait',
       paragraphs: [
-        "Le client ne souhaite pas que le produit soit montré. Cette page est donc mon compte rendu daté de mon propre travail, sans capture d'écran, sans logo et sans nom de site.",
+        'Les clients pouvaient modifier leurs pages depuis l’éditeur sans demander un nouveau déploiement. Le même socle servait à plusieurs sites, avec leurs contenus et leur présentation propres.',
       ],
     },
     {
-      heading: 'La fin de mon intervention',
+      heading: 'Pourquoi il n’y a pas de captures',
       paragraphs: [
-        "Mon intervention a couru de mars 2025 à août 2026. À sa fin, trois sites tournaient sur le socle : deux en production et un troisième déployé, en attente de validation. Chacun avait ses contenus, sa charte et ses pages propres, et tous étaient administrés depuis la même plateforme.",
-        "Le déploiement d'un nouveau site se comptait alors en heures. C'est de cette architecture que je suis le plus fier sur ce projet : elle ne se voit sur aucun écran, et c'est pourtant elle qui sépare un site de plus à maintenir d'une plateforme capable d'accueillir un nouveau client dans la journée.",
+        'Le client ne souhaite pas que le produit soit présenté visuellement. Cette étude de cas décrit donc mon intervention sans capture d’écran, logo ni nom de site client.',
+      ],
+    },
+    {
+      heading: 'À la fin de la mission',
+      paragraphs: [
+        'En août 2026, deux sites étaient en production et un troisième était déployé, en attente de validation. La mise en place d’un nouveau site sur le socle se comptait alors en heures.',
       ],
     },
   ],

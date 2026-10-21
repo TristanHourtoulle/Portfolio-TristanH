@@ -159,7 +159,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
   },
   {
     teaser:
-      'Clients, factures, acomptes et relances, avec un serveur MCP en production pour piloter le tout.',
+      'Mon outil de gestion : clients, factures, échéances et relances, relié à un serveur MCP pour préparer certaines opérations avec un agent.',
     page: {
       slug: 'freelance-manager',
       provenance: 'perso',
@@ -175,15 +175,15 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       periodInline: 'mars à août 2026',
       period: 'Mars à août 2026',
       publishedTimeIso: '2026-08-01',
-      lead: "L'outil sur lequel je gère ma propre activité de freelance : clients, propositions chiffrées, factures, acomptes, découpage en échéances et relances, avec une couche d'analyse qui calcule mon taux journalier effectif et ma concentration client.",
+      lead: 'J’ai développé l’outil que j’utilise pour gérer mon activité indépendante : clients, propositions commerciales, factures et suivi des paiements. Il rapproche aussi les tâches issues de Linear des montants à facturer et propose une interface MCP pour les agents.',
       metaDescription:
-        "Back office de freelance : clients, factures, acomptes, échéances et relances, avec un serveur MCP en production et une arithmétique monétaire exacte au centime.",
+        'Outil personnel de gestion freelance : facturation, échéances, suivi des paiements, tâches Linear et serveur MCP, avec des calculs monétaires en centimes entiers.',
       stack: ['Next.js', 'React', 'Prisma', 'PostgreSQL', 'better-auth', 'MCP', 'Railway'],
       externalLinks: [
         {
           label: 'freelance-manager.tristanhourtoulle.fr',
           href: 'https://freelance-manager.tristanhourtoulle.fr',
-          note: 'Connexion requise : les données sont rattachées à un compte.',
+          note: 'Connexion requise : les données sont propres à chaque compte.',
         },
       ],
       galleryLayout: 'frames',
@@ -223,32 +223,33 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       ],
       narrative: [
         {
-          heading: "Pourquoi je l'ai construit",
+          heading: 'Pourquoi cet outil',
           paragraphs: [
-            "Une activité de freelance tient sur des chiffres que personne ne calcule pour vous : ce qui est facturé mais pas encaissé, ce qu'une journée rapporte réellement une fois le temps non facturable compté, et la part du revenu qui dépend d'un seul client.",
-            "Je gérais cela dans des feuilles de calcul, qui répondent très bien tant qu'on ne leur demande rien de contraignant. Elles ne savent ni empêcher une erreur d'arrondi, ni recalculer une relance à partir des paiements réellement reçus. J'ai donc construit l'outil que j'utilise au quotidien.",
+            'Je suivais mon activité dans des feuilles de calcul. J’ai voulu réunir les factures, les paiements et le temps passé pour voir ce qui restait à encaisser et ce que rapportaient réellement mes missions.',
           ],
         },
         {
-          heading: "Ce que j'ai construit",
+          heading: 'Facturation et suivi du travail',
           paragraphs: [
-            "Les clients, les propositions chiffrées, les factures et les acomptes, avec le découpage d'une facture en échéances et les relances qui en découlent. Au-dessus, une couche d'analyse qui calcule mon taux journalier effectif, ma concentration client et la précision de mes estimations.",
-            "Les tâches sont synchronisées depuis Linear et portent chacune une estimation, un temps réel et une valeur facturable, ce qui permet de rapprocher le travail livré de ce qui part en facture.",
+            'L’application gère les clients, les propositions commerciales, les factures, les acomptes et les échéances. Les tâches synchronisées depuis Linear associent une estimation, un temps réel et une valeur facturable. Les analyses portent notamment sur le taux journalier effectif, la concentration du revenu par client et la précision des estimations.',
           ],
         },
         {
-          heading: 'Un serveur MCP en production',
+          heading: 'Une interface pour les agents',
           paragraphs: [
-            "L'outil expose un serveur MCP monté dans une route Next.js, délibérément placé hors de /api/* pour que la barrière par cookie ne s'y applique pas : un agent n'a pas de session de navigateur, et faire semblant du contraire aurait affaibli les deux chemins à la fois.",
-            "Le jeton n'est stocké que sous forme de hash et comparé en temps constant. Une configuration absente ou malformée renvoie un 503 plutôt que d'ouvrir l'accès. La limitation de débit est un unique upsert atomique en base, et non un compteur en mémoire : avec plusieurs instances, chacune se serait octroyé son propre quota. L'écriture d'audit est attendue avant la réponse, de sorte qu'un audit en échec fait échouer l'appel.",
-            "Le partage des pouvoirs est explicite : un agent peut préparer un brouillon de facture, il ne peut pas l'envoyer.",
+            'Un serveur MCP permet à un agent d’interagir avec l’outil. Son périmètre est limité : il peut préparer un brouillon de facture, mais pas l’envoyer. Cette séparation garde la validation finale du côté de l’utilisateur.',
           ],
         },
         {
-          heading: 'Les chiffres et leurs garde-fous',
+          heading: 'Des montants qui restent exacts',
           paragraphs: [
-            "Toute l'arithmétique monétaire se fait en centimes entiers, et le reste de la division part sur les premières échéances, de sorte que la somme des échéances retombe exactement sur le total. Les relances sont recalculées à partir des paiements réellement enregistrés plutôt que lues dans une colonne mise en cache qui finirait par mentir.",
-            "Le domaine est une couche pure, assortie de garde-fous statistiques : aucun ratio n'est affiché en dessous de cinq mesures, et un dénominateur nul rend une valeur absente plutôt qu'un infini présenté comme un résultat.",
+            'Les montants sont calculés en centimes entiers. Lorsqu’une facture est divisée en échéances, les centimes restants sont répartis pour que leur somme corresponde exactement au total. Les relances sont recalculées à partir des paiements enregistrés.',
+          ],
+        },
+        {
+          heading: 'Des statistiques avec leurs limites',
+          paragraphs: [
+            'Les ratios ne sont affichés qu’à partir de cinq mesures. Quand un calcul ne peut pas être fait, notamment en cas de dénominateur nul, l’application n’affiche pas de résultat plutôt qu’une valeur trompeuse.',
           ],
         },
       ],
@@ -257,7 +258,7 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
   },
   {
     teaser:
-      'Le score des parties de petits chevaux, en temps réel, avec une annulation que tous les joueurs partagent.',
+      'Un compteur de points pour nos parties de petits chevaux Astérix, synchronisé entre les téléphones des joueurs.',
     page: {
       slug: 'degommix',
       provenance: 'perso',
@@ -272,15 +273,15 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       periodInline: 'juillet 2026',
       period: 'Juillet 2026',
       publishedTimeIso: '2026-07-01',
-      lead: "PWA mobile qui tient le score des parties physiques du jeu de société des petits chevaux Astérix, construite pour ma mère et moi. Le plateau reste le jeu, l'application enregistre ce qui s'y passe, et tous les téléphones autour de la table restent synchronisés.",
+      lead: 'J’ai développé Dégommix pour les parties de petits chevaux Astérix avec ma mère. On continue à jouer sur le plateau ; l’application garde le score, l’historique des actions et la durée de la partie sur les téléphones des joueurs.',
       metaDescription:
-        "PWA mobile qui tient le score des parties physiques des petits chevaux Astérix : temps réel multijoueur, serveur qui fait autorité et annulation partagée entre les joueurs.",
+        'Compteur de points pour les petits chevaux Astérix : PWA mobile, synchronisation en temps réel, historique des actions et annulation partagée.',
       stack: ['Next.js', 'Socket.IO', 'PostgreSQL', 'Drizzle', 'Better Auth', 'PWA'],
       externalLinks: [
         {
           label: 'degommix.tristanhourtoulle.fr',
           href: 'https://degommix.tristanhourtoulle.fr',
-          note: 'Connexion requise : les données sont rattachées à un compte.',
+          note: 'Connexion requise : les données sont propres à chaque compte.',
         },
       ],
       galleryLayout: 'frames',
@@ -315,25 +316,33 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       ],
       narrative: [
         {
-          heading: "Pourquoi je l'ai construit",
+          heading: 'Une application à côté du plateau',
           paragraphs: [
-            "Les petits chevaux Astérix se jouent sur un plateau, autour d'une table, et ce plateau n'a aucune raison de disparaître dans un écran. Ce qui se perd en route, c'est le décompte : qui a dégommé qui, combien de fois, et depuis combien de temps la partie dure.",
-            "L'application a été construite pour ma mère et moi. Elle ne remplace pas le jeu, elle en tient le registre, et chaque téléphone autour de la table voit le même état au même moment.",
+            'Pendant les parties, nous voulions garder le compte des pions dégommés et retrouver le déroulement du jeu. Dégommix sert à noter ces actions, sans remplacer le plateau.',
           ],
         },
         {
-          heading: "Ce que j'ai construit",
+          heading: 'Un état commun à tous les joueurs',
           paragraphs: [
-            "Une PWA mobile adossée à un serveur Socket.IO qui fait autorité sur la partie. Chaque action passe par lui, reçoit un numéro de séquence et rejoint un journal strictement en ajout : il n'y a pas une seule suppression ni une seule mise à jour de ce journal dans tout le code.",
-            "Un mutex par partie, construit sur une chaîne de promesses, rend la numérotation et la résolution des annulations insensibles aux courses, même quand deux joueurs appuient en même temps.",
-            "Le réducteur qui calcule l'état à partir du journal est une fonction pure, réellement partagée entre le client et le serveur, et un test de parité vérifie que le repli complet du journal donne le même résultat que le chemin incrémental.",
+            'L’application est une PWA mobile reliée à un serveur Socket.IO. Le serveur ordonne les actions et leur attribue un numéro de séquence. Les téléphones reçoivent ainsi les mêmes événements, dans le même ordre.',
           ],
         },
         {
-          heading: "L'annulation et la reprise",
+          heading: 'Garder l’historique, même en cas d’erreur',
           paragraphs: [
-            "Annuler n'efface rien : c'est un événement de plus, qui porte le numéro de séquence visé et décrémente le compteur de l'auteur d'origine, pas celui de la personne qui annule. N'importe quel joueur peut annuler l'action d'un autre, ce qui correspond à ce qui se passe autour de la table quand quelqu'un se trompe de pion.",
-            "Le reste sert à ce que la partie survive au réseau : le JWT est vérifié dès la poignée de main du websocket contre un point d'accès JWKS, les renvois sont idempotents, un client se resynchronise à partir d'un numéro de séquence, et l'horloge est ancrée sur le serveur avec correction du décalage pour que la durée affichée soit la même partout.",
+            'Les actions sont conservées dans un journal. Une annulation ajoute un événement au lieu de supprimer l’action initiale. Chaque joueur peut corriger une saisie, y compris celle d’un autre joueur, et la correction s’applique au compteur de l’auteur de l’action.',
+          ],
+        },
+        {
+          heading: 'Reprendre après une coupure',
+          paragraphs: [
+            'La resynchronisation repart du dernier numéro de séquence reçu et les renvois d’une même action ne doivent pas la compter deux fois. La durée de la partie est calculée à partir de l’horloge du serveur pour rester cohérente entre les téléphones.',
+          ],
+        },
+        {
+          heading: 'Vérifier le calcul du score',
+          paragraphs: [
+            'Le calcul de l’état est partagé entre le client et le serveur. Un test compare le résultat obtenu en relisant tout l’historique à celui obtenu en appliquant les événements progressivement.',
           ],
         },
       ],

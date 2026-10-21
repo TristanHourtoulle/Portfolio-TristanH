@@ -44,11 +44,10 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
             Erreur 500
           </p>
           <h1 style={{ margin: '0 0 1rem', fontSize: '1.875rem', lineHeight: 1.2 }}>
-            Le site n&apos;a pas pu se charger
+            Le site n’a pas pu se charger
           </h1>
           <p style={{ margin: '0 0 1.5rem' }}>
-            Une erreur est survenue avant même l&apos;affichage de la page. Vous pouvez réessayer,
-            ou revenir à l&apos;accueil.
+            Vous pouvez réessayer ou revenir à l’accueil.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
             <button

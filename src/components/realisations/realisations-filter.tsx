@@ -10,7 +10,7 @@ interface FilterOption {
 
 const FILTER_OPTIONS: FilterOption[] = [
   { id: 'tout', label: 'Tout', href: '/realisations' },
-  { id: 'client', label: 'Client et stage', href: '/realisations?type=client' },
+  { id: 'client', label: 'Clients et stages', href: '/realisations?type=client' },
   { id: 'perso', label: 'Projets personnels', href: '/realisations?type=perso' },
 ];
 

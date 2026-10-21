@@ -15,7 +15,7 @@ import { buildRealisationsStructuredData, serializeJsonLd } from '@/lib/structur
 const SOCIAL_TITLE = `${REALISATIONS_PAGE_TITLE} · ${SITE_CONFIG.brandName}`;
 
 const PAGE_DESCRIPTION =
-  "Quatre produits web livrés en stage puis en freelance, Hosteed, Moduloop Impact, Moduloop Kits et Quintyss, et trois projets personnels, Edukai, Freelance Manager et Dégommix.";
+  'Projets de Tristan Hourtoulle : location de logements, calcul d’impact environnemental, CMS multi-sites et applications personnelles, avec le détail de ses interventions.';
 
 export const metadata: Metadata = {
   title: REALISATIONS_PAGE_TITLE,
@@ -76,10 +76,7 @@ export default async function RealisationsPage({ searchParams }: RealisationsPag
               <span className="eyebrow">Réalisations</span>
               <h1 id="realisations-title">{REALISATIONS_PAGE_TITLE}</h1>
               <p className="lead">
-                Quatre produits web livrés en stage puis en freelance, chacun mené de la spec
-                à la mise en ligne et chacun avec son étude de cas. Et trois projets
-                personnels, là pour ce qu&apos;ils m&apos;ont fait construire et que ces
-                produits ne demandaient pas.
+                Des applications développées en stage et en freelance, et des projets personnels. Pour chacune : le besoin de départ, ce que j’ai développé et les choix techniques qui ont compté.
               </p>
             </div>
 

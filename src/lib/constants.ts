@@ -67,19 +67,19 @@ export const REALISATION_MARK_SIZES = '(min-width: 900px) 96px, 104px';
 
 export const HERO_CONTENT: HeroContent = {
   titleKicker: 'Développeur web full-stack',
-  title: "Je prends une spec et j'en fais un produit qui tient.",
+  title: 'Après le freelance, je cherche mon premier CDI.',
   subtitle:
-    'Quatre produits web livrés en stage puis en freelance, en React, Next.js et TypeScript. Je cherche un CDI en équipe produit à partir de début octobre 2026.',
-  secondaryCtaLabel: 'Voir le détail des projets',
+    'J’ai développé un calculateur d’impact environnemental, une plateforme de réservation et un CMS multi-sites. Je souhaite maintenant rejoindre une équipe de développement et continuer à construire des applications en React, Next.js et TypeScript.',
+  secondaryCtaLabel: 'Découvrir mes réalisations',
   secondaryCtaHref: '/#realisations',
-  availableFromLabel: 'Prochaine disponibilité',
-  availableFromValue: 'Début octobre 2026',
-  locationNote: 'Mulhouse et Strasbourg · remote, hybride ou présentiel',
+  availableFromLabel: 'Recherche de CDI',
+  availableFromValue: 'En cours',
+  locationNote: 'Mulhouse et Strasbourg · à distance, hybride ou sur site',
 };
 
 export const CTA_CONTENT: CtaContent = {
-  title: 'Disponible pour un poste en CDI.',
-  lead: "Développeur full-stack, quatre produits web livrés en stage puis en freelance. Je cherche une équipe produit où je développe et livre au quotidien, en startup, en scale-up ou en agence, à partir de début octobre 2026.",
+  title: 'Vous recrutez un développeur full-stack ?',
+  lead: 'Je recherche mon premier CDI après deux ans d’activité indépendante menés en parallèle de mes études. Pour échanger sur le poste et votre équipe, vous pouvez m’écrire ou me contacter sur LinkedIn.',
 };
 
 interface CaseStudyHomeFacts {
@@ -92,32 +92,32 @@ interface CaseStudyHomeFacts {
 const CASE_STUDY_HOME_FACTS: Record<CaseStudySlug, CaseStudyHomeFacts> = {
   hosteed: {
     context:
-      "Plateforme de location de logements dédiée à Madagascar, sur le modèle d'Airbnb : recherche, fiches logements et réservation.",
+      'Un site de location de logements à Madagascar devait être reconstruit après des problèmes de stabilité sur WordPress.',
     contribution:
-      'Développement du parcours complet, de la recherche à la réservation, côté voyageur comme côté hôte.',
+      'J’ai développé la recherche de logements, la réservation, le paiement Stripe et le back-office.',
     statusLabel: 'Statut',
   },
   'moduloop-impact': {
     context:
-      "Les acteurs de l'aménagement doivent mesurer l'impact environnemental de leurs projets, sans outil adapté à leur métier.",
+      'Chez Moduloop, l’impact environnemental des projets d’aménagement était calculé manuellement sur tableur.',
     contribution:
-      'Outil de calcul complet : saisie des données du projet d\'aménagement et visualisation des résultats en temps réel.',
+      'J’ai développé un outil pour composer un projet, comparer le neuf et le réemploi et exporter les résultats en PDF.',
     statusLabel: 'Résultat',
     statusFollowUp:
-      "Moduloop m'a ensuite repris en freelance pour la maintenance, puis pour construire Moduloop Kits.",
+      'Après le stage, j’ai poursuivi la maintenance en freelance, puis développé Moduloop Kits.',
   },
   'moduloop-kits': {
     context:
-      "Après Moduloop Impact, Moduloop voulait proposer des kits d'aménagement prêts à l'emploi, avec un calcul immédiat de l'impact environnemental et du prix au m² de chaque kit.",
+      'Après le calcul d’impact, Moduloop avait besoin d’un outil pour préparer et chiffrer ses offres d’aménagement.',
     contribution:
-      'Catalogue de produits, composition de kits, fiches produits détaillées et suivi des projets avec leur impact calculé.',
+      'J’ai développé le catalogue, la composition des kits et le suivi des projets, avec leurs tarifs et leurs indicateurs environnementaux.',
     statusLabel: 'Statut',
   },
   quintyss: {
     context:
-      "CMS multi-sites : un socle commun pour plusieurs sites clients, avec édition des pages par widget, paiements, articles, blog, référencement et traduction automatisée.",
+      'Quintyss voulait administrer plusieurs sites clients depuis une même plateforme.',
     contribution:
-      "Développeur fullstack indépendant au sein d'une équipe de deux développeurs : architecture de la plateforme, développement et revue de leur code.",
+      'J’ai participé au développement du CMS, à son architecture et aux revues de code, avec une édition des pages sans redéploiement.',
     statusLabel: 'Statut',
   },
 };
@@ -156,7 +156,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     engagement: 'Freelance',
     role: 'Développeur full-stack',
     summary:
-      "Configurateur de kits d'aménagement : composer un kit, le chiffrer à l'achat comme à la location sur 1, 2 ou 3 ans, et sortir une offre avec son impact environnemental et son prix au m².",
+      'Développement d’un configurateur de kits d’aménagement : catalogue, composition des kits, tarifs à l’achat ou à la location et calcul de l’impact environnemental.',
     status: CASE_STUDY_PAGE_BY_SLUG['moduloop-kits'].statusDetail,
   },
   {
@@ -164,15 +164,15 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     engagement: 'Freelance',
     role: 'Développeur full-stack',
     summary:
-      "Plateforme de location de logements à Madagascar, reconstruite depuis la base après un WordPress devenu instable : recherche, réservation, paiement Stripe, back-office.",
+      'Refonte d’une plateforme de location de logements à Madagascar : recherche, réservation, paiement Stripe et administration des logements et des séjours.',
     status: CASE_STUDY_PAGE_BY_SLUG.hosteed.statusDetail,
   },
   {
     slug: 'quintyss',
     engagement: 'Freelance',
-    role: 'Développeur fullstack indépendant',
+    role: 'Développeur full-stack indépendant',
     summary:
-      "CMS multi-sites : un socle commun pour plusieurs sites clients, avec un éditeur qui appliquait les modifications widget par widget, sans redéploiement.",
+      'Développement d’un CMS commun à plusieurs sites clients, avec un éditeur de pages dont les modifications sont publiées sans redéploiement.',
     status: CASE_STUDY_PAGE_BY_SLUG.quintyss.statusDetail,
   },
   {
@@ -180,42 +180,42 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     engagement: 'Stage de 3e année',
     role: 'Développeur full-stack',
     summary:
-      "Calculateur d'impact environnemental qui remplace un calcul sur tableur : catalogue produits, comparaison du neuf et du réemploi, export des résultats.",
+      'Développement d’un calculateur d’impact environnemental pour remplacer les calculs sur tableur : catalogue de produits, comparaison de scénarios et export PDF.',
     status: CASE_STUDY_PAGE_BY_SLUG['moduloop-impact'].statusDetail,
-    note: "À la fin du stage, Moduloop m'a repris en freelance pour la maintenance, puis pour construire Kits.",
+    note: 'Après le stage, j’ai poursuivi la maintenance en freelance, puis développé Moduloop Kits.',
   },
 ];
 
 export const EXPERIENCE_SECTION = {
   eyebrow: 'Expérience',
-  title: 'Quatre produits livrés, en stage puis en freelance',
-  lead: "Ce que j'ai construit depuis 2024, dans quel cadre, avec quelle technologie et sur quelle période.",
+  title: 'Mes expériences de développement',
+  lead: 'Les projets sur lesquels je suis intervenu, en stage puis en indépendant, de 2024 à 2026.',
 };
 
 export const PROCESS_STEPS: ProcessStep[] = [
   {
     id: 'cadrage',
     numberLabel: '1',
-    title: 'Cadrer avant de coder',
-    note: "Je commence par ce que le produit est censé produire, et par ce qui l'en empêche. Sur Hosteed, le sujet n'était pas une fonctionnalité manquante mais un site qui tombait : cela a décidé l'architecture avant la première ligne de code.",
+    title: 'Comprendre le besoin et l’existant',
+    note: 'Avant de développer, je précise ce que l’application doit permettre de faire et les contraintes à respecter. Sur Hosteed, les problèmes de stabilité du site existant ont conduit à une refonte plutôt qu’à l’ajout de nouvelles fonctionnalités.',
   },
   {
     id: 'tests-avant-code',
     numberLabel: '2',
-    title: 'Écrire les tests avant le code',
-    note: "Je pratique le TDD : j'écris d'abord les tests d'intégration de la spec, puis je développe jusqu'à ce qu'ils passent. Cela m'oblige à traiter tous les cas et pas seulement le cas nominal, et la couverture qui en reste protège le produit des régressions à chaque livraison suivante.",
+    title: 'Tester les comportements attendus',
+    note: 'Je pars des comportements décrits dans la spécification pour écrire les tests d’intégration, puis je développe leur implémentation. Ces tests servent ensuite à vérifier que les évolutions ne cassent pas ce qui fonctionnait déjà.',
   },
   {
     id: 'iterations',
     numberLabel: '3',
-    title: 'Montrer tôt, ajuster en continu',
-    note: "Une démo par semaine sur un environnement de test, ouverte à toute l'équipe. Je préfère un retour sur un écran qui tourne à une validation sur un document, et les ajustements se font au fil de l'eau plutôt qu'en fin de projet.",
+    title: 'Faire essayer les versions intermédiaires',
+    note: 'Je présente régulièrement une version utilisable sur un environnement de test. Les retours portent ainsi sur les écrans et les parcours réels, et peuvent être intégrés pendant le développement.',
   },
   {
     id: 'autonomie',
     numberLabel: '4',
-    title: "Rendre l'équipe autonome",
-    note: "Sur Hosteed, j'ai construit un back-office pour que l'équipe suive les logements, les réservations et les paiements sans passer par un développeur. Sur Quintyss, l'éditeur permettait au client de modifier ses pages lui-même. Je considère le back-office, le référencement technique et le suivi des visites comme du produit, pas comme de la finition.",
+    title: 'Prévoir l’administration du produit',
+    note: 'Sur Hosteed, l’équipe devait pouvoir gérer les logements, les réservations et les paiements. Sur Quintyss, les clients devaient modifier leurs pages eux-mêmes. Ces besoins d’administration font partie du développement, au même titre que les écrans publics.',
   },
 ];
 
@@ -259,11 +259,11 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const ABOUT_CONTENT: AboutContent = {
   paragraphs: [
-    "Développeur full-stack, mon travail commence à la spec. Je la lis, je repère ce qu'elle ne dit pas et je pose les questions avant d'écrire la première ligne. Ce que je livre ensuite s'intègre à la codebase existante, avec ses conventions et ses contraintes, plutôt qu'à côté d'elle.",
-    "J'écris les tests d'intégration de la spec avant le code, puis je développe jusqu'à ce qu'ils passent. Cette méthode m'oblige à traiter tous les cas et pas seulement le cas nominal, et elle laisse une couverture qui protège le produit des régressions. Je sais aussi travailler à partir d'une maquette Figma, et en produire une quand il n'y en a pas, mais le design n'est pas ma compétence principale.",
-    "Sur Quintyss, je suis intervenu comme développeur fullstack indépendant dans une équipe de deux développeurs : j'ai porté l'architecture, relu leur code et tranché les arbitrages au quotidien. C'est le cadre que je cherche à retrouver, une équipe où les décisions se discutent, où mon code est relu et où je relis celui des autres.",
+    'Mon expérience s’est construite sur des applications utilisées pour travailler : préparer une offre commerciale, comparer des scénarios d’aménagement, gérer des réservations ou publier le contenu de plusieurs sites. J’ai travaillé sur leurs interfaces, leurs données et leur logique métier.',
+    'Le freelance m’a amené à échanger directement avec les clients et à suivre un projet au-delà de son développement initial. Sur Quintyss, je participais aussi aux choix d’architecture, aux revues de code et au découpage des tâches.',
+    'Pour la suite, je cherche une équipe où discuter les choix techniques et relire le code fait partie du travail quotidien. Je souhaite contribuer avec cette expérience, tout en continuant à apprendre au contact d’autres développeurs.',
   ],
-  toolsHeading: 'Outils du quotidien',
+  toolsHeading: 'Technologies et outils utilisés',
   tools: ['React · Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js · PostgreSQL', 'Railway', 'Figma'],
 };
 

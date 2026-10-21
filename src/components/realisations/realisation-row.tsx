@@ -17,7 +17,7 @@ const BROWSER_SIZES = '(min-width: 900px) 320px, 88vw';
 type RowFrame = 'phone' | 'browser';
 
 const NO_SHOT_NOTE =
-  'Aucune capture sur cette réalisation : le client ne souhaite pas que le produit soit montré.';
+  'Captures non publiées à la demande du client.';
 
 /**
  * Draws the lead capture in the shell the product was captured on.

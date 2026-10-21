@@ -3,7 +3,7 @@ import { SITE_CONFIG } from '@/lib/constants';
 import { PARCOURS_CONTENT } from '@/lib/parcours-content';
 import { loadOgFonts, OgCard, OG_CONTENT_TYPE, OG_PALETTE, OG_SIZE } from '@/lib/og-image';
 
-const HEADLINE = 'Six ans à Epitech, deux mandats d’assistant';
+const HEADLINE = 'D’Epitech à mes premières missions';
 
 const FACTS: readonly string[] = [
   '65 puis 34 étudiants encadrés',

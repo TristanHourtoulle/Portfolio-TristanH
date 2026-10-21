@@ -11,9 +11,9 @@ export function PersonalProjectsSection() {
       <div className="wrap">
         <SectionHeading
           eyebrow="Projets personnels"
-          title="Trois projets construits en dehors de tout client"
+          title="Ce que je développe pour mes propres usages"
           titleId="projets-perso-title"
-          lead="Ce que je suis allé chercher sur mon temps libre, et que les produits client ne demandaient pas : du mobile natif, du temps réel multijoueur et un serveur MCP en production."
+          lead="Une application de révision, un outil de gestion de mon activité et un compteur de points multijoueur. Trois projets avec leurs propres contraintes : pédagogie, facturation et synchronisation en temps réel."
         />
         <ul className="perso-teaser-list">
           {PERSONAL_PROJECTS.map((project) => (

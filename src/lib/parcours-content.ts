@@ -2,11 +2,11 @@ import type { ParcoursPageContent, ParcoursTeaserContent } from './types';
 
 export const PARCOURS_CONTENT: ParcoursPageContent = {
   eyebrow: 'Parcours',
-  title: 'Parcours : six ans à Epitech, deux mandats d’assistant et une année en Malaisie',
-  lead: "La formation, les stages, les deux mandats d’assistant auprès d’autres étudiants et l’année passée à Kuala Lumpur. Ce que le reste du site ne raconte pas : comment j’ai appris, et dans quelles conditions.",
+  title: 'D’Epitech à mes premières missions de développement',
+  lead: 'J’ai étudié à Epitech de 2020 à septembre 2026. Pendant cette période, j’ai accompagné d’autres étudiants, effectué deux stages et lancé mon activité indépendante. J’ai aussi passé ma quatrième année à Kuala Lumpur.',
   metaTitle: 'Parcours',
   metaDescription:
-    "Le parcours de Tristan Hourtoulle : six ans à Epitech, deux mandats d’assistant, deux stages en entreprise, une quatrième année à Kuala Lumpur et du freelance.",
+    'Formation à Epitech, accompagnement d’étudiants, stages chez Agapachats et Moduloop, année à Kuala Lumpur et activité indépendante pendant les études.',
   school: {
     name: 'Epitech',
     description:
@@ -17,42 +17,38 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
       id: 'epitech',
       period: '2020 à septembre 2026',
       context: 'Epitech',
-      heading: 'Six ans au lieu de cinq, et pourquoi',
+      heading: 'Apprendre par les projets',
       paragraphs: [
-        "Epitech ne fonctionne pas par cours magistraux. La formation repose sur des projets, menés en équipe du premier jour au dernier : on apprend en construisant, en cherchant par soi-même et en livrant du code qui tourne.",
-        "J’y ai passé six ans au lieu de cinq, parce que j’ai redoublé ma deuxième année. Je ne le présente pas comme un échec, parce que je ne l’ai pas vécu comme tel : cette année m’a beaucoup remis en question sur le plan personnel et m’a donné le temps d’affûter mes méthodes de travail avant de repartir. Tout ce qui suit sur cette page s’est construit après.",
+        'À Epitech, j’ai appris en réalisant des projets en équipe : chercher une solution, la développer et la faire fonctionner. Mon cursus s’est déroulé sur six ans, avec un redoublement en deuxième année.',
       ],
     },
     {
       id: 'assistant',
       period: 'septembre 2021 à juin 2022, puis septembre 2023 à janvier 2024',
       context: 'Assistant Epitech Région',
-      heading: 'Deux mandats à encadrer d’autres étudiants',
+      heading: 'Accompagner d’autres étudiants',
       paragraphs: [
-        "Premier mandat de septembre 2021 à juin 2022, pendant ma deuxième année : j’ai encadré environ 65 étudiants de première année sur le cursus PGE, celui que je suivais moi-même. Je l’ai mené en parallèle de mes cours et de mon stage chez Agapachats, qui courait de juillet à décembre 2021.",
-        "Second mandat à temps partiel, de septembre 2023 à fin janvier 2024, pendant ma troisième année : j’ai encadré 34 étudiants du cursus MSC, orienté web et long de trois ans. Ce n’était pas mon cursus, et la plupart de ces étudiants étaient plus âgés que moi : ils arrivaient de prépa ou se reconvertissaient vers la tech.",
-        "Le rôle consistait à les accompagner, à les faire progresser et à les garder dans le rythme, en allant en priorité vers les plus en difficulté et les profils les plus atypiques. C’est là que j’ai appris à expliquer une notion à quelqu’un qui ne la voit pas encore, et à débloquer une personne sans coder à sa place.",
+        'De septembre 2021 à juin 2022, j’ai accompagné environ 65 étudiants de première année du cursus PGE, en parallèle de ma formation et de mon stage chez Agapachats.',
+        'De septembre 2023 à janvier 2024, j’ai accompagné 34 étudiants du cursus MSC. Leurs parcours étaient différents du mien, notamment pour ceux qui arrivaient d’une prépa ou d’une reconversion.',
+        'Ce rôle m’a appris à expliquer une notion, à repérer ce qui bloque et à aider quelqu’un à avancer sans écrire le code à sa place.',
       ],
     },
     {
       id: 'agapachats',
       period: 'Deuxième année, juillet à décembre',
       context: 'Agapachats, Rouffach',
-      heading: 'Six mois seul sur un outil interne',
+      heading: 'Un premier outil de gestion interne',
       paragraphs: [
-        "Il n’y a pas eu de stage en première année. Le premier a duré six mois, chez Agapachats, à Rouffach, et je l’ai fait seul sur le projet.",
-        "J’ai construit leur outil interne de gestion : les stocks, les prix d’achat et de revente, les fournisseurs rattachés à chaque produit, les étiquettes de vente utilisées par l’équipe de vente, mais aussi les employés et la cuisine, ainsi que la gestion des droits et le suivi des tickets. En HTML, CSS et PHP, hébergé sur O2Switch.",
-        "L’outil est interne et je n’ai pas l’autorisation d’en montrer des captures : il n’y a donc pas d’étude de cas sur ce site.",
+        'Pendant mon stage de six mois chez Agapachats, à Rouffach, j’ai développé seul un outil interne en HTML, CSS et PHP. Il couvrait notamment les stocks, les prix, les fournisseurs, les étiquettes de vente, la gestion des employés et de la cuisine, les droits d’accès et les tickets. Je ne dispose pas de l’autorisation de montrer des captures de cet outil.',
       ],
     },
     {
       id: 'moduloop-impact',
       period: 'février à juin 2024',
       context: 'Moduloop, stage de 3e année',
-      heading: 'Moduloop Impact, en autonomie complète',
+      heading: 'Développer Moduloop Impact en stage',
       paragraphs: [
-        "Stage de troisième année chez Moduloop, dans une startup, en autonomie complète sur le produit.",
-        "L’application a été mise en production en juin 2024, à la fin du stage, et l’étude de cas en détaille le contexte, mon intervention et le résultat.",
+        'De février à juin 2024, j’ai développé le calculateur d’impact environnemental de Moduloop en autonomie. L’application a été mise en production à la fin du stage ; l’étude de cas présente le projet en détail.',
       ],
       link: {
         label: 'Lire l’étude de cas Moduloop Impact',
@@ -63,21 +59,18 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
       id: 'freelance',
       period: '15 juillet 2024 à août 2026',
       context: 'Activité indépendante',
-      heading: 'Freelance lancé le 15 juillet 2024, en parallèle des études',
+      heading: 'Lancer mon activité pendant les études',
       paragraphs: [
-        "Un mois après la fin du stage chez Moduloop, j’ai créé mon entreprise, trouvé mes premiers clients et mis du logiciel en production, tout en continuant une formation exigeante. Beaucoup de nuits courtes à tenir les deux de front.",
-        "Je m’y suis mis parce que le remboursement de mon prêt étudiant démarrait pendant ma dernière année d’études, le redoublement ayant décalé la fin du cursus.",
-        "Ce que j’en retire : ça m’a confronté à un monde du travail que je ne connaissais pas.",
+        'J’ai créé mon activité indépendante le 15 juillet 2024. En parallèle de mes études, j’ai commencé à travailler directement avec mes clients : comprendre leurs besoins, développer les applications et en suivre les évolutions.',
       ],
     },
     {
       id: 'kuala-lumpur',
       period: 'octobre 2024 à juillet 2025',
       context: 'Quatrième année, Kuala Lumpur',
-      heading: 'Une année en Malaisie sans arrêter de livrer',
+      heading: 'Travailler depuis Kuala Lumpur',
       paragraphs: [
-        "J’ai passé ma quatrième année à Kuala Lumpur et j’ai continué à faire tourner mon activité freelance depuis là-bas, en tenant les rendez-vous à des horaires décalés pour tomber sur les heures de bureau françaises, six à sept heures plus tôt.",
-        "Quintyss V3 en mars 2025 et Hosteed en mai 2025 ont tous les deux démarré pendant ce séjour.",
+        'J’ai passé ma quatrième année à Kuala Lumpur, d’octobre 2024 à juillet 2025, tout en poursuivant mes missions pour des clients français. Les projets Quintyss V3 et Hosteed ont démarré pendant ce séjour. J’adaptais mes horaires pour maintenir les rendez-vous avec les équipes en France.',
       ],
       photos: {
         label: 'Kuala Lumpur',
@@ -137,10 +130,9 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
       id: 'cinquieme-annee',
       period: 'Cinquième année',
       context: 'Statut étudiant-entrepreneur',
-      heading: 'Dernière année validée avec mes propres clients',
+      heading: 'Une dernière année sous statut étudiant-entrepreneur',
       paragraphs: [
-        "Le cursus demande six mois à temps partiel, puis six mois en entreprise, et j’ai rempli ces deux temps avec mon activité indépendante plutôt qu’avec un stage.",
-        "Je l’ai fait sous le statut national étudiant-entrepreneur, en m’appuyant sur des clients que j’avais déjà depuis plus d’un an.",
+        'Sous le statut national étudiant-entrepreneur, j’ai effectué les périodes professionnelles de ma dernière année dans le cadre de mon activité indépendante, avec les clients que j’accompagnais déjà.',
       ],
     },
   ],
@@ -148,9 +140,9 @@ export const PARCOURS_CONTENT: ParcoursPageContent = {
 
 export const PARCOURS_TEASER: ParcoursTeaserContent = {
   eyebrow: 'Parcours',
-  title: 'Six ans à Epitech, dont deux à encadrer d’autres étudiants',
+  title: 'Une formation par les projets, puis des missions clients',
   paragraphs: [
-    "Une formation sans cours magistraux, six ans au lieu de cinq, deux mandats d’assistant auprès de 65 puis 34 étudiants, et une quatrième année passée à Kuala Lumpur sans arrêter de travailler pour mes clients français.",
+    'Mon parcours à Epitech comprend deux mandats d’assistant, deux stages et une année à Kuala Lumpur. J’ai lancé mon activité indépendante pendant mes études, avant de terminer mon cursus en septembre 2026.',
   ],
   linkLabel: 'Lire mon parcours',
   linkHref: '/parcours',

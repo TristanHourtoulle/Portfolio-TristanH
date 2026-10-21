@@ -54,7 +54,7 @@ export function CopyEmailButton({ email }: CopyEmailButtonProps) {
     >
       <Copy className="copy-icon" aria-hidden="true" />
       <span className="sr-only">Copier l&apos;adresse email </span>
-      <span aria-live="polite">{isCopied ? 'Copié' : email}</span>
+      <span aria-live="polite">{isCopied ? 'Adresse copiée' : email}</span>
     </button>
   );
 }

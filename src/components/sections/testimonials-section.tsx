@@ -21,9 +21,9 @@ export function TestimonialsSection() {
       <div className="wrap">
         <SectionHeading
           eyebrow="Témoignages"
-          title="Ce qu'en disent clients et collègues"
+          title="Travailler avec moi"
           titleId="temoignages-title"
-          lead="Cinq retours écrits : trois clients pour qui j'ai livré, deux personnes qui ont travaillé à mes côtés."
+          lead="Les retours de clients et de personnes avec qui j’ai travaillé."
         />
         <div className="quotes">
           {TESTIMONIALS.map((testimonial) => (
