@@ -37,8 +37,8 @@ export const PERSONAL_PROJECTS: PersonalProject[] = [
       video: {
         src: '/videos/projects/edukai/video-promo.mp4',
         poster: '/images/projects/edukai/video-promo-affiche.webp',
-        width: 1080,
-        height: 1920,
+        width: 804,
+        height: 1748,
         title: 'Edukai en 32 secondes',
         description:
           "Film de présentation sans voix off : il s'ouvre sur une pile de cours en pagaille, en tire un cours de biologie qu'il passe au crible, nomme ses concepts clés un à un, et montre l'application en faire des questions à choix multiple.",
