@@ -1,110 +1,410 @@
-/**
- * Navigation item for header menu
- */
 export interface NavItem {
   id: string;
   label: string;
   href: string;
 }
 
-/**
- * Badge component variants (Hero section)
- */
-export type BadgeVariant = 'blue' | 'green';
+export type ClientId = 'moduloop' | 'hosteed' | 'quintyss';
 
-export interface Badge {
-  id: string;
-  label: string;
-  variant: BadgeVariant;
+export interface ClientLogo {
+  src: string;
+  width: number;
+  height: number;
 }
 
 /**
- * Tech skill card (Skills section)
+ * The square mark that stands in for a product, in the list and on its page.
  */
-export interface TechSkill {
-  id: string;
-  title: string;
-  description: string;
-  icon?: string;
-  technologies?: string[];
+export interface ProductMark {
+  src: string;
+  width: number;
+  height: number;
+  /** True for a vector file, which is served as is rather than re-encoded. */
+  isVector?: boolean;
+  /** Square app icon, cropped to the app-icon rounding, or uncropped wordmark. */
+  shape: 'icon' | 'wordmark';
 }
 
-/**
- * Button component variants
- */
-export type ButtonVariant = 'primary' | 'secondary' | 'outline';
-
-export type ButtonSize = 'sm' | 'md' | 'lg';
-
-export interface ButtonProps {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  children: React.ReactNode;
-  className?: string;
-  href?: string;
-  onClick?: () => void;
-  disabled?: boolean;
-  icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
-}
-
-/**
- * Site configuration
- */
-export interface SiteConfig {
+export interface ClientColor {
+  id: ClientId;
   name: string;
-  title: string;
-  subtitle: string;
-  ctaText: string;
-  ctaHref: string;
+  brand: string;
+  ink: string;
+  /** Absent when the client does not allow its logo to be shown. */
+  logo?: ClientLogo;
 }
 
-/**
- * Project types for Projects section
- */
-export type ProjectType = 'freelance' | 'personal';
+export type ButtonVariant = 'primary' | 'ghost' | 'invert' | 'invert-ghost';
 
-export type ProjectStatus = 'live' | 'private' | 'coming-soon';
-
-export type ProjectTagCategory = 'tech' | 'type' | 'other';
-
-export interface ProjectTag {
+export interface CaseStudyDetail {
   label: string;
-  category: ProjectTagCategory;
+  value: string;
 }
 
-export interface ProjectDate {
-  month: number; // 1-12
-  year: number;
-}
+export type CaseStudySlug = 'hosteed' | 'moduloop-impact' | 'moduloop-kits' | 'quintyss';
 
-export interface Project {
-  id: string;
+export type PersonalProjectSlug = 'edukai' | 'freelance-manager' | 'degommix';
+
+/**
+ * Every slug served under `/realisations/[slug]`, whatever the provenance.
+ */
+export type RealisationSlug = CaseStudySlug | PersonalProjectSlug;
+
+/**
+ * Where a realisation comes from: a client engagement or my own time.
+ */
+export type RealisationProvenance = 'client' | 'perso';
+
+export interface CaseStudy {
+  id: CaseStudySlug;
+  clientId: ClientId;
   title: string;
-  description: string;
-  logo: string;
-  type: ProjectType;
-  tags: ProjectTag[];
-  status: ProjectStatus;
-  url?: string;
-  startDate: ProjectDate;
-  endDate?: ProjectDate; // undefined = ongoing (aujourd'hui)
+  /** Nature of the engagement, for instance freelance work or an internship. */
+  engagementType: string;
+  period: string;
+  stack: readonly string[];
+  details: CaseStudyDetail[];
+  caseLinkHref: string;
 }
 
 /**
- * Testimonial types for Testimonials section
+ * An image a carousel can show, be it a capture or a photograph.
  */
-export type TestimonialVariant = 'default' | 'featured';
+export interface SliderImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+/**
+ * A single screenshot in a case-study detail page.
+ */
+export interface CaseStudyGalleryImage extends SliderImage {
+  variant: 'desktop' | 'mobile';
+  /** Device shell drawn around the capture, in the framed gallery layout. */
+  frame?: 'phone' | 'browser';
+  /** Set when the capture already shows a top bar of its own, so the phone shell draws no island over it. */
+  carriesOwnTopBar?: boolean;
+}
+
+/**
+ * A hand-drawn diagram that can close a narrative section.
+ */
+export type CaseStudyFigureId = 'edukai-cycle' | 'edukai-interval' | 'edukai-target';
+
+/**
+ * One prose block in the narrative column.
+ */
+export interface CaseStudyNarrativeSection {
+  heading: string;
+  paragraphs: string[];
+  /** Diagram drawn after the paragraphs, when the section earns one. */
+  figure?: CaseStudyFigureId;
+}
+
+/**
+ * A promo film shown on a realisation page, played only on demand.
+ */
+export interface CaseStudyVideo {
+  src: string;
+  /** Still shown in the frame until playback actually starts. */
+  poster: string;
+  /** Intrinsic width of the picture, in pixels. */
+  width: number;
+  /** Intrinsic height of the picture, in pixels. */
+  height: number;
+  /** Section heading above the player. */
+  title: string;
+  /** What the film shows, for a reader who cannot or will not play it. */
+  description: string;
+  /** Accessible name of the start control. */
+  playLabel: string;
+  /** Running time, shown on the start control. */
+  durationLabel: string;
+}
+
+/**
+ * A single outbound link to the live product.
+ */
+export interface CaseStudyPageLink {
+  label: string;
+  href: string;
+  /** Short factual caveat shown next to the link, such as a sign-in requirement. */
+  note?: string;
+}
+
+/**
+ * Full content of a case-study detail page (`/realisations/[slug]`).
+ */
+export interface CaseStudyPageContent {
+  slug: RealisationSlug;
+  provenance: RealisationProvenance;
+  /** Absent on a project built outside any client engagement. */
+  clientId?: ClientId;
+  /** Product mark, when it is not the client logo. */
+  mark?: ProductMark;
+  title: string;
+  /** Lowercase noun phrase appended to the client name inside the <h1>. */
+  titleQualifier: string;
+  /** Nature of the engagement, absent when there was no client. */
+  engagementType?: string;
+  /** Lowercase form, used inline in the eyebrow. */
+  periodInline: string;
+  /** Capitalized form, used in the sidebar and related-card mono line. */
+  period: string;
+  /** ISO 8601 date at month precision, fed to `openGraph.publishedTime`. */
+  publishedTimeIso: string;
+  /** Short label next to the status dot in the hero, absent when the period carries the status. */
+  statusBadge?: string;
+  /** Full-sentence status, absent when the period carries the status. */
+  statusDetail?: string;
+  /** Visible opening paragraph of the page. */
+  lead: string;
+  metaDescription: string;
+  stack: readonly string[];
+  /** Outbound links to the live product, shown in the sidebar and in the list row. */
+  externalLinks: CaseStudyPageLink[];
+  /** Promo film, when the realisation has one. */
+  video?: CaseStudyVideo;
+  gallery: CaseStudyGalleryImage[];
+  /** How the gallery draws its captures. Defaults to the desktop carousel. */
+  galleryLayout?: 'slider' | 'frames';
+  narrative: CaseStudyNarrativeSection[];
+  /** Slugs of other case studies to surface in "Voir aussi", in display order. */
+  relatedSlugs: string[];
+}
+
+/**
+ * A client case-study page, whose client fields are always filled in.
+ */
+export type ClientCaseStudyPage = CaseStudyPageContent & {
+  slug: CaseStudySlug;
+  clientId: ClientId;
+  engagementType: string;
+  statusDetail: string;
+};
+
+/**
+ * The editorial half of a case-study page: every field that is prose.
+ */
+export type CaseStudyCopy = Pick<
+  CaseStudyPageContent,
+  'lead' | 'metaDescription' | 'statusBadge' | 'statusDetail' | 'narrative'
+>;
+
+/**
+ * The editorial half of a client case study, which always states its status.
+ */
+export type ClientCaseStudyCopy = CaseStudyCopy & {
+  statusBadge: string;
+  statusDetail: string;
+};
+
+/**
+ * One dated row of the experience timeline, keyed to its case study.
+ */
+export interface ExperienceEntry {
+  slug: CaseStudySlug;
+  /** Nature of the engagement, for instance an internship or freelance work. */
+  engagement: string;
+  role: string;
+  summary: string;
+  status: string;
+  /** Optional closing line, used when the engagement needs one. */
+  note?: string;
+}
+
+export interface ProcessStep {
+  id: string;
+  numberLabel: string;
+  title: string;
+  note: string;
+}
+
+/**
+ * Nature of the working relationship behind a quote.
+ */
+export type TestimonialRelation = 'client' | 'peer';
 
 export interface Testimonial {
   id: string;
   name: string;
-  rating: number;
+  relation: TestimonialRelation;
+  /** Organisation the collaboration took place in, when it is public. */
+  context?: string;
   review: string;
-  variant?: TestimonialVariant;
 }
 
-export interface TestimonialsConfig {
-  averageRating: number;
-  totalClients: number;
+export interface HeroContent {
+  /** Small line rendered inside the <h1>, above `title`. */
+  titleKicker: string;
+  title: string;
+  subtitle: string;
+  secondaryCtaLabel: string;
+  secondaryCtaHref: string;
+  /** First line of the "available from" badge. */
+  availableFromLabel: string;
+  /** Second line of the badge: the date he becomes available. */
+  availableFromValue: string;
+  locationNote: string;
+}
+
+export interface CtaContent {
+  title: string;
+  lead: string;
+}
+
+export interface ProfileAction {
+  label: string;
+  href: string;
+  /** Present only when the link must be saved to disk under this name. */
+  downloadFileName?: string;
+}
+
+export interface SiteConfig {
+  brandName: string;
+  brandTagline: string;
+  /** Canonical production origin, without a trailing slash. */
+  siteUrl: string;
+  linkedinUrl: string;
+  email: string;
+}
+
+export interface AboutContent {
+  paragraphs: string[];
+  toolsHeading: string;
+  tools: string[];
+}
+
+export interface FooterLink {
+  id: string;
+  label: string;
+  href: string;
+  icon?: 'github' | 'linkedin' | 'mail';
+}
+
+/**
+ * Identity block for the site editor.
+ */
+export interface LegalEditor {
+  name: string;
+  legalStatus: string;
+  /** Postal address, one entry per display line. */
+  addressLines: string[];
+  siret: string;
+  vatMention: string;
+  email: string;
+  publicationDirector: string;
+}
+
+/**
+ * Identity block for the hosting provider.
+ */
+export interface LegalHost {
+  name: string;
+  /** Postal address, one entry per display line. */
+  addressLines: string[];
+}
+
+/**
+ * A single prose topic on the mentions légales page.
+ */
+export interface LegalSection {
+  id: string;
+  title: string;
+  paragraphs: string[];
+}
+
+/**
+ * Full content of the mentions légales page.
+ */
+export interface LegalPageContent {
+  lastUpdatedIso: string;
+  lastUpdatedLabel: string;
+  editor: LegalEditor;
+  host: LegalHost;
+  sections: LegalSection[];
+}
+
+/**
+ * An outbound or internal link rendered inside a parcours entry.
+ */
+export interface ParcoursLink {
+  label: string;
+  href: string;
+}
+
+/**
+ * One dated block of the parcours page.
+ */
+export interface ParcoursEntry {
+  id: string;
+  /** Dates of the entry, shown in the left column. */
+  period: string;
+  /** Short qualifier under the period, for instance the school or the company. */
+  context: string;
+  heading: string;
+  paragraphs: string[];
+  /** Optional link closing the entry. */
+  link?: ParcoursLink;
+  /** Photo carousel closing the entry. */
+  photos?: ParcoursPhotos;
+}
+
+/**
+ * The photographs illustrating one parcours entry.
+ */
+export interface ParcoursPhotos {
+  /** Place shown in the photographs, used in the carousel accessible name. */
+  label: string;
+  images: SliderImage[];
+}
+
+/**
+ * The school behind the formation, reused by the structured data.
+ */
+export interface ParcoursSchool {
+  name: string;
+  /** Wikidata-free plain description, used as the schema.org description. */
+  description: string;
+}
+
+/**
+ * Full content of the parcours page (`/parcours`).
+ */
+export interface ParcoursPageContent {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  metaTitle: string;
+  metaDescription: string;
+  school: ParcoursSchool;
+  entries: ParcoursEntry[];
+}
+
+/**
+ * The homepage block pointing at the parcours page.
+ */
+export interface ParcoursTeaserContent {
+  eyebrow: string;
+  title: string;
+  paragraphs: string[];
+  linkLabel: string;
+  linkHref: string;
+}
+
+/**
+ * The three states of the realisations filter, mirrored in the URL.
+ */
+export type RealisationFilter = 'tout' | 'client' | 'perso';
+
+/**
+ * A project built outside any client engagement.
+ */
+export interface PersonalProject {
+  /** The full page served at `/realisations/[slug]`, exactly like a case study. */
+  page: CaseStudyPageContent;
+  /** One-line form, used by the homepage teaser. */
+  teaser: string;
 }
