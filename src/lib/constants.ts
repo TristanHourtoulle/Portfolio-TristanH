@@ -25,7 +25,7 @@ export const SITE_CONFIG: SiteConfig = {
 };
 
 /**
- * Public path of the CV PDF, set once the file is added to `public/`.
+ * Public path of the CV PDF served from `public/`.
  */
 const CV_PDF_PATH: string | null = '/cv/tristan-hourtoulle-cv.pdf';
 
